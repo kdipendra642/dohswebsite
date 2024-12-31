@@ -1,0 +1,29 @@
+<aside>
+    <div id="sidebar"  class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+            <li>
+                <a href="{{ route('dashboard.index') }}" class="active">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <li class="sub-menu">
+                <a href="#">
+                    <i class="fa fa-book"></i>
+                    <span>Users</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="{{ route('users.index') }}">Users</a></li>
+                    <li><a  href="{{ route('sliders.index') }}">Sliders</a></li>
+                    <li><a  href="{{ route('tickers.index') }}">Tickers</a></li>
+                    <li><a  href="{{ route('sitesettings.index') }}">Site Settings</a></li>
+                    <li><a  href="{{ route('staffs.index') }}">Staffs</a></li>
+                    <li><a  href="{{ route('importantlinks.index') }}">Important Links</a></li>
+                    <li><a  href="{{ route('galleries.index') }}">Gallery</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</aside>
