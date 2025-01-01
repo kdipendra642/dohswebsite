@@ -1,14 +1,13 @@
-<footer id="footer"
-{{-- style="
+<footer id="footer">
+   <!-- style="
 background-color: #1b52a4 !important;
 background-image: url({{asset('assets/frontend/uploads/img/background.png')}})
-" --}}
->
+" -->
     <div class="container">
       <div class="row footer-main">
           <div class="col-sm-3">
             <h4>सम्पर्क ठेगाना</h4>
-            <img src="{{ asset('assets/frontend/uploads/img/Img-20210318152152752.png')}}" alt="उद्योग विभाग" class="img-fluid float-left" width="60px">
+            <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" alt="उद्योग विभाग" class="img-fluid float-left" width="60px">
               <h5 class="address text-left">{{$siteSettings->titleOne}}</h5>
               <div class="clear-both"></div>
               <p class="doind-address">
@@ -18,12 +17,12 @@ background-image: url({{asset('assets/frontend/uploads/img/background.png')}})
                 <i class="fa fa-globe"></i> वेवसाईट: <a href="{{ route('index') }}">{{ route('index') }}</a><br>
             </p>
           </div>
+<!-- 
+         <div class="col-sm-4">
 
-          {{-- <div class="col-sm-4">
+          </div> -->
 
-          </div> --}}
-
-                  {{-- <div class="col-sm-2">
+                 <!-- <div class="col-sm-2">
             <h4>महानिर्देशक</h4>
                       <img src="uploads/official/Official-20241028045136217.jpg" class="img-fluid img-thumbnail" alt="" style="width:100px; height: 115px;">
                       <h6 class="design-np">राजेश्वर ज्ञवाली</h6>
@@ -36,7 +35,7 @@ background-image: url({{asset('assets/frontend/uploads/img/background.png')}})
                       <h6 class="design-np">अर्जुन सेन ओली</h6>
             <p class="doind-desig">निर्देशक</p>
             <p class="doind-desig">फोन नं. ०१-५३६१११२</p>
-          </div> --}}
+          </div> -->
 
             <div class="col-sm-4">
                 <h4>उपयोगी लिङ्कहरु</h4>

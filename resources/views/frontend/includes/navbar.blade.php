@@ -3,7 +3,7 @@
       <div class="col-md-8 col-sm-12">
           <a href="#">
               <center>
-                  <img src="{{ asset('assets/frontend/uploads/img/Img-20210318152152752.png')}}" alt="उद्योग विभाग" class="img-fluid img-logo" style="padding-top:4px">
+                  <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" alt="उद्योग विभाग" class="img-fluid img-logo" style="padding-top:4px">
               </center>
             <h1 class=nep_logo>{{$siteSettings->titleOne}}</h1>
             <h4 class="nep_logo_h4">{{$siteSettings->titleTwo}}</h4>

@@ -6,9 +6,9 @@
     <meta name="description" content="">
     <meta name="author" content="Department Of Health Service">
     <meta name="keyword" content="Department Of Health Service">
-    <link rel="shortcut icon" href="img/favicon.html">
+    <link rel="icon" href="{{ asset('assets/frontend/uploads/img/logo.png')}}">
 
-    <title>General</title>
+    <title>Department of Health Service</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/backend/css/bootstrap.min.css')}}" rel="stylesheet">

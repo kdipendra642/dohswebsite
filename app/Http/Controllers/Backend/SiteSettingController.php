@@ -48,6 +48,6 @@ class SiteSettingController extends BaseController
             return redirect()->back()->with('error', $th->getMessage());
         }
 
-        return redirect()->route('sitesettings.index')->with('success', 'SiteSetting created successfully.');
+        return redirect()->route('sitesettings.index')->with('success', 'SiteSetting updated successfully.');
     }
 }
