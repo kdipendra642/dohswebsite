@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\GalleryRequest;
 use App\Services\GalleryService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GalleryController extends BaseController
 {
@@ -47,6 +48,8 @@ class GalleryController extends BaseController
      */
     public function store(GalleryRequest $request)
     {
+        DB::beginTransaction();
+
         try {
             $data = $request->validated();
 
@@ -54,8 +57,10 @@ class GalleryController extends BaseController
                 data: $data
             );
         } catch (\Throwable $th) {
+            DB::rollBack();
             return redirect()->back()->with('error', $th->getMessage());
         }
+        DB::commit();
 
         return redirect()->route('galleries.index')->with('success', 'Gallery created successfully.');
     }
@@ -83,6 +88,8 @@ class GalleryController extends BaseController
      */
     public function update(GalleryRequest $request, string $id)
     {
+        DB::beginTransaction();
+
         try {
             $data = $request->validated();
 
@@ -91,8 +98,10 @@ class GalleryController extends BaseController
                 data: $data
             );
         } catch (\Throwable $th) {
+            DB::rollBack();
             return redirect()->back()->with('error', $th->getMessage());
         }
+        DB::commit();
 
         return redirect()->route('galleries.index')->with('success', 'Gallery updated successfully.');
     }

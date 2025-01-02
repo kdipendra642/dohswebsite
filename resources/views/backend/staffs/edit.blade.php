@@ -45,6 +45,17 @@
                             <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" value="{{ $staffs->email }}">
                         </div>
                         <div class="form-group">
+                            <label for="priority">Priority Order</label>
+                            <select name="priority" id="priority" class="form-control">
+                                <option disabled> --- Please Select ---</option>
+                                <option value="1"  @if ($staffs->priority == 1) selected @endif>1</option>
+                                <option value="2"  @if ($staffs->priority == 2) selected @endif>2</option>
+                                <option value="3"  @if ($staffs->priority == 3) selected @endif>3</option>
+                                <option value="4"  @if ($staffs->priority == 4) selected @endif>4</option>
+                                <option value="5"  @if ($staffs->priority == 5) selected @endif>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="invalidCheck">
                                 Show On Home Page
                             </label>
@@ -56,6 +67,7 @@
                         <div class="form-group">
                             <label for="position">Staff position</label>
                             <select name="position" id="position" class="form-control">
+                                <option disabled> --- Please Select ---</option>
                                 <option value="Computer Operator" @if ($staffs->position == 'Computer Operator') selected @endif>Computer Operator</option>
                                 <option value="Assistant Fourth" @if ($staffs->position == 'Assistant Fourth') selected @endif>Assistant Fourth</option>
                                 <option value="Joint Secretary" @if ($staffs->position == 'Joint Secretary') selected @endif>Joint Secretary</option>
@@ -87,7 +99,7 @@
                         <div class="form-group">
                             <label for="division">Staff division</label>
                             <select name="division" id="division" class="form-control">
-                                <option value="Please Select" selected disabled>Please Select</option>
+                                <option value="Please Select" disabled>Please Select</option>
                                 <option value="Registration Section" @if ($staffs->division == 'Registration Section') selected @endif>Registration Section</option>
                                 <option value="Commerce Secretariat" @if ($staffs->division == 'Commerce Secretariat') selected @endif>Commerce Secretariat</option>
                                 <option value="Multilateral Trade Section" @if ($staffs->division == 'Multilateral Trade Section') selected @endif>Multilateral Trade Section</option>
@@ -135,7 +147,7 @@
                         <div class="form-group">
                             <label for="section">Staff section</label>
                             <select name="section" id="section" class="form-control">
-                                <option value="Please Select" selected disabled>Please Select</option>
+                                <option value="Please Select" disabled>Please Select</option>
                                 <option value="Registration Section" @if ($staffs->section == 'Registration Section') selected @endif>Registration Section</option>
                                 <option value="Commerce Secretariat" @if ($staffs->section == 'Commerce Secretariat') selected @endif>Commerce Secretariat</option>
                                 <option value="Multilateral Trade Section" @if ($staffs->section == 'Multilateral Trade Section') selected @endif>Multilateral Trade Section</option>

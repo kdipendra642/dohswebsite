@@ -44,13 +44,24 @@
                             <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" value="{{ old('email') }}">
                         </div>
                         <div class="form-group">
+                            <label for="priority">Priority Order</label>
+                            <select name="priority" id="priority" class="form-control">
+                                <option disabled selected> --- Please Select ---</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                                 <label for="invalidCheck">
                                     Show On Home Page
                                 </label>
                                 <br>
                                 <input type="hidden" name="showOnHomePage" value="0">
                                 <input class="form-check-input" type="checkbox" value="1" name="showOnHomePage" id="invalidCheck" style="margin: auto;">
-                                {{-- <input class="form-check-input" type="checkbox" value="1" name="showOnHomePage" id="invalidCheck" style="margin: auto;"> --}}
+                                <!-- {{-- <input class="form-check-input" type="checkbox" value="1" name="showOnHomePage" id="invalidCheck" style="margin: auto;"> --}} -->
                         </div>
                         <div class="form-group">
                             <label for="position">Staff position</label>

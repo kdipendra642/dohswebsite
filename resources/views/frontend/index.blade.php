@@ -235,7 +235,7 @@
           <!-- official -->
                   <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 bidhut-social remove_margin">
                     <div class="wow fadeInRight" data-wow-delay="0.2s">
-                        {{-- @foreach ($getHomePageData['staffs'] as $staffs)
+                        @foreach ($getHomePageData['staffs'] as $staffs)
                         <div class="profile-ebox photo-placeholder ">
                             <div class="single-profile">
                                 <h5 class="position_np">{{$staffs->position}}</h5>
@@ -261,27 +261,27 @@
                                 <p class="name mt-1"> {{$staffs->name}} </p>
                             <p class=""> <i class="fa fa-phone"></i> {{$staffs->telephone}}</p>
                             </div>
-                        @endforeach --}}
+                        @endforeach
 
-                        <div class="profile-ebox photo-placeholder ">
+                        <!-- <div class="profile-ebox photo-placeholder ">
                             <div class="single-profile">
                                 <h5 class="position_np">Director General</h5>
                                 <center>
 
-                                        <img
-                                        src="{{ url('/images/WhatsApp Image 2024-12-30 at 19.28.35.jpeg') }}"
-                                        alt="Dr. Bikash Devkota"
-                                        width="122"
-                                        class="img-fluid img-thumbnail"
-                                        title="Dr. Bikash Devkota"
-                                        >
+                                    <img
+                                    src="{{ url('/images/WhatsApp Image 2024-12-30 at 19.28.35.jpeg') }}"
+                                    alt="Dr. Bikash Devkota"
+                                    width="122"
+                                    class="img-fluid img-thumbnail"
+                                    title="Dr. Bikash Devkota"
+                                    >
                                 </center>
                                 <p class="name mt-1"> Dr. Bikash Devkota </p>
-                            <p class=""> <i class="fa fa-phone"></i> 98xxxxxxxxxx</p>
+                                <p class=""> <i class="fa fa-phone"></i> 98xxxxxxxxxx</p>
                             </div>
 
 
-                    </div>
+                        </div> -->
             </div>
           </div>
                   <!-- end official -->
@@ -289,12 +289,12 @@
     </div>
   </section>
 
-  {{-- <section id="office" class="wow fadeInUp d-none d-md-block">
+  <!-- {{-- <section id="office" class="wow fadeInUp d-none d-md-block">
 
     <div class="bibhag-list">
 
     </div>
-  </div></section> --}}
+  </div></section> --}} -->
 
     <section id="all_notice" class="wow fadeInUp d-sm-block d-none mt-3">
         <div class="container bibhag pl-2">
@@ -317,12 +317,12 @@
 
     <section id="gallery" class="wow fadeInUp">
         <div class="container bg-silver" style="padding:0px 0px 6px 8px;">
-            <h2 class="text-center pt-3 text-uppercase">विभागका गतिविधि</h2>
+            <h2 class="text-center pt-3 text-uppercase">ग्यालेरी</h2>
             <hr>
             <div class="owl-carousel gallery-carousel">
             @foreach ($getHomePageData['galleries'] as $gallery)
                 <div class="gallery-img">
-                    <a href="#" title="{{$gallery->title}}">
+                    <a href="{{ route('gallery',$gallery->slug) }}" title="{{$gallery->title}}">
                         @if ($gallery->getMedia('thumbnail')->isNotEmpty())
                         <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" class="img-fluid" alt="{{$gallery->title}}">
                         @endif

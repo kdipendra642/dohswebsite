@@ -47,3 +47,5 @@ Route::middleware(['auth'])->group(function () {
 
 // Routes For Frontend
 Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::get('/contact-us', [IndexController::class, 'contact'])->name('contact');
+Route::get('/gallery/{slug}', [IndexController::class, 'gallery'])->name('gallery');

@@ -4,7 +4,7 @@ namespace App\Repositories\Interfaces;
 
 interface BaseRepositoryInterface
 {
-    public function fetchAll(array $with = [], array $filterable = []): object;
+    public function fetchAll(array $with = [], array $filterable = [], array $order = [], ?int $limit = null): object;
 
     public function fetch(int $id, array $with = []): object;
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Services\AuthService;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -29,14 +30,16 @@ class AuthController extends Controller
      */
     public function signin(LoginRequest $request)
     {
+        DB::beginTransaction();
         try {
             $data = $request->validated();
 
             $this->authService->login($data);
         } catch (\Throwable $th) {
+            DB::rollBack();
             return redirect()->back()->with('error', $th->getMessage());
         }
-
+        DB::commit();
         return redirect()->route('dashboard.index');
     }
 

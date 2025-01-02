@@ -27,6 +27,7 @@ class SiteSettingRequest extends BaseRequest
             'socialYoutubeLink' => 'sometimes|nullable|string|min:1|max:255',
             'metaKeywords' => 'sometimes|nullable|string|min:1|max:255',
             'metaDescription' => 'sometimes|nullable|string|min:1|max:255',
+            'imap' => 'sometimes|nullable|url|min:1|max:255',
         ];
     }
 }

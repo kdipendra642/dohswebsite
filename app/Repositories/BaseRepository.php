@@ -26,7 +26,7 @@ class BaseRepository implements BaseRepositoryInterface
      * @param  array  $with  Relationships to eager load.
      * @return Collection
      */
-    public function fetchAll(array $with = [], array $filterable = []): object
+    public function fetchAll(array $with = [], array $filterable = [], array $order = [], ?int $limit = null): object
     {
         $query = $this->model::query();
 
@@ -44,6 +44,20 @@ class BaseRepository implements BaseRepositoryInterface
                     $query->where(key($filter), current($filter));
                 }
             }
+        }
+
+        /**
+         * For reference see example below
+         *  eg:: ['column_name' => 'asc', 'another_column' => 'desc']
+         */
+        if (!empty($order)) {
+            foreach ($order as $column => $direction) {
+                $query->orderBy($column, $direction);
+            }
+        }
+
+        if ($limit !== null) {
+            $query->limit($limit);
         }
 
         return $query->get();

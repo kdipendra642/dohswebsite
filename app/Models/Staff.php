@@ -19,6 +19,7 @@ class Staff extends Model implements HasMedia
         'section',
         'description',
         'showOnHomePage',
+        'priority',
     ];
 
     protected $casts = [

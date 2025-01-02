@@ -83,6 +83,10 @@
                             <label for="socialYoutubeLink">Social Media Facebook</label>
                             <input type="url" name="socialYoutubeLink" class="form-control" id="socialYoutubeLink" placeholder="Social Media Facebook Link" value="{{ $sitesettings[0]->socialYoutubeLink ?? '' }}">
                         </div>
+                        <div class="form-group">
+                            <label for="socialYoutubeLink">Location URL</label>
+                            <input type="url" name="imap" class="form-control" id="socialYoutubeLink" placeholder="Map URL" value="{{ $sitesettings[0]->imap ?? '' }}">
+                        </div>
                         <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                     </form>
                 </div>
