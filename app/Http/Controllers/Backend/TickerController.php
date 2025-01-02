@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TickerRequest;
 use App\Services\TickerService;
+use Illuminate\Support\Facades\DB;
 
 class TickerController extends Controller
 {
@@ -45,6 +46,8 @@ class TickerController extends Controller
      */
     public function store(TickerRequest $request)
     {
+        DB::beginTransaction();
+
         try {
             $data = $request->validated();
 
@@ -52,8 +55,11 @@ class TickerController extends Controller
                 data: $data
             );
         } catch (\Throwable $th) {
+            DB::rollBack();
+
             return redirect()->back()->with('error', $th->getMessage());
         }
+        DB::commit();
 
         return redirect()->route('tickers.index')->with('success', 'Ticker created successfully.');
     }
@@ -81,6 +87,8 @@ class TickerController extends Controller
      */
     public function update(TickerRequest $request, string $id)
     {
+        DB::beginTransaction();
+
         try {
             $data = $request->validated();
 
@@ -89,8 +97,11 @@ class TickerController extends Controller
                 data: $data
             );
         } catch (\Throwable $th) {
+            DB::rollBack();
+
             return redirect()->back()->with('error', $th->getMessage());
         }
+        DB::commit();
 
         return redirect()->route('tickers.index')->with('success', 'Ticker updated successfully.');
     }
@@ -100,13 +111,18 @@ class TickerController extends Controller
      */
     public function destroy(string $id)
     {
+        DB::beginTransaction();
+
         try {
             $ticker = $this->tickerService->deletetickersData(
                 tickersId: $id
             );
         } catch (\Throwable $th) {
+            DB::rollBack();
+
             return redirect()->back()->with('error', $th->getMessage());
         }
+        DB::commit();
 
         return redirect()->route('tickers.index')->with('success', 'Ticker deleted successfully.');
     }

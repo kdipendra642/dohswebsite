@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Services\UserService;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -45,6 +46,8 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
+        DB::beginTransaction();
+
         try {
             $data = $request->validated();
 
@@ -52,8 +55,11 @@ class UserController extends Controller
                 data: $data
             );
         } catch (\Throwable $th) {
+            DB::rollBack();
+
             return redirect()->back()->with('error', $th->getMessage());
         }
+        DB::commit();
 
         return redirect()->route('users.index')->with('success', 'User created successfully.');
     }
@@ -81,6 +87,8 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, string $id)
     {
+        DB::beginTransaction();
+
         try {
             $data = $request->validated();
 
@@ -89,8 +97,11 @@ class UserController extends Controller
                 data: $data
             );
         } catch (\Throwable $th) {
+            DB::rollBack();
+
             return redirect()->back()->with('error', $th->getMessage());
         }
+        DB::commit();
 
         return redirect()->route('users.index')->with('success', 'User updated successfully.');
     }
@@ -100,13 +111,18 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
+        DB::beginTransaction();
+
         try {
             $user = $this->userService->deleteUserData(
                 userId: $id
             );
         } catch (\Throwable $th) {
+            DB::rollBack();
+
             return redirect()->back()->with('error', $th->getMessage());
         }
+        DB::commit();
 
         return redirect()->route('users.index')->with('success', 'User deleted successfully.');
     }

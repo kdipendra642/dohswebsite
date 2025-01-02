@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StaffRequest;
 use App\Services\StaffService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StaffController extends BaseController
 {
@@ -47,6 +48,8 @@ class StaffController extends BaseController
      */
     public function store(StaffRequest $request)
     {
+        DB::beginTransaction();
+
         try {
             $data = $request->validated();
 
@@ -54,8 +57,11 @@ class StaffController extends BaseController
                 data: $data
             );
         } catch (\Throwable $th) {
+            DB::rollBack();
+
             return redirect()->back()->with('error', $th->getMessage());
         }
+        DB::commit();
 
         return redirect()->route('staffs.index')->with('success', 'Staffs created successfully.');
     }
@@ -83,6 +89,8 @@ class StaffController extends BaseController
      */
     public function update(StaffRequest $request, string $id)
     {
+        DB::beginTransaction();
+
         try {
             $data = $request->validated();
 
@@ -91,8 +99,11 @@ class StaffController extends BaseController
                 data: $data
             );
         } catch (\Throwable $th) {
+            DB::rollBack();
+
             return redirect()->back()->with('error', $th->getMessage());
         }
+        DB::commit();
 
         return redirect()->route('staffs.index')->with('success', 'Staffs updated successfully.');
     }
@@ -102,13 +113,19 @@ class StaffController extends BaseController
      */
     public function destroy(string $id)
     {
+        DB::beginTransaction();
+
         try {
             $staffs = $this->staffService->deleteStaffsData(
                 staffsId: $id
             );
         } catch (\Throwable $th) {
+            DB::rollBack();
+
             return redirect()->back()->with('error', $th->getMessage());
         }
+        DB::commit();
+
 
         return redirect()->route('staffs.index')->with('success', 'Staffs deleted successfully.');
     }

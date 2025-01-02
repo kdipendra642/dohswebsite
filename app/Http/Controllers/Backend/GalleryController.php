@@ -111,13 +111,18 @@ class GalleryController extends BaseController
      */
     public function destroy(string $id)
     {
+        DB::beginTransaction();
+
         try {
             $slider = $this->galleryService->deleteGallerysData(
                 galleryId: $id
             );
         } catch (\Throwable $th) {
+            DB::rollBack();
+
             return redirect()->back()->with('error', $th->getMessage());
         }
+        DB::commit();
 
         return redirect()->route('galleries.index')->with('success', 'Gallery deleted successfully.');
     }

@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GalleryController;
 use App\Http\Controllers\Backend\ImportantLinkController;
+use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\StaffController;
@@ -40,6 +42,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/importantlinks', ImportantLinkController::class);
 
     Route::resource('/galleries', GalleryController::class);
+    
+    Route::resource('/categories', CategoryController::class);
+
+    Route::resource('/posts', PostController::class);
 
     Route::get('/delete/media/{id}', [GalleryController::class, 'deleteMedia'])->name('delete.image');
 
