@@ -19,6 +19,8 @@
                     <li><a  href="{{ route('tickers.index') }}">Tickers</a></li>
                     <li><a  href="{{ route('importantlinks.index') }}">Important Links</a></li>
                     <li><a  href="{{ route('galleries.index') }}">Gallery</a></li>
+                    <li><a  href="{{ route('categories.index') }}">Category</a></li>
+                    <li><a  href="{{ route('posts.index') }}">Posts</a></li>
                 </ul>
             </li>
 

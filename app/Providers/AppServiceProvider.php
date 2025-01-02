@@ -3,19 +3,21 @@
 namespace App\Providers;
 
 use App\Repositories\BaseRepository;
+use App\Repositories\CategoryRepository;
 use App\Repositories\GalleryRepository;
 use App\Repositories\ImportantLinkRepository;
 use App\Repositories\Interfaces\BaseRepositoryInterface;
+use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Interfaces\GalleryRepositoryInterface;
 use App\Repositories\Interfaces\ImportantLinkRepositoryInterface;
+use App\Repositories\Interfaces\PostRepositoryInterface;
 use App\Repositories\Interfaces\SiteSettingRepositoryInterface;
-// use App\Repositories\Interfaces\MediaRepositoryInterface;
 use App\Repositories\Interfaces\SliderRepositoryInterface;
 use App\Repositories\Interfaces\StaffRepositoryInterface;
 use App\Repositories\Interfaces\TickerRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Repositories\PostRepository;
 use App\Repositories\SiteSettingRepository;
-// use App\Repositories\MediaRepository;
 use App\Repositories\SliderRepository;
 use App\Repositories\StaffRepository;
 use App\Repositories\TickerRepository;
@@ -69,10 +71,16 @@ class AppServiceProvider extends ServiceProvider
             concrete: GalleryRepository::class
         );
 
-        // $this->app->bind(
-        //     MediaRepositoryInterface::class,
-        //     MediaRepository::class
-        // );
+        $this->app->bind(
+            abstract: CategoryRepositoryInterface::class,
+            concrete: CategoryRepository::class
+        );
+
+        $this->app->bind(
+            abstract: PostRepositoryInterface::class,
+            concrete: PostRepository::class
+        );
+     
     }
 
     /**

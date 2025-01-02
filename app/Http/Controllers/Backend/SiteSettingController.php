@@ -6,6 +6,7 @@ use App\Http\Controllers\Base\BaseController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SiteSettingRequest;
 use App\Services\SiteSettingService;
+use Illuminate\Support\Facades\DB;
 
 class SiteSettingController extends BaseController
 {
@@ -38,6 +39,8 @@ class SiteSettingController extends BaseController
      */
     public function store(SiteSettingRequest $request)
     {
+        DB::beginTransaction();
+
         try {
             $data = $request->validated();
 
@@ -45,8 +48,11 @@ class SiteSettingController extends BaseController
                 data: $data
             );
         } catch (\Throwable $th) {
+            DB::rollBack();
+
             return redirect()->back()->with('error', $th->getMessage());
         }
+        DB::commit();
 
         return redirect()->route('sitesettings.index')->with('success', 'SiteSetting updated successfully.');
     }

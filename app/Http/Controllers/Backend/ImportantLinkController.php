@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ImportantLinkRequest;
 use App\Services\ImportantLinkService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ImportantLinkController extends BaseController
 {
@@ -47,6 +48,8 @@ class ImportantLinkController extends BaseController
      */
     public function store(ImportantLinkRequest $request)
     {
+        DB::beginTransaction();
+
         try {
             $data = $request->validated();
 
@@ -54,8 +57,12 @@ class ImportantLinkController extends BaseController
                 data: $data
             );
         } catch (\Throwable $th) {
+            DB::rollBack();
+
             return redirect()->back()->with('error', $th->getMessage());
         }
+        DB::commit();
+
 
         return redirect()->route('importantlinks.index')->with('success', 'Important created successfully.');
     }
@@ -83,6 +90,8 @@ class ImportantLinkController extends BaseController
      */
     public function update(ImportantLinkRequest $request, string $id)
     {
+        DB::beginTransaction();
+
         try {
             $data = $request->validated();
 
@@ -91,8 +100,11 @@ class ImportantLinkController extends BaseController
                 data: $data
             );
         } catch (\Throwable $th) {
+            DB::rollBack();
+
             return redirect()->back()->with('error', $th->getMessage());
         }
+        DB::commit();
 
         return redirect()->route('importantlinks.index')->with('success', 'Important updated successfully.');
     }
@@ -102,13 +114,18 @@ class ImportantLinkController extends BaseController
      */
     public function destroy(string $id)
     {
+        DB::beginTransaction();
+
         try {
             $importantlinks = $this->importantLinkService->deleteImportantLinkData(
                 importantLinkId: $id
             );
         } catch (\Throwable $th) {
+            DB::rollBack();
+
             return redirect()->back()->with('error', $th->getMessage());
         }
+        DB::commit();
 
         return redirect()->route('importantlinks.index')->with('success', 'Important deleted successfully.');
     }

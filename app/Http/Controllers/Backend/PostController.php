@@ -3,18 +3,22 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Base\BaseController;
-use App\Http\Requests\SliderRequest;
-use App\Services\SliderService;
+use App\Http\Requests\PostRequest;
+use App\Services\CategoryService;
+use App\Services\PostService;
 use Illuminate\Support\Facades\DB;
 
-class SliderController extends BaseController
+class PostController extends BaseController
 {
-    protected $sliderService;
+    protected $postService;
+    protected $categoryService;
 
     public function __construct(
-        SliderService $sliderService
+        PostService $postService,
+        CategoryService $categoryService
     ) {
-        $this->sliderService = $sliderService;
+        $this->postService = $postService;
+        $this->categoryService = $categoryService;
     }
 
     /**
@@ -23,13 +27,13 @@ class SliderController extends BaseController
     public function index()
     {
         try {
-            $sliders = $this->sliderService->getAllSliders();
+            $posts = $this->postService->getAllPosts();
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
 
-        return view('backend.sliders.index', [
-            'sliders' => $sliders,
+        return view('backend.posts.index', [
+            'posts' => $posts,
         ]);
     }
 
@@ -38,20 +42,24 @@ class SliderController extends BaseController
      */
     public function create()
     {
-        return view('backend.sliders.create');
+        $categories = $this->categoryService->getAllCAtegory();
+
+        return view('backend.posts.create',( [
+            'categories' => $categories
+        ]));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(SliderRequest $request)
+    public function store(PostRequest $request)
     {
         DB::beginTransaction();
 
         try {
             $data = $request->validated();
 
-            $this->sliderService->storeSliders(
+            $this->postService->storePosts(
                 data: $data
             );
         } catch (\Throwable $th) {
@@ -61,7 +69,7 @@ class SliderController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('sliders.index')->with('success', 'Slider created successfully.');
+        return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
 
     /**
@@ -70,30 +78,33 @@ class SliderController extends BaseController
     public function edit(string $id)
     {
         try {
-            $slider = $this->sliderService->getSlidersById(
-                slidersId: $id
+            $posts = $this->postService->getPostsById(
+                postsId: $id
             );
+            $categories = $this->categoryService->getAllCAtegory();
+
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
 
-        return view('backend.sliders.edit', ([
-            'slider' => $slider,
+        return view('backend.posts.edit', ([
+            'posts' => $posts,
+            'categories' => $categories
         ]));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(SliderRequest $request, string $id)
+    public function update(PostRequest $request, string $id)
     {
         DB::beginTransaction();
 
         try {
             $data = $request->validated();
 
-            $this->sliderService->updateSliders(
-                slidersId: $id,
+            $this->postService->updatePosts(
+                postsId: $id,
                 data: $data
             );
         } catch (\Throwable $th) {
@@ -103,7 +114,7 @@ class SliderController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('sliders.index')->with('success', 'Slider updated successfully.');
+        return redirect()->route('posts.index')->with('success', 'Posts updated successfully.');
     }
 
     /**
@@ -114,8 +125,8 @@ class SliderController extends BaseController
         DB::beginTransaction();
 
         try {
-            $slider = $this->sliderService->deleteSlidersData(
-                slidersId: $id
+            $posts = $this->postService->deletePostsData(
+                postsId: $id
             );
         } catch (\Throwable $th) {
             DB::rollBack();
@@ -124,6 +135,6 @@ class SliderController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('sliders.index')->with('success', 'Slider deleted successfully.');
+        return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
     }
 }
