@@ -7,13 +7,17 @@
 <html lang="np">
 
 <head>
-    <meta charset="utf-8">
+  <meta charset="utf-8">
     <title>{{$siteSettings->titleOne}}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="csrf-token" name="{{ csrf_token() }}">
     <meta name="keywords" content="{{$siteSettings->metaKeywords}}">
     <meta name="description" content="{{$siteSettings->metaDescription}}">
+    <meta name="subject" content="{{$siteSettings->metaKeywords}}">
+   
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/appb22f.css')}}?id=746abb56b4186f9c8bec">
+    <link rel="icon" href="{{ asset('assets/frontend/uploads/img/logo.png')}}">
 
 </head>
 <body>
@@ -25,7 +29,6 @@
     @include('frontend.includes.header')
 
     @yield('mainContent')
-
 
 
     @include('frontend.includes.footer')

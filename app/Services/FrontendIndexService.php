@@ -44,13 +44,18 @@ class FrontendIndexService
         $staffs = $this->staffRepository->fetchAll(
             filterable: [
                 ['showOnHomePage', '=', 1],
-            ]
+            ],
+            order: [
+                'priority' => 'asc'
+            ],
+            limit: 2
         );
 
         $importantLinks = $this->importantLinksRepository->fetchAll(
             filterable: [
                 ['showOnHomePage', '=', 1],
-            ]
+            ],
+            limit: 12
         );
 
         $galleries = $this->galleryRepository->fetchAll(
@@ -67,6 +72,34 @@ class FrontendIndexService
             'importantLinks' => $importantLinks,
             'galleries' => $galleries
         ];
+    }
+
+    /**
+     * Get Data for contact page
+     */
+    public function getContactPageData(): array
+    {
+        $sitesettings = $this->siteSettingRepository->fetch(id: 1);
+
+        return [
+            'sitesettings' => $sitesettings
+        ];
+    }
+
+    /**
+     * Get Gallery Page Data
+     */
+    public function getGalleryPage(string $slug): object
+    {
+        return $this->galleryRepository->fetchAll(
+            with: [
+                'supportingImages'
+            ],
+            filterable: [
+                ['slug', '=', $slug]
+            ],
+            limit: 1
+        );
     }
 
 }

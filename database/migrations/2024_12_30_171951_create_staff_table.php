@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('section')->nullable();
             $table->text('description')->nullable();
             $table->boolean('showOnHomePage')->default(false);
+            $table->integer('priority')->nullable();
             $table->timestamps();
         });
     }

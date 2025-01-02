@@ -15,7 +15,7 @@ class StaffRequest extends BaseRequest
     {
         return [
             'name' => 'required|string|min:1|max:255',
-            'telephone' => 'sometimes|nullable|string|min:7|max:15',
+            'telephone' => 'sometimes|nullable|string|min:7|max:25',
             'email' => 'sometimes|nullable|email|min:9|max:100',
             'position' => 'sometimes|nullable|string|min:1|max:150',
             'division' => 'sometimes|nullable|string|min:1|max:255',
@@ -23,6 +23,7 @@ class StaffRequest extends BaseRequest
             'description' => 'sometimes|nullable|string|min:1|max:255',
             'showOnHomePage' => 'sometimes|nullable|boolean',
             'image' => 'sometimes|nullable|file|max:1024|mimes:jpg,png,jpeg',
+            'priority' => 'sometimes|nullable|integer|between:1,100'
         ];
     }
 }

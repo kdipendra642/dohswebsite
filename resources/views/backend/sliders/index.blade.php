@@ -48,9 +48,10 @@
                                     <td>{{$slider->title}}</td>
                                     <td>{!! \Illuminate\Support\Str::limit($slider->description, 100, '...') !!}</td>
                                     <td>
+                                    <!-- {{$slider->getMedia('sliders')->first()->getUrl()}} -->
                                         @if ($slider->getMedia('sliders')->isNotEmpty())
                                             <img
-                                            src="{{$slider->getMedia('sliders')[0]->getUrl()}}"
+                                            src="{{$slider->getMedia('sliders')->first()->getUrl()}}"
                                             alt="{{$slider->title}}"
                                             style="width: 50%; height: 50%;"
                                             >
