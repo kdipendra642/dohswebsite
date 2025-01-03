@@ -50,7 +50,7 @@ class BaseRepository implements BaseRepositoryInterface
          * For reference see example below
          *  eg:: ['column_name' => 'asc', 'another_column' => 'desc']
          */
-        if (!empty($order)) {
+        if (! empty($order)) {
             foreach ($order as $column => $direction) {
                 $query->orderBy($column, $direction);
             }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6640f84851b4e468b9d77de73bdfc4ea",
+    "content-hash": "07d6a06d23c0697ee5479ecf25f1b263",
     "packages": [
         {
             "name": "anuzpandey/laravel-nepali-date",
@@ -2839,6 +2839,63 @@
                 "source": "https://github.com/nette/utils/tree/v4.0.5"
             },
             "time": "2024-08-07T15:39:19+00:00"
+        },
+        {
+            "name": "nguyendachuy/laravel-menu",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nguyendachuy/laravel-menu.git",
+                "reference": "de62a87ca2bf41c7c63a6fdb02e7d72f4f86dca4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nguyendachuy/laravel-menu/zipball/de62a87ca2bf41c7c63a6fdb02e7d72f4f86dca4",
+                "reference": "de62a87ca2bf41c7c63a6fdb02e7d72f4f86dca4",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "7.* || 8.* || 9.* || 10.* || 11.*",
+                "php": ">=7.2.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Menu": "NguyenHuy\\Menu\\Facades\\Menu"
+                    },
+                    "providers": [
+                        "NguyenHuy\\Menu\\Providers\\MenuServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NguyenHuy\\Menu\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Nguyen Dac Huy",
+                    "email": "huy.cit@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Menu Builder | Drag & Drop | Bootstrap | Laravel 7 | Laravel 8 | Laravel 9 | Laravel 10 | Laravel 11",
+            "keywords": [
+                "bootstrap",
+                "builder",
+                "drag",
+                "drop",
+                "laravel",
+                "menu"
+            ],
+            "support": {
+                "issues": "https://github.com/nguyendachuy/laravel-menu/issues",
+                "source": "https://github.com/nguyendachuy/laravel-menu/tree/v1.0.1"
+            },
+            "time": "2024-04-25T02:34:23+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -9702,12 +9759,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

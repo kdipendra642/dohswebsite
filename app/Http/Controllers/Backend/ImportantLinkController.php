@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Base\BaseController;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\ImportantLinkRequest;
 use App\Services\ImportantLinkService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ImportantLinkController extends BaseController
@@ -62,7 +60,6 @@ class ImportantLinkController extends BaseController
             return redirect()->back()->with('error', $th->getMessage());
         }
         DB::commit();
-
 
         return redirect()->route('importantlinks.index')->with('success', 'Important created successfully.');
     }

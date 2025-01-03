@@ -13,6 +13,7 @@
         "anuzpandey/laravel-nepali-date": "^2.1",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
+        "nguyendachuy/laravel-menu": "^1.0",
         "spatie/laravel-medialibrary": "^11.11",
         "spatie/laravel-sluggable": "^3.7",
         "yajra/laravel-datatables": "^11.0"

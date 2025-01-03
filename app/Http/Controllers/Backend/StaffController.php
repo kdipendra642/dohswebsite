@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Base\BaseController;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StaffRequest;
 use App\Services\StaffService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class StaffController extends BaseController
@@ -125,7 +123,6 @@ class StaffController extends BaseController
             return redirect()->back()->with('error', $th->getMessage());
         }
         DB::commit();
-
 
         return redirect()->route('staffs.index')->with('success', 'Staffs deleted successfully.');
     }

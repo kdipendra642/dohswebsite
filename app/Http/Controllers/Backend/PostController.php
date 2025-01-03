@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 class PostController extends BaseController
 {
     protected $postService;
+
     protected $categoryService;
 
     public function __construct(
@@ -44,8 +45,8 @@ class PostController extends BaseController
     {
         $categories = $this->categoryService->getAllCAtegory();
 
-        return view('backend.posts.create',( [
-            'categories' => $categories
+        return view('backend.posts.create', ([
+            'categories' => $categories,
         ]));
     }
 
@@ -89,7 +90,7 @@ class PostController extends BaseController
 
         return view('backend.posts.edit', ([
             'posts' => $posts,
-            'categories' => $categories
+            'categories' => $categories,
         ]));
     }
 

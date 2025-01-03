@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Base\BaseController;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\SiteSettingRequest;
 use App\Services\SiteSettingService;
 use Illuminate\Support\Facades\DB;

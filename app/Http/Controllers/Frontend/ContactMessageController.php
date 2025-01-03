@@ -44,9 +44,9 @@ class ContactMessageController extends BaseController
             $data = $request->validated();
 
             $data = array_merge($data, [
-                'ip_address' => $request->ips()[0]
+                'ip_address' => $request->ips()[0],
             ]);
-            
+
             $this->contactMessageService->storeContactMessages(
                 data: $data
             );

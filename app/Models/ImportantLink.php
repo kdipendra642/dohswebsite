@@ -13,6 +13,6 @@ class ImportantLink extends Model
     ];
 
     protected $casts = [
-        'showOnHomePage' => 'boolean'
+        'showOnHomePage' => 'boolean',
     ];
 }

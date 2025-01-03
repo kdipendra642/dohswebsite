@@ -42,5 +42,4 @@ class Gallery extends Model implements HasMedia
         $this->addMediaCollection('thumbnail')->useDisk('media')->singleFile();
         $this->addMediaCollection('supporting_images')->useDisk('media');
     }
-
 }

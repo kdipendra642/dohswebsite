@@ -11,7 +11,7 @@
                 <div class="page">
                     <h2 class="notice_title">{{$posts->title}}</h2>
                     <div class="subheader-social">
-                        
+
                         <h3 class="text-left">
                             <i class="fas fa-edit"></i>
                             Updated at
@@ -20,10 +20,10 @@
                                 {{ Carbon\Carbon::parse($posts->created_at)->format('d F, Y, l')}}
                             </small>
                         </h3>
-                            
+
                     </div>
                     @if ($posts->getMedia('posts')->isNotEmpty())
-                    
+
                         @if (
                             $posts->getMedia('posts')[0]->mime_type == 'image/png'
                             || $posts->getMedia('posts')[0]->mime_type == 'image/jpeg'
@@ -45,7 +45,7 @@
                                 </object>
                             </div>
                         @endif
-                    
+
                     @endif
                 </div>
             </div>
@@ -54,7 +54,7 @@
             <div class="col-lg-3 col-sm-3 col-xs-12">
           <div class="section-header aside-detail margintop">
     <h2><i class="fa fa-rss"></i> More Notices</h2>
-    <ul>
+    {{-- <ul>
                                     <li>
                     <a href="detail/271.html">
                                                     व्यावसायिक सामाजिक जिम्मेवारी (CSR) सम्बन्धी विवरण पेश गर्ने सम्बन्धी सूचना।
@@ -135,7 +135,7 @@
                         &nbsp; &nbsp;<i class="fa fa-building"></i> News &amp; Notice
                     </small>
                 </li>
-                        </ul>
+    </ul> --}}
 </div>
          </div>
 

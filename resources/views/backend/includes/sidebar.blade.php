@@ -43,9 +43,10 @@
                 </a>
                 <ul class="sub">
                     <li><a  href="{{ route('sitesettings.index') }}">Site Settings</a></li>
+                    <li><a  href="{{ route('setting.menu') }}">Menu</a></li>
                 </ul>
             </li>
-            
+
         </ul>
     </div>
 </aside>
