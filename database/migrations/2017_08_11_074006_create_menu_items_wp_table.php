@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateMenuItemsWpTable extends Migration
 {
@@ -13,8 +13,8 @@ class CreateMenuItemsWpTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable(config('menu.table_prefix') . config('menu.table_name_items'))) {
-            Schema::create(config('menu.table_prefix') . config('menu.table_name_items'), function (Blueprint $table) {
+        if (! Schema::hasTable(config('menu.table_prefix').config('menu.table_name_items'))) {
+            Schema::create(config('menu.table_prefix').config('menu.table_name_items'), function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->string('label');
                 $table->string('link');
@@ -27,7 +27,7 @@ class CreateMenuItemsWpTable extends Migration
                 $table->integer('depth')->default(0);
                 $table->timestamps();
 
-                $table->foreign('menu')->references('id')->on(config('menu.table_prefix') . config('menu.table_name_menus'))
+                $table->foreign('menu')->references('id')->on(config('menu.table_prefix').config('menu.table_name_menus'))
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
             });
@@ -41,6 +41,6 @@ class CreateMenuItemsWpTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('menu.table_prefix') . config('menu.table_name_items'));
+        Schema::dropIfExists(config('menu.table_prefix').config('menu.table_name_items'));
     }
 }

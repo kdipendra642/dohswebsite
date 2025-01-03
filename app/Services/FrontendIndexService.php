@@ -178,8 +178,8 @@ class FrontendIndexService
     {
         return $this->staffRepository->fetchAll(
             order: [
-                'priority' => 'asc'
+                'priority' => 'asc',
             ]
-            );
+        );
     }
 }
