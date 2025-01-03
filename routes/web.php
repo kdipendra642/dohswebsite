@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\StaffController;
 use App\Http\Controllers\Backend\TickerController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Frontend\ContactMessageController;
 use App\Http\Controllers\Frontend\IndexController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('/posts', PostController::class);
 
+    Route::resource('/contact/messages', ContactMessageController::class)->except(['store', 'update', 'edit', 'show']);
+
     Route::get('/delete/media/{id}', [GalleryController::class, 'deleteMedia'])->name('delete.image');
 
 });
@@ -54,4 +57,11 @@ Route::middleware(['auth'])->group(function () {
 // Routes For Frontend
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/contact-us', [IndexController::class, 'contact'])->name('contact');
+Route::post('/contact-us/store', [ContactMessageController::class, 'store'])->name('messages.store');
 Route::get('/gallery/{slug}', [IndexController::class, 'gallery'])->name('gallery');
+
+
+Route::get('/index/categories', [IndexController::class, 'category'])->name('category.index');
+Route::get('/posts/category/{categoryId}', [IndexController::class, 'categorywisePost'])->name('category.post');
+Route::get('/posts/single/{slug}', [IndexController::class, 'singlePost'])->name('posts.single');
+Route::get('/index/gallery', [IndexController::class, 'indexGallery'])->name('gallery.index');

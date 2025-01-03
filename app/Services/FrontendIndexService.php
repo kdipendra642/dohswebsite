@@ -2,8 +2,10 @@
 
 namespace App\Services;
 
+use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Interfaces\GalleryRepositoryInterface;
 use App\Repositories\Interfaces\ImportantLinkRepositoryInterface;
+use App\Repositories\Interfaces\PostRepositoryInterface;
 use App\Repositories\Interfaces\SiteSettingRepositoryInterface;
 use App\Repositories\Interfaces\SliderRepositoryInterface;
 use App\Repositories\Interfaces\StaffRepositoryInterface;
@@ -17,6 +19,8 @@ class FrontendIndexService
     protected $staffRepository;
     protected $importantLinksRepository;
     protected $galleryRepository;
+    protected $categoryRepository;
+    protected $postRepository;
 
     public function __construct(
         TickerRepositoryInterface $tickerRepository,
@@ -25,6 +29,8 @@ class FrontendIndexService
         StaffRepositoryInterface $staffRepository,
         ImportantLinkRepositoryInterface $importantLinksRepository,
         GalleryRepositoryInterface $galleryRepository,
+        CategoryRepositoryInterface $categoryRepository,
+        PostRepositoryInterface $postRepository,
 
     ) {
         $this->tickerRepository = $tickerRepository;
@@ -33,6 +39,8 @@ class FrontendIndexService
         $this->staffRepository = $staffRepository;
         $this->importantLinksRepository = $importantLinksRepository;
         $this->galleryRepository = $galleryRepository;
+        $this->categoryRepository = $categoryRepository;
+        $this->postRepository = $postRepository;
     }
 
     public function getHomePageData(): array
@@ -100,6 +108,60 @@ class FrontendIndexService
             ],
             limit: 1
         );
+    }
+
+    /**
+     * Get All Categories
+     */
+    public function getAllCAtegory(): object
+    {
+        return $this->categoryRepository->fetchAll();
+    }
+
+    /**
+     * Get All Gallery
+     */
+    public function getAllGalleryItems(): object
+    {
+        return $this->galleryRepository->fetchAll(
+            order: [
+                'created_at' => 'desc'
+            ]
+        );
+    }
+
+    /**
+     * Get Category wise posts
+     */
+    public function getCategorywisePosts(string|int $categoryId): object
+    {
+        return $this->postRepository->fetchAll(
+            with: [],
+            filterable: [
+                ['category_id', '=', $categoryId]
+            ],
+            order: [
+                'created_at' => 'desc'
+            ]
+        );
+    }
+
+    /**
+     * Get Post By Id
+     */
+    public function getPostById(string $slug): object
+    {
+        $post = $this->postRepository->fetchAll(
+            filterable: [
+                ['slug', '=', $slug]
+            ],
+            limit: 1
+            );
+
+        return $post->first();
+        // return $this->postRepository->fetch(
+        //     id: $postId
+        // );
     }
 
 }

@@ -32,6 +32,7 @@
                 <ul class="sub">
                     <li><a  href="{{ route('users.index') }}">Users</a></li>
                     <li><a  href="{{ route('staffs.index') }}">Staffs</a></li>
+                    <li><a  href="{{ route('messages.index') }}">Message</a></li>
                 </ul>
             </li>
 

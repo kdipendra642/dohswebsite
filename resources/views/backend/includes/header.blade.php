@@ -3,14 +3,29 @@
         <i class="fa fa-bars"></i>
     </div>
     <!--logo start-->
-    <a href="{{ route('dashboard.index')}}" class="logo">DO<span>HS</span></a>
+    <a href="{{ route('dashboard.index')}}" class="logo">Department of <span>Health Service</span></a>
     <!--logo end-->
     <div class="top-nav ">
         <!--search & user info start-->
+        <ul class="nav pull-left top-menu" style="padding-top: 5px;">
+            <li><span><a href="{{ route('index') }}" target="_blank" class="text-primary text-sm"><i class="fa fa-globe"></i> Go To Website</a></span></li>
+            <li>
+                <strong>
+                    <span>Date (A.D.): {{now()->format('Y-m-d')}}</span>
+                    <span>Date (B.S.): {{
+                        Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from(now()->format('Y-m-d'))
+                            ->toNepaliDate(format: 'D, j F Y', locale: 'en')}}
+                    </span>
+                </strong>
+              
+            </li>
+            
+
+        </ul>
+        <p>
+        </p>
+
         <ul class="nav pull-right top-menu">
-            {{-- <li>
-                <input type="text" class="form-control search" placeholder="Search">
-            </li> --}}
             <!-- user login dropdown start-->
             <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -24,16 +39,11 @@
                     <li>
                         <form action="{{route('login.signout')}}" method="post">
                             @csrf
-                            {{-- <button type="submit">
-                                <i class="fa fa-key"></i> Logout
-                            </button> --}}
-
                             <button type="submit" class="btn btn-transparent text-white">
-                                <i class="fa fa-key text-info"></i>
+                                <i class="fa fa-key text-white"></i>
                                  Logout
                             </button>
                         </form>
-                        {{-- <a href="{{ route('login.signout') }}"><i class="fa fa-key"></i> Log Out</a> --}}
                     </li>
                 </ul>
             </li>

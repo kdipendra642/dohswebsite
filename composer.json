@@ -10,6 +10,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "anuzpandey/laravel-nepali-date": "^2.1",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
         "spatie/laravel-medialibrary": "^11.11",
