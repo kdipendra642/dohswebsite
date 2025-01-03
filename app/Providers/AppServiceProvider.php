@@ -4,10 +4,12 @@ namespace App\Providers;
 
 use App\Repositories\BaseRepository;
 use App\Repositories\CategoryRepository;
+use App\Repositories\ContactMessageRepository;
 use App\Repositories\GalleryRepository;
 use App\Repositories\ImportantLinkRepository;
 use App\Repositories\Interfaces\BaseRepositoryInterface;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
+use App\Repositories\Interfaces\ContactMessageRepositoryInterface;
 use App\Repositories\Interfaces\GalleryRepositoryInterface;
 use App\Repositories\Interfaces\ImportantLinkRepositoryInterface;
 use App\Repositories\Interfaces\PostRepositoryInterface;
@@ -79,6 +81,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             abstract: PostRepositoryInterface::class,
             concrete: PostRepository::class
+        );
+
+        $this->app->bind(
+            abstract: ContactMessageRepositoryInterface::class,
+            concrete: ContactMessageRepository::class
         );
      
     }

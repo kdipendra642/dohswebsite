@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/appb22f.css')}}?id=746abb56b4186f9c8bec">
     <link rel="icon" href="{{ asset('assets/frontend/uploads/img/logo.png')}}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -39,4 +40,26 @@
   <script src="{{ asset('assets/frontend/js/vendor2505.js')}}?id=faec529b770f1589846e"></script>
   <script src="{{ asset('assets/frontend/js/wow.min.js')}}"></script>
   <script src="{{ asset('assets/frontend/js/appcb5e.js')}}?id=875ab50b8dc65a48b6aa"></script>
-</html>
+
+   <!-- Toastr JS -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "timeOut": "5000"
+    };
+
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            toastr.error('{{ $error }}', 'Validation Error');
+        @endforeach
+    @endif
+
+    @if (session('error'))
+        toastr.error('{{ session('error') }}', 'Error', {timeOut: 5000});
+    @endif
+</script>
+  </html>

@@ -1,14 +1,12 @@
 <div class="container logo">
     <div class="row">
       <div class="col-md-8 col-sm-12">
-          <a href="#">
               <center>
                   <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" alt="{{$siteSettings->titleOne}}" class="img-fluid img-logo" style="padding-top:4px">
               </center>
-            <h1 class=nep_logo>{{$siteSettings->titleOne}}</h1>
-            <h4 class="nep_logo_h4">{{$siteSettings->titleTwo}}</h4>
-            <p class="nep_logo_p">{{$siteSettings->titleThree}}</p>
-           </a>
+            <h1 class=h1>{{$siteSettings->titleOne}}</h1>
+            <h4 class="h4">{{$siteSettings->titleTwo}}</h4>
+            <h6 class="h6">{{$siteSettings->titleThree}}</h6>
           <div class="clear-fix"></div>
       </div>
       <div class="col-md-4 search d-none d-md-block">
@@ -29,15 +27,7 @@
                   </div>
                 </div>
               </form>
-              <small class="float-right mt-3">
-                २०८१ पौष १६ गते मंगलबार
-              </small>
           </div>
-      </div>
-      <div class="col-sm-12 d-block d-sm-none ">
-          <small class="float-right">
-              <a href="#" class="facebook">English</a>
-          </small>
       </div>
     </div>
   </div>

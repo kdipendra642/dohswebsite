@@ -41,8 +41,59 @@ class IndexController extends BaseController
     public function gallery(string $slug)
     {
         $galleryPageData = $this->frontendIndexService->getGalleryPage(slug: $slug);
-        return view('frontend.gallery', ([
+        return view('frontend.gallery.gallery', ([
             'galleryPageData' => $galleryPageData->first()
         ])) ;   
+    }
+
+    /**
+     * Get All Categories
+     */
+    public function category()
+    {
+        $categories = $this->frontendIndexService->getAllCAtegory();
+
+        return view('frontend.categories.index', ([
+            'categories' => $categories
+        ]));
+    }
+
+    /**
+     * Get all gallery listing
+     */
+    public function indexGallery()
+    {
+        $galleries = $this->frontendIndexService->getAllGalleryItems();
+        return view('frontend.gallery.index', ([
+            'galleries' => $galleries
+        ]));
+    }
+
+    /**
+     * Get Categorywise posts
+     */
+    public function categorywisePost(string $categoryId)
+    {
+        $posts = $this->frontendIndexService->getCategorywisePosts(
+            categoryId: $categoryId
+        );
+
+        return view('frontend.posts.index', ([
+            'posts' => $posts
+        ]));
+    }
+
+    /**
+     * Get Single Posts
+     */
+    public function singlePost(string $slug)
+    {
+        $posts = $this->frontendIndexService->getPostById(
+            slug: $slug
+        );
+        
+        return view('frontend.posts.show', ([
+            'posts' => $posts
+        ]));
     }
 }

@@ -22,50 +22,57 @@
                 </p>
             </div>
 
-            <div class="col-lg-9 col-sm-9 col-xs-12 page-detail" style="padding-top: 15px;">
+            <div class="col-lg-9 col-sm-9 col-xs-12" style="padding-top: 15px;">
+                <h2 class="notice_title">
+                    Send Us Your Feedback
+                    <hr>
+                </h2>
+
+              
                
                 <div class="page">
-                        <form action="">
-                            @csrf
-                            <div class="row">
+                    <form action="{{ route('messages.store') }}" method="POST">
+                        @csrf
+                        <div class="row">
 
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Enter Your Name" name="name">
-                                    </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Enter Your Name" name="name">
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input class="form-control" type="email" placeholder="Enter Your Email" name="email">
-                                    </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="email" placeholder="Enter Your Email" name="email">
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input class="form-control" type="tel" placeholder="Enter Your Phone Number" name="phone">
-                                    </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="tel" placeholder="Enter Your Phone Number" name="phone">
                                 </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Subject" name="subject">
-                                    </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Subject" name="subject">
                                 </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <textarea name="message" class="form-control" placeholder="Your message here..." rows="5"></textarea>
-                                    </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <textarea name="message" class="form-control" placeholder="Your message here..." rows="5"></textarea>
                                 </div>
-                                <div class="col-lg-12">
-                                    <button class="btn btn-lg btn-primary" type="submit">Submit</button>
-                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <button class="btn btn-primary" type="submit">Submit Your Message</button>
+                            </div>
                         </div>
 
-                        </form>
+                    </form>
                 </div>
             </div>
             
         </div>
     </div>
 </section>
+
 
 
 @endsection

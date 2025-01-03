@@ -57,11 +57,22 @@ background-image: url({{asset('assets/frontend/uploads/img/background.png')}})
       <div class="row copy">
         <div class="col-sm-5 text-center">&copy; Copyright {{date('Y')}} <strong><a href="#">Department of Health Services</a></strong> All Rights Reserved</div>
         <div class="col-sm-3 text-center footer-social">
-          <a href="#"><i class="fa fa-twitter"></i></a>
+          <!-- <a href="#"><i class="fa fa-twitter"></i></a>
           <a href="#"><i class="fa fa-facebook"></i></a>
           <a href="#"><i class="fa fa-envelope-o"></i></a>
-          <a href="#"><i class="fa fa-map-marker"></i></a>
-          <span> Loding Time <b>0.22</b> Sec</span>
+          <a href="#"><i class="fa fa-map-marker"></i></a> -->
+          <span> 
+            Response Time 
+            <b>
+              {{ round(microtime(true) - LARAVEL_START, 3) }}
+            </b> Sec
+          </span>
+          <span> 
+            Memory Usage 
+            <b>
+              {{ number_format(memory_get_usage() / 1024, 2) }}
+            </b> KB
+          </span>
         </div>
         <div class="col-sm-4 text-center">Designed & Developed by <a href="#">: DOHS</a></div>
       </div>

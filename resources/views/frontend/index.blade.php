@@ -57,83 +57,34 @@
                         </div>
                     </div>
                 </div>
-            <div class="col-lg-4 col-sm-12 col-xs-12" style="padding:0px; margin:0px;">
-                <div class="wow fadeInUp">
-                    <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link active tabbg" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">सूचना / समाचार</a>
-                            <a class="nav-item nav-link tabbg" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">कानून / नियमावली</a>
-                        </div>
-                    </nav>
-                    <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active border-tab" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                            <ul>
-                                        <li>
-                                <span class="fa fa-thumb-tack sticky"></span>                            <a href="detail/271.html" title="व्यावसायिक सामाजिक जिम्मेवारी (CSR) सम्बन्धी विवरण पेश गर्ने सम्बन्धी सूचना।">व्यावसायिक सामाजिक जिम्मेवारी (CSR) सम्बन्धी विवरण पेश गर्ने सम्बन्धी सूचना।</a>
-                                            </li>
-                                        <li>
-                                <span class="fa fa-thumb-tack sticky"></span>                            <a href="detail/264.html" title="उत्पादन करारको सम्झौता अभिलेखीकरणका लागि दिनुपर्ने निवेदनको ढाँचा">उत्पादन करारको सम्झौता अभिलेखीकरणका लागि दिनुपर्ने निवेदनको ढाँचा</a>
-                                            </li>
-                                        <li>
-                                <span class="fa fa-thumb-tack sticky"></span>                            <a href="detail/240.html" title="स्वचालित मार्ग (अटोम्टिक रुट) मार्फत विदेशी लगानी स्वीकृति हुने प्रणाली कार्यान्वयनमा ल्याइएको सम्बन्धी सूचना ।">स्वचालित मार्ग (अटोम्टिक रुट) मार्फत विदेशी लगानी स्वीकृति हुने प्रणाली कार्यान्वयनमा ल्याइएको सम्बन्धी सूचना ।</a>
-                                            </li>
-                                        <li>
-                                                            <a href="detail/270.html" title="Monthly Report of Foreign Direct Investment Approval of Mangsir, 2081">Monthly Report of Foreign Direct Investment Approval of Mangsir, 2081</a>
-                                            </li>
-                                        <li>
-                                                            <a href="detail/268.html" title="Monthly Report of Foreign Direct Investment Approval of Kartik, 2081">Monthly Report of Foreign Direct Investment Approval of Kartik, 2081</a>
-                                            </li>
-                                        <li>
-                                                            <a href="detail/266.html" title="स्वत प्रकाशन आ.व २०८१_८२_प्रथम त्रैमासिक">स्वत प्रकाशन आ.व २०८१_८२_प्रथम त्रैमासिक</a>
-                                            </li>
-                                        <li>
-                                                            <a href="detail/265.html" title="Monthly FDI Approval Report of 2081, Ashwin">Monthly FDI Approval Report of 2081, Ashwin</a>
-                                            </li>
-                                        <li>
-                                                            <a href="detail/263.html" title="सूचना सम्बन्धमा ।">सूचना सम्बन्धमा ।</a>
-                                            </li>
-                                        <li>
-                                                            <a href="detail/262.html" title="Foreign Investment in Nepal 2024 ,Till July 15( A complete guide for investors)">Foreign Investment in Nepal 2024 ,Till July 15( A complete guide for investors)</a>
-                                            </li>
-                                        <li>
-                                                            <a href="detail/261.html" title="Monthly FDI Approval Report of 2081, Bhadra">Monthly FDI Approval Report of 2081, Bhadra</a>
-                                            </li>
-                                        <span class="float-right more"><a href="archiving.html">विभागका सुचनाहरु &raquo;</a></span>
-                            <span class="clearfix"></span>
-                            </ul>
-                        </div>
-                        <div class="tab-pane fade border-tab" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <ul>
-                                        <li>
-                                                        <a href="detail/269.html" title="औद्योगिक व्यवसाय ऐन, २०७६">औद्योगिक व्यवसाय ऐन, २०७६</a>
-                                        </li>
-                                    <li>
-                                                        <a href="detail/260.html" title="कच्चा पदार्थ खपत नर्म्स निर्धारण तथा पुनरावलोकन सम्बन्धी मापदण्ड, २०८१">कच्चा पदार्थ खपत नर्म्स निर्धारण तथा पुनरावलोकन सम्बन्धी मापदण्ड, २०८१</a>
-                                        </li>
-                                    <li>
-                                                        <a href="detail/259.html" title="‍वस्तुको उत्पादन गर्न करार (कन्ट्रयाक्ट) वा उपकरार (सव कन्ट्रयाक्ट) सम्बन्धी मापदण्ड, २०८१">‍वस्तुको उत्पादन गर्न करार (कन्ट्रयाक्ट) वा उपकरार (सव कन्ट्रयाक्ट) सम्बन्धी मापदण्ड, २०८१</a>
-                                        </li>
-                                    <li>
-                                                        <a href="detail/239.html" title="लगानी सहजीकरण सम्बन्धी केही नेपाल ऐनलाई संशोधन गर्ने ऐन, २०८१ अरि१४,३-२४)">लगानी सहजीकरण सम्बन्धी केही नेपाल ऐनलाई संशोधन गर्ने ऐन, २०८१ अरि१४,३-२४)</a>
-                                        </li>
-                                    <li>
-                                                        <a href="detail/222.html" title="माइक्रो ब्रुअरी सहितको रेष्टुरेण्ट उद्योग स्थापना गर्ने सम्बन्धी मापदण्ड">माइक्रो ब्रुअरी सहितको रेष्टुरेण्ट उद्योग स्थापना गर्ने सम्बन्धी मापदण्ड</a>
-                                        </li>
-                                    <li>
-                                                        <a href="detail/221.html" title="मदिरा तथा वियर उद्योग सम्बनधको संशोधित मापदण्ड-२०७९">मदिरा तथा वियर उद्योग सम्बनधको संशोधित मापदण्ड-२०७९</a>
-                                        </li>
-                                    <li>
-                                                        <a href="detail/205.html" title="Standard Measurement and Weight Act, 2025 (1968)">Standard Measurement and Weight Act, 2025 (1968)</a>
-                                        </li>
-                                    <li>
-                                                        <a href="detail/204.html" title="Mines-and-Minerals-Act-2042-1985">Mines-and-Minerals-Act-2042-1985</a>
-                                        </li>
-                                    <li>
-                                                        <a href="detail/203.html" title="Petroleum-Act-2040-1983">Petroleum-Act-2040-1983</a>
-                                        </li>
-                                    <li>
-                                                        <a href="detail/202.html" title="Nepal-standards-certification-mark-act-2037">Nepal-standards-certification-mark-act-2037</a>
-                                        </li>
+                <div class="col-lg-4 col-sm-12 col-xs-12" style="padding:0px; margin:0px;">
+                    <div class="wow fadeInUp">
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link active tabbg" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">सूचना / समाचार</a>
+                                <a class="nav-item nav-link tabbg" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">कानून / नियमावली</a>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active border-tab" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <ul>
+                                    <!-- repeat the below code -->
+                                    <!-- <li>
+                                        <a href="detail/266.html" title="स्वत प्रकाशन आ.व २०८१_८२_प्रथम त्रैमासिक">स्वत प्रकाशन आ.व २०८१_८२_प्रथम त्रैमासिक</a>
+                                    </li> -->
+                                    <!-- end repetation -->
+                                        
+                                    <span class="float-right more"><a href="archiving.html">विभागका सुचनाहरु &raquo;</a></span>
+                                    <span class="clearfix"></span>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade border-tab" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <ul>
+                                    <!-- repeat the below code -->
+                                    <!-- <li>
+                                        <a href="detail/269.html" title="औद्योगिक व्यवसाय ऐन, २०७६">औद्योगिक व्यवसाय ऐन, २०७६</a>
+                                    </li> -->
+                                    <!-- end repetation -->
                                     <span class="float-right"><a href="laws-and-regulations.html">विभागका सुचनाहरु &raquo;</a></span>
                                     <span class="clearfix"></span>
                                 </ul>
@@ -233,12 +184,12 @@
           </div>
           <!--endtab-->
           <!-- official -->
-                  <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 bidhut-social remove_margin">
+                  <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                     <div class="wow fadeInRight" data-wow-delay="0.2s">
                         @foreach ($getHomePageData['staffs'] as $staffs)
                         <div class="profile-ebox photo-placeholder ">
                             <div class="single-profile">
-                                <h5 class="position_np">{{$staffs->position}}</h5>
+                                <h5 class="h5">{{$staffs->position}}</h5>
                                 <center>
                                     @if ($staffs->getMedia('staffs')->isNotEmpty())
                                         <img
@@ -258,30 +209,10 @@
                                         >
                                     @endif
                                 </center>
-                                <p class="name mt-1"> {{$staffs->name}} </p>
-                            <p class=""> <i class="fa fa-phone"></i> {{$staffs->telephone}}</p>
+                                <p class="h4 mt-1"> {{$staffs->name}} </p>
+                            <p class="h6"> <i class="fa fa-phone"></i> {{$staffs->telephone}}</p>
                             </div>
                         @endforeach
-
-                        <!-- <div class="profile-ebox photo-placeholder ">
-                            <div class="single-profile">
-                                <h5 class="position_np">Director General</h5>
-                                <center>
-
-                                    <img
-                                    src="{{ url('/images/WhatsApp Image 2024-12-30 at 19.28.35.jpeg') }}"
-                                    alt="Dr. Bikash Devkota"
-                                    width="122"
-                                    class="img-fluid img-thumbnail"
-                                    title="Dr. Bikash Devkota"
-                                    >
-                                </center>
-                                <p class="name mt-1"> Dr. Bikash Devkota </p>
-                                <p class=""> <i class="fa fa-phone"></i> 98xxxxxxxxxx</p>
-                            </div>
-
-
-                        </div> -->
             </div>
           </div>
                   <!-- end official -->

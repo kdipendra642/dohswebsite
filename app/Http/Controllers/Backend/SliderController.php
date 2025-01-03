@@ -112,7 +112,6 @@ class SliderController extends BaseController
     public function destroy(string $id)
     {
         DB::beginTransaction();
-
         try {
             $slider = $this->sliderService->deleteSlidersData(
                 slidersId: $id
