@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 class ContactMessageRequest extends BaseRequest
 {
-
     /**
      * Get the validation rules that apply to the request.
      *

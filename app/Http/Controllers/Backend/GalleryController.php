@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Base\BaseController;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\GalleryRequest;
 use App\Services\GalleryService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class GalleryController extends BaseController
@@ -58,6 +56,7 @@ class GalleryController extends BaseController
             );
         } catch (\Throwable $th) {
             DB::rollBack();
+
             return redirect()->back()->with('error', $th->getMessage());
         }
         DB::commit();
@@ -99,6 +98,7 @@ class GalleryController extends BaseController
             );
         } catch (\Throwable $th) {
             DB::rollBack();
+
             return redirect()->back()->with('error', $th->getMessage());
         }
         DB::commit();

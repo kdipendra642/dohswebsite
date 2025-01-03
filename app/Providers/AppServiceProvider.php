@@ -87,7 +87,7 @@ class AppServiceProvider extends ServiceProvider
             abstract: ContactMessageRepositoryInterface::class,
             concrete: ContactMessageRepository::class
         );
-     
+
     }
 
     /**

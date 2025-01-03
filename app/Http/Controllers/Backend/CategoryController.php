@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Base\BaseController;
 use App\Http\Requests\CategoryRequest;
 use App\Services\CategoryService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CategoryController extends BaseController
@@ -57,6 +56,7 @@ class CategoryController extends BaseController
             );
         } catch (\Throwable $th) {
             DB::rollBack();
+
             return redirect()->back()->with('error', $th->getMessage());
         }
         DB::commit();

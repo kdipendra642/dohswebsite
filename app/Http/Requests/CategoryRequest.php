@@ -2,12 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 class CategoryRequest extends BaseRequest
 {
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -22,8 +20,8 @@ class CategoryRequest extends BaseRequest
                 'min:1',
                 'max:255',
                 Rule::unique('categories', 'title')
-                ->ignore($this->category)
-            ]
+                    ->ignore($this->category),
+            ],
         ];
     }
 }

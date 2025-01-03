@@ -14,12 +14,19 @@ use App\Repositories\Interfaces\TickerRepositoryInterface;
 class FrontendIndexService
 {
     protected $tickerRepository;
+
     protected $sliderRepository;
+
     protected $siteSettingRepository;
+
     protected $staffRepository;
+
     protected $importantLinksRepository;
+
     protected $galleryRepository;
+
     protected $categoryRepository;
+
     protected $postRepository;
 
     public function __construct(
@@ -54,7 +61,7 @@ class FrontendIndexService
                 ['showOnHomePage', '=', 1],
             ],
             order: [
-                'priority' => 'asc'
+                'priority' => 'asc',
             ],
             limit: 2
         );
@@ -78,7 +85,7 @@ class FrontendIndexService
             'sliders' => $sliders,
             'staffs' => $staffs,
             'importantLinks' => $importantLinks,
-            'galleries' => $galleries
+            'galleries' => $galleries,
         ];
     }
 
@@ -90,7 +97,7 @@ class FrontendIndexService
         $sitesettings = $this->siteSettingRepository->fetch(id: 1);
 
         return [
-            'sitesettings' => $sitesettings
+            'sitesettings' => $sitesettings,
         ];
     }
 
@@ -101,10 +108,10 @@ class FrontendIndexService
     {
         return $this->galleryRepository->fetchAll(
             with: [
-                'supportingImages'
+                'supportingImages',
             ],
             filterable: [
-                ['slug', '=', $slug]
+                ['slug', '=', $slug],
             ],
             limit: 1
         );
@@ -125,7 +132,7 @@ class FrontendIndexService
     {
         return $this->galleryRepository->fetchAll(
             order: [
-                'created_at' => 'desc'
+                'created_at' => 'desc',
             ]
         );
     }
@@ -138,10 +145,10 @@ class FrontendIndexService
         return $this->postRepository->fetchAll(
             with: [],
             filterable: [
-                ['category_id', '=', $categoryId]
+                ['category_id', '=', $categoryId],
             ],
             order: [
-                'created_at' => 'desc'
+                'created_at' => 'desc',
             ]
         );
     }
@@ -153,10 +160,10 @@ class FrontendIndexService
     {
         $post = $this->postRepository->fetchAll(
             filterable: [
-                ['slug', '=', $slug]
+                ['slug', '=', $slug],
             ],
             limit: 1
-            );
+        );
 
         return $post->first();
         // return $this->postRepository->fetch(
@@ -164,4 +171,15 @@ class FrontendIndexService
         // );
     }
 
+    /**
+     * Get All Staffs
+     */
+    public function getAllStaffs(): object
+    {
+        return $this->staffRepository->fetchAll(
+            order: [
+                'priority' => 'asc'
+            ]
+            );
+    }
 }

@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
 class StaffRequest extends BaseRequest
 {
     /**
@@ -23,7 +21,7 @@ class StaffRequest extends BaseRequest
             'description' => 'sometimes|nullable|string|min:1|max:255',
             'showOnHomePage' => 'sometimes|nullable|boolean',
             'image' => 'sometimes|nullable|file|max:1024|mimes:jpg,png,jpeg',
-            'priority' => 'sometimes|nullable|integer|between:1,100'
+            'priority' => 'sometimes|nullable|integer|between:1,100',
         ];
     }
 }

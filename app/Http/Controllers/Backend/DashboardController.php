@@ -10,4 +10,10 @@ class DashboardController extends BaseController
     {
         return view('backend.index');
     }
+
+    public function settingMenu()
+    {
+        
+        return view('backend.menu.index');
+    }
 }

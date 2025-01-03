@@ -23,7 +23,7 @@ class Staff extends Model implements HasMedia
     ];
 
     protected $casts = [
-        'showOnHomePage' => 'boolean'
+        'showOnHomePage' => 'boolean',
     ];
 
     public function registerMediaCollections(): void

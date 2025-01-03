@@ -7,10 +7,10 @@
         <div class="col-lg-12">
             <section class="card">
                 <header class="card-header">
-                    Basic Progress Bars
+                    Website Progress
                 </header>
                 <div class="card-body">
-                    <div class="progress">
+                    {{-- <div class="progress">
                         <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="progress">
@@ -29,7 +29,7 @@
                         <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
                         <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                         <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
+                    </div> --}}
                 </div>
             </section>
         </div>

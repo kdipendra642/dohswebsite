@@ -15,9 +15,9 @@ use App\Http\Controllers\Frontend\ContactMessageController;
 use App\Http\Controllers\Frontend\IndexController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Auth routes
 Route::get('/login', [AuthController::class, 'index'])->name('login.index');
@@ -43,7 +43,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/importantlinks', ImportantLinkController::class);
 
     Route::resource('/galleries', GalleryController::class);
-    
+
     Route::resource('/categories', CategoryController::class);
 
     Route::resource('/posts', PostController::class);
@@ -51,6 +51,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/contact/messages', ContactMessageController::class)->except(['store', 'update', 'edit', 'show']);
 
     Route::get('/delete/media/{id}', [GalleryController::class, 'deleteMedia'])->name('delete.image');
+
+    Route::get('/setting/menu', [DashboardController::class, 'settingMenu'])->name('setting.menu');
 
 });
 
@@ -60,8 +62,8 @@ Route::get('/contact-us', [IndexController::class, 'contact'])->name('contact');
 Route::post('/contact-us/store', [ContactMessageController::class, 'store'])->name('messages.store');
 Route::get('/gallery/{slug}', [IndexController::class, 'gallery'])->name('gallery');
 
-
 Route::get('/index/categories', [IndexController::class, 'category'])->name('category.index');
 Route::get('/posts/category/{categoryId}', [IndexController::class, 'categorywisePost'])->name('category.post');
 Route::get('/posts/single/{slug}', [IndexController::class, 'singlePost'])->name('posts.single');
 Route::get('/index/gallery', [IndexController::class, 'indexGallery'])->name('gallery.index');
+Route::get('/index/staffs', [IndexController::class, 'indexStaffs'])->name('index.staffs');

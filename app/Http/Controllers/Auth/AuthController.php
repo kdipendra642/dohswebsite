@@ -37,9 +37,11 @@ class AuthController extends Controller
             $this->authService->login($data);
         } catch (\Throwable $th) {
             DB::rollBack();
+
             return redirect()->back()->with('error', $th->getMessage());
         }
         DB::commit();
+
         return redirect()->route('dashboard.index');
     }
 

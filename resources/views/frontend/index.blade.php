@@ -25,7 +25,7 @@
                     <div class="wow fadeInUp image-slider" data-wow-delay="0.2s">
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
-                                @php 
+                                @php
                                     $i = 0;
                                 @endphp
                                 @foreach ($getHomePageData['sliders'] as $sliders)
@@ -33,7 +33,7 @@
                                     <div class="carousel-item {{$i == 1 ? 'active' : ''}}">
                                         <a href="#" class="">
                                             @if ($sliders->getMedia('sliders')->isNotEmpty())
-                                                        <img                                                        
+                                                        <img
                                                             src="{{$sliders->getMedia('sliders')->first()->getUrl()}}"
                                                             alt="{{$sliders->title}}"
                                                             class="img-fluid"
@@ -73,7 +73,7 @@
                                         <a href="detail/266.html" title="स्वत प्रकाशन आ.व २०८१_८२_प्रथम त्रैमासिक">स्वत प्रकाशन आ.व २०८१_८२_प्रथम त्रैमासिक</a>
                                     </li> -->
                                     <!-- end repetation -->
-                                        
+
                                     <span class="float-right more"><a href="archiving.html">विभागका सुचनाहरु &raquo;</a></span>
                                     <span class="clearfix"></span>
                                 </ul>
@@ -97,7 +97,7 @@
     </section>
     <!-- slider trial ends here -->
 
-    
+
   <section id="news" class="wow fadeInUp mt-3">
     <div class="container">
         <div class="row">
@@ -165,7 +165,7 @@
 
               <div class="tab-pane fade border-tab" id="nav-publication" role="tabpanel" aria-labelledby="nav-publication-tab">
                 <ul>
-                    <li>
+                    {{-- <li>
           <a href="#" title="स्वत प्रकाशन आ.व २०८१_८२_प्रथम त्रैमासिक" target="_blank">
                 स्वत प्रकाशन आ.व २०८१_८२_प्रथम त्रैमासिक
             </a>
@@ -173,7 +173,7 @@
                     प्रकाशित मिति २०८१ कार्तिक २८ गते बुधबार २१:२५:५१ बजे
               <span> (प्रशासन तथा सुविधा शाखा)</span>
       </small></i>
-    </li>
+    </li> --}}
 
                  <span class="float-right more"><a href="#" class="btn btn-sm btn-danger">थप समाग्री &raquo;</a></span>
                   <span class="clearfix"></span>

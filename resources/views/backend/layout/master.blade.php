@@ -21,6 +21,8 @@
     <link href="{{ asset('assets/backend/css/style.css')}}" rel="stylesheet">
     <link href="{{ asset('assets/backend/css/style-responsive.css')}}" rel="stylesheet" />
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- Toastr CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 
@@ -49,6 +51,7 @@
       <!--footer end-->
   </section>
 
+  @stack('scripts')
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="{{ asset('assets/backend/js/jquery.js')}}"></script>
     <script src="{{ asset('assets/backend/js/bootstrap.bundle.min.js')}}"></script>

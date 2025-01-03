@@ -23,27 +23,29 @@ class IndexController extends BaseController
         $getHomePageData = $this->frontendIndexService->getHomePageData();
 
         return view('frontend.index', ([
-            'getHomePageData' => $getHomePageData
+            'getHomePageData' => $getHomePageData,
         ]));
     }
 
     public function contact()
     {
         $contactPageData = $this->frontendIndexService->getContactPageData();
+
         return view('frontend.contact', ([
-            'contactPageData' => $contactPageData
+            'contactPageData' => $contactPageData,
         ]));
     }
 
     /**
-     * Get Into Gallery Page 
+     * Get Into Gallery Page
      */
     public function gallery(string $slug)
     {
         $galleryPageData = $this->frontendIndexService->getGalleryPage(slug: $slug);
+
         return view('frontend.gallery.gallery', ([
-            'galleryPageData' => $galleryPageData->first()
-        ])) ;   
+            'galleryPageData' => $galleryPageData->first(),
+        ]));
     }
 
     /**
@@ -54,7 +56,7 @@ class IndexController extends BaseController
         $categories = $this->frontendIndexService->getAllCAtegory();
 
         return view('frontend.categories.index', ([
-            'categories' => $categories
+            'categories' => $categories,
         ]));
     }
 
@@ -64,8 +66,9 @@ class IndexController extends BaseController
     public function indexGallery()
     {
         $galleries = $this->frontendIndexService->getAllGalleryItems();
+
         return view('frontend.gallery.index', ([
-            'galleries' => $galleries
+            'galleries' => $galleries,
         ]));
     }
 
@@ -79,7 +82,7 @@ class IndexController extends BaseController
         );
 
         return view('frontend.posts.index', ([
-            'posts' => $posts
+            'posts' => $posts,
         ]));
     }
 
@@ -91,9 +94,21 @@ class IndexController extends BaseController
         $posts = $this->frontendIndexService->getPostById(
             slug: $slug
         );
-        
+
         return view('frontend.posts.show', ([
-            'posts' => $posts
+            'posts' => $posts,
+        ]));
+    }
+
+    /**
+     * Get All Staffs
+     */
+    public function indexStaffs()
+    {
+        $staffs = $this->frontendIndexService->getAllStaffs();
+
+        return view('frontend.staffs.index', ([
+            'staffs' => $staffs
         ]));
     }
 }

@@ -21,10 +21,10 @@ class PostRequest extends BaseRequest
                 'min:1',
                 'max:255',
                 Rule::unique('posts', 'title')
-                ->ignore($this->post)
+                    ->ignore($this->post),
             ],
             'description' => 'sometimes|nullable|string|max:5000',
-            'document' => 'sometimes|nullable|file|max:5120|mimes:jpg,png,jpeg,pdf'
+            'document' => 'sometimes|nullable|file|max:5120|mimes:jpg,png,jpeg,pdf',
         ];
     }
 }

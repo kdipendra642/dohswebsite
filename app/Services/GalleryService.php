@@ -35,12 +35,12 @@ class GalleryService
     {
         $gallery = $this->galleryRepository->store($data);
 
-        if(isset($data['thumbnail'])) {
+        if (isset($data['thumbnail'])) {
             $gallery->addMedia($data['thumbnail'])->toMediaCollection('thumbnail');
         }
 
-        if(isset($data['supportingImages'])) {
-            foreach($data['supportingImages'] as $supportingImages) {
+        if (isset($data['supportingImages'])) {
+            foreach ($data['supportingImages'] as $supportingImages) {
                 $gallery->addMedia($supportingImages)->toMediaCollection('supporting_images');
             }
         }
@@ -70,13 +70,13 @@ class GalleryService
             id: $galleryId
         );
 
-        if(isset($data['thumbnail'])) {
+        if (isset($data['thumbnail'])) {
             $gallery->clearMediaCollection('thumbnail');
             $gallery->addMedia($data['thumbnail'])->toMediaCollection('thumbnail');
         }
 
-        if(isset($data['supportingImages'])) {
-            foreach($data['supportingImages'] as $supportingImages) {
+        if (isset($data['supportingImages'])) {
+            foreach ($data['supportingImages'] as $supportingImages) {
                 $gallery->addMedia($supportingImages)->toMediaCollection('supporting_images');
             }
         }
@@ -95,11 +95,11 @@ class GalleryService
             ]
         );
 
-        if($gallery->thumbnail) {
+        if ($gallery->thumbnail) {
             $gallery->clearMediaCollection('thumbnail');
         }
 
-        if($gallery->supporting_images) {
+        if ($gallery->supporting_images) {
             $gallery->clearMediaCollection('supporting_images');
         }
 
