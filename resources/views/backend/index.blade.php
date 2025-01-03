@@ -3,38 +3,65 @@
 @section('mainContent')
 
 <section class="wrapper">
-    <div class="row">
-        <div class="col-lg-12">
+    <!--state overview start-->
+    <div class="row state-overview">
+        <div class="col-lg-8">
+            <!--latest product info start-->
+            <div class="card-body bg-white border border-danger" style="padding: 10px; height: 85%; border-radius: 5px;">
+                <h5>Welcome {{auth()->user()->name}}, to DOHS web portal.</h5>
+            </div>
+            <!--latest product info end-->
+        </div>
+        <div class="col-lg-3 col-sm-6">
             <section class="card">
-                <header class="card-header">
-                    Website Progress
-                </header>
-                <div class="card-body">
-                    {{-- <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <a href="{{ route('categories.index') }}">
+                    <div class="symbol terques">
+                        <i class="fa fa-level-up"></i>
                     </div>
-                    <div class="progress">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="value">
+                        <h1 class="count">{{count($dashboardData['categories'])}}</h1>
+                        <p>Categories</p>
                     </div>
-                    <div class="progress">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </a>
+            </section>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <section class="card">
+                <a href="{{ route('staffs.index') }}">
+                    <div class="symbol red">
+                        <i class="fa  fa-users"></i>
                     </div>
-                    <div class="progress">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="value">
+                        <h1 class=" count2">{{count($dashboardData['staffs'])}}</h1>
+                        <p>Staffs</p>
                     </div>
-                    <p class="text-muted">
-                        Multiple bars
-                    </p>
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div> --}}
+                </a>
+            </section>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <section class="card">
+                <div class="symbol yellow">
+                    <i class="fa fa-shopping-cart"></i>
+                </div>
+                <div class="value">
+                    <h1 class=" count3">328</h1>
+                    <p>New Order</p>
+                </div>
+            </section>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <section class="card">
+                <div class="symbol blue">
+                    <i class="fa fa-bar-chart-o"></i>
+                </div>
+                <div class="value">
+                    <h1 class=" count4">10328</h1>
+                    <p>Total Profit</p>
                 </div>
             </section>
         </div>
     </div>
-
+    <!--state overview end-->
 </section>
 
 @endsection

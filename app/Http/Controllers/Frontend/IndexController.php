@@ -108,7 +108,7 @@ class IndexController extends BaseController
         $staffs = $this->frontendIndexService->getAllStaffs();
 
         return view('frontend.staffs.index', ([
-            'staffs' => $staffs
+            'staffs' => $staffs,
         ]));
     }
 }
