@@ -4,22 +4,13 @@
       <nav class="main-nav float-left d-none d-lg-block">
         <ul class="nav-np">
           <li class="active">
-            <a href="#"><i class="fa fa-home fa-lg"></i></a>
-          </li>
-          <li class="drop-down"><a href="javascript:;" >हाम्रो बारेमा</a>
-            <ul>
-                <li><a href="#" >परिचय</a></li>
-                <li><a href="#" >संगठन संरचना</a></li>
-                <li><a href="#" >महाशाखाहरु</a></li>
-                <li><a href="#" >नागरिक वडापत्र</a></li>
-                <li><a href="#" >कर्मचारी विवरण</a></li>
-                <li><a href="#" >शाखाहरुको सम्पर्क</a></li>
-                <li><a href="#" target=&quot;_banner&quot;>फोटो ग्यालरी</a></li>
-            </ul>
+            <a href="{{ route('index') }}"><i class="fa fa-home fa-lg"></i></a>
           </li>
           <li><a href="#" >अभिलेखालय</a></li>
-          <li><a href="#" >डाउनलोड</a></li>
-          <li class="drop-down"><a href="javascript:;" >शाखा तथा सेवाहरु</a>
+          <li><a href="{{ route('gallery.index') }}" >Gallery</a></li>
+          <li><a href="{{ route('contact') }}" >Contact</a></li>
+          <li><a href="{{ route('category.index') }}" >Categories</a></li>
+          <!-- <li class="drop-down"><a href="javascript:;" >शाखा तथा सेवाहरु</a>
             <ul>
                 <li><a href="administration-facility-section.html" >प्रशासन तथा सुविधा शाखा</a></li>
                 <li><a href="foreign-investment-technology-transfer-section.html" >विदेशी लगानी शाखा प्रविधि हस्तान्तरण शाखा</a></li>
@@ -68,8 +59,8 @@
                 <li><a href="schemes.html" >स्कीमहरु</a></li>
                 <li><a href="other-publication.html" >अन्य प्रकाशन</a></li>
             </ul>
-          </li>
-          <li><a href="contact-us.html" >सम्पर्क</a></li>
+          </li> -->
+          <!-- <li><a href="contact-us.html" >सम्पर्क</a></li> -->
         </ul>
       </nav>
     </div>
