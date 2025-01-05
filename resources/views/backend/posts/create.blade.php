@@ -41,6 +41,18 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="title">Sub Category</label>
+                            <label for="sub_category">Select Category</label>
+                            <select name="sub_category" class="form-control" id="sub_category">
+                                <option selected disabled>-- Please Select --</option>
+                                <option value="laws-regulation">Laws / Regulation</option>
+                                <option value="information-news">Information News</option>
+                                <option value="tender-notice">Tender Notice</option>
+                                <option value="publication">Publication</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="title">Post Title</label>
                             <input type="text" name="title" class="form-control" id="title" placeholder="Enter title" value="{{ old('title') }}">
                         </div>
@@ -48,6 +60,7 @@
                             <label for="description">Description</label>
                             <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{ old('description') }}</textarea>
                         </div>
+                        
                         <div class="form-group">
                             <label for="document">File input</label>
                             <input type="file" id="document" name="document">

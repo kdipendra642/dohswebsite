@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\PostSubCategoryTypeEnum;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Interfaces\GalleryRepositoryInterface;
 use App\Repositories\Interfaces\ImportantLinkRepositoryInterface;
@@ -80,12 +81,67 @@ class FrontendIndexService
             ]
         );
 
+        $lawRelatedNews = $this->postRepository->fetchAll(
+            filterable: [
+                ['sub_category', '=', PostSubCategoryTypeEnum::LAWS_REGULATION->value]
+            ],
+            order: [
+                'created_at' => 'desc'
+            ],
+            limit: 5
+        );
+
+        $informationRelatedNews = $this->postRepository->fetchAll(
+            filterable: [
+                ['sub_category', '=', PostSubCategoryTypeEnum::INFORMATION_NEWS->value]
+            ],
+            order: [
+                'created_at' => 'desc'
+            ],
+            limit: 5
+        ) ;
+
+        $tenderRelatedNews = $this->postRepository->fetchAll(
+            filterable: [
+                ['sub_category', '=', PostSubCategoryTypeEnum::TENDER_NOTICE->value]
+            ],
+            order: [
+                'created_at' => 'desc'
+            ],
+            limit: 5
+        ) ;
+        
+        $publicationRelatedNews = $this->postRepository->fetchAll(
+            filterable: [
+                ['sub_category', '=', PostSubCategoryTypeEnum::PUBLICATION->value]
+            ],
+            order: [
+                'created_at' => 'desc'
+            ],
+            limit: 5
+        ) ;
+
+        $otherNews = $this->postRepository->fetchAll(
+            filterable: [
+                ['sub_category', '=', PostSubCategoryTypeEnum::OTHER->value]
+            ],
+            order: [
+                'created_at' => 'desc'
+            ],
+            limit: 5
+        ) ;
+
         return [
             'tickers' => $tickers,
             'sliders' => $sliders,
             'staffs' => $staffs,
             'importantLinks' => $importantLinks,
             'galleries' => $galleries,
+            'lawRelatedNews' => $lawRelatedNews,
+            'informationRelatedNews' => $informationRelatedNews,
+            'tenderRelatedNews' => $tenderRelatedNews,
+            'publicationRelatedNews' => $publicationRelatedNews,
+            'otherNews' => $otherNews,
         ];
     }
 
@@ -156,7 +212,7 @@ class FrontendIndexService
     /**
      * Get Post By Id
      */
-    public function getPostById(string $slug): object
+    public function getPostBySlug(string $slug): object
     {
         $post = $this->postRepository->fetchAll(
             filterable: [
@@ -181,5 +237,20 @@ class FrontendIndexService
                 'priority' => 'asc',
             ]
         );
+    }
+
+    /**
+     * Get Ticker By Slug
+     */
+    public function getTickerBySlug(string $slug): object
+    {
+        $tickers = $this->tickerRepository->fetchAll(
+            filterable: [
+                ['slug', '=', $slug],
+            ],
+            limit: 1
+        );
+
+        return $tickers->first();
     }
 }

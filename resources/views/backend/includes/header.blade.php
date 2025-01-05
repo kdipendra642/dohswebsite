@@ -34,8 +34,8 @@
                 </a>
                 <ul class="dropdown-menu extended logout dropdown-menu-right">
                     <div class="log-arrow-up"></div>
-                    <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                    <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                    <li><a href="{{ route('profile') }}"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                    <li><a href="{{ route('sitesettings.index') }}"><i class="fa fa-cog"></i> Settings</a></li>
                     <li>
                         <form action="{{route('login.signout')}}" method="post">
                             @csrf

@@ -18,6 +18,7 @@ class Post extends Model implements HasMedia
         'category_id',
         'title',
         'description',
+        'sub_category'
     ];
 
     /**
