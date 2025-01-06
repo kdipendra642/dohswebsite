@@ -33,16 +33,16 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th style="width: 15%;">Image</th>
-                                <th>Name</th>
+                                <th style="width: 15%;">@lang('messages.image')</th>
+                                <th>@lang('messages.name')</th>
                                 <th>Telephone</th>
-                                <th>Email</th>
-                                <th>Position</th>
-                                <th>Division</th>
-                                <th>Section</th>
+                                <th>@lang('messages.email')</th>
+                                <th>@lang('messages.position')</th>
+                                <th>@lang('messages.division')</th>
+                                <th>@lang('messages.section')</th>
                                 <th>Features</th>
-                                <th>Created At</th>
-                                <th>Action</th>
+                                <th>@lang('messages.created_at')</th>
+                                <th>@lang('messages.action')</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -82,21 +82,21 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header bg-danger">
-                                                <h5 class="modal-title" id="exampleModalCenterTitle">Delete Confirmation</h5>
+                                                <h5 class="modal-title" id="exampleModalCenterTitle">@lang('messages.delete_confirmation')</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                Are you sure you want to delete?
+                                                @lang('messages.delete_confirmation_question')
                                             </div>
                                             <div class="modal-footer">
 
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('messages.cancel')</button>
                                                 <form action="{{ route('staffs.destroy', $staff->id) }}" method="POST">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <button type="submit" class="btn btn-danger">@lang('messages.delete')</button>
                                                 </form>
 
                                             </div>
