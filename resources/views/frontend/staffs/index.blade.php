@@ -21,6 +21,7 @@
                         <th>डिभिजन</th>
                         <th>मोबाईल नम्बर</th>
                         <th>ईमेल</th>
+                        <th>#</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -36,7 +37,7 @@
                                     <img
                                     src="{{$staff->getMedia('staffs')[0]->getUrl()}}"
                                     alt="{{$staff->name}}"
-                                    style="width: 20%; height: 20%;"
+                                    style="width: 150px;"
                                     >
                                 @endif
                             </td>
@@ -45,6 +46,9 @@
                             <td>{{$staff->division}}</td>
                             <td>{{$staff->telephone}}</td>
                             <td>{{$staff->email}}</td>
+                            <td>
+                                <a href="{{ route('single.staffs', $staff->id) }}" alt="view full detail"><i class="fa fa-eye"></i> View</a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

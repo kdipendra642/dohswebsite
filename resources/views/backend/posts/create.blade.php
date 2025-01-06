@@ -2,6 +2,7 @@
 
 @section('mainContent')
 
+@include('backend.ckeditor.upperscript')
 <section class="wrapper">
     <div class="row">
         <div class="col-lg-12">
@@ -45,22 +46,28 @@
                             <label for="sub_category">Select Category</label>
                             <select name="sub_category" class="form-control" id="sub_category">
                                 <option selected disabled>-- Please Select --</option>
-                                <option value="laws-regulation">Laws / Regulation</option>
-                                <option value="information-news">Information News</option>
-                                <option value="tender-notice">Tender Notice</option>
-                                <option value="publication">Publication</option>
-                                <option value="other">Other</option>
+                                <option value="laws-regulation">कानून / नियमावली</option>
+                                <option value="information-news">सूचना / समाचार</option>
+                                <option value="tender-notice">बोलपत्र सम्बन्धी सूचना</option>
+                                <option value="publication">प्रकाशन</option>
+                                <option value="other">अन्य</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="title">Post Title</label>
                             <input type="text" name="title" class="form-control" id="title" placeholder="Enter title" value="{{ old('title') }}">
                         </div>
+
+                        <!-- <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{ old('description') }}</textarea>
+                        </div> -->
+                        
                         <div class="form-group">
                             <label for="description">Description</label>
                             <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{ old('description') }}</textarea>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="document">File input</label>
                             <input type="file" id="document" name="document">
@@ -74,4 +81,5 @@
     </div>
 </section>
 
+@include('backend.ckeditor.lowerscript')
 @endsection

@@ -1,7 +1,7 @@
 @extends('backend.layout.master')
 
 @section('mainContent')
-
+@include('backend.ckeditor.upperscript')
 <section class="wrapper">
     <div class="row">
         <div class="col-lg-12">
@@ -48,17 +48,32 @@
                                 <label>Old File</label>
                                 <br>
                                 @if ($ticker->getMedia('tickers')->isNotEmpty())
-                                    @if (
-                                        $ticker->getMedia('tickers')[0]->mime_type == 'image/png'
-                                        || $ticker->getMedia('tickers')[0]->mime_type == 'image/jpeg'
-                                        || $ticker->getMedia('tickers')[0]->mime_type == 'image/jpg'
-                                    )
-                                        <img src="{{$ticker->getMedia('tickers')[0]->getUrl()}}" alt="{{$ticker->title}}" style="width: 30%; height: 30%;">
-                                        @else
-                                        <a href="{{$ticker->getMedia('tickers')[0]->getUrl()}}">{{$ticker->getMedia('tickers')[0]->name}}</a>                                
-                                    @endif
+                                    <div class="card-body">
+                                        <ul class="grid cs-style-3">
+                                            <li>
+                                            @if (
+                                                        $ticker->getMedia('tickers')[0]->mime_type == 'image/png'
+                                                        || $ticker->getMedia('tickers')[0]->mime_type == 'image/jpeg'
+                                                        || $ticker->getMedia('tickers')[0]->mime_type == 'image/jpg'
+                                                    )
+                                                <figure>
+                                                    <img src="{{$ticker->getMedia('tickers')[0]->getUrl()}}" alt="{{$ticker->title}}" style="width: 25%; height: 25%;">
+                                                    <figcaption>
+                                                        <h3>{{$ticker->getMedia('tickers')[0]->name}}</h3>
+                                                        <!-- <a class="fancybox" rel="group" href="img/gallery/3.jpg">Take a look</a> -->
+                                                    </figcaption>
+                                                    <a href="{{ route('delete.image', $ticker->getMedia('tickers')[0]->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
+                                                </figure>
+                                                @else
+                                                <a href="#">{{$ticker->getMedia('tickers')[0]->name}}</a>                                
+                                                @endif
+                                            </li>
+                                        </ul>
+                                    </div>
                                 @endif
+
                             </div>
+
                         </div>
                         <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                     </form>
@@ -68,5 +83,5 @@
     </div>
     <!-- page end-->
 </section>
-
+@include('backend.ckeditor.lowerscript')
 @endsection

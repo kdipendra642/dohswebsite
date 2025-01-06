@@ -23,6 +23,9 @@ class PostService
             with: [
                 'category',
                 'media',
+            ],
+            order: [
+                'created_at' => 'desc'
             ]
         );
     }

@@ -1,6 +1,7 @@
 @extends('backend.layout.master')
 
 @section('mainContent')
+@include('backend.ckeditor.upperscript')
 
 <section class="wrapper">
     <div class="row">
@@ -67,7 +68,8 @@
                         <div class="form-group">
                             <label for="position">Staff position</label>
                             <select name="position" id="position" class="form-control">
-                                <option disabled> --- Please Select ---</option>
+                                <option value="" >Please Select</option>
+                                <option value="Director General" @if ($staffs->position == 'Director General') selected @endif>Director General</option>
                                 <option value="Computer Operator" @if ($staffs->position == 'Computer Operator') selected @endif>Computer Operator</option>
                                 <option value="Assistant Fourth" @if ($staffs->position == 'Assistant Fourth') selected @endif>Assistant Fourth</option>
                                 <option value="Joint Secretary" @if ($staffs->position == 'Joint Secretary') selected @endif>Joint Secretary</option>
@@ -99,7 +101,7 @@
                         <div class="form-group">
                             <label for="division">Staff division</label>
                             <select name="division" id="division" class="form-control">
-                                <option value="Please Select" disabled>Please Select</option>
+                                <option value="" >Please Select</option>
                                 <option value="Registration Section" @if ($staffs->division == 'Registration Section') selected @endif>Registration Section</option>
                                 <option value="Commerce Secretariat" @if ($staffs->division == 'Commerce Secretariat') selected @endif>Commerce Secretariat</option>
                                 <option value="Multilateral Trade Section" @if ($staffs->division == 'Multilateral Trade Section') selected @endif>Multilateral Trade Section</option>
@@ -147,7 +149,7 @@
                         <div class="form-group">
                             <label for="section">Staff section</label>
                             <select name="section" id="section" class="form-control">
-                                <option value="Please Select" disabled>Please Select</option>
+                                <option value="">Please Select</option>
                                 <option value="Registration Section" @if ($staffs->section == 'Registration Section') selected @endif>Registration Section</option>
                                 <option value="Commerce Secretariat" @if ($staffs->section == 'Commerce Secretariat') selected @endif>Commerce Secretariat</option>
                                 <option value="Multilateral Trade Section" @if ($staffs->section == 'Multilateral Trade Section') selected @endif>Multilateral Trade Section</option>
@@ -205,9 +207,32 @@
                                 <label>Old File</label>
                                 <br>
                                 @if ($staffs->getMedia('staffs')->isNotEmpty())
-                                <img src="{{$staffs->getMedia('staffs')[0]->getUrl()}}" alt="{{$staffs->title}}" style="width: 30%; height: 30%;">
+                                    <div class="card-body">
+                                        <ul class="grid cs-style-3">
+                                            <li>
+                                            @if (
+                                                        $staffs->getMedia('staffs')[0]->mime_type == 'image/png'
+                                                        || $staffs->getMedia('staffs')[0]->mime_type == 'image/jpeg'
+                                                        || $staffs->getMedia('staffs')[0]->mime_type == 'image/jpg'
+                                                    )
+                                                <figure>
+                                                    <img src="{{$staffs->getMedia('staffs')[0]->getUrl()}}" alt="{{$staffs->name}}" style="width: 25%; height: 25%;">
+                                                    <figcaption>
+                                                        <h3>{{$staffs->getMedia('staffs')[0]->name}}</h3>
+                                                        <!-- <a class="fancybox" rel="group" href="img/gallery/3.jpg">Take a look</a> -->
+                                                    </figcaption>
+                                                    <a href="{{ route('delete.image', $staffs->getMedia('staffs')[0]->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
+                                                </figure>
+                                                @else
+                                                <a href="#">{{$staffs->getMedia('staffs')[0]->name}}</a>                                
+                                                @endif
+                                            </li>
+                                        </ul>
+                                    </div>
                                 @endif
+
                             </div>
+
                         </div>
                         <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                     </form>
@@ -217,5 +242,7 @@
     </div>
     <!-- page end-->
 </section>
+
+@include('backend.ckeditor.lowerscript')
 
 @endsection

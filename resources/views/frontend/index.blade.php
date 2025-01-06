@@ -68,13 +68,13 @@
                         <div class="tab-content" id="nav-tabContent" style="overflow: hidden;">
                             <div class="tab-pane fade show active border-tab" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" >
                                 <ul>
-                                     @foreach ($getHomePageData['lawRelatedNews'] as $lawRelatedNews)
+                                     @foreach ($getHomePageData['informationRelatedNews'] as $informationRelatedNews)
                                      <li>
-                                        <a href="{{ route('posts.single', $lawRelatedNews->slug) }}" title="{{$lawRelatedNews->title}}">{{$lawRelatedNews->title}}</a>
+                                        <a href="{{ route('posts.single', $informationRelatedNews->slug) }}" title="{{$informationRelatedNews->title}}">{{$informationRelatedNews->title}}</a>
                                     </li>
                                      @endforeach
 
-                                    <span class="float-right more"><a href="archiving.html">विभागका सुचनाहरु &raquo;</a></span>
+                                    <span class="float-right more"><a href="{{ route('subcategory.post', App\Enums\PostSubCategoryTypeEnum::INFORMATION_NEWS->value) }}">विभागका सुचनाहरु >></a></span>
                                     <span class="clearfix"></span>
                                 </ul>
                             </div>
@@ -102,34 +102,31 @@
           <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 remove-mar-pad">
             <nav>
               <div class="nav nav-tabs" id="news-tab" role="tablist">
-                <!-- <a class="nav-item nav-link active tabbg" id="nav-suchana-tab"  data-toggle="tab" href="#nav-suchhana" role="tab" aria-controls="nav-suchana" aria-selected="true"> <i class="fa fa-newspaper-o fa-lg"></i> <span class="d-none d-md-inline-block">सूचना / समाचार</span></a> -->
-                <a class="nav-item nav-link active tabbg" id="nav-namunakanun-tab"  data-toggle="tab" href="#nav-namunakanun" role="tab" aria-controls="nav-namunakanun" aria-selected="true"><i class="fa fa-balance-scale fa-lg"></i> <span class="d-none d-md-inline-block">कानून / नियमावली</span></a>
-                <a class="nav-item nav-link tabbg" id="nav-trainnig-tab" data-toggle="tab" href="#nav-trainnig" role="tab" aria-controls="nav-traninnig" aria-selected="false"><i class="fa fa-list-ul fa-lg"></i> <span class="d-none d-md-inline-block">बोलपत्र सम्बन्धी सूचना</span></a>
-                <a class="nav-item nav-link tabbg" id="nav-publication-tab" data-toggle="tab" href="#nav-publication" role="tab" aria-controls="nav-publication" aria-selected="false"><i class="fa fa-book fa-lg"></i> <span class="d-none d-md-inline-block">प्रकाशन</span></a>
+                <a class="nav-item nav-link active tabbg" id="nav-suchana-tab"  data-toggle="tab" href="#nav-suchhana" role="tab" aria-controls="nav-suchana" aria-selected="true"> <i class="fa fa-balance-scale fa-lg"></i> <span class="d-none d-md-inline-block">कानून / नियमावली</span></a>
+                <a class="nav-item nav-link tabbg" id="nav-namunakanun-tab"  data-toggle="tab" href="#nav-namunakanun" role="tab" aria-controls="nav-namunakanun" aria-selected="true"><i class="fa fa-list-ul fa-lg"></i> <span class="d-none d-md-inline-block">बोलपत्र सम्बन्धी सूचना</span></a>
+                <a class="nav-item nav-link tabbg" id="nav-trainnig-tab" data-toggle="tab" href="#nav-trainnig" role="tab" aria-controls="nav-traninnig" aria-selected="false"><i class="fa fa-book fa-lg"></i> <span class="d-none d-md-inline-block">प्रकाशन</span></a>
+                <!-- <a class="nav-item nav-link tabbg" id="nav-publication-tab" data-toggle="tab" href="#nav-publication" role="tab" aria-controls="nav-publication" aria-selected="false"><i class="fa fa-book fa-lg"></i> <span class="d-none d-md-inline-block">प्रकाशन</span></a> -->
               </div>
             </nav>
             <div class="tab-content" id="nav-tab1">
 
               <div class="tab-pane fade show active border-tab" id="nav-suchhana" role="tabpanel" aria-labelledby="nav-suchana-tab">
                 <ul>
-                    @foreach ($getHomePageData['informationRelatedNews'] as $informationRelatedNews)
+                    @foreach ($getHomePageData['lawRelatedNews'] as $lawRelatedNews)
                     <li>
                         <span class="fa fa-thumb-tack"></span>
-                        <a href="{{ route('posts.single', $informationRelatedNews->slug) }}" title="{{$informationRelatedNews->title}}" target="_blank">
-                            {{$informationRelatedNews->title}}
+                        <a href="{{ route('posts.single', $lawRelatedNews->slug) }}" title="{{$lawRelatedNews->title}}" target="_blank">
+                            {{$lawRelatedNews->title}}
                         </a>
                         <i>
                             <small>
-                            {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($informationRelatedNews->created_at->format('Y-m-d'))
-                            ->toNepaliDate(format: 'D, j F Y', locale: 'en')}}
-                                प्रकाशित मिति २०८१ आश्विन २१ गते सोमबार २२:४९:५२ बजे
-                                <span> (अनुमति तथा दर्ता शाखा)</span>
+                            प्रकाशित मिति {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($lawRelatedNews->created_at->format('Y-m-d'))
+                            ->toNepaliDate(format: 'D, j F Y')}}
                             </small>
                         </i>
                     </li>
                     @endforeach
-
-                  <span class="float-right more"><a href="#" class="btn btn-sm btn-danger">थप समाग्री &raquo;</a></span>
+                  <span class="float-right more"><a href="{{ route('subcategory.post', App\Enums\PostSubCategoryTypeEnum::LAWS_REGULATION->value) }}" class="btn btn-sm btn-danger">थप समाग्री >></a></span>
                   <span class="clearfix"></span>
                 </ul>
               </div>
@@ -144,16 +141,14 @@
                         </a>
                         <i>
                             <small>
-                            {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($tenderRelatedNews->created_at->format('Y-m-d'))
-                            ->toNepaliDate(format: 'D, j F Y', locale: 'en')}}
-                                प्रकाशित मिति २०८१ आश्विन २१ गते सोमबार २२:४९:५२ बजे
-                                <span> (अनुमति तथा दर्ता शाखा)</span>
+                            प्रकाशित मिति {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($tenderRelatedNews->created_at->format('Y-m-d'))
+                            ->toNepaliDate(format: 'D, j F Y')}}
                             </small>
                         </i>
                     </li>
                     @endforeach
 
-                  <span class="float-right more"><a href="#" class="btn btn-sm btn-danger">थप समाग्री &raquo;</a></span>
+                  <span class="float-right more"><a href="{{ route('subcategory.post', App\Enums\PostSubCategoryTypeEnum::TENDER_NOTICE->value) }}" class="btn btn-sm btn-danger">थप समाग्री >></a></span>
                   <span class="clearfix"></span>
                 </ul>
               </div>
@@ -168,21 +163,19 @@
                         </a>
                         <i>
                             <small>
-                            {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($publicationRelatedNews->created_at->format('Y-m-d'))
-                            ->toNepaliDate(format: 'D, j F Y', locale: 'en')}}
-                                प्रकाशित मिति २०८१ आश्विन २१ गते सोमबार २२:४९:५२ बजे
-                                <span> (अनुमति तथा दर्ता शाखा)</span>
+                            प्रकाशित मिति {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($publicationRelatedNews->created_at->format('Y-m-d'))
+                            ->toNepaliDate(format: 'D, j F Y')}}
                             </small>
                         </i>
                     </li>
                     @endforeach
 
-                  <span class="float-right more"><a href="#" class="btn btn-sm btn-danger">थप समाग्री &raquo;</a></span>
+                  <span class="float-right more"><a href="{{ route('subcategory.post', App\Enums\PostSubCategoryTypeEnum::PUBLICATION->value) }}" class="btn btn-sm btn-danger">थप समाग्री >></a></span>
                   <span class="clearfix"></span>
                 </ul>
               </div>
 
-              <div class="tab-pane fade border-tab" id="nav-publication" role="tabpanel" aria-labelledby="nav-publication-tab">
+              <!-- <div class="tab-pane fade border-tab" id="nav-publication" role="tabpanel" aria-labelledby="nav-publication-tab">
                 <ul>
                     @foreach ($getHomePageData['otherNews'] as $otherNews)
                     <li>
@@ -192,19 +185,17 @@
                         </a>
                         <i>
                             <small>
-                            {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($otherNews->created_at->format('Y-m-d'))
-                            ->toNepaliDate(format: 'D, j F Y', locale: 'en')}}
-                                प्रकाशित मिति २०८१ आश्विन २१ गते सोमबार २२:४९:५२ बजे
-                                <span> (अनुमति तथा दर्ता शाखा)</span>
+                             प्रकाशित मिति {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($otherNews->created_at->format('Y-m-d'))
+                            ->toNepaliDate(format: 'D, j F Y')}}
                             </small>
                         </i>
                     </li>
                     @endforeach
 
-                 <span class="float-right more"><a href="#" class="btn btn-sm btn-danger">थप समाग्री &raquo;</a></span>
+                 <span class="float-right more"><a href="#" class="btn btn-sm btn-danger">थप समाग्री >></a></span>
                   <span class="clearfix"></span>
                 </ul>
-              </div>
+              </div> -->
             </div>
 
           </div>
@@ -221,7 +212,8 @@
                                         <img
                                         src="{{$staffs->getMedia('staffs')[0]->getUrl()}}"
                                         alt="{{$staffs->name}}"
-                                        width="122"
+                                        width="100%"
+                                        height="100%"
                                         class="img-fluid img-thumbnail"
                                         title="{{$staffs->name}}"
                                         >

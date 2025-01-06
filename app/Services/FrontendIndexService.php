@@ -199,7 +199,9 @@ class FrontendIndexService
     public function getCategorywisePosts(string|int $categoryId): object
     {
         return $this->postRepository->fetchAll(
-            with: [],
+            with: [
+                'category',
+            ],
             filterable: [
                 ['category_id', '=', $categoryId],
             ],
@@ -207,6 +209,24 @@ class FrontendIndexService
                 'created_at' => 'desc',
             ]
         );
+    }
+
+    /**
+     * Get Sub Category wise post
+     */
+    public function getSubCategorywisePosts(string $subcategory): object
+    {
+        return $this->postRepository->fetchAll(
+            with: [
+                'category',
+            ],
+            filterable: [
+                ['sub_category', '=', $subcategory],
+            ],
+            order: [
+                'created_at' => 'desc',
+            ]
+            );
     }
 
     /**
@@ -236,6 +256,16 @@ class FrontendIndexService
             order: [
                 'priority' => 'asc',
             ]
+        );
+    }
+
+    /**
+     * Get Single STaaff
+     */
+    public function getSingleStaffById(string|int $staffId): object
+    {
+        return $this->staffRepository->fetch(
+            id: $staffId
         );
     }
 

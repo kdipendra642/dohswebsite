@@ -2,6 +2,7 @@
 
 @section('mainContent')
 
+@include('backend.ckeditor.upperscript')
 <section class="wrapper">
     <div class="row">
         <div class="col-lg-12">
@@ -51,5 +52,6 @@
     </div>
     <!-- page end-->
 </section>
+@include('backend.ckeditor.lowerscript')
 
 @endsection

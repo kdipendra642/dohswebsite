@@ -1,113 +1,135 @@
 @php
     $public_menu = Menu::getByName('MasterNavigation');
 @endphp
-
 <style>
-/* Base styles for the navigation */
-.main-nav {
-    position: relative; /* Allows absolute positioning of submenus */
+    .main-nav {
+        position: relative;
+        /* font-family: Arial, sans-serif; */
+    }
+
+    .main-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Top-level menu items */
+    .main-nav > ul {
+        display: flex; /* Horizontally align top-level items */
+        justify-content: start;
+        align-items: center;
+    }
+
+    .main-nav > ul > li {
+        position: relative;
+        /* margin-right: 15px; */
+    }
+
+    main-nav > ul > li > a {
+    display: block;
+    padding: 10px 15px;
+    /* text-decoration: none; */
+    /* background-color: #f8f8f8; */
+    /* color: #333; */
+    /* border: 1px solid #ddd; */
+    /* border-radius: 5px; */
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.main-nav ul {
-    list-style: none; /* Remove default list styling */
-    padding: 0; /* Remove default padding */
-    margin: 0; /* Remove default margin */
-}
+    .main-nav > ul > li > a:hover {
+        background-color: #e0e0e0;
+        color: #000;
+    }
 
-/* Initially hide all submenus */
-.main-nav ul ul {
-    display: none; /* Hide all submenus by default */
-    position: absolute; /* Position them absolutely */
-    left: 0; /* Align to the left of the parent */
-    top: 100%; /* Position below the parent */
-    width: 100%; /* Make the submenu the same width as the parent li */
-    background-color: white; /* Background color for the submenu */
-    z-index: 1000; /* Ensure it appears above other elements */
-}
+    /* Nested submenu styles */
+    .main-nav ul ul {
+        display: none;
+        position: absolute;
+        /* top: 100%; */
+        /* left: 0; */
+        /* background-color: white; */
+        /* padding: 10px; */
+        /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
+        border-radius: 5px;
+        z-index: 1000;
+    }
 
-/* Show the submenu when hovering over the parent li */
-.main-nav li:hover > ul {
-    display: block; /* Show the submenu on hover */
-}
+    .main-nav li:hover > ul {
+        display: block; /* Show submenu on hover */
+    }
 
-/* Style for links in the main menu */
-.main-nav > ul > li > a {
-    display: block; /* Make the links block elements */
-    padding: 10px 15px; /* Add padding */
-    /* color: black; Text color */
-    text-decoration: none; /* Remove underline */
-}
+    .main-nav ul ul li {
+        position: relative; /* To allow further nesting */
+    }
 
-/* Hover effect for main menu links */
-.main-nav > ul > li > a:hover {
-    background-color: #f0f0f0; 
-    color: #000 !important; /* Set a darker color on hover */
-}
+    .main-nav ul ul li a {
+        display: block;
+    /* padding: 10px 20px; */
+    text-decoration: none;
+    background-color: #fff;
+    color: #555;
+    /* border-radius: 5px; */
+    transition: background-color 0.3s, color 0.3s;
+    }
 
-/* Submenu link styles */
-.main-nav ul ul li a {
-    padding: 10px 15px; /* Adjust padding for submenu links */
-    color: black; /* Text color */
-    text-decoration: none; /* Remove underline */
-}
+    .main-nav ul ul li a:hover {
+        background-color: #f0f0f0;
+        color: #000;
+    }
 
-/* Hover effect for submenu links */
-.main-nav ul ul li a:hover {
-    background-color: #e0e0e0; /* Change background on hover */
-    color: #000 !important; /* Set a darker color on hover */
-}
+    /* For deeper nested levels */
+    .main-nav ul ul ul {
+        top: 0; /* Align deeper levels with the parent menu item */
+        left: 100%; /* Display next to the parent submenu */
+    }
 
-/* Styles for deeper nested menus */
-.main-nav ul ul ul {
-    left: 100%; /* Position deeper submenus to the right */
-    top: 0; /* Align them with the parent */
-}
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .main-nav > ul {
+            flex-direction: column; /* Stack items vertically on smaller screens */
+        }
 
-/* Optional: Style for deeper nested submenu links */
-.main-nav ul ul ul li a {
-    padding: 10px 15px; /* Adjust padding for deeper submenu links */
-    color: black; /* Text color */
-    text-decoration: none; /* Remove underline */
-}
-
-/* Optional: Hover effect for deeper submenu links */
-.main-nav ul ul ul li a:hover {
-    background-color: #d0d0d0; /* Change background on hover */
-    color: black !important; /* Set a darker color on hover */
-}
-
-/* Ensure that supporting labels remain visible */
-.main-nav ul ul ul li {
-    position: relative; /* Ensure proper positioning */
-}
-
+        .main-nav ul ul {
+            position: static; /* Stack nested menus below parents */
+            padding-left: 20px;
+        }
+    }
 </style>
+
+
 
 <header id="header" class="">
     <div class="container">
 
-      <nav class="main-nav float-left d-none d-lg-block">
+    <nav class="main-nav float-left d-none d-lg-block">
         <ul class="nav-np">
             <li>
                 <a href="{{ route('index') }}"><i class="fa fa-home fa-lg"></i></a>
             </li>
             @if($public_menu)
-
-            @foreach($public_menu as $menu)
-            <li>
-                <a href="{{ $menu['link'] }}" target="{{ $menu['target'] }}">{{ $menu['label'] }}</a>
-                @if($menu['child'])
-                <ul>
-                    @foreach($menu['child'] as $child)
-                    <li>
-                      <a href="{{ $child['link'] }}" target="{{ $child['target'] }}">{{ $child['label'] }}</a>
-                              <!-- starrt -->
-                              @if($child['child'])
-                              <ul>
-                                  @foreach($child['child'] as $shubchild)
-                                  <li>
+                @foreach($public_menu as $menu)
+                <li>
+                    <a href="{{ $menu['link'] }}" target="{{ $menu['target'] }}">
+                    {{ $menu['label'] }}
+                    @if($menu['child'])
+                        <span class="fa fa-caret-down">  </span>
+                    @endif
+                    </a>
+                    @if($menu['child'])
+                    <ul>
+                        @foreach($menu['child'] as $child)
+                        <li>
+                            <a href="{{ $child['link'] }}" target="{{ $child['target'] }}">
+                                {{ $child['label'] }}
+                                @if($child['child'])
+                                    <span class="fa fa-angle-right"> </span>
+                                @endif
+                            </a>
+                            @if($child['child'])
+                            <ul>
+                                @foreach($child['child'] as $shubchild)
+                                <li>
                                     <a href="{{ $shubchild['link'] }}" target="{{ $shubchild['target'] }}">{{ $shubchild['label'] }}</a>
-                                    <!-- again subloop -->
                                     @if($shubchild['child'])
                                     <ul>
                                         @foreach($shubchild['child'] as $greatchild)
@@ -119,22 +141,19 @@
                                         @endforeach
                                     </ul>
                                     @endif
-                                    <!-- again subloop stop -->
-                                  </li>
-                                  @endforeach
-                              </ul>
-                              @endif
-                              <!-- top -->
-                    </li>
-                    @endforeach
-                </ul>
-                @endif
-            </li>
-            @endforeach
+                                </li>
+                                @endforeach
+                            </ul>
+                            @endif
+                        </li>
+                        @endforeach
+                    </ul>
+                    @endif
+                </li>
+                @endforeach
             @endif
-
         </ul>
-      </nav>
+    </nav>
 
     </div>
   </header>

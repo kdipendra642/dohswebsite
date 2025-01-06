@@ -87,6 +87,20 @@ class IndexController extends BaseController
     }
 
     /**
+     * Get Sub Category wise post
+     */
+    public function subcatewisePost(string $subcategory)
+    {
+        $posts = $this->frontendIndexService->getSubCategorywisePosts(
+            subcategory: $subcategory
+        );
+
+        return view('frontend.posts.index', ([
+            'posts' => $posts,
+        ]));
+    }
+
+    /**
      * Get Single Posts
      */
     public function singlePost(string $slug)
@@ -112,6 +126,21 @@ class IndexController extends BaseController
         ]));
     }
 
+    /**
+     * Get Single Staff
+     */
+    public function singleStaffs(string $staffId)
+    {
+        $staff = $this->frontendIndexService->getSingleStaffById(staffId: $staffId);
+
+        return view('frontend.staffs.show', ([
+            'staff' => $staff
+        ]));
+    }
+
+    /**
+     * Get Full view of ticker
+     */
     public function tickers(string $slug)
     {
         $tickers = $this->frontendIndexService->getTickerBySlug(slug: $slug);

@@ -15,7 +15,6 @@
             <!--breadcrumbs end -->
         </div>
     </div>
-
     <!-- page start-->
     <div class="row">
         <div class="col-lg-12">
@@ -23,6 +22,8 @@
                 <header class="card-header">
                     Menu
                 </header>
+        <a href="javascript:;"  class="btn btn-default text-center text-danger bg-warning" id="pulsate-regular">Please be careful while changing this section as it might affect the site.</a>
+
 
                 <div class="card-body">
                     {!! Menu::render() !!}
