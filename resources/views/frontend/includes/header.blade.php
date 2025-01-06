@@ -1,5 +1,9 @@
 @php
     $public_menu = Menu::getByName('MasterNavigation');
+    $public_menu_nep = Menu::getByName('MasterNavigationNep');
+
+    $currentLocale = session('locale', app()->getLocale());
+
 @endphp
 <style>
     .main-nav {
@@ -106,6 +110,8 @@
             <li>
                 <a href="{{ route('index') }}"><i class="fa fa-home fa-lg"></i></a>
             </li>
+            @if($currentLocale == 'en')
+
             @if($public_menu)
                 @foreach($public_menu as $menu)
                 <li>
@@ -152,6 +158,59 @@
                 </li>
                 @endforeach
             @endif
+
+            @else
+
+            @if($public_menu_nep)
+                @foreach($public_menu_nep as $menu)
+                <li>
+                    <a href="{{ $menu['link'] }}" target="{{ $menu['target'] }}">
+                    {{ $menu['label'] }}
+                    @if($menu['child'])
+                        <span class="fa fa-caret-down">  </span>
+                    @endif
+                    </a>
+                    @if($menu['child'])
+                    <ul>
+                        @foreach($menu['child'] as $child)
+                        <li>
+                            <a href="{{ $child['link'] }}" target="{{ $child['target'] }}">
+                                {{ $child['label'] }}
+                                @if($child['child'])
+                                    <span class="fa fa-angle-right"> </span>
+                                @endif
+                            </a>
+                            @if($child['child'])
+                            <ul>
+                                @foreach($child['child'] as $shubchild)
+                                <li>
+                                    <a href="{{ $shubchild['link'] }}" target="{{ $shubchild['target'] }}">{{ $shubchild['label'] }}</a>
+                                    @if($shubchild['child'])
+                                    <ul>
+                                        @foreach($shubchild['child'] as $greatchild)
+                                        <li>
+                                            <a href="{{ $greatchild['link'] }}" target="{{ $greatchild['target'] }}">
+                                                {{ $greatchild['label'] }}
+                                            </a>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                    @endif
+                                </li>
+                                @endforeach
+                            </ul>
+                            @endif
+                        </li>
+                        @endforeach
+                    </ul>
+                    @endif
+                </li>
+                @endforeach
+            @endif
+
+            @endif
+
+         
         </ul>
     </nav>
 
