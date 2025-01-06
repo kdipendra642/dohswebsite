@@ -20,8 +20,9 @@
           </div>
           <div class="col-md-7 col-xl-8 float-right">
             <form action="#" style="display: inline;">
+              @csrf
               <div class="input-group">
-                <input type="text" name="q" value="" placeholder="खोजी" class="form-control form-control-sm">
+                <input type="text" name="subcategory" value="" placeholder="खोजी" class="form-control form-control-sm">
                   <div class="input-group-append">
                     <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-search"></i></button>
                   </div>

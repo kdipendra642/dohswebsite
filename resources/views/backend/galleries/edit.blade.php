@@ -45,9 +45,33 @@
                                 <label>Old File</label>
                                 <br>
                                 @if ($gallery->getMedia('thumbnail')->isNotEmpty())
-                                <img src="{{$gallery->getMedia('thumbnail')[0]->getUrl()}}" alt="{{$gallery->title}}" style="width: 30%; height: 30%;">
+                                    <div class="card-body">
+                                        <ul class="grid cs-style-3">
+                                            <li>
+                                            @if (
+                                                        $gallery->getMedia('thumbnail')[0]->mime_type == 'image/png'
+                                                        || $gallery->getMedia('thumbnail')[0]->mime_type == 'image/jpeg'
+                                                        || $gallery->getMedia('thumbnail')[0]->mime_type == 'image/jpg'
+                                                    )
+                                                <figure>
+                                                    <img src="{{$gallery->getMedia('thumbnail')[0]->getUrl()}}" alt="{{$gallery->title}}" style="width: 25%; height: 25%;">
+                                                    <figcaption>
+                                                        <h3>{{$gallery->getMedia('thumbnail')[0]->name}}</h3>
+                                                        <!-- <a class="fancybox" rel="group" href="img/gallery/3.jpg">Take a look</a> -->
+                                                    </figcaption>
+                                                    <a href="{{ route('delete.image', $gallery->getMedia('thumbnail')[0]->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
+                                                </figure>
+                                                @else
+                                                <a href="#">{{$gallery->getMedia('thumbnail')[0]->name}}</a>                                
+                                                @endif
+                                            </li>
+                                        </ul>
+                                    </div>
                                 @endif
+
                             </div>
+
+
                         </div>
 
                         <div class="form-group">

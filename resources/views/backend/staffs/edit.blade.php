@@ -207,9 +207,32 @@
                                 <label>Old File</label>
                                 <br>
                                 @if ($staffs->getMedia('staffs')->isNotEmpty())
-                                <img src="{{$staffs->getMedia('staffs')[0]->getUrl()}}" alt="{{$staffs->title}}" style="width: 30%; height: 30%;">
+                                    <div class="card-body">
+                                        <ul class="grid cs-style-3">
+                                            <li>
+                                            @if (
+                                                        $staffs->getMedia('staffs')[0]->mime_type == 'image/png'
+                                                        || $staffs->getMedia('staffs')[0]->mime_type == 'image/jpeg'
+                                                        || $staffs->getMedia('staffs')[0]->mime_type == 'image/jpg'
+                                                    )
+                                                <figure>
+                                                    <img src="{{$staffs->getMedia('staffs')[0]->getUrl()}}" alt="{{$staffs->name}}" style="width: 25%; height: 25%;">
+                                                    <figcaption>
+                                                        <h3>{{$staffs->getMedia('staffs')[0]->name}}</h3>
+                                                        <!-- <a class="fancybox" rel="group" href="img/gallery/3.jpg">Take a look</a> -->
+                                                    </figcaption>
+                                                    <a href="{{ route('delete.image', $staffs->getMedia('staffs')[0]->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
+                                                </figure>
+                                                @else
+                                                <a href="#">{{$staffs->getMedia('staffs')[0]->name}}</a>                                
+                                                @endif
+                                            </li>
+                                        </ul>
+                                    </div>
                                 @endif
+
                             </div>
+
                         </div>
                         <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                     </form>

@@ -70,16 +70,30 @@
                                 <label>Old File</label>
                                 <br>
                                 @if ($posts->getMedia('posts')->isNotEmpty())
-                                    @if (
-                                        $posts->getMedia('posts')[0]->mime_type == 'image/png'
-                                        || $posts->getMedia('posts')[0]->mime_type == 'image/jpeg'
-                                        || $posts->getMedia('posts')[0]->mime_type == 'image/jpg'
-                                    )
-                                        <img src="{{$posts->getMedia('posts')[0]->getUrl()}}" alt="{{$posts->title}}" style="width: 30%; height: 30%;">
-                                        @else
-                                        <a href="{{$posts->getMedia('posts')[0]->getUrl()}}">{{$posts->getMedia('posts')[0]->name}}</a>                                
-                                    @endif
+                                    <div class="card-body">
+                                        <ul class="grid cs-style-3">
+                                            <li>
+                                            @if (
+                                                        $posts->getMedia('posts')[0]->mime_type == 'image/png'
+                                                        || $posts->getMedia('posts')[0]->mime_type == 'image/jpeg'
+                                                        || $posts->getMedia('posts')[0]->mime_type == 'image/jpg'
+                                                    )
+                                                <figure>
+                                                    <img src="{{$posts->getMedia('posts')[0]->getUrl()}}" alt="{{$posts->title}}" style="width: 25%; height: 25%;">
+                                                    <figcaption>
+                                                        <h3>{{$posts->getMedia('posts')[0]->name}}</h3>
+                                                        <!-- <a class="fancybox" rel="group" href="img/gallery/3.jpg">Take a look</a> -->
+                                                    </figcaption>
+                                                    <a href="{{ route('delete.image', $posts->getMedia('posts')[0]->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
+                                                </figure>
+                                                @else
+                                                <a href="#">{{$posts->getMedia('posts')[0]->name}}</a>                                
+                                                @endif
+                                            </li>
+                                        </ul>
+                                    </div>
                                 @endif
+
                             </div>
                         </div>
 
