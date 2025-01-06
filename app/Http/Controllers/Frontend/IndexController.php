@@ -112,6 +112,21 @@ class IndexController extends BaseController
         ]));
     }
 
+    /**
+     * Get Single Staff
+     */
+    public function singleStaffs(string $staffId)
+    {
+        $staff = $this->frontendIndexService->getSingleStaffById(staffId: $staffId);
+
+        return view('frontend.staffs.show', ([
+            'staff' => $staff
+        ]));
+    }
+
+    /**
+     * Get Full view of ticker
+     */
     public function tickers(string $slug)
     {
         $tickers = $this->frontendIndexService->getTickerBySlug(slug: $slug);

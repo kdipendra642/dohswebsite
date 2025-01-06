@@ -110,6 +110,4 @@
     </div>
     <!-- page end-->
 </section>
-
-
 @endsection

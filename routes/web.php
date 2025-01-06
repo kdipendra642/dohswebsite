@@ -71,3 +71,4 @@ Route::get('/posts/category/{categoryId}', [IndexController::class, 'categorywis
 Route::get('/posts/single/{slug}', [IndexController::class, 'singlePost'])->name('posts.single');
 Route::get('/index/gallery', [IndexController::class, 'indexGallery'])->name('gallery.index');
 Route::get('/index/staffs', [IndexController::class, 'indexStaffs'])->name('index.staffs');
+Route::get('/single/staffs/{staffId}', [IndexController::class, 'singleStaffs'])->name('single.staffs');

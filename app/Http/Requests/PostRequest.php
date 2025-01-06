@@ -24,7 +24,7 @@ class PostRequest extends BaseRequest
                 Rule::unique('posts', 'title')
                     ->ignore($this->post),
             ],
-            'description' => 'sometimes|nullable|string|max:5000',
+            'description' => 'sometimes|nullable|string|max:10000',
             'sub_category' => [
                 'required',
                 'string',

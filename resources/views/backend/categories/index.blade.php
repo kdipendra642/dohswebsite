@@ -26,6 +26,7 @@
                         <a href="{{ route('categories.create') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add Category</a>
                     </div>
                 </header>
+                <a href="javascript:;"  class="btn btn-default text-center text-danger bg-warning" id="pulsate-regular">Please be careful while changing this section as it might affect the site.</a>
 
                 <div class="card-body">
                     <div class="table-responsive">

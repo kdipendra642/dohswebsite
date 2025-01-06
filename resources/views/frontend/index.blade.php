@@ -68,13 +68,13 @@
                         <div class="tab-content" id="nav-tabContent" style="overflow: hidden;">
                             <div class="tab-pane fade show active border-tab" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" >
                                 <ul>
-                                     @foreach ($getHomePageData['lawRelatedNews'] as $lawRelatedNews)
+                                     @foreach ($getHomePageData['informationRelatedNews'] as $informationRelatedNews)
                                      <li>
-                                        <a href="{{ route('posts.single', $lawRelatedNews->slug) }}" title="{{$lawRelatedNews->title}}">{{$lawRelatedNews->title}}</a>
+                                        <a href="{{ route('posts.single', $informationRelatedNews->slug) }}" title="{{$informationRelatedNews->title}}">{{$informationRelatedNews->title}}</a>
                                     </li>
                                      @endforeach
 
-                                    <span class="float-right more"><a href="archiving.html">विभागका सुचनाहरु &raquo;</a></span>
+                                    <span class="float-right more"><a href="#">विभागका सुचनाहरु &raquo;</a></span>
                                     <span class="clearfix"></span>
                                 </ul>
                             </div>
@@ -112,15 +112,15 @@
 
               <div class="tab-pane fade show active border-tab" id="nav-suchhana" role="tabpanel" aria-labelledby="nav-suchana-tab">
                 <ul>
-                    @foreach ($getHomePageData['informationRelatedNews'] as $informationRelatedNews)
+                    @foreach ($getHomePageData['lawRelatedNews'] as $lawRelatedNews)
                     <li>
                         <span class="fa fa-thumb-tack"></span>
-                        <a href="{{ route('posts.single', $informationRelatedNews->slug) }}" title="{{$informationRelatedNews->title}}" target="_blank">
-                            {{$informationRelatedNews->title}}
+                        <a href="{{ route('posts.single', $lawRelatedNews->slug) }}" title="{{$lawRelatedNews->title}}" target="_blank">
+                            {{$lawRelatedNews->title}}
                         </a>
                         <i>
                             <small>
-                            {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($informationRelatedNews->created_at->format('Y-m-d'))
+                            {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($lawRelatedNews->created_at->format('Y-m-d'))
                             ->toNepaliDate(format: 'D, j F Y', locale: 'en')}}
                                 प्रकाशित मिति २०८१ आश्विन २१ गते सोमबार २२:४९:५२ बजे
                                 <span> (अनुमति तथा दर्ता शाखा)</span>
@@ -182,7 +182,7 @@
                 </ul>
               </div>
 
-              <div class="tab-pane fade border-tab" id="nav-publication" role="tabpanel" aria-labelledby="nav-publication-tab">
+              <!-- <div class="tab-pane fade border-tab" id="nav-publication" role="tabpanel" aria-labelledby="nav-publication-tab">
                 <ul>
                     @foreach ($getHomePageData['otherNews'] as $otherNews)
                     <li>
@@ -204,7 +204,7 @@
                  <span class="float-right more"><a href="#" class="btn btn-sm btn-danger">थप समाग्री &raquo;</a></span>
                   <span class="clearfix"></span>
                 </ul>
-              </div>
+              </div> -->
             </div>
 
           </div>
@@ -221,7 +221,8 @@
                                         <img
                                         src="{{$staffs->getMedia('staffs')[0]->getUrl()}}"
                                         alt="{{$staffs->name}}"
-                                        width="122"
+                                        width="100%"
+                                        height="100%"
                                         class="img-fluid img-thumbnail"
                                         title="{{$staffs->name}}"
                                         >

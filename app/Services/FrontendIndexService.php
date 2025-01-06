@@ -240,6 +240,16 @@ class FrontendIndexService
     }
 
     /**
+     * Get Single STaaff
+     */
+    public function getSingleStaffById(string|int $staffId): object
+    {
+        return $this->staffRepository->fetch(
+            id: $staffId
+        );
+    }
+
+    /**
      * Get Ticker By Slug
      */
     public function getTickerBySlug(string $slug): object

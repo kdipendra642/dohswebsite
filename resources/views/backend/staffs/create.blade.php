@@ -2,6 +2,8 @@
 
 @section('mainContent')
 
+@include('backend.ckeditor.upperscript')
+
 <section class="wrapper">
     <div class="row">
         <div class="col-lg-12">
@@ -66,7 +68,8 @@
                         <div class="form-group">
                             <label for="position">Staff position</label>
                             <select name="position" id="position" class="form-control">
-                                <option value="Please Select" selected disabled>Please Select</option>
+                                <option value="" selected disabled>Please Select</option>
+                                <option value="Director General">Director General</option>
                                 <option value="Computer Operator">Computer Operator</option>
                                 <option value="Assistant Fourth">Assistant Fourth</option>
                                 <option value="Joint Secretary">Joint Secretary</option>
@@ -99,7 +102,7 @@
                         <div class="form-group">
                             <label for="division">Staff division</label>
                             <select name="division" id="division" class="form-control">
-                                <option value="Please Select" selected disabled>Please Select</option>
+                                <option value="" selected>Please Select</option>
                                 <option value="Registration Section">Registration Section</option>
                                 <option value="Commerce Secretariat">Commerce Secretariat</option>
                                 <option value="Multilateral Trade Section">Multilateral Trade Section</option>
@@ -147,7 +150,7 @@
                         <div class="form-group">
                             <label for="section">Staff section</label>
                             <select name="section" id="section" class="form-control">
-                                <option value="Please Select" selected disabled>Please Select</option>
+                                <option value="" selected>Please Select</option>
                                 <option value="Registration Section">Registration Section</option>
                                 <option value="Commerce Secretariat">Commerce Secretariat</option>
                                 <option value="Multilateral Trade Section">Multilateral Trade Section</option>
@@ -208,5 +211,7 @@
         </div>
     </div>
 </section>
+
+@include('backend.ckeditor.lowerscript')
 
 @endsection
