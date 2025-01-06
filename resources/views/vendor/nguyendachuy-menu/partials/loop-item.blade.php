@@ -72,7 +72,7 @@
                 </div>
                 <div class="form-group">
                     <button type="button" onclick="deleteItem({{$m['id']}})" class="btn btn-danger btn-sm" 
-                        id="delete-{{$m['id']}}" href="javascript:void(0)">Delete</button>
+                        id="delete-{{$m['id']}}" href="javascript:void(0)">@lang('messages.delete')</button>
                     <button type="button" onclick="updateItem({{$m['id']}})" class="btn btn-primary btn-sm" 
                         id="update-{{$m['id']}}" href="javascript:void(0)">Update item</button>
                 </div>

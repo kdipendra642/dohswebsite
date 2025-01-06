@@ -21,9 +21,9 @@
         <div class="col-lg-12">
             <section class="card">
                 <header class="card-header">
-                    Sliders
+                    @lang('messages.sliders')
                     <div class="pull-right hidden-phone">
-                        <a href="{{ route('sliders.create') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add Sliders</a>
+                        <a href="{{ route('sliders.create') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> @lang('messages.add_sliders')</a>
                     </div>
                 </header>
 
@@ -33,18 +33,21 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Title</th>
-                                <th>Description</th>
-                                <th style="width: 30%;">Image</th>
-                                <th>Slug</th>
-                                <th>Created At</th>
-                                <th>Action</th>
+                                <th>@lang('messages.title')</th>
+                                <th>@lang('messages.description')</th>
+                                <th style="width: 30%;">@lang('messages.image')</th>
+                                <th>@lang('messages.slug')</th>
+                                <th>@lang('messages.created_at')</th>
+                                <th>@lang('messages.action')</th>
                             </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $i = 1;
+                                @endphp
                                 @foreach ($sliders as $slider)
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row">{{$i++;}}</th>
                                     <td>{{$slider->title}}</td>
                                     <td>{!! \Illuminate\Support\Str::limit($slider->description, 100, '...') !!}</td>
                                     <td>
@@ -69,21 +72,21 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header bg-danger">
-                                                <h5 class="modal-title" id="exampleModalCenterTitle">Delete Confirmation</h5>
+                                                <h5 class="modal-title" id="exampleModalCenterTitle">@lang('messages.delete_confirmation')</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                Are you sure you want to delete?
+                                                @lang('messages.delete_confirmation_question')
                                             </div>
                                             <div class="modal-footer">
 
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('messages.cancel')</button>
                                                 <form action="{{ route('sliders.destroy', $slider->id) }}" method="POST">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <button type="submit" class="btn btn-danger">@lang('messages.delete')</button>
                                                 </form>
 
                                             </div>

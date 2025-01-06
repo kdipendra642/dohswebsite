@@ -16,8 +16,8 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <th width=10%>SN</th>
-                    <th>Title</th>
-                    <th>slug</th>
+                    <th>@lang('messages.title')</th>
+                    <th>@lang('messages.slug')</th>
                     <th>go to</th>
                 </thead>
                 <tbody>

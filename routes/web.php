@@ -11,13 +11,11 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\StaffController;
 use App\Http\Controllers\Backend\TickerController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Base\LocaleController;
 use App\Http\Controllers\Frontend\ContactMessageController;
 use App\Http\Controllers\Frontend\IndexController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 // Auth routes
 Route::get('/login', [AuthController::class, 'index'])->name('login.index');
@@ -80,3 +78,5 @@ Route::get('/gallery/{slug}', [IndexController::class, 'gallery'])->name('galler
 
 Route::get('/index/staffs', [IndexController::class, 'indexStaffs'])->name('index.staffs');
 Route::get('/single/staffs/{staffId}', [IndexController::class, 'singleStaffs'])->name('single.staffs');
+
+Route::get('/locale/{lang}', [LocaleController::class, 'setLocale'])->name('lang.setup');

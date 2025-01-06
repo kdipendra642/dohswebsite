@@ -8,7 +8,7 @@
         <div class="col-lg-8">
             <!--latest product info start-->
             <div class="card-body bg-white border border-danger" style="padding: 10px; height: 85%; border-radius: 5px;">
-                <h5>Welcome {{auth()->user()->name}}, to DOHS web portal.</h5>
+                <h5>@lang('messages.welcome_message', ['name' => auth()->user()->name])</h5>
             </div>
             <!--latest product info end-->
         </div>
@@ -20,7 +20,7 @@
                     </div>
                     <div class="value">
                         <h1 class="count">{{count($dashboardData['categories'])}}</h1>
-                        <p>Categories</p>
+                        <p>@lang('messages.category')</p>
                     </div>
                 </a>
             </section>
@@ -33,7 +33,7 @@
                     </div>
                     <div class="value">
                         <h1 class=" count2">{{count($dashboardData['staffs'])}}</h1>
-                        <p>Staffs</p>
+                        <p>@lang('messages.staffs')</p>
                     </div>
                 </a>
             </section>

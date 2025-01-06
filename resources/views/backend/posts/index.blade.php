@@ -35,14 +35,14 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Title</th>
+                                <th>@lang('messages.title')</th>
                                 <th>Category</th>
                                 <th>Sub Category</th>
                                 <th>Description</th>
                                 <th style="width: 30%;">Document</th>
-                                <th>Slug</th>
-                                <th>Created At</th>
-                                <th>Action</th>
+                                <th>@lang('messages.slug')</th>
+                                <th>@lang('messages.created_at')</th>
+                                <th>@lang('messages.action')</th>
                             </tr>
                             </thead>
 
@@ -51,7 +51,7 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header bg-danger">
-                                            <h5 class="modal-title" id="exampleModalCenterTitle">Delete Confirmation</h5>
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">@lang('messages.delete_confirmation')</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -60,11 +60,11 @@
                                             Are you sure you want to delete this post?
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('messages.cancel')</button>
                                             <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                <button type="submit" class="btn btn-danger">@lang('messages.delete')</button>
                                             </form>
                                         </div>
                                     </div>
