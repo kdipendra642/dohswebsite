@@ -141,7 +141,7 @@ class FrontendIndexService
             'informationRelatedNews' => $informationRelatedNews,
             'tenderRelatedNews' => $tenderRelatedNews,
             'publicationRelatedNews' => $publicationRelatedNews,
-            'otherNews' => $otherNews,
+            'otherNews' => $otherNews
         ];
     }
 
@@ -151,9 +151,11 @@ class FrontendIndexService
     public function getContactPageData(): array
     {
         $sitesettings = $this->siteSettingRepository->fetch(id: 1);
+        $currentLocale = session('locale', app()->getLocale());
 
         return [
             'sitesettings' => $sitesettings,
+            'currentLocale' => $currentLocale
         ];
     }
 

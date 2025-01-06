@@ -35,4 +35,18 @@ return [
     'welcome_message' => ':name, DHIS वेब पोर्टलमा स्वागत छ',
     'go_to_website' => 'वेबसाइटमा जानुहोस्',
     'ip_address' => 'IP Address',
+    'address' => 'ठेगाना',
+    'contact_number' => 'सम्पर्क नम्बर',
+    'e_mail' => 'ई-मेल',
+    'website' => 'वेबसाइट',
+    'contact_address' => 'सम्पर्क ठेगाना',
+    'useful_links' => 'लाभदायक लिङ्कहरू',
+    'contact_us' => 'हामीलाई सम्पर्क गर्नुहोस्',
+    'laws_regulations' => 'कानून / नियमावली',
+    'tender_notice' => 'टेन्डर सूचना',
+    'publication' => 'प्रकाशन',
+    'information_news' => 'सूचना / समाचार',
+    'news' => 'सूचना',
+    'send_your_feedback' => 'हामीलाई तपाईंको प्रतिक्रिया पठाउनुहोस्',
+    'submit_your_feedback' => 'आफ्नो सन्देश पेश गर्नुहोस्'
 ];

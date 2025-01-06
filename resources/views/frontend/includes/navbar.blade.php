@@ -4,9 +4,15 @@
               <center>
                   <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" alt="{{$siteSettings->titleOne}}" class="img-fluid img-logo" style="padding-top:4px">
               </center>
-            <h1 class=h1>{{$siteSettings->titleOne}}</h1>
-            <h4 class="h4">{{$siteSettings->titleTwo}}</h4>
-            <h6 class="h6">{{$siteSettings->titleThree}}</h6>
+              @if ($currentLocale == 'en')
+              <h1 class=h1>{{$siteSettings->titleOne}}</h1>
+              <h4 class="h4">{{$siteSettings->titleTwo}}</h4>
+              <h6 class="h6">{{$siteSettings->titleThree}}</h6>
+              @else
+              <h1 class=h1>{{$siteSettings->titleOne_nep}}</h1>
+              <h4 class="h4">{{$siteSettings->titleTwo_nep}}</h4>
+              <h6 class="h6">{{$siteSettings->titleThree_nep}}</h6>
+              @endif
           <div class="clear-fix"></div>
       </div>
       <div class="col-md-4 search d-none d-md-block">

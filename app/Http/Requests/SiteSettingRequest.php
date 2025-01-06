@@ -28,6 +28,14 @@ class SiteSettingRequest extends BaseRequest
             'metaKeywords' => 'sometimes|nullable|string|min:1|max:255',
             'metaDescription' => 'sometimes|nullable|string|min:1|max:255',
             'imap' => 'sometimes|nullable|url|min:1|max:255',
+            'titleOne_nep' => 'sometimes|nullable|string|min:1|max:255',
+            'titleTwo_nep' => 'sometimes|nullable|string|min:1|max:255',
+            'titleThree_nep' => 'sometimes|nullable|string|min:1|max:255',
+            'titleFour_nep' => 'sometimes|nullable|string|min:1|max:255',
+            'description_nep' => 'sometimes|nullable|string|min:1|max:255',
+            'address_nep' => 'sometimes|nullable|string|min:1|max:255',
+            'metaKeywords_nep' => 'sometimes|nullable|string|min:1|max:255',
+            'metaDescription_nep' => 'sometimes|nullable|string|min:1|max:255',
         ];
     }
 }

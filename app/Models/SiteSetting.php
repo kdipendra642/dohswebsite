@@ -23,5 +23,13 @@ class SiteSetting extends Model
         'imap',
         'metaKeywords',
         'metaDescription',
+        'titleOne_nep',
+        'titleTwo_nep',
+        'titleThree_nep',
+        'titleFour_nep',
+        'description_nep',
+        'address_nep',
+        'metaKeywords_nep',
+        'metaDescription_nep',
     ];
 }
