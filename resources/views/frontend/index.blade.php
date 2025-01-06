@@ -1,5 +1,6 @@
 @extends('frontend.layout.master')
 @section('mainContent')
+
     <section id="flash" class="wow fadeInUp">
         <div class="container">
         <div class="row">
