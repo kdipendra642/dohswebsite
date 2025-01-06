@@ -9,10 +9,7 @@
                             ->toNepaliDate(format: 'D, j F Y', locale: 'en')}} </a>
         </div>
         <div class="social-links float-right">
-            <!-- <a href="#" class="facebook"><i class="fa fa-blind"></i> स्क्रीन रीडर</a> -->
-            <!-- <a href="#" class="facebook"><i class="fa fa-line-chart"></i> न्यून व्यान्डविथ</a> -->
-            <!-- <a href="#" title="Dark Mode" class="facebook"><i class="fa fa-adjust"></i></a> -->
-            <!-- <a href="#" class="facebook"><i class="fa"></i> English</a> -->
+            <a href="{{ route('lang.setup', 'en') }}" class="facebook"><i class="fa"></i> English</a>
+            <a href="{{ route('lang.setup', 'nep') }}" class="facebook"><i class="fa"></i> नेपाली</a>
         </div>
-    </div>
 </section>

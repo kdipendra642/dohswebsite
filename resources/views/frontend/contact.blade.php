@@ -9,22 +9,28 @@
                 <div class="breadcump">
                     <a href="{{ route('index') }}"><i class="fa fa-home fa-lg"></i> </a>  / Contact Us
                 </div>
-                <h2 class="notice_title">Contact Us</h2>
+                <h2 class="notice_title">@lang('messages.contact_us')</h2>
                     <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" alt="{{$contactPageData['sitesettings']->titleThree}}" class="img-fluid img-logo" style="padding-left:4px">
                 <p>
-                    <p>
-                        <h2><b>{{$contactPageData['sitesettings']->titleThree}}</b></h2>
-                            <h3 style="font-size:24px;">{{$contactPageData['sitesettings']->address}}</h3>
-                            <span style="font-size: 1rem;">Phone: </span>{{$contactPageData['sitesettings']->primaryContact }}, {{$contactPageData['sitesettings']->secondaryContact}}<br>
-                            <span style="font-size: 1rem;">Website: </span><a href="{{route('index')}}" target="_blank">{{route('index')}}</a><span style="font-size: 1rem;"><br></span>
-                            <span style="font-size: 1rem;">Email: {{$contactPageData['sitesettings']->primaryEmail }}, {{$contactPageData['sitesettings']->secondaryEmail }}<br></span>
-                    </p>
+                    @if ($contactPageData['currentLocale'] == 'en')
+                    <h2><b>{{$contactPageData['sitesettings']->titleThree}}</b></h2>
+                    <span style="font-size: 1rem;">Address: {{$contactPageData['sitesettings']->address}}</span> <br>
+                    <span style="font-size: 1rem;">Phone: </span>{{$contactPageData['sitesettings']->primaryContact }}, {{$contactPageData['sitesettings']->secondaryContact}}<br>
+                    <span style="font-size: 1rem;">Website: </span><a href="{{route('index')}}" target="_blank">{{route('index')}}</a><span style="font-size: 1rem;"><br></span>
+                    <span style="font-size: 1rem;">Email: {{$contactPageData['sitesettings']->primaryEmail }}, {{$contactPageData['sitesettings']->secondaryEmail }}<br></span>
+                    @else
+                    <h2><b>{{$contactPageData['sitesettings']->titleFour_nep}}</b></h2>
+                    <span style="font-size: 1rem;">Address: {{$contactPageData['sitesettings']->address_nep}}</span> <br>
+                    <span style="font-size: 1rem;">Phone: </span>{{$contactPageData['sitesettings']->primaryContact }}, {{$contactPageData['sitesettings']->secondaryContact}}<br>
+                    <span style="font-size: 1rem;">Website: </span><a href="{{route('index')}}" target="_blank">{{route('index')}}</a><span style="font-size: 1rem;"><br></span>
+                    <span style="font-size: 1rem;">Email: {{$contactPageData['sitesettings']->primaryEmail }}, {{$contactPageData['sitesettings']->secondaryEmail }}<br></span>
+                    @endif
                 </p>
             </div>
 
             <div class="col-lg-9 col-sm-9 col-xs-12" style="padding-top: 15px;">
                 <h2 class="notice_title">
-                    Send Us Your Feedback
+                    @lang('messages.send_your_feedback')
                     <hr>
                 </h2>
 
@@ -61,7 +67,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12">
-                                <button class="btn btn-primary" type="submit">Submit Your Message</button>
+                                <button class="btn btn-primary" type="submit">@lang('messages.submit_your_feedback')</button>
                             </div>
                         </div>
 

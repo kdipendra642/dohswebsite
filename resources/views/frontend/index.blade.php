@@ -3,7 +3,7 @@
     <section id="flash" class="wow fadeInUp">
         <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-2 col-lg-1 news-tag">सूचना</div>
+            <div class="col-sm-12 col-md-2 col-lg-1 news-tag">@lang('messages.news')</div>
                 <div class="col-sm-12 col-md-10 col-lg-10 news">
                     <div class="owl-carousel flash-caresol">
                         @foreach ($getHomePageData['tickers'] as $tickers)
@@ -61,7 +61,7 @@
                     <div class="wow fadeInUp">
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active tabbg" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" style="width: 100% !important">सूचना / समाचार</a>
+                                <a class="nav-item nav-link active tabbg" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" style="width: 100% !important">@lang('messages.information_news')</a>
                                 <!-- <a class="nav-item nav-link tabbg" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">कानून / नियमावली</a> -->
                             </div>
                         </nav>
@@ -102,9 +102,9 @@
           <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 remove-mar-pad">
             <nav>
               <div class="nav nav-tabs" id="news-tab" role="tablist">
-                <a class="nav-item nav-link active tabbg" id="nav-suchana-tab"  data-toggle="tab" href="#nav-suchhana" role="tab" aria-controls="nav-suchana" aria-selected="true"> <i class="fa fa-balance-scale fa-lg"></i> <span class="d-none d-md-inline-block">कानून / नियमावली</span></a>
-                <a class="nav-item nav-link tabbg" id="nav-namunakanun-tab"  data-toggle="tab" href="#nav-namunakanun" role="tab" aria-controls="nav-namunakanun" aria-selected="true"><i class="fa fa-list-ul fa-lg"></i> <span class="d-none d-md-inline-block">बोलपत्र सम्बन्धी सूचना</span></a>
-                <a class="nav-item nav-link tabbg" id="nav-trainnig-tab" data-toggle="tab" href="#nav-trainnig" role="tab" aria-controls="nav-traninnig" aria-selected="false"><i class="fa fa-book fa-lg"></i> <span class="d-none d-md-inline-block">प्रकाशन</span></a>
+                <a class="nav-item nav-link active tabbg" id="nav-suchana-tab"  data-toggle="tab" href="#nav-suchhana" role="tab" aria-controls="nav-suchana" aria-selected="true"> <i class="fa fa-balance-scale fa-lg"></i> <span class="d-none d-md-inline-block">@lang('messages.laws_regulations')</span></a>
+                <a class="nav-item nav-link tabbg" id="nav-namunakanun-tab"  data-toggle="tab" href="#nav-namunakanun" role="tab" aria-controls="nav-namunakanun" aria-selected="true"><i class="fa fa-list-ul fa-lg"></i> <span class="d-none d-md-inline-block">@lang('messages.tender_notice')</span></a>
+                <a class="nav-item nav-link tabbg" id="nav-trainnig-tab" data-toggle="tab" href="#nav-trainnig" role="tab" aria-controls="nav-traninnig" aria-selected="false"><i class="fa fa-book fa-lg"></i> <span class="d-none d-md-inline-block">@lang('messages.publication')</span></a>
                 <!-- <a class="nav-item nav-link tabbg" id="nav-publication-tab" data-toggle="tab" href="#nav-publication" role="tab" aria-controls="nav-publication" aria-selected="false"><i class="fa fa-book fa-lg"></i> <span class="d-none d-md-inline-block">प्रकाशन</span></a> -->
               </div>
             </nav>
@@ -175,27 +175,6 @@
                 </ul>
               </div>
 
-              <!-- <div class="tab-pane fade border-tab" id="nav-publication" role="tabpanel" aria-labelledby="nav-publication-tab">
-                <ul>
-                    @foreach ($getHomePageData['otherNews'] as $otherNews)
-                    <li>
-                        <span class="fa fa-thumb-tack"></span>
-                        <a href="{{ route('posts.single', $otherNews->slug) }}" title="{{$otherNews->title}}" target="_blank">
-                            {{$otherNews->title}}
-                        </a>
-                        <i>
-                            <small>
-                             प्रकाशित मिति {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($otherNews->created_at->format('Y-m-d'))
-                            ->toNepaliDate(format: 'D, j F Y')}}
-                            </small>
-                        </i>
-                    </li>
-                    @endforeach
-
-                 <span class="float-right more"><a href="#" class="btn btn-sm btn-danger">थप समाग्री >></a></span>
-                  <span class="clearfix"></span>
-                </ul>
-              </div> -->
             </div>
 
           </div>
@@ -239,16 +218,9 @@
     </div>
   </section>
 
-  <!-- {{-- <section id="office" class="wow fadeInUp d-none d-md-block">
-
-    <div class="bibhag-list">
-
-    </div>
-  </div></section> --}} -->
-
     <section id="all_notice" class="wow fadeInUp d-sm-block d-none mt-3">
         <div class="container bibhag pl-2">
-            <h4 class="text-center pt-3 mb-0 pb-0 imp-link">महत्वपूर्ण लिङ्कहरु</h4>
+            <h4 class="text-center pt-3 mb-0 pb-0 imp-link">@lang('messages.useful_links')</h4>
             <hr>
         </div>
         <div class="container">
@@ -265,50 +237,32 @@
         </div>
     </section>
 
-    <!-- <section id="gallery" class="wow fadeInUp">
-        <div class="container bg-silver" style="padding:0px 0px 6px 8px;">
-            <h2 class="text-center pt-3 text-uppercase">ग्यालेरी</h2>
-            <hr>
-            <div class="owl-carousel gallery-carousel">
-            @foreach ($getHomePageData['galleries'] as $gallery)
-                <div class="gallery-img">
-                    <a href="{{ route('gallery',$gallery->slug) }}" title="{{$gallery->title}}">
-                        @if ($gallery->getMedia('thumbnail')->isNotEmpty())
-                        <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" class="img-fluid" alt="{{$gallery->title}}">
-                        @endif
-                    </a>
-                </div>
-            @endforeach
-            </div>
-        </div>
-    </section> -->
-
     <style>
        .gallery-carousel .gallery-img {
-    position: relative;
-    overflow: hidden; /* Ensure images do not overflow */
-}
+            position: relative;
+            overflow: hidden;
+        }
 
-.gallery-carousel img {
-    width: 100%; /* Make images responsive */
-    height: auto; /* Maintain aspect ratio */
-}
+        .gallery-carousel img {
+            width: 100%;
+            height: auto;
+        }
 
-.caption {
-    position: absolute;
-    bottom: 10px; /* Adjust position */
-    left: 10px; /* Adjust position */
-    right: 10px; /* Adjust position */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    color: white; /* Text color */
-    padding: 5px; /* Padding around the text */
-    text-align: center; /* Center text */
-    border-radius: 5px; /* Rounded corners */
-}
+        .caption {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px;
+            text-align: center;
+            border-radius: 5px;
+        }
     </style>
   <section id="gallery" class="wow fadeInUp">
     <div class="container bg-silver" style="padding:0px 0px 6px 8px;">
-        <h2 class="text-center pt-3 text-uppercase">ग्यालेरी</h2>
+        <h4 class="text-center pt-3 mb-0 pb-0 imp-link">@lang('messages.gallery')</h4>
         <hr>
         <div class="owl-carousel gallery-carousel">
             @foreach ($getHomePageData['galleries'] as $gallery)

@@ -37,4 +37,18 @@ return [
     'welcome_message' => 'Welcome :name, to DHIS Web Portal',
     'go_to_website' => 'Go To Website',
     'ip_address' => 'IP Address',
+    'address' => 'Address',
+    'contact_number' => 'Contact Number',
+    'e_mail' => 'E-mail',
+    'website' => 'Website',
+    'contact_address' => 'Contact Address',
+    'useful_links' => 'Useful Links',
+    'contact_us' => 'Contact Us',
+    'laws_regulations' => 'Laws / Regulations',
+    'tender_notice' => 'Tender Notice',
+    'publication' => 'Publication',
+    'information_news' => 'Publication',
+    'news' => 'News',
+    'send_your_feedback' => 'Send Us Your Feedback',
+    'submit_your_feedback' => 'Submit Your Message'
 ];
