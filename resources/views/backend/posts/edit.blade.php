@@ -87,7 +87,8 @@
                                                     <a href="{{ route('delete.image', $posts->getMedia('posts')[0]->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
                                                 </figure>
                                                 @else
-                                                <a href="#">{{$posts->getMedia('posts')[0]->name}}</a>                                
+                                                <a href="{{$posts->getMedia('posts')[0]->getUrl()}}">{{$posts->getMedia('posts')[0]->name}}</a>  
+                                                <a href="{{ route('delete.image', $posts->getMedia('posts')[0]->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i> </a>
                                                 @endif
                                             </li>
                                         </ul>

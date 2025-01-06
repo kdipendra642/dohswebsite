@@ -30,7 +30,9 @@ return [
     'description' => 'विवरण',
     'file_input' => 'फाइल इनपुट',
     'name' => 'नाम',
+    'email' => 'इ-मेल',
     'created_at' => 'बनाइएको मिति',
     'welcome_message' => ':name, DHIS वेब पोर्टलमा स्वागत छ',
-    'go_to_website' => 'वेबसाइटमा जानुहोस्'
+    'go_to_website' => 'वेबसाइटमा जानुहोस्',
+    'ip_address' => 'IP Address',
 ];

@@ -2,6 +2,8 @@
 
 @section('mainContent')
 
+@include('backend.datatable.upperscript')
+
 <section class="wrapper">
     <div class="row">
         <div class="col-lg-12">
@@ -29,7 +31,7 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="users-table">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -41,7 +43,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
-                                <tr>
+                                <!-- <tr>
                                     <th scope="row">1</th>
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
@@ -50,8 +52,8 @@
                                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-success btn-sm"><i class=" fa fa-pencil"></i></a>
                                         <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter{{$user->id}}"><i class="fa fa-trash-o "></i></a>
                                     </td>
-                                </tr>
-{{-- modal --}}
+                                </tr> -->
+                                {{-- modal --}}
                                 <div class="modal fade" id="exampleModalCenter{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
@@ -77,7 +79,7 @@
                                         </div>
                                     </div>
                                 </div>
-{{-- modal ends here --}}
+                                {{-- modal ends here --}}
                                 @endforeach
                             </tbody>
                         </table>
@@ -89,5 +91,28 @@
     <!-- page end-->
 </section>
 
+@include('backend.datatable.lowerscript')
 
+<script>
+jQuery(document).ready(function($) {
+    $('#users-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: {
+            url: "{{ route('users.data') }}",
+            type: "GET",
+            error: function(xhr, error, thrown) {
+                console.error('Error:', xhr.status, thrown);
+            }
+        },
+        columns: [
+            { data: 'id', name: 'id' },
+            { data: 'name', name: 'name' },
+            { data: 'email', name: 'email' },
+            { data: 'created_at', name: 'created_at' },
+            { data: 'action', name: 'action', orderable: false, searchable: false }
+        ]
+    });
+});
+</script>
 @endsection

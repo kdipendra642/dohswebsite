@@ -33,6 +33,8 @@ return [
     'file_input' => 'File Input',
     'created_at' => 'Created At',
     'name' => 'Name',
+    'email' => 'E-mail',
     'welcome_message' => 'Welcome :name, to DHIS Web Portal',
-    'go_to_website' => 'Go To Website'
+    'go_to_website' => 'Go To Website',
+    'ip_address' => 'IP Address',
 ];

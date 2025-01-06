@@ -6,6 +6,7 @@ use App\Http\Controllers\Base\BaseController;
 use App\Http\Requests\ImportantLinkRequest;
 use App\Services\ImportantLinkService;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 class ImportantLinkController extends BaseController
 {
@@ -31,6 +32,30 @@ class ImportantLinkController extends BaseController
         return view('backend.importantlinks.index', [
             'importantlinks' => $importantlinks,
         ]);
+    }
+
+    /**
+     * Get a list of data
+     */
+    public function importantLinksData()
+    {
+        try {
+            $importantlinks = $this->importantLinkService->getAllImportantLink();
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+
+        return DataTables::of($importantlinks)
+        ->editColumn('created_at', function ($importantlink) {
+            return $importantlink->created_at->diffForHumans();
+        })
+        ->editColumn('action', function ($importantlink) {
+            return '
+                    <a href="' . route('importantlinks.edit', $importantlink->id) . '" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                    <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter' . $importantlink->id . '"><i class="fa fa-trash-o"></i></a>
+                ';
+        })
+        ->make(true);
     }
 
     /**

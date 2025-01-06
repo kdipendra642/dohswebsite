@@ -6,6 +6,8 @@ use App\Http\Controllers\Base\BaseController;
 use App\Http\Requests\SliderRequest;
 use App\Services\SliderService;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
+use Illuminate\Support\Str;
 
 class SliderController extends BaseController
 {
@@ -31,6 +33,43 @@ class SliderController extends BaseController
         return view('backend.sliders.index', [
             'sliders' => $sliders,
         ]);
+    }
+
+    /**
+     * Get Sliders data
+     */
+    public function slidersData()
+    {
+        try {
+            $sliders = $this->sliderService->getAllSliders();
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+        return DataTables::of($sliders)
+            ->editColumn('description', function ($slider) {
+                return Str::limit($slider->description, 100);
+            })
+            ->editColumn('document_url', function ($slider) {
+                if ($slider->getMedia('sliders')->isNotEmpty()) {
+                    $mediaItem = $slider->getMedia('sliders')->first();
+                    return [
+                        'media' => $mediaItem->getUrl(),
+                        'type' => $mediaItem->mime_type
+                    ];
+                }
+                return '';
+            })
+            ->editColumn('created_at', function ($slider) {
+                return $slider->created_at->diffForHumans();
+            })
+            ->editColumn('action', function ($slider) {
+                return '
+                        <a href="' . route('sliders.edit', $slider->id) . '" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter' . $slider->id . '"><i class="fa fa-trash-o"></i></a>
+                    ';
+            })
+            ->make(true);
+
     }
 
     /**

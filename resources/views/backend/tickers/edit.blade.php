@@ -65,7 +65,8 @@
                                                     <a href="{{ route('delete.image', $ticker->getMedia('tickers')[0]->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
                                                 </figure>
                                                 @else
-                                                <a href="#">{{$ticker->getMedia('tickers')[0]->name}}</a>                                
+                                                <a href="{{$ticker->getMedia('tickers')[0]->getUrl()}}">{{$ticker->getMedia('tickers')[0]->name}}</a>  
+                                                <a href="{{ route('delete.image', $ticker->getMedia('tickers')[0]->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i> </a>
                                                 @endif
                                             </li>
                                         </ul>

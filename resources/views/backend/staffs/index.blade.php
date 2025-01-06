@@ -2,6 +2,8 @@
 
 @section('mainContent')
 
+@include('backend.datatable.upperscript')
+
 <section class="wrapper">
     <div class="row">
         <div class="col-lg-12">
@@ -29,7 +31,7 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="staffs-table">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -47,37 +49,8 @@
                             </thead>
                             <tbody>
                                 @foreach ($staffs as $staff)
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>
-                                        @if ($staff->getMedia('staffs')->isNotEmpty())
-                                            <img
-                                            src="{{$staff->getMedia('staffs')[0]->getUrl()}}"
-                                            alt="{{$staff->name}}"
-                                            style="width: 30%; height: 30%;"
-                                            >
-                                        @endif
-                                    </td>
-                                    <td>{{$staff->name}}</td>
-                                    <td>{{$staff->telephone}}</td>
-                                    <td>{{$staff->email}}</td>
-                                    <td>{{$staff->position}}</td>
-                                    <td>{{$staff->division}}</td>
-                                    <td>{{$staff->section}}</td>
-                                    <td>
-                                        @if ($staff->showOnHomePage)
-                                            Show On Home Page
-                                        @else
-                                            -
-                                        @endif
-                                    </td>
-                                    <td>{{$staff->created_at->diffForHumans()}}</td>
-                                    <td>
-                                        <a href="{{ route('staffs.edit', $staff->id) }}" class="btn btn-success btn-sm"><i class=" fa fa-pencil"></i></a>
-                                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter{{$staff->id}}"><i class="fa fa-trash-o "></i></a>
-                                    </td>
-                                </tr>
-{{-- modal --}}
+   
+                                {{-- modal --}}
                                 <div class="modal fade" id="exampleModalCenter{{$staff->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
@@ -103,7 +76,7 @@
                                         </div>
                                     </div>
                                 </div>
-{{-- modal ends here --}}
+                                {{-- modal ends here --}}
                                 @endforeach
                             </tbody>
                         </table>
@@ -115,5 +88,46 @@
     <!-- page end-->
 </section>
 
+@include('backend.datatable.lowerscript')
 
+
+<script>
+jQuery(document).ready(function($) {
+    $('#staffs-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: {
+            url: "{{ route('staffs.data') }}",
+            type: "GET",
+            error: function(xhr, error, thrown) {
+                console.error('Error:', xhr.status, thrown);
+            }
+        },
+        columns: [
+            { data: 'id', name: 'id' },
+            {
+                    data: 'document_url',
+                    name: 'document_url',
+                    orderable: false,
+                    searchable: false,
+                    render: function(data, type, row) {
+                        if (data) {
+                            return '<img src="' + data.media + '" alt="' + row.title + '" style="width: 50%; height: 50%;">';
+                        }
+                        return '';
+                    }
+                },
+            { data: 'name', name: 'name' },
+            { data: 'telephone', name: 'telephone' },
+            { data: 'email', name: 'email' },
+            { data: 'position', name: 'position' },
+            { data: 'division', name: 'division' },
+            { data: 'section', name: 'section' },
+            { data: 'features', name: 'features' },
+            { data: 'created_at', name: 'created_at' },
+            { data: 'action', name: 'action', orderable: false, searchable: false }
+        ]
+    });
+});
+</script>
 @endsection
