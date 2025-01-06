@@ -74,7 +74,7 @@
                                     </li>
                                      @endforeach
 
-                                    <span class="float-right more"><a href="#">विभागका सुचनाहरु &raquo;</a></span>
+                                    <span class="float-right more"><a href="{{ route('subcategory.post', App\Enums\PostSubCategoryTypeEnum::INFORMATION_NEWS->value) }}">विभागका सुचनाहरु >></a></span>
                                     <span class="clearfix"></span>
                                 </ul>
                             </div>
@@ -102,10 +102,10 @@
           <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 remove-mar-pad">
             <nav>
               <div class="nav nav-tabs" id="news-tab" role="tablist">
-                <!-- <a class="nav-item nav-link active tabbg" id="nav-suchana-tab"  data-toggle="tab" href="#nav-suchhana" role="tab" aria-controls="nav-suchana" aria-selected="true"> <i class="fa fa-newspaper-o fa-lg"></i> <span class="d-none d-md-inline-block">सूचना / समाचार</span></a> -->
-                <a class="nav-item nav-link active tabbg" id="nav-namunakanun-tab"  data-toggle="tab" href="#nav-namunakanun" role="tab" aria-controls="nav-namunakanun" aria-selected="true"><i class="fa fa-balance-scale fa-lg"></i> <span class="d-none d-md-inline-block">कानून / नियमावली</span></a>
-                <a class="nav-item nav-link tabbg" id="nav-trainnig-tab" data-toggle="tab" href="#nav-trainnig" role="tab" aria-controls="nav-traninnig" aria-selected="false"><i class="fa fa-list-ul fa-lg"></i> <span class="d-none d-md-inline-block">बोलपत्र सम्बन्धी सूचना</span></a>
-                <a class="nav-item nav-link tabbg" id="nav-publication-tab" data-toggle="tab" href="#nav-publication" role="tab" aria-controls="nav-publication" aria-selected="false"><i class="fa fa-book fa-lg"></i> <span class="d-none d-md-inline-block">प्रकाशन</span></a>
+                <a class="nav-item nav-link active tabbg" id="nav-suchana-tab"  data-toggle="tab" href="#nav-suchhana" role="tab" aria-controls="nav-suchana" aria-selected="true"> <i class="fa fa-balance-scale fa-lg"></i> <span class="d-none d-md-inline-block">कानून / नियमावली</span></a>
+                <a class="nav-item nav-link tabbg" id="nav-namunakanun-tab"  data-toggle="tab" href="#nav-namunakanun" role="tab" aria-controls="nav-namunakanun" aria-selected="true"><i class="fa fa-list-ul fa-lg"></i> <span class="d-none d-md-inline-block">बोलपत्र सम्बन्धी सूचना</span></a>
+                <a class="nav-item nav-link tabbg" id="nav-trainnig-tab" data-toggle="tab" href="#nav-trainnig" role="tab" aria-controls="nav-traninnig" aria-selected="false"><i class="fa fa-book fa-lg"></i> <span class="d-none d-md-inline-block">प्रकाशन</span></a>
+                <!-- <a class="nav-item nav-link tabbg" id="nav-publication-tab" data-toggle="tab" href="#nav-publication" role="tab" aria-controls="nav-publication" aria-selected="false"><i class="fa fa-book fa-lg"></i> <span class="d-none d-md-inline-block">प्रकाशन</span></a> -->
               </div>
             </nav>
             <div class="tab-content" id="nav-tab1">
@@ -120,16 +120,13 @@
                         </a>
                         <i>
                             <small>
-                            {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($lawRelatedNews->created_at->format('Y-m-d'))
-                            ->toNepaliDate(format: 'D, j F Y', locale: 'en')}}
-                                प्रकाशित मिति २०८१ आश्विन २१ गते सोमबार २२:४९:५२ बजे
-                                <span> (अनुमति तथा दर्ता शाखा)</span>
+                            प्रकाशित मिति {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($lawRelatedNews->created_at->format('Y-m-d'))
+                            ->toNepaliDate(format: 'D, j F Y')}}
                             </small>
                         </i>
                     </li>
                     @endforeach
-
-                  <span class="float-right more"><a href="#" class="btn btn-sm btn-danger">थप समाग्री &raquo;</a></span>
+                  <span class="float-right more"><a href="{{ route('subcategory.post', App\Enums\PostSubCategoryTypeEnum::LAWS_REGULATION->value) }}" class="btn btn-sm btn-danger">थप समाग्री >></a></span>
                   <span class="clearfix"></span>
                 </ul>
               </div>
@@ -144,16 +141,14 @@
                         </a>
                         <i>
                             <small>
-                            {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($tenderRelatedNews->created_at->format('Y-m-d'))
-                            ->toNepaliDate(format: 'D, j F Y', locale: 'en')}}
-                                प्रकाशित मिति २०८१ आश्विन २१ गते सोमबार २२:४९:५२ बजे
-                                <span> (अनुमति तथा दर्ता शाखा)</span>
+                            प्रकाशित मिति {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($tenderRelatedNews->created_at->format('Y-m-d'))
+                            ->toNepaliDate(format: 'D, j F Y')}}
                             </small>
                         </i>
                     </li>
                     @endforeach
 
-                  <span class="float-right more"><a href="#" class="btn btn-sm btn-danger">थप समाग्री &raquo;</a></span>
+                  <span class="float-right more"><a href="{{ route('subcategory.post', App\Enums\PostSubCategoryTypeEnum::TENDER_NOTICE->value) }}" class="btn btn-sm btn-danger">थप समाग्री >></a></span>
                   <span class="clearfix"></span>
                 </ul>
               </div>
@@ -168,16 +163,14 @@
                         </a>
                         <i>
                             <small>
-                            {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($publicationRelatedNews->created_at->format('Y-m-d'))
-                            ->toNepaliDate(format: 'D, j F Y', locale: 'en')}}
-                                प्रकाशित मिति २०८१ आश्विन २१ गते सोमबार २२:४९:५२ बजे
-                                <span> (अनुमति तथा दर्ता शाखा)</span>
+                            प्रकाशित मिति {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($publicationRelatedNews->created_at->format('Y-m-d'))
+                            ->toNepaliDate(format: 'D, j F Y')}}
                             </small>
                         </i>
                     </li>
                     @endforeach
 
-                  <span class="float-right more"><a href="#" class="btn btn-sm btn-danger">थप समाग्री &raquo;</a></span>
+                  <span class="float-right more"><a href="{{ route('subcategory.post', App\Enums\PostSubCategoryTypeEnum::PUBLICATION->value) }}" class="btn btn-sm btn-danger">थप समाग्री >></a></span>
                   <span class="clearfix"></span>
                 </ul>
               </div>
@@ -192,16 +185,14 @@
                         </a>
                         <i>
                             <small>
-                            {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($otherNews->created_at->format('Y-m-d'))
-                            ->toNepaliDate(format: 'D, j F Y', locale: 'en')}}
-                                प्रकाशित मिति २०८१ आश्विन २१ गते सोमबार २२:४९:५२ बजे
-                                <span> (अनुमति तथा दर्ता शाखा)</span>
+                             प्रकाशित मिति {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($otherNews->created_at->format('Y-m-d'))
+                            ->toNepaliDate(format: 'D, j F Y')}}
                             </small>
                         </i>
                     </li>
                     @endforeach
 
-                 <span class="float-right more"><a href="#" class="btn btn-sm btn-danger">थप समाग्री &raquo;</a></span>
+                 <span class="float-right more"><a href="#" class="btn btn-sm btn-danger">थप समाग्री >></a></span>
                   <span class="clearfix"></span>
                 </ul>
               </div> -->

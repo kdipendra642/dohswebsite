@@ -46,7 +46,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('/categories', CategoryController::class);
 
-    Route::resource('/posts', PostController::class);
+    Route::resource('/posts', PostController::class)->except(['show']);
+    Route::get('/posts/data', [PostController::class, 'postsData'])->name('posts.data');
 
     Route::resource('/contact/messages', ContactMessageController::class)->except(['store', 'update', 'edit', 'show']);
 
@@ -61,14 +62,21 @@ Route::middleware(['auth'])->group(function () {
 
 // Routes For Frontend
 Route::get('/', [IndexController::class, 'index'])->name('index');
+
 Route::get('/contact-us', [IndexController::class, 'contact'])->name('contact');
+
 Route::post('/contact-us/store', [ContactMessageController::class, 'store'])->name('messages.store');
-Route::get('/gallery/{slug}', [IndexController::class, 'gallery'])->name('gallery');
+
 Route::get('/single/tickers/{slug}', [IndexController::class, 'tickers'])->name('single.tickers');
 
 Route::get('/index/categories', [IndexController::class, 'category'])->name('category.index');
+
 Route::get('/posts/category/{categoryId}', [IndexController::class, 'categorywisePost'])->name('category.post');
 Route::get('/posts/single/{slug}', [IndexController::class, 'singlePost'])->name('posts.single');
+Route::get('/posts/subcatewise/{subcategory}', [IndexController::class, 'subcatewisePost'])->name('subcategory.post');
+
 Route::get('/index/gallery', [IndexController::class, 'indexGallery'])->name('gallery.index');
+Route::get('/gallery/{slug}', [IndexController::class, 'gallery'])->name('gallery');
+
 Route::get('/index/staffs', [IndexController::class, 'indexStaffs'])->name('index.staffs');
 Route::get('/single/staffs/{staffId}', [IndexController::class, 'singleStaffs'])->name('single.staffs');

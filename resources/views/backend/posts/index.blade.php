@@ -2,6 +2,8 @@
 
 @section('mainContent')
 
+@include('backend.datatable.upperscript')
+
 <section class="wrapper">
     <div class="row">
         <div class="col-lg-12">
@@ -29,12 +31,13 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="posts-table">
                             <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
                                 <th>Category</th>
+                                <th>Sub Category</th>
                                 <th>Description</th>
                                 <th style="width: 30%;">Document</th>
                                 <th>Slug</th>
@@ -42,66 +45,32 @@
                                 <th>Action</th>
                             </tr>
                             </thead>
-                            <tbody>
-                                @foreach ($posts as $post)
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>{{$post->title}}</td>
-                                    <td>{{$post->category->title}}</td>
-                                    <td>{!! \Illuminate\Support\Str::limit($post->description, 100, '...') !!}</td>
-                                    <td>
-                                        @if ($post->getMedia('posts')->isNotEmpty())
-                                            @php
-                                                $mediaItem = $post->getMedia('posts')->first(); // Get the first media item
-                                            @endphp
 
-                                            @if ($mediaItem->mime_type == 'image/png' || $mediaItem->mime_type == 'image/jpeg' || $mediaItem->mime_type == 'image/jpg')
-                                                <img
-                                                    src="{{ $mediaItem->getUrl() }}"
-                                                    alt="{{ $post->title }}"
-                                                    style="width: 50%; height: 50%;"
-                                                >
-                                            @else
-                                                <a href="{{ $mediaItem->getUrl() }}" target="_blank">{{ $mediaItem->name }}</a>
-                                            @endif
-                                        @endif
-                                    </td>
-                                    <td>{{$post->slug}}</td>
-                                    <td>{{$post->created_at->diffForHumans()}}</td>
-                                    <td>
-                                        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-success btn-sm"><i class=" fa fa-pencil"></i></a>
-                                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter{{$post->id}}"><i class="fa fa-trash-o "></i></a>
-                                    </td>
-                                </tr>
-{{-- modal --}}
-                                <div class="modal fade" id="exampleModalCenter{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header bg-danger">
-                                                <h5 class="modal-title" id="exampleModalCenterTitle">Delete Confirmation</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Are you sure you want to delete?
-                                            </div>
-                                            <div class="modal-footer">
-
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                                </form>
-
-                                            </div>
+                            @foreach($posts as $post)
+                            <div class="modal fade" id="exampleModalCenter{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-danger">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">Delete Confirmation</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete this post?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
-{{-- modal ends here --}}
-                                @endforeach
-                            </tbody>
+                            </div>
+                            @endforeach
                         </table>
                     </div>
                 </div>
@@ -110,4 +79,48 @@
     </div>
     <!-- page end-->
 </section>
+
+  @include('backend.datatable.lowerscript')
+
+    <script>
+    jQuery(document).ready(function($) {
+        $('#posts-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: "{{ route('posts.data') }}",
+                type: "GET",
+                error: function(xhr, error, thrown) {
+                    console.error('Error:', xhr.status, thrown);
+                }
+            },
+            columns: [
+                { data: 'id', name: 'id' },
+                { data: 'title', name: 'title' },
+                { data: 'category', name: 'category.title' },
+                { data: 'sub_category', name: 'sub_category' },
+                { data: 'description', name: 'description' },
+                {
+                    data: 'document_url',
+                    name: 'document_url',
+                    orderable: false,
+                    searchable: false,
+                    render: function(data, type, row) {
+                        if (data) {
+                            if (data.type == 'application/pdf') {
+                                return ' <a href="'+ data.media +'" target="_blank">'+ data.media +'</a>'
+                            } else {
+                                return '<img src="' + data.media + '" alt="' + row.title + '" style="width: 50%; height: 50%;">';
+                            }
+                        }
+                        return '';
+                    }
+                },
+                { data: 'slug', name: 'slug' },
+                { data: 'created_at', name: 'created_at' },
+                { data: 'action', name: 'action', orderable: false, searchable: false }
+            ]
+        });
+    });
+    </script>
 @endsection

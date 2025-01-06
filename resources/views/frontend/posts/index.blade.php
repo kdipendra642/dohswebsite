@@ -9,37 +9,54 @@
             Posts
         </h2>
     </div>
-
-
-    <div class="row content detail-body">
-        <div class="col-lg-9 col-sm-9 col-xs-12">
-            <table class="table table-striped table-hover">
-                <thead>
-                    <th width=10%>SN</th>
-                    <th>Title</th>
-                    <th>slug</th>
-                    <th>go to</th>
-                </thead>
-                <tbody>
-                    @php
-                        $i = 0;
-                    @endphp
-                    @foreach ($posts as $post)
-                    <tr>
-                        <td>1.</td>
-                        <td>{{$post->title}}</td>
-                        <td>{{$post->slug}}</td>
-                        <td>
-                            <a href="{{ route('posts.single', $post->slug) }}"><i class="fa fa-eye"></i></a>
-                        </td>
-                    </tr>
-                    @endforeach         
-                </tbody>
-            </table>
-        </div>
-
-    </div>
 </div>
 
 
+<!-- new content -->
+
+<section>
+  <div class="container archiving">
+      <div class="col-12 margintop">
+           <div class="table-responsive">
+               <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%">SN</th>
+                            <th style="width: 45%;">Title</th>
+                            <th style="width: 10%;">Category</th>
+                            <th style="width:10%;">Published</th>
+                            <th style="width: 8%">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                            $i = 1;
+                        @endphp
+                        @foreach ($posts as $post)    
+                        <tr>
+                            <td>{{$i++}}</td>
+                            <td>
+                                <a href="{{ route('posts.single', $post->slug) }}">
+                                    <i class="fas fa-thumbtack thumb-track"></i>                                                                              व्यावसायिक सामाजिक जिम्मेवारी (CSR) सम्बन्धी विवरण पेश गर्ने सम्बन्धी सूचना।
+                                </a>
+                            </td>
+                            <td>
+                                <span class="badge badge-danger">{{$post->category->title}}</span>
+                            </td>
+                            <td>
+                                {{$post->created_at->format('Y-m-d')}}
+                            </td>
+                            <td align="center">
+                                <div class="btn-group">
+                                    <a href="{{ route('posts.single', $post->slug) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforeach                                         
+                    </tbody>
+               </table>
+           </div>
+      </div>
+  </div>
+</section>
 @endsection

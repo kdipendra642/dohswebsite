@@ -87,6 +87,20 @@ class IndexController extends BaseController
     }
 
     /**
+     * Get Sub Category wise post
+     */
+    public function subcatewisePost(string $subcategory)
+    {
+        $posts = $this->frontendIndexService->getSubCategorywisePosts(
+            subcategory: $subcategory
+        );
+
+        return view('frontend.posts.index', ([
+            'posts' => $posts,
+        ]));
+    }
+
+    /**
      * Get Single Posts
      */
     public function singlePost(string $slug)

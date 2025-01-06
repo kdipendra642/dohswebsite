@@ -7,6 +7,8 @@ use App\Http\Requests\PostRequest;
 use App\Services\CategoryService;
 use App\Services\PostService;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
+use Illuminate\Support\Str;
 
 class PostController extends BaseController
 {
@@ -29,6 +31,7 @@ class PostController extends BaseController
     {
         try {
             $posts = $this->postService->getAllPosts();
+
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
@@ -36,6 +39,46 @@ class PostController extends BaseController
         return view('backend.posts.index', [
             'posts' => $posts,
         ]);
+    }
+
+    /**
+     * Get List of All Data
+     */
+    public function postsData()
+    {
+        try {
+            $posts = $this->postService->getAllPosts();
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+
+        return DataTables::of($posts)
+            ->editColumn('description', function ($post) {
+                return Str::limit($post->description, 100); // Assuming category is a relationship
+            })
+            ->editColumn('document_url', function ($post) {
+                if ($post->getMedia('posts')->isNotEmpty()) {
+                    $mediaItem = $post->getMedia('posts')->first();
+                    return [
+                        'media' => $mediaItem->getUrl(),
+                        'type' => $mediaItem->mime_type
+                    ];
+                }
+                return '';
+            })
+            ->editColumn('category', function ($post) {
+                return $post->category->title;
+            })
+            ->editColumn('created_at', function ($post) {
+                return $post->created_at->diffForHumans();
+            })
+            ->editColumn('action', function ($post) {
+                return '
+                        <a href="' . route('posts.edit', $post->id) . '" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter' . $post->id . '"><i class="fa fa-trash-o"></i></a>
+                    ';
+            })
+            ->make(true);
     }
 
     /**
