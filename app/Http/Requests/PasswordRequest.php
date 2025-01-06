@@ -2,8 +2,11 @@
 
 namespace App\Http\Requests;
 
-class TickerRequest extends BaseRequest
+use Illuminate\Foundation\Http\FormRequest;
+
+class PasswordRequest extends BaseRequest
 {
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -12,9 +15,8 @@ class TickerRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|min:1|max:255',
-            'description' => 'sometimes|nullable|string|min:1|max:255',
-            'document' => 'sometimes|nullable|file|max:5120|mimes:jpg,png,jpeg,pdf',
+            'current_password' => 'required|string|min:6|max:16|current_password',
+            'password' => 'required|string|min:6|max:16|different:current_password|confirmed',
         ];
     }
 }

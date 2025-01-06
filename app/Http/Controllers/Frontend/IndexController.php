@@ -91,7 +91,7 @@ class IndexController extends BaseController
      */
     public function singlePost(string $slug)
     {
-        $posts = $this->frontendIndexService->getPostById(
+        $posts = $this->frontendIndexService->getPostBySlug(
             slug: $slug
         );
 
@@ -109,6 +109,14 @@ class IndexController extends BaseController
 
         return view('frontend.staffs.index', ([
             'staffs' => $staffs,
+        ]));
+    }
+
+    public function tickers(string $slug)
+    {
+        $tickers = $this->frontendIndexService->getTickerBySlug(slug: $slug);
+        return view('frontend.tickers.show', ([
+            'tickers' => $tickers,
         ]));
     }
 }

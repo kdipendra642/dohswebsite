@@ -42,6 +42,17 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="sub_category">Sub Category</label>
+                            <select name="sub_category" class="form-control" id="sub_category">
+                                <option selected disabled>-- Please Select --</option>
+                                <option value="laws-regulation"  @if ($posts->sub_category == 'laws-regulation') selected @endif >Laws / Regulation</option>
+                                <option value="information-news"  @if ($posts->sub_category == 'information-news') selected @endif >Information News</option>
+                                <option value="tender-notice"  @if ($posts->sub_category == 'tender-notice') selected @endif >Tender Notice</option>
+                                <option value="publication"  @if ($posts->sub_category == 'publication') selected @endif >Publication</option>
+                                <option value="other"  @if ($posts->sub_category == 'other') selected @endif >Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="title">Slider Title</label>
                             <input type="title" name="title" class="form-control" id="title" placeholder="Enter title" value="{{ $posts->title }}">
                         </div>
@@ -50,8 +61,8 @@
                             <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{ $posts->description }}</textarea>
                         </div>
                         <div class="form-group">
-                            <label for="image">File input</label>
-                            <input type="file" id="image" name="image">
+                            <label for="document">File input</label>
+                            <input type="file" id="document" name="document">
 
                             <div>
                                 <label>Old File</label>

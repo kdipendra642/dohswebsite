@@ -29,7 +29,7 @@
                 </header>
 
                 <div class="card-body">
-                    <form action="{{ route('tickers.update',$ticker->id) }}" method="POST">
+                    <form action="{{ route('tickers.update',$ticker->id) }}" method="POST" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
                         <div class="form-group">
@@ -39,6 +39,26 @@
                         <div class="form-group">
                             <label for="description">Description</label>
                             <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{ $ticker->description }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="document">File input</label>
+                            <input type="file" id="document" name="document">
+
+                            <div>
+                                <label>Old File</label>
+                                <br>
+                                @if ($ticker->getMedia('tickers')->isNotEmpty())
+                                    @if (
+                                        $ticker->getMedia('tickers')[0]->mime_type == 'image/png'
+                                        || $ticker->getMedia('tickers')[0]->mime_type == 'image/jpeg'
+                                        || $ticker->getMedia('tickers')[0]->mime_type == 'image/jpg'
+                                    )
+                                        <img src="{{$ticker->getMedia('tickers')[0]->getUrl()}}" alt="{{$ticker->title}}" style="width: 30%; height: 30%;">
+                                        @else
+                                        <a href="{{$ticker->getMedia('tickers')[0]->getUrl()}}">{{$ticker->getMedia('tickers')[0]->name}}</a>                                
+                                    @endif
+                                @endif
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                     </form>

@@ -27,7 +27,11 @@ class TickerService
      */
     public function storetickers(array $data): void
     {
-        $this->tickerRepository->store($data);
+        $tickers = $this->tickerRepository->store($data);
+
+        if (isset($data['document'])) {
+            $tickers->addMedia($data['document'])->toMediaCollection('tickers');
+        }
     }
 
     /**
@@ -45,10 +49,17 @@ class TickerService
      */
     public function updatetickers(string|int $tickersId, array $data): object
     {
-        return $this->tickerRepository->update(
+        $tickers = $this->tickerRepository->update(
             data: $data,
             id: $tickersId
         );
+
+        if (isset($data['document'])) {
+            $tickers->clearMediaCollection('tickers');
+            $tickers->addMedia($data['document'])->toMediaCollection('tickers');
+        }
+
+        return $tickers;
     }
 
     /**

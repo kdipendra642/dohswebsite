@@ -54,13 +54,17 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/setting/menu', [DashboardController::class, 'settingMenu'])->name('setting.menu');
 
+    Route::get('/profile', [AuthController::class, 'myProfile'])->name('profile');
+    Route::post('/update/password/{userId}', [AuthController::class, 'updatePassword'])->name('password.update');
 });
+
 
 // Routes For Frontend
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/contact-us', [IndexController::class, 'contact'])->name('contact');
 Route::post('/contact-us/store', [ContactMessageController::class, 'store'])->name('messages.store');
 Route::get('/gallery/{slug}', [IndexController::class, 'gallery'])->name('gallery');
+Route::get('/single/tickers/{slug}', [IndexController::class, 'tickers'])->name('single.tickers');
 
 Route::get('/index/categories', [IndexController::class, 'category'])->name('category.index');
 Route::get('/posts/category/{categoryId}', [IndexController::class, 'categorywisePost'])->name('category.post');

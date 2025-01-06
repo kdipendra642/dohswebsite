@@ -29,7 +29,7 @@
                 </header>
 
                 <div class="card-body">
-                    <form action="{{ route('tickers.store') }}" method="POST">
+                    <form action="{{ route('tickers.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="title">Title</label>
@@ -38,6 +38,10 @@
                         <div class="form-group">
                             <label for="description">Description</label>
                             <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{ old('description') }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="document">File input</label>
+                            <input type="file" id="document" name="document">
                         </div>
                         <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                     </form>

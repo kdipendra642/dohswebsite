@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\PostSubCategoryTypeEnum;
 use Illuminate\Validation\Rule;
 
 class PostRequest extends BaseRequest
@@ -24,6 +25,12 @@ class PostRequest extends BaseRequest
                     ->ignore($this->post),
             ],
             'description' => 'sometimes|nullable|string|max:5000',
+            'sub_category' => [
+                'required',
+                'string',
+                Rule::in(PostSubCategoryTypeEnum::getAllValues())
+                // 'in:laws-regulation,information-news,tender-notice,other'
+            ],
             'document' => 'sometimes|nullable|file|max:5120|mimes:jpg,png,jpeg,pdf',
         ];
     }

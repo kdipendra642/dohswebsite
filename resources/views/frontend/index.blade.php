@@ -7,7 +7,7 @@
                 <div class="col-sm-12 col-md-10 col-lg-10 news">
                     <div class="owl-carousel flash-caresol">
                         @foreach ($getHomePageData['tickers'] as $tickers)
-                        <a href="#">
+                        <a href="{{ route('single.tickers',$tickers->slug) }}">
                             {{$tickers->title}}
                         </a>
                         @endforeach
@@ -61,34 +61,32 @@
                     <div class="wow fadeInUp">
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active tabbg" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">सूचना / समाचार</a>
-                                <a class="nav-item nav-link tabbg" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">कानून / नियमावली</a>
+                                <a class="nav-item nav-link active tabbg" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" style="width: 100% !important">सूचना / समाचार</a>
+                                <!-- <a class="nav-item nav-link tabbg" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">कानून / नियमावली</a> -->
                             </div>
                         </nav>
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active border-tab" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="tab-content" id="nav-tabContent" style="overflow: hidden;">
+                            <div class="tab-pane fade show active border-tab" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" >
                                 <ul>
-                                    <!-- repeat the below code -->
-                                    <!-- <li>
-                                        <a href="detail/266.html" title="स्वत प्रकाशन आ.व २०८१_८२_प्रथम त्रैमासिक">स्वत प्रकाशन आ.व २०८१_८२_प्रथम त्रैमासिक</a>
-                                    </li> -->
-                                    <!-- end repetation -->
+                                     @foreach ($getHomePageData['lawRelatedNews'] as $lawRelatedNews)
+                                     <li>
+                                        <a href="{{ route('posts.single', $lawRelatedNews->slug) }}" title="{{$lawRelatedNews->title}}">{{$lawRelatedNews->title}}</a>
+                                    </li>
+                                     @endforeach
 
                                     <span class="float-right more"><a href="archiving.html">विभागका सुचनाहरु &raquo;</a></span>
                                     <span class="clearfix"></span>
                                 </ul>
                             </div>
-                            <div class="tab-pane fade border-tab" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <!-- <div class="tab-pane fade border-tab" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                 <ul>
-                                    <!-- repeat the below code -->
-                                    <!-- <li>
+                                    <li>
                                         <a href="detail/269.html" title="औद्योगिक व्यवसाय ऐन, २०७६">औद्योगिक व्यवसाय ऐन, २०७६</a>
-                                    </li> -->
-                                    <!-- end repetation -->
+                                    </li>
                                     <span class="float-right"><a href="laws-and-regulations.html">विभागका सुचनाहरु &raquo;</a></span>
                                     <span class="clearfix"></span>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -104,8 +102,8 @@
           <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 remove-mar-pad">
             <nav>
               <div class="nav nav-tabs" id="news-tab" role="tablist">
-                <a class="nav-item nav-link active tabbg" id="nav-suchana-tab"  data-toggle="tab" href="#nav-suchhana" role="tab" aria-controls="nav-suchana" aria-selected="true"> <i class="fa fa-newspaper-o fa-lg"></i> <span class="d-none d-md-inline-block">सूचना / समाचार</span></a>
-                <a class="nav-item nav-link tabbg" id="nav-namunakanun-tab"  data-toggle="tab" href="#nav-namunakanun" role="tab" aria-controls="nav-namunakanun" aria-selected="false"><i class="fa fa-balance-scale fa-lg"></i> <span class="d-none d-md-inline-block">कानून / नियमावली</span></a>
+                <!-- <a class="nav-item nav-link active tabbg" id="nav-suchana-tab"  data-toggle="tab" href="#nav-suchhana" role="tab" aria-controls="nav-suchana" aria-selected="true"> <i class="fa fa-newspaper-o fa-lg"></i> <span class="d-none d-md-inline-block">सूचना / समाचार</span></a> -->
+                <a class="nav-item nav-link active tabbg" id="nav-namunakanun-tab"  data-toggle="tab" href="#nav-namunakanun" role="tab" aria-controls="nav-namunakanun" aria-selected="true"><i class="fa fa-balance-scale fa-lg"></i> <span class="d-none d-md-inline-block">कानून / नियमावली</span></a>
                 <a class="nav-item nav-link tabbg" id="nav-trainnig-tab" data-toggle="tab" href="#nav-trainnig" role="tab" aria-controls="nav-traninnig" aria-selected="false"><i class="fa fa-list-ul fa-lg"></i> <span class="d-none d-md-inline-block">बोलपत्र सम्बन्धी सूचना</span></a>
                 <a class="nav-item nav-link tabbg" id="nav-publication-tab" data-toggle="tab" href="#nav-publication" role="tab" aria-controls="nav-publication" aria-selected="false"><i class="fa fa-book fa-lg"></i> <span class="d-none d-md-inline-block">प्रकाशन</span></a>
               </div>
@@ -114,15 +112,22 @@
 
               <div class="tab-pane fade show active border-tab" id="nav-suchhana" role="tabpanel" aria-labelledby="nav-suchana-tab">
                 <ul>
-                  {{-- <li>
-      <span class="fa fa-thumb-tack"></span>    <a href="detail/264.html" title="उत्पादन करारको सम्झौता अभिलेखीकरणका लागि दिनुपर्ने निवेदनको ढाँचा" target="_blank">
-                उत्पादन करारको सम्झौता अभिलेखीकरणका लागि दिनुपर्ने निवेदनको ढाँचा
-            </a>
-      <i><small>
-                    प्रकाशित मिति २०८१ आश्विन २१ गते सोमबार २२:४९:५२ बजे
-              <span> (अनुमति तथा दर्ता शाखा)</span>
-      </small></i>
-    </li> --}}
+                    @foreach ($getHomePageData['informationRelatedNews'] as $informationRelatedNews)
+                    <li>
+                        <span class="fa fa-thumb-tack"></span>
+                        <a href="{{ route('posts.single', $informationRelatedNews->slug) }}" title="{{$informationRelatedNews->title}}" target="_blank">
+                            {{$informationRelatedNews->title}}
+                        </a>
+                        <i>
+                            <small>
+                            {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($informationRelatedNews->created_at->format('Y-m-d'))
+                            ->toNepaliDate(format: 'D, j F Y', locale: 'en')}}
+                                प्रकाशित मिति २०८१ आश्विन २१ गते सोमबार २२:४९:५२ बजे
+                                <span> (अनुमति तथा दर्ता शाखा)</span>
+                            </small>
+                        </i>
+                    </li>
+                    @endforeach
 
                   <span class="float-right more"><a href="#" class="btn btn-sm btn-danger">थप समाग्री &raquo;</a></span>
                   <span class="clearfix"></span>
@@ -131,15 +136,22 @@
 
               <div class="tab-pane fade border-tab" id="nav-namunakanun" role="tabpanel" aria-labelledby="nav-namunakanun-tab">
                 <ul>
-                   {{-- <li>
-          <a href="detail/269.html" title="औद्योगिक व्यवसाय ऐन, २०७६" target="_blank">
-                औद्योगिक व्यवसाय ऐन, २०७६
-            </a>
-      <i><small>
-                    प्रकाशित मिति २०८१ मंसिर १० गते सोमबार १९:१८:०० बजे
-              <span> (उद्योग विभाग)</span>
-      </small></i>
-    </li> --}}
+                    @foreach ($getHomePageData['tenderRelatedNews'] as $tenderRelatedNews)
+                    <li>
+                        <span class="fa fa-thumb-tack"></span>
+                        <a href="{{ route('posts.single', $tenderRelatedNews->slug) }}" title="{{$tenderRelatedNews->title}}" target="_blank">
+                            {{$tenderRelatedNews->title}}
+                        </a>
+                        <i>
+                            <small>
+                            {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($tenderRelatedNews->created_at->format('Y-m-d'))
+                            ->toNepaliDate(format: 'D, j F Y', locale: 'en')}}
+                                प्रकाशित मिति २०८१ आश्विन २१ गते सोमबार २२:४९:५२ बजे
+                                <span> (अनुमति तथा दर्ता शाखा)</span>
+                            </small>
+                        </i>
+                    </li>
+                    @endforeach
 
                   <span class="float-right more"><a href="#" class="btn btn-sm btn-danger">थप समाग्री &raquo;</a></span>
                   <span class="clearfix"></span>
@@ -148,15 +160,22 @@
 
               <div class="tab-pane fade border-tab" id="nav-trainnig" role="tabpanel" aria-labelledby="nav-trainnig-tab">
                 <ul>
-                  {{-- <li>
-          <a href="#" title="बोलपत्र स्वीकृत गर्ने आशयको सूचना" target="_blank">
-                बोलपत्र स्वीकृत गर्ने आशयको सूचना
-            </a>
-      <i><small>
-                    प्रकाशित मिति २०७९ माघ १९ गते बिहीबार १६:२६:०९ बजे
-              <span> (उद्योग विभाग)</span>
-      </small></i>
-    </li> --}}
+                @foreach ($getHomePageData['publicationRelatedNews'] as $publicationRelatedNews)
+                    <li>
+                        <span class="fa fa-thumb-tack"></span>
+                        <a href="{{ route('posts.single', $publicationRelatedNews->slug) }}" title="{{$publicationRelatedNews->title}}" target="_blank">
+                            {{$publicationRelatedNews->title}}
+                        </a>
+                        <i>
+                            <small>
+                            {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($publicationRelatedNews->created_at->format('Y-m-d'))
+                            ->toNepaliDate(format: 'D, j F Y', locale: 'en')}}
+                                प्रकाशित मिति २०८१ आश्विन २१ गते सोमबार २२:४९:५२ बजे
+                                <span> (अनुमति तथा दर्ता शाखा)</span>
+                            </small>
+                        </i>
+                    </li>
+                    @endforeach
 
                   <span class="float-right more"><a href="#" class="btn btn-sm btn-danger">थप समाग्री &raquo;</a></span>
                   <span class="clearfix"></span>
@@ -165,15 +184,22 @@
 
               <div class="tab-pane fade border-tab" id="nav-publication" role="tabpanel" aria-labelledby="nav-publication-tab">
                 <ul>
-                    {{-- <li>
-          <a href="#" title="स्वत प्रकाशन आ.व २०८१_८२_प्रथम त्रैमासिक" target="_blank">
-                स्वत प्रकाशन आ.व २०८१_८२_प्रथम त्रैमासिक
-            </a>
-      <i><small>
-                    प्रकाशित मिति २०८१ कार्तिक २८ गते बुधबार २१:२५:५१ बजे
-              <span> (प्रशासन तथा सुविधा शाखा)</span>
-      </small></i>
-    </li> --}}
+                    @foreach ($getHomePageData['otherNews'] as $otherNews)
+                    <li>
+                        <span class="fa fa-thumb-tack"></span>
+                        <a href="{{ route('posts.single', $otherNews->slug) }}" title="{{$otherNews->title}}" target="_blank">
+                            {{$otherNews->title}}
+                        </a>
+                        <i>
+                            <small>
+                            {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($otherNews->created_at->format('Y-m-d'))
+                            ->toNepaliDate(format: 'D, j F Y', locale: 'en')}}
+                                प्रकाशित मिति २०८१ आश्विन २१ गते सोमबार २२:४९:५२ बजे
+                                <span> (अनुमति तथा दर्ता शाखा)</span>
+                            </small>
+                        </i>
+                    </li>
+                    @endforeach
 
                  <span class="float-right more"><a href="#" class="btn btn-sm btn-danger">थप समाग्री &raquo;</a></span>
                   <span class="clearfix"></span>
@@ -211,6 +237,7 @@
                                 </center>
                                 <p class="h4 mt-1"> {{$staffs->name}} </p>
                             <p class="h6"> <i class="fa fa-phone"></i> {{$staffs->telephone}}</p>
+                            <p class="h6"> <i class=" fa fa-envelope"></i> {{$staffs->email}}</p>
                             </div>
                         @endforeach
             </div>
@@ -246,7 +273,7 @@
         </div>
     </section>
 
-    <section id="gallery" class="wow fadeInUp">
+    <!-- <section id="gallery" class="wow fadeInUp">
         <div class="container bg-silver" style="padding:0px 0px 6px 8px;">
             <h2 class="text-center pt-3 text-uppercase">ग्यालेरी</h2>
             <hr>
@@ -262,6 +289,61 @@
             @endforeach
             </div>
         </div>
-    </section>
+    </section> -->
 
+    <style>
+       .gallery-carousel .gallery-img {
+    position: relative;
+    overflow: hidden; /* Ensure images do not overflow */
+}
+
+.gallery-carousel img {
+    width: 100%; /* Make images responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.caption {
+    position: absolute;
+    bottom: 10px; /* Adjust position */
+    left: 10px; /* Adjust position */
+    right: 10px; /* Adjust position */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: white; /* Text color */
+    padding: 5px; /* Padding around the text */
+    text-align: center; /* Center text */
+    border-radius: 5px; /* Rounded corners */
+}
+    </style>
+  <section id="gallery" class="wow fadeInUp">
+    <div class="container bg-silver" style="padding:0px 0px 6px 8px;">
+        <h2 class="text-center pt-3 text-uppercase">ग्यालेरी</h2>
+        <hr>
+        <div class="owl-carousel gallery-carousel">
+            @foreach ($getHomePageData['galleries'] as $gallery)
+                <div class="gallery-img">
+                    <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->title}}">
+                        @if ($gallery->getMedia('thumbnail')->isNotEmpty())
+                        <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" class="img-fluid" alt="{{$gallery->title}}">
+                        @endif
+                    </a>
+                    <div class="caption">{{ $gallery->title }}</div> <!-- Caption for the image -->
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+    $('.gallery-carousel').owlCarousel({
+        items: 1, // Show one item at a time
+        loop: false, // Disable looping
+        nav: true, // Show next/prev buttons
+        dots: true, // Show dots for navigation
+        autoplay: true, // Enable autoplay
+        autoplayTimeout: 3000, // Time between transitions
+        autoplayHoverPause: true // Pause on mouse hover
+    });
+});
+    </script>
 @endsection
