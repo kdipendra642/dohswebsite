@@ -6,6 +6,7 @@ use App\Http\Controllers\Base\BaseController;
 use App\Http\Requests\StaffRequest;
 use App\Services\StaffService;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 class StaffController extends BaseController
 {
@@ -31,6 +32,48 @@ class StaffController extends BaseController
         return view('backend.staffs.index', [
             'staffs' => $staffs,
         ]);
+    }
+
+    
+    /**
+     * Get a list of data
+     */
+    public function staffsData()
+    {
+        try {
+            $staffs = $this->staffService->getAllStaffs();
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }   
+
+        
+        return DataTables::of($staffs)
+        ->editColumn('document_url', function ($staff) {
+            if ($staff->getMedia('staffs')->isNotEmpty()) {
+                $mediaItem = $staff->getMedia('staffs')->first();
+                return [
+                    'media' => $mediaItem->getUrl(),
+                    'type' => $mediaItem->mime_type
+                ];
+            }
+            return '';
+        })
+        ->editColumn('features', function ($staff) {
+            if($staff->showOnHomePage) {
+                return 'Show on Home Page';
+            }
+        })
+        ->editColumn('created_at', function ($staff) {
+            return $staff->created_at->diffForHumans();
+        })
+        ->editColumn('action', function ($staff) {
+            return '
+                    <a href="' . route('staffs.edit', $staff->id) . '" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                    <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter' . $staff->id . '"><i class="fa fa-trash-o"></i></a>
+                ';
+        })
+        ->make(true);
+
     }
 
     /**

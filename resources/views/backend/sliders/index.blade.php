@@ -2,6 +2,8 @@
 
 @section('mainContent')
 
+@include('backend.datatable.upperscript')
+
 <section class="wrapper">
     <div class="row">
         <div class="col-lg-12">
@@ -29,7 +31,7 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="sliders-table">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -42,32 +44,8 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @php
-                                    $i = 1;
-                                @endphp
                                 @foreach ($sliders as $slider)
-                                <tr>
-                                    <th scope="row">{{$i++;}}</th>
-                                    <td>{{$slider->title}}</td>
-                                    <td>{!! \Illuminate\Support\Str::limit($slider->description, 100, '...') !!}</td>
-                                    <td>
-                                    <!-- {{$slider->getMedia('sliders')->first()->getUrl()}} -->
-                                        @if ($slider->getMedia('sliders')->isNotEmpty())
-                                            <img
-                                            src="{{$slider->getMedia('sliders')->first()->getUrl()}}"
-                                            alt="{{$slider->title}}"
-                                            style="width: 50%; height: 50%;"
-                                            >
-                                        @endif
-                                    </td>
-                                    <td>{{$slider->slug}}</td>
-                                    <td>{{$slider->created_at->diffForHumans()}}</td>
-                                    <td>
-                                        <a href="{{ route('sliders.edit', $slider->id) }}" class="btn btn-success btn-sm"><i class=" fa fa-pencil"></i></a>
-                                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter{{$slider->id}}"><i class="fa fa-trash-o "></i></a>
-                                    </td>
-                                </tr>
-{{-- modal --}}
+                                {{-- modal --}}
                                 <div class="modal fade" id="exampleModalCenter{{$slider->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
@@ -93,7 +71,7 @@
                                         </div>
                                     </div>
                                 </div>
-{{-- modal ends here --}}
+                                {{-- modal ends here --}}
                                 @endforeach
                             </tbody>
                         </table>
@@ -105,5 +83,42 @@
     <!-- page end-->
 </section>
 
+@include('backend.datatable.lowerscript')
+
+<script>
+    jQuery(document).ready(function($) {
+        $('#sliders-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: "{{ route('sliders.data') }}",
+                type: "GET",
+                error: function(xhr, error, thrown) {
+                    console.error('Error:', xhr.status, thrown);
+                }
+            },
+            columns: [
+                { data: 'id', name: 'id' },
+                { data: 'title', name: 'title' },
+                { data: 'description', name: 'description' },
+                {
+                    data: 'document_url',
+                    name: 'document_url',
+                    orderable: false,
+                    searchable: false,
+                    render: function(data, type, row) {
+                        if (data) {
+                            return '<img src="' + data.media + '" alt="' + row.title + '" style="width: 50%; height: 50%;">';
+                        }
+                        return '';
+                    }
+                },
+                { data: 'slug', name: 'slug' },
+                { data: 'created_at', name: 'created_at' },
+                { data: 'action', name: 'action', orderable: false, searchable: false }
+            ]
+        });
+    });
+    </script>
 
 @endsection

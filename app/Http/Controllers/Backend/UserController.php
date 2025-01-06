@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Services\UserService;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {
@@ -31,6 +32,32 @@ class UserController extends Controller
         return view('backend.users.index', [
             'users' => $users,
         ]);
+    }
+
+    /**
+     * Get a list of data
+     */
+    public function usersData()
+    {
+        try {
+            $users = $this->userService->getAllUsers();
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }   
+
+        
+        return DataTables::of($users)
+        ->editColumn('created_at', function ($user) {
+            return $user->created_at->diffForHumans();
+        })
+        ->editColumn('action', function ($user) {
+            return '
+                    <a href="' . route('users.edit', $user->id) . '" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                    <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter' . $user->id . '"><i class="fa fa-trash-o"></i></a>
+                ';
+        })
+        ->make(true);
+
     }
 
     /**

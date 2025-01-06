@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TickerRequest;
 use App\Services\TickerService;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
+use Illuminate\Support\Str;
 
 class TickerController extends Controller
 {
@@ -31,6 +33,33 @@ class TickerController extends Controller
         return view('backend.tickers.index', [
             'tickers' => $tickers,
         ]);
+    }
+
+    /**
+     * Get a list of data
+     */
+    public function tickersData()
+    {
+        try {
+            $tickers = $this->tickerService->getAlltickers();
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+
+        return DataTables::of($tickers)
+            ->editColumn('description', function ($ticker) {
+                return Str::limit($ticker->description, 100); // Assuming category is a relationship
+            })
+            ->editColumn('created_at', function ($ticker) {
+                return $ticker->created_at->diffForHumans();
+            })
+            ->editColumn('action', function ($ticker) {
+                return '
+                        <a href="' . route('tickers.edit', $ticker->id) . '" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter' . $ticker->id . '"><i class="fa fa-trash-o"></i></a>
+                    ';
+            })
+            ->make(true);
     }
 
     /**

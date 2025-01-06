@@ -2,6 +2,8 @@
 
 @section('mainContent')
 
+@include('backend.datatable.upperscript')
+
 <section class="wrapper">
     <div class="row">
         <div class="col-lg-12">
@@ -26,7 +28,7 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="messages-table">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -42,7 +44,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($contactMessages as $messages)
-                                <tr>
+                                <!-- <tr>
                                     <th scope="row">1</th>
                                     <td>{{$messages->ip_address}}</td>
                                     <td>{{$messages->name}}</td>
@@ -54,8 +56,8 @@
                                     <td>
                                         <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter{{$messages->id}}"><i class="fa fa-trash-o "></i></a>
                                     </td>
-                                </tr>
-{{-- modal --}}
+                                </tr> -->
+                                {{-- modal --}}
                                 <div class="modal fade" id="exampleModalCenter{{$messages->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
@@ -81,7 +83,7 @@
                                         </div>
                                     </div>
                                 </div>
-{{-- modal ends here --}}
+                                {{-- modal ends here --}}
                                 @endforeach
                             </tbody>
                         </table>
@@ -94,4 +96,32 @@
 </section>
 
 
+@include('backend.datatable.lowerscript')
+
+<script>
+jQuery(document).ready(function($) {
+    $('#messages-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: {
+            url: "{{ route('messages.data') }}",
+            type: "GET",
+            error: function(xhr, error, thrown) {
+                console.error('Error:', xhr.status, thrown);
+            }
+        },
+        columns: [
+            { data: 'id', name: 'id' },
+            { data: 'ip_address', name: 'ip_address' },
+            { data: 'name', name: 'name' },
+            { data: 'email', name: 'email' },
+            { data: 'phone', name: 'phone' },
+            { data: 'subject', name: 'subject' },
+            { data: 'message', name: 'message' },
+            { data: 'created_at', name: 'created_at' },
+            { data: 'action', name: 'action', orderable: false, searchable: false }
+        ]
+    });
+});
+</script>
 @endsection
