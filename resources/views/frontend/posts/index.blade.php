@@ -37,7 +37,8 @@
                             <td>{{$i++}}</td>
                             <td>
                                 <a href="{{ route('posts.single', $post->slug) }}">
-                                    <i class="fas fa-thumbtack thumb-track"></i>                                                                              व्यावसायिक सामाजिक जिम्मेवारी (CSR) सम्बन्धी विवरण पेश गर्ने सम्बन्धी सूचना।
+                                    <i class="fas fa-thumbtack thumb-track"></i>
+                                    {{$post->title}}
                                 </a>
                             </td>
                             <td>
