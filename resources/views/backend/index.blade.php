@@ -38,17 +38,32 @@
                 </a>
             </section>
         </div>
-        <!-- <div class="col-lg-3 col-sm-6">
+        <div class="col-lg-3 col-sm-6">
             <section class="card">
-                <div class="symbol yellow">
-                    <i class="fa fa-shopping-cart"></i>
-                </div>
-                <div class="value">
-                    <h1 class=" count3">328</h1>
-                    <p>New Order</p>
-                </div>
+                <a href="{{ route('posts.index') }}">
+                    <div class="symbol yellow">
+                        <i class="fa fa-cloud-upload"></i>
+                    </div>
+                    <div class="value">
+                        <h1 class=" count2">{{count($dashboardData['posts'])}}</h1>
+                        <p>Posts</p>
+                    </div>
+                </a>
             </section>
-        </div> -->
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <section class="card">
+                <a href="{{ route('messages.index') }}">
+                    <div class="symbol blue">
+                        <i class="fa fa-inbox"></i>
+                    </div>
+                    <div class="value">
+                        <h1 class=" count2">{{count($dashboardData['contactMessages'])}}</h1>
+                        <p>@lang('messages.messages')</p>
+                    </div>
+                </a>
+            </section>
+        </div>
         <!-- <div class="col-lg-3 col-sm-6">
             <section class="card">
                 <div class="symbol blue">
