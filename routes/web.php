@@ -15,6 +15,44 @@ use App\Http\Controllers\Base\LocaleController;
 use App\Http\Controllers\Frontend\ContactMessageController;
 use App\Http\Controllers\Frontend\IndexController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+
+
+Route::get('/symlink', function() {
+    // $target = '/home/dohsgov/public_html/hmis-web/storage/app/public';
+    $target = '/home/dohsgov/public_html/hmis-web/public/media';
+    $shortcut = '/home/dohsgov/public_html/media';
+    symlink($target, $shortcut);
+    echo "Symlink created from $target to $shortcut";
+});
+
+Route::get('composer', function() {
+    $output = [];
+        $returnCode = 0;
+
+        // Execute the composer install command
+        exec('composer install --ignore-platform-reqs 2>&1', $output, $returnCode);
+
+         if ($returnCode === 0) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Composer install completed successfully.',
+                'output' => $output,
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Failed to run composer install.',
+                'output' => $output,
+            ], 500);
+        }
+});
+
+Route::get('/clear', function() {
+    Artisan::call('migrate');
+    Artisan::call('optimize:clear');
+    return "cache clear";
+});
 
 
 // Auth routes
