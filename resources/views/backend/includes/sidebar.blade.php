@@ -21,9 +21,9 @@
                     <li><a  href="{{ route('galleries.index') }}">@lang('messages.gallery')</a></li>
                     <li><a  href="{{ route('categories.index') }}">@lang('messages.category')</a></li>
                     <li><a  href="{{ route('posts.index') }}">@lang('messages.posts')</a></li>
+                    <li><a  href="{{ route('popups.index') }}">@lang('messages.popups')</a></li>
                 </ul>
             </li>
-
             <li class="sub-menu">
                 <a href="javascript:;">
                     <i class="fa fa-book"></i>

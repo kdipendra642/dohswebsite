@@ -48,8 +48,9 @@
                             <select name="sub_category" class="form-control" id="sub_category">
                                 <option selected disabled>-- Please Select --</option>
                                 <option value="laws-regulation"  @if ($posts->sub_category == 'laws-regulation') selected @endif >कानून / नियमावली</option>
-                                <option value="information-news"  @if ($posts->sub_category == 'information-news') selected @endif >सूचना / समाचार</option>
+                                <option value="information-news"  @if ($posts->sub_category == 'information-news') selected @endif >सूचना</option>
                                 <option value="tender-notice"  @if ($posts->sub_category == 'tender-notice') selected @endif >बोलपत्र सम्बन्धी सूचना</option>
+                                <option value="press-release" @if ($posts->sub_category == 'press-release') selected @endif>प्रेस विज्ञप्ति</option>
                                 <option value="publication"  @if ($posts->sub_category == 'publication') selected @endif >प्रकाशन</option>
                                 <option value="other"  @if ($posts->sub_category == 'other') selected @endif >अन्य</option>
                             </select>

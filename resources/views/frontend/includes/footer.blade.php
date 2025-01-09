@@ -8,13 +8,13 @@
               @if ($currentLocale == 'en')
               <h5 class="address text-left">{{$siteSettings->titleOne}}</h5>
               <p class="text-left">{{$siteSettings->titleTwo}}</p>
-              <p class="text-left">{{$siteSettings->titleThree}}</p>
-              <p class="text-left">{{$siteSettings->titleFour}}</p>
+              <p class="address text-left">{{$siteSettings->titleThree}}</p>
+              <p class="address text-left">{{$siteSettings->titleFour}}</p>
               @else
               <h5 class="address text-left">{{$siteSettings->titleOne_nep}}</h5>
               <p class="text-left">{{$siteSettings->titleTwo_nep}}</p>
-              <p class="text-left">{{$siteSettings->titleThree_nep}}</p>
-              <p class="text-left">{{$siteSettings->titleFour_nep}}</p>
+              <p class="address text-left">{{$siteSettings->titleThree_nep}}</p>
+              <p class="address text-left">{{$siteSettings->titleFour_nep}}</p>
               @endif
               <div class="clear-both"></div>
               <p class="doind-address">
