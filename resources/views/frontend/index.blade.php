@@ -1,6 +1,8 @@
 @extends('frontend.layout.master')
 @section('mainContent')
 
+@include('frontend.popups.modal')
+
     <section id="flash" class="wow fadeInUp">
         <div class="container">
         <div class="row">

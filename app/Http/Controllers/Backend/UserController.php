@@ -88,7 +88,7 @@ class UserController extends Controller
         }
         DB::commit();
 
-        return redirect()->route('users.index')->with('success', 'User created successfully.');
+        return redirect()->route('users.index')->with('success', __('messages.create_success', ['name' => 'User']));
     }
 
     /**
@@ -130,7 +130,7 @@ class UserController extends Controller
         }
         DB::commit();
 
-        return redirect()->route('users.index')->with('success', 'User updated successfully.');
+        return redirect()->route('users.index')->with('success', __('messages.update_success', ['name' => 'User']));
     }
 
     /**
@@ -151,6 +151,6 @@ class UserController extends Controller
         }
         DB::commit();
 
-        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
+        return redirect()->route('users.index')->with('success', __('messages.delete_success', ['name' => 'User']));
     }
 }

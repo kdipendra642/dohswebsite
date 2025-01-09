@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GalleryController;
 use App\Http\Controllers\Backend\ImportantLinkController;
+use App\Http\Controllers\Backend\PopUpController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Backend\SliderController;
@@ -53,6 +54,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/posts', PostController::class)->except(['show']);
     Route::get('/posts/data', [PostController::class, 'postsData'])->name('posts.data');
 
+    Route::resource('/popups', PopUpController::class)->except(['show']);
+    Route::get('/popups/data', [PopUpController::class, 'popupsData'])->name('popups.data');
+
     Route::resource('/contact/messages', ContactMessageController::class)->except(['store', 'update', 'edit', 'show']);
     Route::get('/contact/messages/data', [ContactMessageController::class, 'messagesData'])->name('messages.data');
 
@@ -79,6 +83,9 @@ Route::get('/index/categories', [IndexController::class, 'category'])->name('cat
 Route::get('/posts/category/{categoryId}', [IndexController::class, 'categorywisePost'])->name('category.post');
 Route::get('/posts/single/{slug}', [IndexController::class, 'singlePost'])->name('posts.single');
 Route::get('/posts/subcatewise/{subcategory}', [IndexController::class, 'subcatewisePost'])->name('subcategory.post');
+
+Route::get('/all/popups', [IndexController::class, 'popupsIndex'])->name('popups.all');
+Route::get('/single/popups/{slug}', [IndexController::class, 'popupSingle'])->name('popups.single');
 
 Route::get('/index/gallery', [IndexController::class, 'indexGallery'])->name('gallery.index');
 Route::get('/gallery/{slug}', [IndexController::class, 'gallery'])->name('gallery');

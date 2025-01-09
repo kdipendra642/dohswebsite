@@ -6,6 +6,7 @@ use App\Enums\PostSubCategoryTypeEnum;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Interfaces\GalleryRepositoryInterface;
 use App\Repositories\Interfaces\ImportantLinkRepositoryInterface;
+use App\Repositories\Interfaces\PopUpRepositoryInterface;
 use App\Repositories\Interfaces\PostRepositoryInterface;
 use App\Repositories\Interfaces\SiteSettingRepositoryInterface;
 use App\Repositories\Interfaces\SliderRepositoryInterface;
@@ -30,6 +31,8 @@ class FrontendIndexService
 
     protected $postRepository;
 
+    protected $popupsRepository;
+
     public function __construct(
         TickerRepositoryInterface $tickerRepository,
         SliderRepositoryInterface $sliderRepository,
@@ -39,6 +42,7 @@ class FrontendIndexService
         GalleryRepositoryInterface $galleryRepository,
         CategoryRepositoryInterface $categoryRepository,
         PostRepositoryInterface $postRepository,
+        PopUpRepositoryInterface $popupsRepository,
 
     ) {
         $this->tickerRepository = $tickerRepository;
@@ -49,6 +53,7 @@ class FrontendIndexService
         $this->galleryRepository = $galleryRepository;
         $this->categoryRepository = $categoryRepository;
         $this->postRepository = $postRepository;
+        $this->popupsRepository = $popupsRepository;
     }
 
     public function getHomePageData(): array
@@ -121,6 +126,16 @@ class FrontendIndexService
             limit: 5
         ) ;
 
+        $pressReleaseRelatedNews = $this->postRepository->fetchAll(
+            filterable: [
+                ['sub_category', '=', PostSubCategoryTypeEnum::PRESS_RELEASE->value]
+            ],
+            order: [
+                'created_at' => 'desc'
+            ],
+            limit: 5
+        ) ;
+
         $otherNews = $this->postRepository->fetchAll(
             filterable: [
                 ['sub_category', '=', PostSubCategoryTypeEnum::OTHER->value]
@@ -130,6 +145,16 @@ class FrontendIndexService
             ],
             limit: 5
         ) ;
+
+        $popUps = $this->popupsRepository->fetchAll(
+            filterable: [
+                ['status', '=', 1]
+            ],
+            order: [
+                'created_at' => 'desc'
+            ],
+            limit: 5
+        );
 
         return [
             'tickers' => $tickers,
@@ -141,7 +166,9 @@ class FrontendIndexService
             'informationRelatedNews' => $informationRelatedNews,
             'tenderRelatedNews' => $tenderRelatedNews,
             'publicationRelatedNews' => $publicationRelatedNews,
-            'otherNews' => $otherNews
+            'pressReleaseRelatedNews' => $pressReleaseRelatedNews,
+            'otherNews' => $otherNews,
+            'popUps' => $popUps
         ];
     }
 
@@ -284,5 +311,35 @@ class FrontendIndexService
         );
 
         return $tickers->first();
+    }
+
+    /**
+     * Get All PopUp to list at home page
+     */
+    public function getAllPopUps(): object
+    {
+        return $this->popupsRepository->fetchAll(
+            filterable: [
+                ['status', '=', 1]
+            ],
+            with: [
+                'media',
+            ],
+            order: [
+                'created_at' => 'desc'
+            ]
+        );
+    }
+
+    public function getPopUpById(string $slug): object
+    {
+        $popUp = $this->popupsRepository->fetchAll(
+            filterable: [
+                ['slug', '=', $slug],
+            ],
+            limit: 1
+        );
+
+        return $popUp->first();
     }
 }

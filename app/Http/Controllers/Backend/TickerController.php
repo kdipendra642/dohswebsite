@@ -90,7 +90,7 @@ class TickerController extends Controller
         }
         DB::commit();
 
-        return redirect()->route('tickers.index')->with('success', 'Ticker created successfully.');
+        return redirect()->route('tickers.index')->with('success', __('messages.create_success', ['name' => 'Ticker']));
     }
 
     /**
@@ -132,7 +132,7 @@ class TickerController extends Controller
         }
         DB::commit();
 
-        return redirect()->route('tickers.index')->with('success', 'Ticker updated successfully.');
+        return redirect()->route('tickers.index')->with('success', __('messages.update_success', ['name' => 'Ticker']));
     }
 
     /**
@@ -153,6 +153,6 @@ class TickerController extends Controller
         }
         DB::commit();
 
-        return redirect()->route('tickers.index')->with('success', 'Ticker deleted successfully.');
+        return redirect()->route('tickers.index')->with('success', __('messages.delete_success', ['name' => 'Ticker']));
     }
 }

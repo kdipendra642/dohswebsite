@@ -47,8 +47,13 @@ return [
     'laws_regulations' => 'Laws / Regulations',
     'tender_notice' => 'Tender Notice',
     'publication' => 'Publication',
-    'information_news' => 'Publication',
+    'information_news' => 'Notices',
     'news' => 'News',
+    'press_release' => 'Press Release',
     'send_your_feedback' => 'Send Us Your Feedback',
-    'submit_your_feedback' => 'Submit Your Message'
+    'submit_your_feedback' => 'Submit Your Message',
+    'create_success' => ':name created successfully',
+    'delete_success' => ':name deleted successfully',
+    'update_success' => ':name updated successfully',
+    'popups' => 'Popups',
 ];

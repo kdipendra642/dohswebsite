@@ -47,8 +47,9 @@
                             <select name="sub_category" class="form-control" id="sub_category">
                                 <option selected disabled>-- Please Select --</option>
                                 <option value="laws-regulation">कानून / नियमावली</option>
-                                <option value="information-news">सूचना / समाचार</option>
+                                <option value="information-news">सूचना</option>
                                 <option value="tender-notice">बोलपत्र सम्बन्धी सूचना</option>
+                                <option value="press-release">प्रेस विज्ञप्ति</option>
                                 <option value="publication">प्रकाशन</option>
                                 <option value="other">अन्य</option>
                             </select>

@@ -104,7 +104,7 @@ class StaffController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('staffs.index')->with('success', 'Staffs created successfully.');
+        return redirect()->route('staffs.index')->with('success', __('messages.create_success', ['name' => 'Staff']));
     }
 
     /**
@@ -146,7 +146,7 @@ class StaffController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('staffs.index')->with('success', 'Staffs updated successfully.');
+        return redirect()->route('staffs.index')->with('success', __('messages.update_success', ['name' => 'Staff']));
     }
 
     /**
@@ -167,6 +167,6 @@ class StaffController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('staffs.index')->with('success', 'Staffs deleted successfully.');
+        return redirect()->route('staffs.index')->with('success', __('messages.delete_success', ['name' => 'Staff']));
     }
 }

@@ -148,4 +148,27 @@ class IndexController extends BaseController
             'tickers' => $tickers,
         ]));
     }
+
+    /**
+     * Get All Popups
+     */
+    public function popupsIndex()
+    {
+        $popups = $this->frontendIndexService->getAllPopUps();
+        return view('frontend.popups.index', ([
+            'popups' => $popups
+        ]));
+    }
+
+    /**
+     * Get Single Popup
+     */
+    public function popupSingle(string $slug)
+    {
+        $popups = $this->frontendIndexService->getPopUpById(slug: $slug);
+
+        return view('frontend.popups.show', ([
+            'popups' => $popups
+        ]));
+    }
 }

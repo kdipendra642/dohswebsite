@@ -8,6 +8,7 @@ enum PostSubCategoryTypeEnum: string
     case INFORMATION_NEWS = "information-news";
     case TENDER_NOTICE = "tender-notice";
     case PUBLICATION = "publication";
+    case PRESS_RELEASE = "press-release";
     case OTHER = "other";
 
     public static function getAllValues(): array

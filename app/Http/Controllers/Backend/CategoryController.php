@@ -87,7 +87,7 @@ class CategoryController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('categories.index')->with('success', 'Category created successfully.');
+        return redirect()->route('categories.index')->with('success', __('messages.create_success', ['name' => 'Category']));
     }
 
     /**
@@ -129,7 +129,7 @@ class CategoryController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('categories.index')->with('success', __('messages.update_success', ['name' => 'Category']));
     }
 
     /**
@@ -150,6 +150,6 @@ class CategoryController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
+        return redirect()->route('categories.index')->with('success', __('messages.delete_success', ['name' => 'Category']));
     }
 }
