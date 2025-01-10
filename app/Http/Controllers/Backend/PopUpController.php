@@ -3,20 +3,22 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Base\BaseController;
-use App\Http\Requests\SliderRequest;
-use App\Services\SliderService;
+use App\Http\Requests\PopUpRequest;
+use App\Services\PopUpService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Str;
 
-class SliderController extends BaseController
+class PopUpController extends BaseController
 {
-    protected $sliderService;
+    protected $popUpService;
+
 
     public function __construct(
-        SliderService $sliderService
+        PopUpService $popUpService,
     ) {
-        $this->sliderService = $sliderService;
+        $this->popUpService = $popUpService;
     }
 
     /**
@@ -25,51 +27,51 @@ class SliderController extends BaseController
     public function index()
     {
         try {
-            $sliders = $this->sliderService->getAllSliders();
+            $popups = $this->popUpService->getAllPopups();
+
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
 
-        return view('backend.sliders.index', [
-            'sliders' => $sliders,
+        return view('backend.popups.index', [
+            'popups' => $popups,
         ]);
     }
 
     /**
-     * Get Sliders data
+     * Get List of All Data
      */
-    public function slidersData()
+    public function popupsData()
     {
         try {
-            $sliders = $this->sliderService->getAllSliders();
+            $popups = $this->popUpService->getAllPopups();
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
-        return DataTables::of($sliders)
-            ->editColumn('description', function ($slider) {
-                return Str::limit($slider->description, 100);
-            })
-            ->editColumn('document_url', function ($slider) {
-                if ($slider->getMedia('sliders')->isNotEmpty()) {
-                    $mediaItem = $slider->getMedia('sliders')->first();
+
+        return DataTables::of($popups)
+            // ->editColumn('status', function ($popup) {
+            //     return $popup->status == 1 ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>';
+            // })
+            ->editColumn('document_url', function ($popup) {
+                if ($popup->getMedia('pop-ups')->isNotEmpty()) {
+                    $mediaItem = $popup->getMedia('pop-ups')->first();
                     return [
                         'media' => $mediaItem->getUrl(),
-                        'type' => $mediaItem->mime_type
                     ];
                 }
                 return '';
             })
-            ->editColumn('created_at', function ($slider) {
-                return $slider->created_at->diffForHumans();
+            ->editColumn('created_at', function ($popup) {
+                return $popup->created_at->diffForHumans();
             })
-            ->editColumn('action', function ($slider) {
+            ->editColumn('action', function ($popup) {
                 return '
-                        <a href="' . route('sliders.edit', $slider->id) . '" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
-                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter' . $slider->id . '"><i class="fa fa-trash-o"></i></a>
+                        <a href="' . route('popups.edit', $popup->id) . '" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter' . $popup->id . '"><i class="fa fa-trash-o"></i></a>
                     ';
             })
             ->make(true);
-
     }
 
     /**
@@ -77,20 +79,21 @@ class SliderController extends BaseController
      */
     public function create()
     {
-        return view('backend.sliders.create');
+
+        return view('backend.popups.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(SliderRequest $request)
+    public function store(PopUpRequest $request)
     {
         DB::beginTransaction();
 
         try {
             $data = $request->validated();
 
-            $this->sliderService->storeSliders(
+            $this->popUpService->storePopups(
                 data: $data
             );
         } catch (\Throwable $th) {
@@ -100,7 +103,7 @@ class SliderController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('sliders.index')->with('success', __('messages.create_success', ['name' => 'Slider']));
+        return redirect()->route('popups.index')->with('success', __('messages.create_success', ['name' => 'Popups']));
     }
 
     /**
@@ -109,30 +112,31 @@ class SliderController extends BaseController
     public function edit(string $id)
     {
         try {
-            $slider = $this->sliderService->getSlidersById(
-                slidersId: $id
+            $popups = $this->popUpService->getPopupsById(
+                popupsId: $id
             );
+
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
 
-        return view('backend.sliders.edit', ([
-            'slider' => $slider,
+        return view('backend.popups.edit', ([
+            'popups' => $popups,
         ]));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(SliderRequest $request, string $id)
+    public function update(PopUpRequest $request, string $id)
     {
         DB::beginTransaction();
 
         try {
             $data = $request->validated();
 
-            $this->sliderService->updateSliders(
-                slidersId: $id,
+            $this->popUpService->updatePopups(
+                popupsId: $id,
                 data: $data
             );
         } catch (\Throwable $th) {
@@ -142,7 +146,7 @@ class SliderController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('sliders.index')->with('success', __('messages.update_success', ['name' => 'Slider']));
+        return redirect()->route('popups.index')->with('success', __('messages.update_success', ['name' => 'Popups']));
     }
 
     /**
@@ -151,9 +155,10 @@ class SliderController extends BaseController
     public function destroy(string $id)
     {
         DB::beginTransaction();
+
         try {
-            $slider = $this->sliderService->deleteSlidersData(
-                slidersId: $id
+            $popups = $this->popUpService->deletePopupsData(
+                popupsId: $id
             );
         } catch (\Throwable $th) {
             DB::rollBack();
@@ -162,6 +167,6 @@ class SliderController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('sliders.index')->with('success', __('messages.delete_success', ['name' => 'Slider']));
+        return redirect()->route('popups.index')->with('success', __('messages.delete_success', ['name' => 'Popups']));
     }
 }

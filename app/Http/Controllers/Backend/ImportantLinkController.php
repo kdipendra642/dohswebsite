@@ -86,7 +86,7 @@ class ImportantLinkController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('importantlinks.index')->with('success', 'Important created successfully.');
+        return redirect()->route('importantlinks.index')->with('success', __('messages.create_success', ['name' => 'Link']));
     }
 
     /**
@@ -128,7 +128,7 @@ class ImportantLinkController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('importantlinks.index')->with('success', 'Important updated successfully.');
+        return redirect()->route('importantlinks.index')->with('success', __('messages.update_success', ['name' => 'Link']));
     }
 
     /**
@@ -149,6 +149,6 @@ class ImportantLinkController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('importantlinks.index')->with('success', 'Important deleted successfully.');
+        return redirect()->route('importantlinks.index')->with('success', __('messages.delete_success', ['name' => 'Link']));
     }
 }

@@ -113,7 +113,7 @@ class PostController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('posts.index')->with('success', 'Post created successfully.');
+        return redirect()->route('posts.index')->with('success', __('messages.create_success', ['name' => 'Post']));
     }
 
     /**
@@ -158,7 +158,7 @@ class PostController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('posts.index')->with('success', 'Posts updated successfully.');
+        return redirect()->route('posts.index')->with('success', __('messages.update_success', ['name' => 'Post']));
     }
 
     /**
@@ -179,6 +179,6 @@ class PostController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
+        return redirect()->route('posts.index')->with('success', __('messages.delete_success', ['name' => 'Post']));
     }
 }

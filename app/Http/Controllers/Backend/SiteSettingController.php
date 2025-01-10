@@ -53,6 +53,6 @@ class SiteSettingController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('sitesettings.index')->with('success', 'SiteSetting updated successfully.');
+        return redirect()->route('sitesettings.index')->with('success', __('messages.update_success', ['name' => 'Settings']));
     }
 }

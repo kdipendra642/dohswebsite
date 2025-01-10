@@ -61,7 +61,7 @@ class GalleryController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('galleries.index')->with('success', 'Gallery created successfully.');
+        return redirect()->route('galleries.index')->with('success', __('messages.create_success', ['name' => 'Gallery']));
     }
 
     /**
@@ -103,7 +103,7 @@ class GalleryController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('galleries.index')->with('success', 'Gallery updated successfully.');
+        return redirect()->route('galleries.index')->with('success', __('messages.update_success', ['name' => 'Gallery']));
     }
 
     /**
@@ -124,7 +124,7 @@ class GalleryController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('galleries.index')->with('success', 'Gallery deleted successfully.');
+        return redirect()->route('galleries.index')->with('success', __('messages.delete_success', ['name' => 'Gallery']));
     }
 
     /**
@@ -140,6 +140,6 @@ class GalleryController extends BaseController
             return redirect()->back()->with('error', $th->getMessage());
         }
 
-        return redirect()->back()->with('success', 'Image deleted successfully.');
+        return redirect()->back()->with('success', __('messages.delete_success', ['name' => 'Image']));
     }
 }

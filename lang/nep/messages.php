@@ -45,8 +45,13 @@ return [
     'laws_regulations' => 'कानून / नियमावली',
     'tender_notice' => 'टेन्डर सूचना',
     'publication' => 'प्रकाशन',
-    'information_news' => 'सूचना / समाचार',
+    'information_news' => 'सूचना',
     'news' => 'सूचना',
+    'press_release' => 'प्रेस विज्ञप्ति',
     'send_your_feedback' => 'हामीलाई तपाईंको प्रतिक्रिया पठाउनुहोस्',
-    'submit_your_feedback' => 'आफ्नो सन्देश पेश गर्नुहोस्'
+    'submit_your_feedback' => 'आफ्नो सन्देश पेश गर्नुहोस्',
+    'create_success' => ':name सफलतापूर्वक सिर्जना गरियो',
+    'delete_success' => ':name सफलतापूर्वक मेटियो',
+    'update_success' => ':name सफलतापूर्वक अद्यावधिक गरियो',
+    'popups' => 'Popups',
 ];

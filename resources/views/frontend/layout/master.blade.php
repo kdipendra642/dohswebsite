@@ -30,6 +30,9 @@
     <link rel="icon" href="{{ asset('assets/frontend/uploads/img/logo.png')}}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -41,35 +44,50 @@
 
     @yield('mainContent')
 
-
     @include('frontend.includes.footer')
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<script src="{{ asset('assets/frontend/js/manifesteae5.js')}}?id=d91051ea7d0c9bd1981e"></script>
-  <script src="{{ asset('assets/frontend/js/vendor2505.js')}}?id=faec529b770f1589846e"></script>
-  <script src="{{ asset('assets/frontend/js/wow.min.js')}}"></script>
-  <script src="{{ asset('assets/frontend/js/appcb5e.js')}}?id=875ab50b8dc65a48b6aa"></script>
+    <script src="{{ asset('assets/frontend/js/manifesteae5.js')}}?id=d91051ea7d0c9bd1981e"></script>
+    <script src="{{ asset('assets/frontend/js/vendor2505.js')}}?id=faec529b770f1589846e"></script>
+    <script src="{{ asset('assets/frontend/js/wow.min.js')}}"></script>
+    <script src="{{ asset('assets/frontend/js/appcb5e.js')}}?id=875ab50b8dc65a48b6aa"></script>
 
-   <!-- Toastr JS -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<script>
-    toastr.options = {
-        "closeButton": true,
-        "progressBar": true,
-        "positionClass": "toast-top-right",
-        "timeOut": "5000"
-    };
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Automatically trigger the modal on page load
+            $('#exampleModal').modal('show');
 
-    @if ($errors->any())
-        @foreach ($errors->all() as $error)
-            toastr.error('{{ $error }}', 'Validation Error');
-        @endforeach
-    @endif
+            // Your toastr options and error handling here
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "timeOut": "5000"
+            };
 
-    @if (session('error'))
-        toastr.error('{{ session('error') }}', 'Error', {timeOut: 5000});
-    @endif
-</script>
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    toastr.error('{{ $error }}', 'Validation Error');
+                @endforeach
+            @endif
+
+            @if (session('error'))
+                toastr.error('{{ session('error') }}', 'Error', {timeOut: 5000});
+            @endif
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#myModal').modal('show');
+        });
+    </script>
   </html>
