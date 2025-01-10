@@ -16,7 +16,13 @@
                     @endif
 
                     @if ($popUps->getMedia('pop-ups')[0]->mime_type == 'application/pdf')
-                    <a href="{{ route('popups.single', $popUps->slug)}}" target="_blank">Read Full Post Here</a>
+                    {{-- <a href="{{ route('popups.single', $popUps->slug)}}" target="_blank">Read Full Post Here</a> --}}
+
+                    <object data="{{$popUps->getMedia('pop-ups')[0]->getUrl()}}#view=FitH&amp;toolbar=1" type="application/pdf" width="100%" height="800">
+                        <param name="initZoom" value="fitToPage">
+                        <p>Your Device Cannot read PDF. <a rel="external" href="#">Click to View</a></p>
+                    </object>
+
                     @endif
 
                 @endif

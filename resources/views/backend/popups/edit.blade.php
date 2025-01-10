@@ -45,8 +45,8 @@
                             </label>
                         </div>
                         <div class="form-group">
-                            <label for="document">File input</label>
-                            <input type="file" id="document" name="document">
+                            <label for="image">File input</label>
+                            <input type="file" id="image" name="image">
 
                             <div>
                                 <label>Old File</label>
