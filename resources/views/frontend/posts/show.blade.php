@@ -43,7 +43,17 @@
                                     <param name="initZoom" value="fitToPage">
                                     <p>Your Device Cannot read PDF. <a rel="external" href="#">Click to View</a></p>
                                 </object>
+
+                                {{-- <object class="pdf"
+                                data=
+                                "{{$posts->getMedia('posts')[0]->getUrl()}}"
+                                width="800"
+                                height="500"
+                                > --}}
+                        </object>
                             </div>
+
+
                         @endif
 
                     @endif

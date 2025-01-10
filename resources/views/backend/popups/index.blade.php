@@ -95,7 +95,13 @@
             columns: [
                 { data: 'id', name: 'id' },
                 { data: 'title', name: 'title' },
-                { data: 'status', name: 'status' },
+                { data: 'status', name: 'status', render: function (data) {
+                    if (data) {
+                        return '<span class="badge badge-success">Active</span>'
+                    } else {
+                        return '<span class="badge badge-warning">In Active</span>'
+                    }
+                } },
                 {
                     data: 'document_url',
                     name: 'document_url',
@@ -103,7 +109,11 @@
                     searchable: false,
                     render: function(data, type, row) {
                         if (data) {
-                            return '<img src="' + data.media + '" alt="' + row.title + '" style="width: 50%; height: 50%;">';
+                            if (data.type == 'application/pdf') {
+                                return ' <a href="#" target="_blank">'+ data.media +'</a>'
+                            } else {
+                                return '<img src="' + data.media + '" alt="' + row.title + '" style="width: 50%; height: 50%;">';
+                            }
                         }
                         return '';
                     }

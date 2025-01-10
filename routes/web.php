@@ -55,7 +55,6 @@ Route::get('/clear', function() {
     return "cache clear";
 });
 
-
 // Auth routes
 Route::get('/login', [AuthController::class, 'index'])->name('login.index');
 Route::post('/login', [AuthController::class, 'signin'])->name('login.signin');
@@ -105,7 +104,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [AuthController::class, 'myProfile'])->name('profile');
     Route::post('/update/password/{userId}', [AuthController::class, 'updatePassword'])->name('password.update');
 });
-
 
 // Routes For Frontend
 Route::get('/', [IndexController::class, 'index'])->name('index');

@@ -23,7 +23,7 @@ return new class extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->dropColumn([
-                'sub_category'
+                'sub_category',
             ]);
         });
     }

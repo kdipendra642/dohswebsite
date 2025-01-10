@@ -7,8 +7,8 @@ use App\Http\Requests\PostRequest;
 use App\Services\CategoryService;
 use App\Services\PostService;
 use Illuminate\Support\Facades\DB;
-use Yajra\DataTables\DataTables;
 use Illuminate\Support\Str;
+use Yajra\DataTables\DataTables;
 
 class PostController extends BaseController
 {
@@ -59,11 +59,13 @@ class PostController extends BaseController
             ->editColumn('document_url', function ($post) {
                 if ($post->getMedia('posts')->isNotEmpty()) {
                     $mediaItem = $post->getMedia('posts')->first();
+
                     return [
                         'media' => $mediaItem->getUrl(),
-                        'type' => $mediaItem->mime_type
+                        'type' => $mediaItem->mime_type,
                     ];
                 }
+
                 return '';
             })
             ->editColumn('category', function ($post) {
@@ -74,8 +76,8 @@ class PostController extends BaseController
             })
             ->editColumn('action', function ($post) {
                 return '
-                        <a href="' . route('posts.edit', $post->id) . '" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
-                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter' . $post->id . '"><i class="fa fa-trash-o"></i></a>
+                        <a href="'.route('posts.edit', $post->id).'" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter'.$post->id.'"><i class="fa fa-trash-o"></i></a>
                     ';
             })
             ->make(true);

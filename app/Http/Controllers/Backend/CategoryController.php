@@ -51,8 +51,8 @@ class CategoryController extends BaseController
             })
             ->editColumn('action', function ($category) {
                 return '
-                        <a href="' . route('categories.edit', $category->id) . '" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
-                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter' . $category->id . '"><i class="fa fa-trash-o"></i></a>
+                        <a href="'.route('categories.edit', $category->id).'" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter'.$category->id.'"><i class="fa fa-trash-o"></i></a>
                     ';
             })
             ->make(true);
