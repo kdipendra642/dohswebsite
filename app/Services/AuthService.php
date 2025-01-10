@@ -14,6 +14,7 @@ class AuthService
     ) {
         $this->userRepository = $userRepository;
     }
+
     /**
      * Login Handler
      */
@@ -47,6 +48,7 @@ class AuthService
     public function getMyProfile(): object
     {
         $userId = Auth::user()->id;
+
         return $this->userRepository->fetch(id: $userId);
     }
 

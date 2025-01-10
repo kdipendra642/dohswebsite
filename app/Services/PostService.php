@@ -25,7 +25,7 @@ class PostService
                 'media',
             ],
             order: [
-                'created_at' => 'desc'
+                'created_at' => 'desc',
             ]
         );
     }

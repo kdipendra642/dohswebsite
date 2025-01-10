@@ -30,6 +30,15 @@
                         )
                         <img src="{{$popups->getMedia('pop-ups')[0]->getUrl()}}" alt="{{$popups->title}}" class="img-fluid">
                         @endif
+
+                        @if ($popups->getMedia('pop-ups')[0]->mime_type == 'application/pdf')
+                            <div class="d-none d-md-block">
+                                <object data="{{$popups->getMedia('pop-ups')[0]->getUrl()}}#view=FitH&amp;toolbar=1" type="application/pdf" width="100%" height="800">
+                                    <param name="initZoom" value="fitToPage">
+                                    <p>Your Device Cannot read PDF. <a rel="external" href="#">Click to View</a></p>
+                                </object>
+                            </div>
+                        @endif
                     @endif
                 </div>
             </div>

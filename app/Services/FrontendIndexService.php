@@ -88,70 +88,70 @@ class FrontendIndexService
 
         $lawRelatedNews = $this->postRepository->fetchAll(
             filterable: [
-                ['sub_category', '=', PostSubCategoryTypeEnum::LAWS_REGULATION->value]
+                ['sub_category', '=', PostSubCategoryTypeEnum::LAWS_REGULATION->value],
             ],
             order: [
-                'created_at' => 'desc'
+                'created_at' => 'desc',
             ],
             limit: 5
         );
 
         $informationRelatedNews = $this->postRepository->fetchAll(
             filterable: [
-                ['sub_category', '=', PostSubCategoryTypeEnum::INFORMATION_NEWS->value]
+                ['sub_category', '=', PostSubCategoryTypeEnum::INFORMATION_NEWS->value],
             ],
             order: [
-                'created_at' => 'desc'
+                'created_at' => 'desc',
             ],
             limit: 5
-        ) ;
+        );
 
         $tenderRelatedNews = $this->postRepository->fetchAll(
             filterable: [
-                ['sub_category', '=', PostSubCategoryTypeEnum::TENDER_NOTICE->value]
+                ['sub_category', '=', PostSubCategoryTypeEnum::TENDER_NOTICE->value],
             ],
             order: [
-                'created_at' => 'desc'
+                'created_at' => 'desc',
             ],
             limit: 5
-        ) ;
-        
+        );
+
         $publicationRelatedNews = $this->postRepository->fetchAll(
             filterable: [
-                ['sub_category', '=', PostSubCategoryTypeEnum::PUBLICATION->value]
+                ['sub_category', '=', PostSubCategoryTypeEnum::PUBLICATION->value],
             ],
             order: [
-                'created_at' => 'desc'
+                'created_at' => 'desc',
             ],
             limit: 5
-        ) ;
+        );
 
         $pressReleaseRelatedNews = $this->postRepository->fetchAll(
             filterable: [
-                ['sub_category', '=', PostSubCategoryTypeEnum::PRESS_RELEASE->value]
+                ['sub_category', '=', PostSubCategoryTypeEnum::PRESS_RELEASE->value],
             ],
             order: [
-                'created_at' => 'desc'
+                'created_at' => 'desc',
             ],
             limit: 5
-        ) ;
+        );
 
         $otherNews = $this->postRepository->fetchAll(
             filterable: [
-                ['sub_category', '=', PostSubCategoryTypeEnum::OTHER->value]
+                ['sub_category', '=', PostSubCategoryTypeEnum::OTHER->value],
             ],
             order: [
-                'created_at' => 'desc'
+                'created_at' => 'desc',
             ],
             limit: 5
-        ) ;
+        );
 
         $popUps = $this->popupsRepository->fetchAll(
             filterable: [
-                ['status', '=', 1]
+                ['status', '=', 1],
             ],
             order: [
-                'created_at' => 'desc'
+                'created_at' => 'desc',
             ],
             limit: 5
         );
@@ -168,7 +168,7 @@ class FrontendIndexService
             'publicationRelatedNews' => $publicationRelatedNews,
             'pressReleaseRelatedNews' => $pressReleaseRelatedNews,
             'otherNews' => $otherNews,
-            'popUps' => $popUps
+            'popUps' => $popUps,
         ];
     }
 
@@ -182,7 +182,7 @@ class FrontendIndexService
 
         return [
             'sitesettings' => $sitesettings,
-            'currentLocale' => $currentLocale
+            'currentLocale' => $currentLocale,
         ];
     }
 
@@ -255,7 +255,7 @@ class FrontendIndexService
             order: [
                 'created_at' => 'desc',
             ]
-            );
+        );
     }
 
     /**
@@ -320,13 +320,13 @@ class FrontendIndexService
     {
         return $this->popupsRepository->fetchAll(
             filterable: [
-                ['status', '=', 1]
+                ['status', '=', 1],
             ],
             with: [
                 'media',
             ],
             order: [
-                'created_at' => 'desc'
+                'created_at' => 'desc',
             ]
         );
     }

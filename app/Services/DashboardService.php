@@ -10,8 +10,11 @@ use App\Repositories\Interfaces\StaffRepositoryInterface;
 class DashboardService
 {
     protected $categoryRepository;
+
     protected $staffRepository;
+
     protected $postRepository;
+
     protected $contactMessageRepository;
 
     public function __construct(
@@ -37,7 +40,7 @@ class DashboardService
             'categories' => $categories,
             'staffs' => $staffs,
             'posts' => $posts,
-            'contactMessages' => $contactMessages
+            'contactMessages' => $contactMessages,
         ];
     }
 }

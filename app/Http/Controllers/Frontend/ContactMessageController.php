@@ -46,16 +46,16 @@ class ContactMessageController extends BaseController
         }
 
         return DataTables::of($contactMessages)
-        ->editColumn('created_at', function ($contactMessage) {
-            return $contactMessage->created_at->diffForHumans();
-        })
-        ->editColumn('action', function ($contactMessage) {
-            return '
-                    <a href="' . route('staffs.edit', $contactMessage->id) . '" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
-                    <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter' . $contactMessage->id . '"><i class="fa fa-trash-o"></i></a>
+            ->editColumn('created_at', function ($contactMessage) {
+                return $contactMessage->created_at->diffForHumans();
+            })
+            ->editColumn('action', function ($contactMessage) {
+                return '
+                    <a href="'.route('staffs.edit', $contactMessage->id).'" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                    <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter'.$contactMessage->id.'"><i class="fa fa-trash-o"></i></a>
                 ';
-        })
-        ->make(true);
+            })
+            ->make(true);
     }
 
     /**

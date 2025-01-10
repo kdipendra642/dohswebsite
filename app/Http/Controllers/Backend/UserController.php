@@ -43,20 +43,19 @@ class UserController extends Controller
             $users = $this->userService->getAllUsers();
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
-        }   
+        }
 
-        
         return DataTables::of($users)
-        ->editColumn('created_at', function ($user) {
-            return $user->created_at->diffForHumans();
-        })
-        ->editColumn('action', function ($user) {
-            return '
-                    <a href="' . route('users.edit', $user->id) . '" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
-                    <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter' . $user->id . '"><i class="fa fa-trash-o"></i></a>
+            ->editColumn('created_at', function ($user) {
+                return $user->created_at->diffForHumans();
+            })
+            ->editColumn('action', function ($user) {
+                return '
+                    <a href="'.route('users.edit', $user->id).'" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                    <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter'.$user->id.'"><i class="fa fa-trash-o"></i></a>
                 ';
-        })
-        ->make(true);
+            })
+            ->make(true);
 
     }
 

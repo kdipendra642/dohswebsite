@@ -5,15 +5,12 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Base\BaseController;
 use App\Http\Requests\PopUpRequest;
 use App\Services\PopUpService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
-use Illuminate\Support\Str;
 
 class PopUpController extends BaseController
 {
     protected $popUpService;
-
 
     public function __construct(
         PopUpService $popUpService,
@@ -56,10 +53,13 @@ class PopUpController extends BaseController
             ->editColumn('document_url', function ($popup) {
                 if ($popup->getMedia('pop-ups')->isNotEmpty()) {
                     $mediaItem = $popup->getMedia('pop-ups')->first();
+
                     return [
                         'media' => $mediaItem->getUrl(),
+                        'type' => $mediaItem->mime_type,
                     ];
                 }
+
                 return '';
             })
             ->editColumn('created_at', function ($popup) {
@@ -67,8 +67,8 @@ class PopUpController extends BaseController
             })
             ->editColumn('action', function ($popup) {
                 return '
-                        <a href="' . route('popups.edit', $popup->id) . '" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
-                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter' . $popup->id . '"><i class="fa fa-trash-o"></i></a>
+                        <a href="'.route('popups.edit', $popup->id).'" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter'.$popup->id.'"><i class="fa fa-trash-o"></i></a>
                     ';
             })
             ->make(true);

@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
 class PopUpRequest extends BaseRequest
 {
     /**
@@ -16,7 +14,7 @@ class PopUpRequest extends BaseRequest
         return [
             'title' => 'required|string|min:1|max:255',
             'status' => 'sometimes|nullable|boolean',
-            'image' => 'sometimes|nullable|file|max:2056|mimes:png,jpg,jpeg'
+            'image' => 'sometimes|nullable|file|max:2056|mimes:png,jpg,jpeg',
         ];
     }
 }
