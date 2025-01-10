@@ -134,7 +134,7 @@ class IndexController extends BaseController
         $staff = $this->frontendIndexService->getSingleStaffById(staffId: $staffId);
 
         return view('frontend.staffs.show', ([
-            'staff' => $staff
+            'staff' => $staff,
         ]));
     }
 
@@ -144,6 +144,7 @@ class IndexController extends BaseController
     public function tickers(string $slug)
     {
         $tickers = $this->frontendIndexService->getTickerBySlug(slug: $slug);
+
         return view('frontend.tickers.show', ([
             'tickers' => $tickers,
         ]));
@@ -155,8 +156,9 @@ class IndexController extends BaseController
     public function popupsIndex()
     {
         $popups = $this->frontendIndexService->getAllPopUps();
+
         return view('frontend.popups.index', ([
-            'popups' => $popups
+            'popups' => $popups,
         ]));
     }
 
@@ -168,7 +170,7 @@ class IndexController extends BaseController
         $popups = $this->frontendIndexService->getPopUpById(slug: $slug);
 
         return view('frontend.popups.show', ([
-            'popups' => $popups
+            'popups' => $popups,
         ]));
     }
 }

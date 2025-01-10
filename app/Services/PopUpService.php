@@ -24,7 +24,7 @@ class PopUpService
                 'media',
             ],
             order: [
-                'created_at' => 'desc'
+                'created_at' => 'desc',
             ]
         );
     }
@@ -59,9 +59,9 @@ class PopUpService
      */
     public function updatePopups(string|int $popupsId, array $data): object
     {
-        if(!isset($data['status'])) {
+        if (! isset($data['status'])) {
             $data = array_merge($data, [
-                'status' => false
+                'status' => false,
             ]);
         }
         $popups = $this->popUpRepository->update(

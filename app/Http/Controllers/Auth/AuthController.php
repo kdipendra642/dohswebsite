@@ -72,7 +72,7 @@ class AuthController extends Controller
         }
 
         return view('backend.profile.index', ([
-            'user' => $user
+            'user' => $user,
         ]));
     }
 
@@ -92,6 +92,7 @@ class AuthController extends Controller
         }
 
         DB::commit();
+
         return redirect()->back()->with('success', 'Password updated successfully.');
 
     }

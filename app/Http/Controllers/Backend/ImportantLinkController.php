@@ -46,16 +46,16 @@ class ImportantLinkController extends BaseController
         }
 
         return DataTables::of($importantlinks)
-        ->editColumn('created_at', function ($importantlink) {
-            return $importantlink->created_at->diffForHumans();
-        })
-        ->editColumn('action', function ($importantlink) {
-            return '
-                    <a href="' . route('importantlinks.edit', $importantlink->id) . '" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
-                    <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter' . $importantlink->id . '"><i class="fa fa-trash-o"></i></a>
+            ->editColumn('created_at', function ($importantlink) {
+                return $importantlink->created_at->diffForHumans();
+            })
+            ->editColumn('action', function ($importantlink) {
+                return '
+                    <a href="'.route('importantlinks.edit', $importantlink->id).'" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                    <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter'.$importantlink->id.'"><i class="fa fa-trash-o"></i></a>
                 ';
-        })
-        ->make(true);
+            })
+            ->make(true);
     }
 
     /**

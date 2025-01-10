@@ -28,7 +28,7 @@ class PostRequest extends BaseRequest
             'sub_category' => [
                 'required',
                 'string',
-                Rule::in(PostSubCategoryTypeEnum::getAllValues())
+                Rule::in(PostSubCategoryTypeEnum::getAllValues()),
                 // 'in:laws-regulation,information-news,tender-notice,other'
             ],
             'document' => 'sometimes|nullable|file|max:5120|mimes:jpg,png,jpeg,pdf',

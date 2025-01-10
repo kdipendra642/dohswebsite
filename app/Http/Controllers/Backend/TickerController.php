@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TickerRequest;
 use App\Services\TickerService;
 use Illuminate\Support\Facades\DB;
-use Yajra\DataTables\DataTables;
 use Illuminate\Support\Str;
+use Yajra\DataTables\DataTables;
 
 class TickerController extends Controller
 {
@@ -55,8 +55,8 @@ class TickerController extends Controller
             })
             ->editColumn('action', function ($ticker) {
                 return '
-                        <a href="' . route('tickers.edit', $ticker->id) . '" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
-                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter' . $ticker->id . '"><i class="fa fa-trash-o"></i></a>
+                        <a href="'.route('tickers.edit', $ticker->id).'" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter'.$ticker->id.'"><i class="fa fa-trash-o"></i></a>
                     ';
             })
             ->make(true);

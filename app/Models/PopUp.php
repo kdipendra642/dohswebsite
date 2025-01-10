@@ -15,11 +15,11 @@ class PopUp extends Model implements HasMedia
 
     protected $fillable = [
         'title',
-        'status'
+        'status',
     ];
 
     protected $casts = [
-        'status' => 'boolean'
+        'status' => 'boolean',
     ];
 
     public function getSlugOptions(): SlugOptions
@@ -28,7 +28,7 @@ class PopUp extends Model implements HasMedia
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
-    
+
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('pop-ups')
