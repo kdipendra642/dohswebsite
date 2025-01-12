@@ -299,36 +299,37 @@
             object-fit: cover;
         }
     </style>
-  <section id="gallery" class="wow fadeInUp">
-    <div class="container bg-silver" style="padding:0px 0px 6px 8px;">
-        <h4 class="text-center pt-3 mb-0 pb-0 imp-link">@lang('messages.gallery')</h4>
-        <hr>
-        <div class="owl-carousel gallery-carousel">
-            @foreach ($getHomePageData['galleries'] as $gallery)
-                <div class="gallery-img">
-                    <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->title}}">
-                        @if ($gallery->getMedia('thumbnail')->isNotEmpty())
-                        <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" class="img-fluid img-thumbnail square-img" alt="{{$gallery->title}}">
-                        @endif
-                    </a>
-                    <div class="caption">{{ $gallery->title }}</div> <!-- Caption for the image -->
-                </div>
-            @endforeach
+    
+    <section id="gallery" class="wow fadeInUp">
+        <div class="container bg-silver" style="padding:0px 0px 6px 8px;">
+            <h4 class="text-center pt-3 mb-0 pb-0 imp-link">@lang('messages.gallery')</h4>
+            <hr>
+            <div class="owl-carousel gallery-carousel">
+                @foreach ($getHomePageData['galleries'] as $gallery)
+                    <div class="gallery-img">
+                        <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->title}}">
+                            @if ($gallery->getMedia('thumbnail')->isNotEmpty())
+                            <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" class="img-fluid img-thumbnail square-img" alt="{{$gallery->title}}">
+                            @endif
+                        </a>
+                        <div class="caption">{{ $gallery->title }}</div> <!-- Caption for the image -->
+                    </div>
+                @endforeach
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <script type="text/javascript">
         $(document).ready(function(){
-    $('.gallery-carousel').owlCarousel({
-        items: 1, // Show one item at a time
-        loop: false, // Disable looping
-        nav: true, // Show next/prev buttons
-        dots: true, // Show dots for navigation
-        autoplay: true, // Enable autoplay
-        autoplayTimeout: 3000, // Time between transitions
-        autoplayHoverPause: true // Pause on mouse hover
-    });
-});
+            $('.gallery-carousel').owlCarousel({
+                items: 1, // Show one item at a time
+                loop: false, // Disable looping
+                nav: true, // Show next/prev buttons
+                dots: true, // Show dots for navigation
+                autoplay: true, // Enable autoplay
+                autoplayTimeout: 3000, // Time between transitions
+                autoplayHoverPause: true // Pause on mouse hover
+            });
+        });
     </script>
 @endsection

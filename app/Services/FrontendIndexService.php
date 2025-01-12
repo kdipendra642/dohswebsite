@@ -13,6 +13,7 @@ use App\Repositories\Interfaces\SliderRepositoryInterface;
 use App\Repositories\Interfaces\StaffRepositoryInterface;
 use App\Repositories\Interfaces\TickerRepositoryInterface;
 use App\Repositories\Interfaces\UsefulToolRepositoryInterface;
+use App\Repositories\Interfaces\VideoGalleryRepositoryInterface;
 use Carbon\Carbon;
 
 class FrontendIndexService
@@ -37,6 +38,8 @@ class FrontendIndexService
 
     protected $usefulToolsRepository;
 
+    protected $videoGalleryRepository;
+
     public function __construct(
         TickerRepositoryInterface $tickerRepository,
         SliderRepositoryInterface $sliderRepository,
@@ -48,6 +51,7 @@ class FrontendIndexService
         PostRepositoryInterface $postRepository,
         PopUpRepositoryInterface $popupsRepository,
         UsefulToolRepositoryInterface $usefulToolsRepository,
+        VideoGalleryRepositoryInterface $videoGalleryRepository,
 
     ) {
         $this->tickerRepository = $tickerRepository;
@@ -60,6 +64,7 @@ class FrontendIndexService
         $this->postRepository = $postRepository;
         $this->popupsRepository = $popupsRepository;
         $this->usefulToolsRepository = $usefulToolsRepository;
+        $this->videoGalleryRepository = $videoGalleryRepository;
     }
 
     public function getHomePageData(): array
@@ -175,6 +180,13 @@ class FrontendIndexService
             limit: 6
         );
 
+        $videoGalleries = $this->videoGalleryRepository->fetchAll(
+            order: [
+                'created_at' => 'desc',
+            ],
+            limit: 6
+        );
+
         return [
             'tickers' => $tickers,
             'sliders' => $sliders,
@@ -188,7 +200,8 @@ class FrontendIndexService
             'pressReleaseRelatedNews' => $pressReleaseRelatedNews,
             'otherNews' => $otherNews,
             'popUps' => $popUps,
-            'usefulTools' => $usefulTools
+            'usefulTools' => $usefulTools,
+            'videoGalleries' => $videoGalleries,
         ];
     }
 

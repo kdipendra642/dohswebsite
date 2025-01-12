@@ -23,6 +23,7 @@
                     <li><a  href="{{ route('posts.index') }}">@lang('messages.posts')</a></li>
                     <li><a  href="{{ route('popups.index') }}">@lang('messages.popups')</a></li>
                     <li><a  href="{{ route('usefultools.index') }}">@lang('messages.usefultools')</a></li>
+                    <li><a  href="{{ route('galleries.index') }}">@lang('messages.video_gallery')</a></li>
                 </ul>
             </li>
             <li class="sub-menu">
