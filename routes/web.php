@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\StaffController;
 use App\Http\Controllers\Backend\TickerController;
 use App\Http\Controllers\Backend\UsefulToolController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\VideoGalleryController;
 use App\Http\Controllers\Base\LocaleController;
 use App\Http\Controllers\Frontend\ContactMessageController;
 use App\Http\Controllers\Frontend\IndexController;
@@ -56,6 +57,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('/popups', PopUpController::class)->except(['show']);
     Route::get('/popups/data', [PopUpController::class, 'popupsData'])->name('popups.data');
+
+    Route::resource('/video/galleries', VideoGalleryController::class)->except(['show']);
+    Route::get('/video/galleries/data', [VideoGalleryController::class, 'galleriesData'])->name('galleries.data');
 
     Route::resource('/contact/messages', ContactMessageController::class)->except(['store', 'update', 'edit', 'show']);
     Route::get('/contact/messages/data', [ContactMessageController::class, 'messagesData'])->name('messages.data');

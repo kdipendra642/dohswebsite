@@ -10,6 +10,8 @@ return [
     'add_sliders' => 'Add Sliders',
     'tickers' => 'Tickers',
     'important_links' => 'Important Links',
+    'video_gallery' => 'Video Gallery',
+    'url' => 'URL',
     'gallery' => 'Gallery',
     'category' => 'Category',
     'posts' => 'Posts',

@@ -10,6 +10,8 @@ return [
     'add_sliders' => 'स्लाइडर थप्नुहोस्',
     'tickers' => 'टिकर',
     'important_links' => 'महत्वपूर्ण लिङ्कहरू',
+    'video_gallery' => 'भिडियो ग्यालरी',
+    'url' => 'URL',
     'gallery' => 'ग्यालेरी',
     'category' => 'श्रेणी',
     'posts' => 'पोष्टहरू',
