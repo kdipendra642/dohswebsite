@@ -2,17 +2,17 @@
 
     <div class="container">
       <div class="row footer-main">
-          <div class="col-sm-3">
+          <div class="col-sm-4">
             <h4>@lang('messages.contact_address')</h4>
               <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" alt="{{$siteSettings->titleThree}}" class="img-fluid float-left" >
               @if ($currentLocale == 'en')
               <h5 class="address text-left">{{$siteSettings->titleOne}}</h5>
-              <p class="text-left">{{$siteSettings->titleTwo}}</p>
+              <p class="text-left m-0">{{$siteSettings->titleTwo}}</p>
               <p class="address text-left">{{$siteSettings->titleThree}}</p>
               <p class="address text-left">{{$siteSettings->titleFour}}</p>
               @else
               <h5 class="address text-left">{{$siteSettings->titleOne_nep}}</h5>
-              <p class="text-left">{{$siteSettings->titleTwo_nep}}</p>
+              <p class="text-left m-0">{{$siteSettings->titleTwo_nep}}</p>
               <p class="address text-left">{{$siteSettings->titleThree_nep}}</p>
               <p class="address text-left">{{$siteSettings->titleFour_nep}}</p>
               @endif

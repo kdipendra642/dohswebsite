@@ -18,6 +18,7 @@ use App\Repositories\Interfaces\SiteSettingRepositoryInterface;
 use App\Repositories\Interfaces\SliderRepositoryInterface;
 use App\Repositories\Interfaces\StaffRepositoryInterface;
 use App\Repositories\Interfaces\TickerRepositoryInterface;
+use App\Repositories\Interfaces\UsefulToolRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Repositories\PopUpRepository;
 use App\Repositories\PostRepository;
@@ -25,6 +26,7 @@ use App\Repositories\SiteSettingRepository;
 use App\Repositories\SliderRepository;
 use App\Repositories\StaffRepository;
 use App\Repositories\TickerRepository;
+use App\Repositories\UsefulToolRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -93,6 +95,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             abstract: PopUpRepositoryInterface::class,
             concrete: PopUpRepository::class
+        );
+
+        $this->app->bind(
+            abstract: UsefulToolRepositoryInterface::class,
+            concrete: UsefulToolRepository::class
         );
 
     }

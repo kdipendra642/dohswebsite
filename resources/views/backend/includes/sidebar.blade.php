@@ -22,6 +22,7 @@
                     <li><a  href="{{ route('categories.index') }}">@lang('messages.category')</a></li>
                     <li><a  href="{{ route('posts.index') }}">@lang('messages.posts')</a></li>
                     <li><a  href="{{ route('popups.index') }}">@lang('messages.popups')</a></li>
+                    <li><a  href="{{ route('usefultools.index') }}">@lang('messages.usefultools')</a></li>
                 </ul>
             </li>
             <li class="sub-menu">
