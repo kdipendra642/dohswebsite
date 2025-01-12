@@ -56,4 +56,7 @@ return [
     'delete_success' => ':name deleted successfully',
     'update_success' => ':name updated successfully',
     'popups' => 'Popups',
+    'position' => 'Position',
+    'division' => 'Division',
+    'section' => 'Section',
 ];
