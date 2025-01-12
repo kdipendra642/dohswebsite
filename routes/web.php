@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\StaffController;
 use App\Http\Controllers\Backend\TickerController;
+use App\Http\Controllers\Backend\UsefulToolController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Base\LocaleController;
 use App\Http\Controllers\Frontend\ContactMessageController;
@@ -65,6 +66,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/profile', [AuthController::class, 'myProfile'])->name('profile');
     Route::post('/update/password/{userId}', [AuthController::class, 'updatePassword'])->name('password.update');
+
+    Route::resource('/usefultools', UsefulToolController::class)->except(['show']);
+    Route::get('/usefultools/data', [UsefulToolController::class, 'usefultoolsData'])->name('usefultools.data');
 });
 
 // Routes For Frontend

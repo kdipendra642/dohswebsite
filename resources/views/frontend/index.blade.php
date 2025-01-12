@@ -214,22 +214,56 @@
         </div>
     </div>
   </section>
+  <style>
+    .tool-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative; /* For z-index management */
+        overflow: hidden;   /* Prevents overflowing content */
+    }
 
+    .tool-card img {
+        transition: transform 0.3s ease;
+        max-width: 80%;     /* Adjust to fit your design */
+        height: auto;
+    }
+
+    .tool-card:hover {
+        transform: translateY(-10px); /* Lift effect */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    }
+
+    .tool-card:hover img {
+        transform: scale(1.1); /* Slight zoom on image */
+    }
+
+    .tool-card p {
+        margin-top: 10px;
+        transition: color 0.3s ease; /* Smooth color change */
+    }
+
+    .tool-card:hover p {
+        color: #007bff; /* Change to your preferred hover color */
+    }
+</style>
     <section id="all_notice" class="wow fadeInUp d-sm-block d-none mt-3">
         <div class="container bibhag pl-2">
-            <h4 class="text-center pt-3 mb-0 pb-0 imp-link">@lang('messages.useful_links')</h4>
+            <h4 class="text-center pt-3 mb-0 pb-0 imp-link">@lang('messages.usefultools')</h4>
             <hr>
         </div>
         <div class="container">
             <div class="row">
-                @foreach ($getHomePageData['importantLinks'] as $importantLinks)
-                    <div class="col-md-2 all-notice">
-                        <a href="{{ $importantLinks->url }}" target="_banner">
-                            <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" alt="{{$importantLinks->title}}">
-                            <h2 class="wow fadeInUp">{{$importantLinks->title}} </h2>
-                        </a>
-                    </div>
-                @endforeach
+            @foreach ($getHomePageData['usefulTools'] as $usefulTools)
+                <div class="col-md-2 border rounded bg-light text-center pt-3 tool-card">
+                    <a href="{{ $usefulTools->url }}" target="_banner">
+                        @if ($usefulTools->getMedia('icons')->isNotEmpty())
+                            <img src="{{$usefulTools->getMedia('icons')->first()->getUrl()}}" alt="{{$usefulTools->title}}">   
+                        @else
+                            <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" alt="{{$usefulTools->title}}">
+                        @endif
+                        <p class="wow fadeInUp">{{$usefulTools->title}} </p>
+                    </a>
+                </div>
+            @endforeach              
             </div>
         </div>
     </section>

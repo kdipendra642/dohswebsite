@@ -20,7 +20,7 @@ return [
     'settings' => 'Setting',
     'site_settings' => 'Site Setting',
     'menu' => 'Menu',
-    'menu' => 'Menu',
+    'usefultools' => 'Useful Tools',
     'delete_confirmation' => 'Delete Confirmation',
     'delete_confirmation_question' => 'Are you sure you want to delete?',
     'delete' => 'Delete',

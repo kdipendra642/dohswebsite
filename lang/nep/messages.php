@@ -19,6 +19,7 @@ return [
     'message' => 'सन्देश',
     'site_settings' => 'साइट सेटिङ',
     'menu' => 'मेनु',
+    'usefultools' => 'उपयोगी उपकरण',
     'delete_confirmation' => 'मेट्न पुष्टि',
     'delete_confirmation_question' => 'के तपाईं मेट्न निश्चित हुनुहुन्छ?',
     'delete' => 'मेटाउनुहोस्',
