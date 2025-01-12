@@ -12,6 +12,7 @@ use App\Repositories\Interfaces\SiteSettingRepositoryInterface;
 use App\Repositories\Interfaces\SliderRepositoryInterface;
 use App\Repositories\Interfaces\StaffRepositoryInterface;
 use App\Repositories\Interfaces\TickerRepositoryInterface;
+use Carbon\Carbon;
 
 class FrontendIndexService
 {
@@ -83,6 +84,12 @@ class FrontendIndexService
             with: [
                 'thumbnail',
                 'supportingImages',
+            ],
+            filterable: [
+                ['created_at', 'like', Carbon::now()->format('Y-m')]
+            ],
+            order: [
+                'created_at' => 'desc'
             ]
         );
 
@@ -213,13 +220,30 @@ class FrontendIndexService
     /**
      * Get All Gallery
      */
-    public function getAllGalleryItems(): object
+    public function getAllGalleryItems(): array
     {
-        return $this->galleryRepository->fetchAll(
+        $latestGallery = $this->galleryRepository->fetchAll(
             order: [
                 'created_at' => 'desc',
-            ]
+            ],
+            filterable: [
+                ['created_at', 'like', Carbon::now()->format('Y-m')]
+            ],
         );
+
+        $archieveGallery = $this->galleryRepository->fetchAll(
+            order: [
+                'created_at' => 'desc',
+            ],
+            filterable: [
+                ['created_at', 'like', Carbon::now()->subMonth()->format('Y-m')]
+            ],
+        );
+
+        return [
+            'latestGallery' => $latestGallery,
+            'archieveGallery' => $archieveGallery,
+        ];
     }
 
     /**

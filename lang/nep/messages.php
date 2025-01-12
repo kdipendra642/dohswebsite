@@ -54,4 +54,7 @@ return [
     'delete_success' => ':name सफलतापूर्वक मेटियो',
     'update_success' => ':name सफलतापूर्वक अद्यावधिक गरियो',
     'popups' => 'Popups',
+    'position' => 'पद',
+    'division' => 'विभाजन',
+    'section' => 'विभाग',
 ];

@@ -31,20 +31,19 @@
                                 @php
                                     $i = 0;
                                 @endphp
-                                @foreach ($getHomePageData['sliders'] as $sliders)
+                                @foreach ($getHomePageData['galleries'] as $galleries)
                                 {{ $i++; }}
                                     <div class="carousel-item {{$i == 1 ? 'active' : ''}}">
-                                        <a href="#" class="">
-                                            @if ($sliders->getMedia('sliders')->isNotEmpty())
+                                        <a href="{{ route('gallery', $galleries->slug) }}" class="">
+                                            @if ($galleries->getMedia('thumbnail')->isNotEmpty())
                                                         <img
-                                                            src="{{$sliders->getMedia('sliders')->first()->getUrl()}}"
-                                                            alt="{{$sliders->title}}"
+                                                            src="{{$galleries->getMedia('thumbnail')->first()->getUrl()}}"
+                                                            alt="{{$galleries->title}}"
                                                             class="img-fluid"
-                                                            {{-- style="width: 50%; height: 50%;" --}}
                                                         >
                                                     @endif
                                         </a>
-                                        <p>{{ $sliders->title}}</p>
+                                        <p>{{ $galleries->title}}</p>
                                     </div>
                                 @endforeach
 
@@ -64,7 +63,7 @@
                     <div class="wow fadeInUp">
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active tabbg" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" style="width: 100% !important">@lang('messages.information_news')</a>
+                                <a class="nav-item nav-link tabbg" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" style="width: 100% !important">@lang('messages.information_news')</a>
                                 <!-- <a class="nav-item nav-link tabbg" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">कानून / नियमावली</a> -->
                             </div>
                         </nav>
@@ -81,15 +80,6 @@
                                     <span class="clearfix"></span>
                                 </ul>
                             </div>
-                            <!-- <div class="tab-pane fade border-tab" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                <ul>
-                                    <li>
-                                        <a href="detail/269.html" title="औद्योगिक व्यवसाय ऐन, २०७६">औद्योगिक व्यवसाय ऐन, २०७६</a>
-                                    </li>
-                                    <span class="float-right"><a href="laws-and-regulations.html">विभागका सुचनाहरु &raquo;</a></span>
-                                    <span class="clearfix"></span>
-                                </ul>
-                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -188,7 +178,6 @@
                         @foreach ($getHomePageData['staffs'] as $staffs)
                         <div class="profile-ebox photo-placeholder ">
                             <div class="single-profile">
-                                <h5 class="h5">{{$staffs->position}}</h5>
                                 <center>
                                     @if ($staffs->getMedia('staffs')->isNotEmpty())
                                         <img
@@ -210,8 +199,13 @@
                                     @endif
                                 </center>
                                 <p class="h4 mt-1"> {{$staffs->name}} </p>
-                            <p class="h6"> <i class="fa fa-phone"></i> {{$staffs->telephone}}</p>
-                            <p class="h6"> <i class=" fa fa-envelope"></i> {{$staffs->email}}</p>
+                                <p>{{$staffs->position}}</p>
+                                @if($staffs->email)
+                                <p class="h6"> <i class="fa fa-phone"></i> {{$staffs->telephone}}</p>
+                                @endif
+                                @if($staffs->email)
+                                <p class="h6"> <i class=" fa fa-envelope"></i> {{$staffs->email}}</p>
+                                @endif
                             </div>
                         @endforeach
             </div>
@@ -262,6 +256,14 @@
             text-align: center;
             border-radius: 5px;
         }
+
+        .square-img {
+            width: 100%;
+            height: auto;
+            max-width: 300px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
     </style>
   <section id="gallery" class="wow fadeInUp">
     <div class="container bg-silver" style="padding:0px 0px 6px 8px;">
@@ -272,7 +274,7 @@
                 <div class="gallery-img">
                     <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->title}}">
                         @if ($gallery->getMedia('thumbnail')->isNotEmpty())
-                        <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" class="img-fluid" alt="{{$gallery->title}}">
+                        <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" class="img-fluid img-thumbnail square-img" alt="{{$gallery->title}}">
                         @endif
                     </a>
                     <div class="caption">{{ $gallery->title }}</div> <!-- Caption for the image -->
