@@ -25,7 +25,7 @@
                 <header class="card-header">
                     Video Gallery
                     <div class="pull-right hidden-phone">
-                        <a href="{{ route('galleries.create') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add Video Gallery</a>
+                        <a href="{{ route('videogalleries.create') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add Video Gallery</a>
                     </div>
                 </header>
                 <div class="card-body">
@@ -41,7 +41,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($videoGalleries as $videoGallery)
-                             
+
                                 {{-- modal --}}
                                 <div class="modal fade" id="exampleModalCenter{{$videoGallery->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -89,7 +89,7 @@ jQuery(document).ready(function($) {
         processing: true,
         serverSide: true,
         ajax: {
-            url: "{{ route('galleries.data') }}",
+            url: "{{ route('videogalleries.data') }}",
             type: "GET",
             error: function(xhr, error, thrown) {
                 console.error('Error:', xhr.status, thrown);
