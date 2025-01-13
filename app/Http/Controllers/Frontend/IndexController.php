@@ -68,7 +68,8 @@ class IndexController extends BaseController
         $galleries = $this->frontendIndexService->getAllGalleryItems();
 
         return view('frontend.gallery.index', ([
-            'galleries' => $galleries,
+            'galleries' => $galleries['latestGallery'],
+            'archieves' => $galleries['archieveGallery'],
         ]));
     }
 

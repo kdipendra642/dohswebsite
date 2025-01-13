@@ -15,13 +15,15 @@
                     <span>@lang('messages.content')</span>
                 </a>
                 <ul class="sub">
-                    <li><a  href="{{ route('sliders.index') }}">@lang('messages.sliders')</a></li>
+                    <!-- <li><a  href="{{ route('sliders.index') }}">@lang('messages.sliders')</a></li> -->
                     <li><a  href="{{ route('tickers.index') }}">@lang('messages.tickers')</a></li>
                     <li><a  href="{{ route('importantlinks.index') }}">@lang('messages.important_links')</a></li>
                     <li><a  href="{{ route('galleries.index') }}">@lang('messages.gallery')</a></li>
                     <li><a  href="{{ route('categories.index') }}">@lang('messages.category')</a></li>
                     <li><a  href="{{ route('posts.index') }}">@lang('messages.posts')</a></li>
                     <li><a  href="{{ route('popups.index') }}">@lang('messages.popups')</a></li>
+                    <li><a  href="{{ route('usefultools.index') }}">@lang('messages.usefultools')</a></li>
+                    <li><a  href="{{ route('videogalleries.index') }}">@lang('messages.video_gallery')</a></li>
                 </ul>
             </li>
             <li class="sub-menu">

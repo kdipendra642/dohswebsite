@@ -31,20 +31,19 @@
                                 @php
                                     $i = 0;
                                 @endphp
-                                @foreach ($getHomePageData['sliders'] as $sliders)
+                                @foreach ($getHomePageData['galleries'] as $galleries)
                                 {{ $i++; }}
                                     <div class="carousel-item {{$i == 1 ? 'active' : ''}}">
-                                        <a href="#" class="">
-                                            @if ($sliders->getMedia('sliders')->isNotEmpty())
+                                        <a href="{{ route('gallery', $galleries->slug) }}" class="">
+                                            @if ($galleries->getMedia('thumbnail')->isNotEmpty())
                                                         <img
-                                                            src="{{$sliders->getMedia('sliders')->first()->getUrl()}}"
-                                                            alt="{{$sliders->title}}"
+                                                            src="{{$galleries->getMedia('thumbnail')->first()->getUrl()}}"
+                                                            alt="{{$galleries->title}}"
                                                             class="img-fluid"
-                                                            {{-- style="width: 50%; height: 50%;" --}}
                                                         >
                                                     @endif
                                         </a>
-                                        <p>{{ $sliders->title}}</p>
+                                        <p>{{ $galleries->title}}</p>
                                     </div>
                                 @endforeach
 
@@ -64,7 +63,7 @@
                     <div class="wow fadeInUp">
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active tabbg" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" style="width: 100% !important">@lang('messages.information_news')</a>
+                                <a class="nav-item nav-link tabbg" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" style="width: 100% !important">@lang('messages.information_news')</a>
                                 <!-- <a class="nav-item nav-link tabbg" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">कानून / नियमावली</a> -->
                             </div>
                         </nav>
@@ -81,15 +80,6 @@
                                     <span class="clearfix"></span>
                                 </ul>
                             </div>
-                            <!-- <div class="tab-pane fade border-tab" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                <ul>
-                                    <li>
-                                        <a href="detail/269.html" title="औद्योगिक व्यवसाय ऐन, २०७६">औद्योगिक व्यवसाय ऐन, २०७६</a>
-                                    </li>
-                                    <span class="float-right"><a href="laws-and-regulations.html">विभागका सुचनाहरु &raquo;</a></span>
-                                    <span class="clearfix"></span>
-                                </ul>
-                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -188,7 +178,6 @@
                         @foreach ($getHomePageData['staffs'] as $staffs)
                         <div class="profile-ebox photo-placeholder ">
                             <div class="single-profile">
-                                <h5 class="h5">{{$staffs->position}}</h5>
                                 <center>
                                     @if ($staffs->getMedia('staffs')->isNotEmpty())
                                         <img
@@ -210,8 +199,13 @@
                                     @endif
                                 </center>
                                 <p class="h4 mt-1"> {{$staffs->name}} </p>
-                            <p class="h6"> <i class="fa fa-phone"></i> {{$staffs->telephone}}</p>
-                            <p class="h6"> <i class=" fa fa-envelope"></i> {{$staffs->email}}</p>
+                                <p>{{$staffs->position}}</p>
+                                @if($staffs->email)
+                                <p class="h6"> <i class="fa fa-phone"></i> {{$staffs->telephone}}</p>
+                                @endif
+                                @if($staffs->email)
+                                <p class="h6"> <i class=" fa fa-envelope"></i> {{$staffs->email}}</p>
+                                @endif
                             </div>
                         @endforeach
             </div>
@@ -220,22 +214,56 @@
         </div>
     </div>
   </section>
+  <style>
+    .tool-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative; /* For z-index management */
+        overflow: hidden;   /* Prevents overflowing content */
+    }
 
+    .tool-card img {
+        transition: transform 0.3s ease;
+        max-width: 80%;     /* Adjust to fit your design */
+        height: auto;
+    }
+
+    .tool-card:hover {
+        transform: translateY(-10px); /* Lift effect */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    }
+
+    .tool-card:hover img {
+        transform: scale(1.1); /* Slight zoom on image */
+    }
+
+    .tool-card p {
+        margin-top: 10px;
+        transition: color 0.3s ease; /* Smooth color change */
+    }
+
+    .tool-card:hover p {
+        color: #007bff; /* Change to your preferred hover color */
+    }
+</style>
     <section id="all_notice" class="wow fadeInUp d-sm-block d-none mt-3">
         <div class="container bibhag pl-2">
-            <h4 class="text-center pt-3 mb-0 pb-0 imp-link">@lang('messages.useful_links')</h4>
+            <h4 class="text-center pt-3 mb-0 pb-0 imp-link">@lang('messages.usefultools')</h4>
             <hr>
         </div>
         <div class="container">
             <div class="row">
-                @foreach ($getHomePageData['importantLinks'] as $importantLinks)
-                    <div class="col-md-2 all-notice">
-                        <a href="{{ $importantLinks->url }}" target="_banner">
-                            <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" alt="{{$importantLinks->title}}">
-                            <h2 class="wow fadeInUp">{{$importantLinks->title}} </h2>
-                        </a>
-                    </div>
-                @endforeach
+            @foreach ($getHomePageData['usefulTools'] as $usefulTools)
+                <div class="col-md-2 border rounded bg-light text-center pt-3 tool-card">
+                    <a href="{{ $usefulTools->url }}" target="_banner">
+                        @if ($usefulTools->getMedia('icons')->isNotEmpty())
+                            <img src="{{$usefulTools->getMedia('icons')->first()->getUrl()}}" alt="{{$usefulTools->title}}">   
+                        @else
+                            <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" alt="{{$usefulTools->title}}">
+                        @endif
+                        <p class="wow fadeInUp">{{$usefulTools->title}} </p>
+                    </a>
+                </div>
+            @endforeach              
             </div>
         </div>
     </section>
@@ -262,37 +290,46 @@
             text-align: center;
             border-radius: 5px;
         }
+
+        .square-img {
+            width: 100%;
+            height: auto;
+            max-width: 300px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
     </style>
-  <section id="gallery" class="wow fadeInUp">
-    <div class="container bg-silver" style="padding:0px 0px 6px 8px;">
-        <h4 class="text-center pt-3 mb-0 pb-0 imp-link">@lang('messages.gallery')</h4>
-        <hr>
-        <div class="owl-carousel gallery-carousel">
-            @foreach ($getHomePageData['galleries'] as $gallery)
-                <div class="gallery-img">
-                    <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->title}}">
-                        @if ($gallery->getMedia('thumbnail')->isNotEmpty())
-                        <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" class="img-fluid" alt="{{$gallery->title}}">
-                        @endif
-                    </a>
-                    <div class="caption">{{ $gallery->title }}</div> <!-- Caption for the image -->
-                </div>
-            @endforeach
+    
+    <section id="gallery" class="wow fadeInUp">
+        <div class="container bg-silver" style="padding:0px 0px 6px 8px;">
+            <h4 class="text-center pt-3 mb-0 pb-0 imp-link">@lang('messages.gallery')</h4>
+            <hr>
+            <div class="owl-carousel gallery-carousel">
+                @foreach ($getHomePageData['galleries'] as $gallery)
+                    <div class="gallery-img">
+                        <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->title}}">
+                            @if ($gallery->getMedia('thumbnail')->isNotEmpty())
+                            <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" class="img-fluid img-thumbnail square-img" alt="{{$gallery->title}}">
+                            @endif
+                        </a>
+                        <div class="caption">{{ $gallery->title }}</div> <!-- Caption for the image -->
+                    </div>
+                @endforeach
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <script type="text/javascript">
         $(document).ready(function(){
-    $('.gallery-carousel').owlCarousel({
-        items: 1, // Show one item at a time
-        loop: false, // Disable looping
-        nav: true, // Show next/prev buttons
-        dots: true, // Show dots for navigation
-        autoplay: true, // Enable autoplay
-        autoplayTimeout: 3000, // Time between transitions
-        autoplayHoverPause: true // Pause on mouse hover
-    });
-});
+            $('.gallery-carousel').owlCarousel({
+                items: 1, // Show one item at a time
+                loop: false, // Disable looping
+                nav: true, // Show next/prev buttons
+                dots: true, // Show dots for navigation
+                autoplay: true, // Enable autoplay
+                autoplayTimeout: 3000, // Time between transitions
+                autoplayHoverPause: true // Pause on mouse hover
+            });
+        });
     </script>
 @endsection

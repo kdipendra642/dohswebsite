@@ -12,6 +12,9 @@ use App\Repositories\Interfaces\SiteSettingRepositoryInterface;
 use App\Repositories\Interfaces\SliderRepositoryInterface;
 use App\Repositories\Interfaces\StaffRepositoryInterface;
 use App\Repositories\Interfaces\TickerRepositoryInterface;
+use App\Repositories\Interfaces\UsefulToolRepositoryInterface;
+use App\Repositories\Interfaces\VideoGalleryRepositoryInterface;
+use Carbon\Carbon;
 
 class FrontendIndexService
 {
@@ -33,6 +36,10 @@ class FrontendIndexService
 
     protected $popupsRepository;
 
+    protected $usefulToolsRepository;
+
+    protected $videoGalleryRepository;
+
     public function __construct(
         TickerRepositoryInterface $tickerRepository,
         SliderRepositoryInterface $sliderRepository,
@@ -43,6 +50,8 @@ class FrontendIndexService
         CategoryRepositoryInterface $categoryRepository,
         PostRepositoryInterface $postRepository,
         PopUpRepositoryInterface $popupsRepository,
+        UsefulToolRepositoryInterface $usefulToolsRepository,
+        VideoGalleryRepositoryInterface $videoGalleryRepository,
 
     ) {
         $this->tickerRepository = $tickerRepository;
@@ -54,6 +63,8 @@ class FrontendIndexService
         $this->categoryRepository = $categoryRepository;
         $this->postRepository = $postRepository;
         $this->popupsRepository = $popupsRepository;
+        $this->usefulToolsRepository = $usefulToolsRepository;
+        $this->videoGalleryRepository = $videoGalleryRepository;
     }
 
     public function getHomePageData(): array
@@ -83,6 +94,12 @@ class FrontendIndexService
             with: [
                 'thumbnail',
                 'supportingImages',
+            ],
+            filterable: [
+                ['created_at', 'like', Carbon::now()->format('Y-m')]
+            ],
+            order: [
+                'created_at' => 'desc'
             ]
         );
 
@@ -156,6 +173,20 @@ class FrontendIndexService
             limit: 5
         );
 
+        $usefulTools = $this->usefulToolsRepository->fetchAll(
+            order: [
+                'created_at' => 'desc',
+            ],
+            limit: 6
+        );
+
+        $videoGalleries = $this->videoGalleryRepository->fetchAll(
+            order: [
+                'created_at' => 'desc',
+            ],
+            limit: 6
+        );
+
         return [
             'tickers' => $tickers,
             'sliders' => $sliders,
@@ -169,6 +200,8 @@ class FrontendIndexService
             'pressReleaseRelatedNews' => $pressReleaseRelatedNews,
             'otherNews' => $otherNews,
             'popUps' => $popUps,
+            'usefulTools' => $usefulTools,
+            'videoGalleries' => $videoGalleries,
         ];
     }
 
@@ -213,13 +246,30 @@ class FrontendIndexService
     /**
      * Get All Gallery
      */
-    public function getAllGalleryItems(): object
+    public function getAllGalleryItems(): array
     {
-        return $this->galleryRepository->fetchAll(
+        $latestGallery = $this->galleryRepository->fetchAll(
             order: [
                 'created_at' => 'desc',
-            ]
+            ],
+            filterable: [
+                ['created_at', 'like', Carbon::now()->format('Y-m')]
+            ],
         );
+
+        $archieveGallery = $this->galleryRepository->fetchAll(
+            order: [
+                'created_at' => 'desc',
+            ],
+            filterable: [
+                ['created_at', 'like', Carbon::now()->subMonth()->format('Y-m')]
+            ],
+        );
+
+        return [
+            'latestGallery' => $latestGallery,
+            'archieveGallery' => $archieveGallery,
+        ];
     }
 
     /**

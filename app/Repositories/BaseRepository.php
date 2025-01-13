@@ -29,40 +29,47 @@ class BaseRepository implements BaseRepositoryInterface
     public function fetchAll(array $with = [], array $filterable = [], array $order = [], ?int $limit = null): object
     {
         $query = $this->model::query();
-
-        if (! empty($with)) {
+    
+        if (!empty($with)) {
             $query->with($with);
         }
-
-        if (! empty($filterable)) {
+    
+        if (!empty($filterable)) {
             foreach ($filterable as $filter) {
                 if (is_array($filter) && count($filter) === 3) {
-                    $query->where($filter[0], $filter[1], $filter[2]);
+                    // Check if it's a 'like' condition
+                    if (strtolower($filter[1]) === 'like') {
+                        $query->where($filter[0], 'like', '%' . $filter[2] . '%');
+                    } else {
+                        $query->where($filter[0], $filter[1], $filter[2]);
+                    }
                 } elseif (is_array($filter)) {
                     $query->whereIn($filter[0], $filter[1]);
+                } elseif (is_string($filter)) {
+                    // Handle 'where like' if the condition is a string
+                    $query->where(key($filter), 'like', '%' . current($filter) . '%');
                 } else {
                     $query->where(key($filter), current($filter));
                 }
             }
         }
-
+    
         /**
          * For reference see example below
          *  eg:: ['column_name' => 'asc', 'another_column' => 'desc']
          */
-        if (! empty($order)) {
+        if (!empty($order)) {
             foreach ($order as $column => $direction) {
                 $query->orderBy($column, $direction);
             }
         }
-
+    
         if ($limit !== null) {
             $query->limit($limit);
         }
-
+    
         return $query->get();
     }
-
     /**
      * Fetch a single record by ID.
      *
