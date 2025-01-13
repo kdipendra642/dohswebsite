@@ -58,8 +58,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/popups', PopUpController::class)->except(['show']);
     Route::get('/popups/data', [PopUpController::class, 'popupsData'])->name('popups.data');
 
-    Route::resource('/video/galleries', VideoGalleryController::class)->except(['show']);
-    Route::get('/video/galleries/data', [VideoGalleryController::class, 'galleriesData'])->name('galleries.data');
+    Route::resource('/videogalleries', VideoGalleryController::class)->except(['show']);
+    Route::get('/videogalleries/data', [VideoGalleryController::class, 'galleriesData'])->name('videogalleries.data');
 
     Route::resource('/contact/messages', ContactMessageController::class)->except(['store', 'update', 'edit', 'show']);
     Route::get('/contact/messages/data', [ContactMessageController::class, 'messagesData'])->name('messages.data');
