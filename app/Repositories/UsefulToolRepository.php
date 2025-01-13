@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Models\Staff;
 use App\Models\UsefulTool;
 use App\Repositories\Interfaces\UsefulToolRepositoryInterface;
 

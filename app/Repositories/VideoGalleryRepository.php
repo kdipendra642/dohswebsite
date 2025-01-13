@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Models\Category;
 use App\Models\VideoGallery;
 use App\Repositories\Interfaces\VideoGalleryRepositoryInterface;
 

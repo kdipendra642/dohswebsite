@@ -26,7 +26,21 @@
 
                     <div class="tab-pane fade show active" id="nav-suchhana" role="tabpanel" aria-labelledby="nav-suchana-tab">
                         <div class="row gallery">
-                            <ul>
+                            @foreach ($galleries as $gallery)
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                                <a href="{{ route('gallery', $gallery->slug) }}">
+                                    @if ($gallery->getMedia('thumbnail')->isNotEmpty())
+                                        <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" alt="{{$gallery->title}}" class="img-thumbnail square-img">
+                                    @endif
+                                    </a>
+                                    <h4>{{Illuminate\Support\Str::limit($gallery->title, 40)}}</h4>
+                                    <hr style="border: 2px solid #000">
+                                    <span>{{ Carbon\Carbon::parse($gallery->created_at)->format('d F, Y, l')}}</span>
+                            </div>
+                            @endforeach
+                            <span class="clearfix"></span>
+
+                            {{-- <ul>
                                 @foreach ($galleries as $gallery)
                                     <li class="col-xs-6 col-sm-4 col-md-3">
                                         <a href="{{ route('gallery', $gallery->slug) }}">
@@ -40,14 +54,14 @@
                                     </li>
                                 @endforeach
                             <span class="clearfix"></span>
-                            </ul>
+                            </ul> --}}
                         </div>
-                        
+
                     </div>
 
                     <div class="tab-pane fade" id="nav-namunakanun" role="tabpanel" aria-labelledby="nav-namunakanun-tab">
                         <div class="row gallery">
-                                <ul>
+                                {{-- <ul>
                                     @if (count($archieves) == 0)
                                         <li class="col-xs-12 col-sm-12 col-md-12">No data</li>
                                     @endif
@@ -64,7 +78,23 @@
                                         </li>
                                     @endforeach
                                 <span class="clearfix"></span>
-                                </ul>
+                                </ul> --}}
+                                @if (count($archieves) == 0)
+                                    <div class="col-xs-12 col-sm-12 col-md-12">No data found</div>
+                                @endif
+                                @foreach ($archieves as $gallery)
+                                <div class="col-xs-6 col-sm-4 col-md-3">
+                                    <a href="{{ route('gallery', $gallery->slug) }}">
+                                        @if ($gallery->getMedia('thumbnail')->isNotEmpty())
+                                            <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" alt="{{$gallery->title}}" class="img-thumbnail square-img">
+                                        @endif
+                                        </a>
+                                        <h4>{{Illuminate\Support\Str::limit($gallery->title, 40)}}</h4>
+                                        <hr style="border: 2px solid #000">
+                                        <span>{{ Carbon\Carbon::parse($gallery->created_at)->format('d F, Y, l')}}</span>
+                                </div>
+                                @endforeach
+                                <span class="clearfix"></span>
                             </div>
                         </div>
                     </div>
