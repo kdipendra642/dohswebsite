@@ -96,10 +96,10 @@ class FrontendIndexService
                 'supportingImages',
             ],
             filterable: [
-                ['created_at', 'like', Carbon::now()->format('Y-m')]
+                ['created_at', 'like', Carbon::now()->format('Y-m')],
             ],
             order: [
-                'created_at' => 'desc'
+                'created_at' => 'desc',
             ]
         );
 
@@ -253,7 +253,7 @@ class FrontendIndexService
                 'created_at' => 'desc',
             ],
             filterable: [
-                ['created_at', 'like', Carbon::now()->format('Y-m')]
+                ['created_at', 'like', Carbon::now()->format('Y-m')],
             ],
         );
 
@@ -262,7 +262,7 @@ class FrontendIndexService
                 'created_at' => 'desc',
             ],
             filterable: [
-                ['created_at', 'like', Carbon::now()->subMonth()->format('Y-m')]
+                ['created_at', 'like', Carbon::now()->subMonth()->format('Y-m')],
             ],
         );
 
