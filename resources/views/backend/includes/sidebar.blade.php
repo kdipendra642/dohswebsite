@@ -16,7 +16,7 @@
                 </a>
                 <ul class="sub">
                     <!-- <li><a  href="{{ route('sliders.index') }}">@lang('messages.sliders')</a></li> -->
-                    <li><a  href="{{ route('tickers.index') }}">@lang('messages.tickers')</a></li>
+                    <!-- <li><a  href="{{ route('tickers.index') }}">@lang('messages.tickers')</a></li> -->
                     <li><a  href="{{ route('importantlinks.index') }}">@lang('messages.important_links')</a></li>
                     <li><a  href="{{ route('galleries.index') }}">@lang('messages.gallery')</a></li>
                     <li><a  href="{{ route('categories.index') }}">@lang('messages.category')</a></li>

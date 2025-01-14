@@ -1,5 +1,5 @@
 @php
-    $tickers = App\Models\Ticker::orderBy('created_at', 'DESC')->get();
+    $tickers = App\Models\Post::where('show_on_ticker', 1)->orderBy('created_at', 'DESC')->get();
 @endphp
 
 <div class="section-header aside-detail margintop">
@@ -7,7 +7,7 @@
     <ul>
         @foreach ($tickers as $ticker)
         <li>
-            <a href="{{ route('single.tickers',$ticker->slug) }}">{{$ticker->title}}</a>
+            <a href="{{ route('posts.single',$ticker->slug) }}">{{$ticker->title}}</a>
             <small><i class="fa fa-clock-o"> {{$ticker->created_at->diffForHumans()}}</i>
             &nbsp; &nbsp;<i class="fa fa-building"></i> News &amp; Notice
             </small>

@@ -35,10 +35,10 @@
                             <label for="title">Gallery Title</label>
                             <input type="title" name="title" class="form-control" id="title" placeholder="Enter title" value="{{ old('title') }}">
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="thumbnail">Thumbnail</label>
                             <input type="file" id="thumbnail" name="thumbnail">
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                             <label for="supporting_images">Images</label>

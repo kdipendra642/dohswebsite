@@ -9,14 +9,15 @@
                 </button>
             </div>
             <div class="modal-body" style="margin: auto; width: 100%;">
-                <hr>
                     @if ($popUps->getMedia('pop-ups')->isNotEmpty())
                         @if (
                             $popUps->getMedia('pop-ups')[0]->mime_type == 'image/png'
                             || $popUps->getMedia('pop-ups')[0]->mime_type == 'image/jpeg'
                             || $popUps->getMedia('pop-ups')[0]->mime_type == 'image/jpg'
                         )
-                        <img src="{{$popUps->getMedia('pop-ups')[0]->getUrl()}}" alt="{{$popUps->title}}" style="max-height: 70vh;">
+                        <div class="text-center">
+                            <img src="{{$popUps->getMedia('pop-ups')[0]->getUrl()}}" alt="{{$popUps->title}}" style="max-height: 70vh;">
+                        </div>
                         @endif
 
                         @if ($popUps->getMedia('pop-ups')[0]->mime_type == 'application/pdf')

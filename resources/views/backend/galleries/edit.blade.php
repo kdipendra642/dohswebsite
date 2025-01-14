@@ -37,7 +37,7 @@
                             <input type="title" name="title" class="form-control" id="title" placeholder="Enter title" value="{{ $gallery->title }}">
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="thumbnail">File input</label>
                             <input type="file" id="thumbnail" name="thumbnail">
 
@@ -57,7 +57,6 @@
                                                     <img src="{{$gallery->getMedia('thumbnail')[0]->getUrl()}}" alt="{{$gallery->title}}" style="width: 25%; height: 25%;">
                                                     <figcaption>
                                                         <h3>{{$gallery->getMedia('thumbnail')[0]->name}}</h3>
-                                                        <!-- <a class="fancybox" rel="group" href="img/gallery/3.jpg">Take a look</a> -->
                                                     </figcaption>
                                                     <a href="{{ route('delete.image', $gallery->getMedia('thumbnail')[0]->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
                                                 </figure>
@@ -68,11 +67,8 @@
                                         </ul>
                                     </div>
                                 @endif
-
                             </div>
-
-
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                             <label for="supporting_images">Images</label>

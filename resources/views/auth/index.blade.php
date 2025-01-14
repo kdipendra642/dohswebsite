@@ -7,6 +7,7 @@
     <meta name="description" content="Department of Health Servie">
     <meta name="author" content="Department of Health Servie">
     <meta name="keyword" content="Department of Health Servie">
+    <link rel="icon" href="{{ asset('assets/frontend/uploads/img/logo.png')}}">
 
     <title>Department of Health Servie</title>
 
@@ -29,6 +30,7 @@
         <form class="form-signin" action="{{ route('login.signin') }}" method="POST">
             @csrf
             <h2 class="form-signin-heading">साइन इन गर्नुहोस्</h2>
+            <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" alt="Department of Health Service" class="mx-auto mt-4 d-block">
             <div class="login-wrap">
                 <input type="text" name="email" class="form-control" placeholder="User ID" value="{{ old('email') }}" autofocus>
                 @error('email')
@@ -40,11 +42,11 @@
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
 
-                <label class="checkbox">
+                <!-- <label class="checkbox">
                     <span class="pull-right">
                         <a data-toggle="modal" href="#myModal"> Forgot Password?</a>
                     </span>
-                </label>
+                </label> -->
                 <button class="btn btn-lg btn-login btn-block" type="submit">साइन इन गर्नुहोस्</button>
             </div>
         </form>
