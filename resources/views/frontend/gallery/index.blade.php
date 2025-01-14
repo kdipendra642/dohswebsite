@@ -29,67 +29,38 @@
                             @foreach ($galleries as $gallery)
                             <div class="col-xs-6 col-sm-4 col-md-3">
                                 <a href="{{ route('gallery', $gallery->slug) }}">
-                                    @if ($gallery->getMedia('thumbnail')->isNotEmpty())
-                                        <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" alt="{{$gallery->title}}" class="img-thumbnail square-img">
+                                    @if ($gallery->supportingImages)
+                                    <img src="{{$gallery->supportingImages[0]->getUrl()}}" class="img-thumbnail square-img" alt="{{$gallery->title}}">
+                                    @else
+                                    <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" alt="{{$gallery->title}}" class="img-thumbnail square-img">
                                     @endif
                                     </a>
-                                    <h4>{{Illuminate\Support\Str::limit($gallery->title, 40)}}</h4>
+                                    <h5>{{Illuminate\Support\Str::limit($gallery->title, 40)}}</h5>
                                     <hr style="border: 2px solid #000">
                                     <span>{{ Carbon\Carbon::parse($gallery->created_at)->format('d F, Y, l')}}</span>
                             </div>
                             @endforeach
                             <span class="clearfix"></span>
 
-                            {{-- <ul>
-                                @foreach ($galleries as $gallery)
-                                    <li class="col-xs-6 col-sm-4 col-md-3">
-                                        <a href="{{ route('gallery', $gallery->slug) }}">
-                                        @if ($gallery->getMedia('thumbnail')->isNotEmpty())
-                                            <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" alt="{{$gallery->title}}" class="img-thumbnail square-img">
-                                        @endif
-                                        </a>
-                                        <h4>{{Illuminate\Support\Str::limit($gallery->title, 40)}}</h4>
-                                        <hr style="border: 2px solid #000">
-                                        <span>{{ Carbon\Carbon::parse($gallery->created_at)->format('d F, Y, l')}}</span>
-                                    </li>
-                                @endforeach
-                            <span class="clearfix"></span>
-                            </ul> --}}
                         </div>
 
                     </div>
 
                     <div class="tab-pane fade" id="nav-namunakanun" role="tabpanel" aria-labelledby="nav-namunakanun-tab">
                         <div class="row gallery">
-                                {{-- <ul>
-                                    @if (count($archieves) == 0)
-                                        <li class="col-xs-12 col-sm-12 col-md-12">No data</li>
-                                    @endif
-                                    @foreach ($archieves as $gallery)
-                                        <li class="col-xs-6 col-sm-4 col-md-3">
-                                            <a href="{{ route('gallery', $gallery->slug) }}">
-                                            @if ($gallery->getMedia('thumbnail')->isNotEmpty())
-                                                <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" alt="{{$gallery->title}}" class="img-thumbnail square-img">
-                                            @endif
-                                            </a>
-                                            <h4>{{Illuminate\Support\Str::limit($gallery->title, 40)}}</h4>
-                                            <hr style="border: 2px solid #000">
-                                            <span>{{ Carbon\Carbon::parse($gallery->created_at)->format('d F, Y, l')}}</span>
-                                        </li>
-                                    @endforeach
-                                <span class="clearfix"></span>
-                                </ul> --}}
                                 @if (count($archieves) == 0)
                                     <div class="col-xs-12 col-sm-12 col-md-12">No data found</div>
                                 @endif
                                 @foreach ($archieves as $gallery)
                                 <div class="col-xs-6 col-sm-4 col-md-3">
                                     <a href="{{ route('gallery', $gallery->slug) }}">
-                                        @if ($gallery->getMedia('thumbnail')->isNotEmpty())
-                                            <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" alt="{{$gallery->title}}" class="img-thumbnail square-img">
+                                        @if ($gallery->supportingImages)
+                                        <img src="{{$gallery->supportingImages[0]->getUrl()}}" class="img-thumbnail square-img" alt="{{$gallery->title}}">
+                                        @else
+                                        <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" alt="{{$gallery->title}}" class="img-thumbnail square-img">
                                         @endif
                                         </a>
-                                        <h4>{{Illuminate\Support\Str::limit($gallery->title, 40)}}</h4>
+                                        <h5>{{Illuminate\Support\Str::limit($gallery->title, 40)}}</h5>
                                         <hr style="border: 2px solid #000">
                                         <span>{{ Carbon\Carbon::parse($gallery->created_at)->format('d F, Y, l')}}</span>
                                 </div>

@@ -51,7 +51,7 @@ class VideoGalleryController extends BaseController
             })
             ->editColumn('action', function ($videoGallery) {
                 return '
-                        <a href="'.route('galleries.edit', $videoGallery->id).'" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                        <a href="'.route('videogalleries.edit', $videoGallery->id).'" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
                         <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter'.$videoGallery->id.'"><i class="fa fa-trash-o"></i></a>
                     ';
             })
@@ -87,7 +87,7 @@ class VideoGalleryController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('galleries.index')->with('success', __('messages.create_success', ['name' => 'Video Gallery']));
+        return redirect()->route('videogalleries.index')->with('success', __('messages.create_success', ['name' => 'Video Gallery']));
     }
 
     /**
@@ -129,7 +129,7 @@ class VideoGalleryController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('galleries.index')->with('success', __('messages.update_success', ['name' => 'Video Gallery']));
+        return redirect()->route('videogalleries.index')->with('success', __('messages.update_success', ['name' => 'Video Gallery']));
     }
 
     /**
@@ -150,6 +150,6 @@ class VideoGalleryController extends BaseController
         }
         DB::commit();
 
-        return redirect()->route('galleries.index')->with('success', __('messages.delete_success', ['name' => 'Video Gallery']));
+        return redirect()->route('videogalleries.index')->with('success', __('messages.delete_success', ['name' => 'Video Gallery']));
     }
 }

@@ -69,7 +69,7 @@ class FrontendIndexService
 
     public function getHomePageData(): array
     {
-        $tickers = $this->tickerRepository->fetchAll();
+        // $tickers = $this->tickerRepository->fetchAll();
 
         $sliders = $this->sliderRepository->fetchAll();
 
@@ -111,6 +111,15 @@ class FrontendIndexService
                 'created_at' => 'desc',
             ],
             limit: 5
+        );
+
+        $tickerRelatedNews = $this->postRepository->fetchAll(
+            filterable: [
+                ['show_on_ticker', '=', 1],
+            ],
+            order: [
+                'created_at' => 'desc',
+            ],
         );
 
         $informationRelatedNews = $this->postRepository->fetchAll(
@@ -188,7 +197,8 @@ class FrontendIndexService
         );
 
         return [
-            'tickers' => $tickers,
+            // 'tickers' => $tickers,
+            'tickerRelatedNews' => $tickerRelatedNews,
             'sliders' => $sliders,
             'staffs' => $staffs,
             'importantLinks' => $importantLinks,

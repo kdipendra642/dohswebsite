@@ -61,6 +61,12 @@ class PostService
      */
     public function updatePosts(string|int $postsId, array $data): object
     {
+        if (! isset($data['show_on_ticker'])) {
+            $data = array_merge($data, [
+                'show_on_ticker' => false,
+            ]);
+        }
+
         $slider = $this->postRepository->update(
             data: $data,
             id: $postsId

@@ -4,9 +4,9 @@
 <div class="container content" style="padding:0px;" >
 
     <div class="section-header">
-        <div class="breadcump"><a href="{{ route('index') }}"><i class="fa fa-home fa-lg"></i> </a>  / Posts</div>
+        <div class="breadcump"><a href="{{ route('index') }}"><i class="fa fa-home fa-lg"></i> </a>  / @lang('messages.posts')</div>
         <h2 class="notice_title">
-            Posts
+            @lang('messages.posts')
         </h2>
     </div>
 </div>
@@ -17,15 +17,34 @@
 <section>
   <div class="container archiving">
       <div class="col-12 margintop">
+        <div class="mb-3">
+               <form method="GET" action="{{ route('posts.index') }}" class="form-inline">
+                    <div class="form-group mr-2">
+                       <label for="title" class="mr-2">@lang('messages.title'):</label>
+                       <input type="text" name="title" id="title" class="form-control">
+                   </div>
+                   <div class="form-group mr-2">
+                       <label for="category" class="mr-2">@lang('messages.category'):</label>
+                       <select name="category" id="category" class="form-control">
+                            <option value="" selected>--- Please Select ---</option>
+                       </select>
+                   </div>
+                   <div class="form-group mr-2">
+                       <label for="date" class="mr-2">@lang('messages.published_at'):</label>
+                       <input type="date" name="date" id="date" class="form-control">
+                   </div>
+                   <button type="submit" class="btn btn-primary">@lang('messages.submit')</button>
+               </form>
+           </div>
            <div class="table-responsive">
                <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th style="width: 5%">SN</th>
-                            <th style="width: 45%;">Title</th>
-                            <th style="width: 10%;">Category</th>
-                            <th style="width:10%;">Published</th>
-                            <th style="width: 8%">Details</th>
+                            <th style="width: 5%">@lang('messages.sn')</th>
+                            <th style="width: 45%;">@lang('messages.title')</th>
+                            <th style="width: 10%;">@lang('messages.category')</th>
+                            <th style="width:10%;">@lang('messages.published_at')</th>
+                            <th style="width: 8%">@lang('messages.details')</th>
                         </tr>
                     </thead>
                     <tbody>

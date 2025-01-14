@@ -9,9 +9,9 @@
             <div class="col-sm-12 col-md-2 col-lg-1 news-tag">@lang('messages.news')</div>
                 <div class="col-sm-12 col-md-10 col-lg-10 news">
                     <div class="owl-carousel flash-caresol">
-                        @foreach ($getHomePageData['tickers'] as $tickers)
-                        <a href="{{ route('single.tickers',$tickers->slug) }}">
-                            {{$tickers->title}}
+                        @foreach ($getHomePageData['tickerRelatedNews'] as $posts)
+                        <a href="{{ route('posts.single',$posts->slug) }}">
+                            {{$posts->title}}
                         </a>
                         @endforeach
                     </div>
@@ -32,16 +32,14 @@
                                     $i = 0;
                                 @endphp
                                 @foreach ($getHomePageData['galleries'] as $galleries)
-                                {{ $i++; }}
+                                    <span class="d-none">{{ $i++; }}</span>
                                     <div class="carousel-item {{$i == 1 ? 'active' : ''}}">
                                         <a href="{{ route('gallery', $galleries->slug) }}" class="">
-                                            @if ($galleries->getMedia('thumbnail')->isNotEmpty())
-                                                        <img
-                                                            src="{{$galleries->getMedia('thumbnail')->first()->getUrl()}}"
-                                                            alt="{{$galleries->title}}"
-                                                            class="img-fluid"
-                                                        >
-                                                    @endif
+                                        @if ($galleries->supportingImages)
+                                        <img src="{{$galleries->supportingImages[0]->getUrl()}}" class="img-fluid" alt="{{$galleries->title}}">
+                                        @else
+                                        <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" alt="{{$galleries->title}}"  class="img-fluid">
+                                        @endif
                                         </a>
                                         <p>{{ $galleries->title}}</p>
                                     </div>
@@ -268,6 +266,24 @@
         </div>
     </section>
 
+    <br>
+    <section id="all_notice" class="wow fadeInUp d-sm-block d-none mt-3">
+        <div class="container bibhag pl-2">
+            <h4 class="text-center pt-3 mb-0 pb-0 imp-link">@lang('messages.video_gallery')</h4>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+            @foreach ($getHomePageData['videoGalleries'] as $videoGallery)
+                <div class="col-md-2">
+                    <iframe src="{{$videoGallery->url}}" width="235">
+                    </iframe>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
     <style>
        .gallery-carousel .gallery-img {
             position: relative;
@@ -289,6 +305,7 @@
             padding: 5px;
             text-align: center;
             border-radius: 5px;
+            width: 80%;
         }
 
         .square-img {
@@ -308,13 +325,18 @@
                 @foreach ($getHomePageData['galleries'] as $gallery)
                     <div class="gallery-img">
                         <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->title}}">
-                            @if ($gallery->getMedia('thumbnail')->isNotEmpty())
-                            <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" class="img-fluid img-thumbnail square-img" alt="{{$gallery->title}}">
+                            @if ($gallery->supportingImages)
+                            <img src="{{$gallery->supportingImages[0]->getUrl()}}" class="img-fluid img-thumbnail square-img" alt="{{$gallery->title}}">
+                            @else
+                            <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" alt="{{$gallery->title}}">
                             @endif
                         </a>
                         <div class="caption">{{ $gallery->title }}</div> <!-- Caption for the image -->
                     </div>
                 @endforeach
+            </div>  
+            <div class="text-center mt-3"> <!-- Centering the button -->
+                <a href="{{ route('gallery.index') }}" class="btn btn-warning text-white">@lang('messages.view_more') >> </a>
             </div>
         </div>
     </section>
@@ -330,6 +352,16 @@
                 autoplayTimeout: 3000, // Time between transitions
                 autoplayHoverPause: true // Pause on mouse hover
             });
+
+            // $('.video-gallery').owlCarousel({
+            //     items: 1, // Show one item at a time
+            //     loop: false, // Disable looping
+            //     nav: true, // Show next/prev buttons
+            //     dots: true, // Show dots for navigation
+            //     autoplay: true, // Enable autoplay
+            //     autoplayTimeout: 3000, // Time between transitions
+            //     autoplayHoverPause: true // Pause on mouse hover
+            // });
         });
     </script>
 @endsection

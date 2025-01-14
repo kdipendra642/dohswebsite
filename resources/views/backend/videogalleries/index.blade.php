@@ -58,7 +58,7 @@
                                             <div class="modal-footer">
 
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('messages.cancel')</button>
-                                                <form action="{{ route('galleries.destroy', $videoGallery->id) }}" method="POST">
+                                                <form action="{{ route('videogalleries.destroy', $videoGallery->id) }}" method="POST">
                                                     @method('DELETE')
                                                     @csrf
                                                     <button type="submit" class="btn btn-danger">@lang('messages.delete')</button>
