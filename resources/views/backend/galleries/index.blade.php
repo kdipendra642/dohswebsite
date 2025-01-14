@@ -47,7 +47,7 @@
                                     <td>{{$gallery->title}}</td>
                                     <td>{{$gallery->slug}}</td>
                                     <td>
-                                        @if ($gallery->supportingImages)
+                                        @if (isset($gallery->supportingImages[0]))
                                             <img
                                             src="{{$gallery->supportingImages[0]->getUrl()}}"
                                             alt="{{$gallery->title}}"

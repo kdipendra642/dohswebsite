@@ -35,7 +35,7 @@
                                     <span class="d-none">{{ $i++; }}</span>
                                     <div class="carousel-item {{$i == 1 ? 'active' : ''}}">
                                         <a href="{{ route('gallery', $galleries->slug) }}" class="">
-                                        @if ($galleries->supportingImages)
+                                        @if (isset($galleries->supportingImages[0]))
                                         <img src="{{$galleries->supportingImages[0]->getUrl()}}" class="img-fluid" alt="{{$galleries->title}}">
                                         @else
                                         <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" alt="{{$galleries->title}}"  class="img-fluid">
@@ -325,7 +325,7 @@
                 @foreach ($getHomePageData['galleries'] as $gallery)
                     <div class="gallery-img">
                         <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->title}}">
-                            @if ($gallery->supportingImages)
+                            @if (isset($gallery->supportingImages[0]))
                             <img src="{{$gallery->supportingImages[0]->getUrl()}}" class="img-fluid img-thumbnail square-img" alt="{{$gallery->title}}">
                             @else
                             <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" alt="{{$gallery->title}}">
