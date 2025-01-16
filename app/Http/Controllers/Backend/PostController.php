@@ -6,6 +6,7 @@ use App\Http\Controllers\Base\BaseController;
 use App\Http\Requests\PostRequest;
 use App\Services\CategoryService;
 use App\Services\PostService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
@@ -30,6 +31,7 @@ class PostController extends BaseController
     public function index()
     {
         try {
+            $categories = $this->categoryService->getAllCAtegory();
             $posts = $this->postService->getAllPosts();
 
         } catch (\Throwable $th) {
@@ -38,16 +40,35 @@ class PostController extends BaseController
 
         return view('backend.posts.index', [
             'posts' => $posts,
+            'categories' => $categories,
         ]);
     }
 
     /**
      * Get List of All Data
      */
-    public function postsData()
+    public function postsData(Request $request)
     {
         try {
-            $posts = $this->postService->getAllPosts();
+            $filterable = [];
+
+            if ($request->input('category_id')) {
+                $categoryId = $request->input('category_id');
+                $filterable = array_merge($filterable, [
+                    [ 'category_id', '=', $categoryId]
+                ]);
+            }
+
+            if($request->input('sub_category')) {
+                $subcategory = $request->input('sub_category');
+                $filterable = array_merge($filterable, [
+                    [ 'sub_category', '=', $subcategory]
+                ]);
+            }
+
+            $posts = $this->postService->getAllPosts(filterable: $filterable);
+
+            // $posts = $this->postService->getAllPosts(filterable: $filterable);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }

@@ -17,9 +17,10 @@ class PostService
     /**
      * List All Slider
      */
-    public function getAllPosts(): object
+    public function getAllPosts(array $filterable = []): object
     {
         return $this->postRepository->fetchAll(
+            filterable: $filterable,
             with: [
                 'category',
                 'media',

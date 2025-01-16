@@ -71,8 +71,18 @@
                         </div> -->
 
                         <div class="form-group">
-                            <label for="supporting_images">Images</label>
-                            <input type="file" id="supporting_images" name="supportingImages[]" multiple>
+                            <label for="invalidCheck">
+                                Mark As Slider
+                            </label>
+                            <br>
+                            <input type="hidden" name="add_to_slider" value="0">
+                            <input class="form-check-input w-20 h-20" type="checkbox" value="1" name="add_to_slider" id="invalidCheck"  style="margin: auto;width: 16px;height: 16px;"  @if ($gallery->add_to_slider == 1) checked @endif >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="supporting_images">Images ( Recommended Sizes: 1200x675, 1600x900, or 1920x1080)</label>
+                            <br>
+                            <input type="file" id="supporting_images" name="supportingImages[]">
                         </div>
 
                         <ul class="cs-style-3" style="

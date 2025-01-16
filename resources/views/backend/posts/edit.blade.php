@@ -63,11 +63,13 @@
                             <label for="description">Description</label>
                             <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{ $posts->description }}</textarea>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="1" id="checkbox" name="show_on_ticker" @if ($posts->show_on_ticker == 1) checked @endif>
-                            <label class="form-check-label" for="checkbox">
-                                Status
+                        <div class="form-group">
+                            <label for="invalidCheck">
+                                Show As Ticker
                             </label>
+                            <br>
+                            <input type="hidden" name="show_on_ticker" value="0">
+                            <input class="form-check-input w-20 h-20" type="checkbox" value="1" name="show_on_ticker" id="invalidCheck"  style="margin: auto;width: 16px;height: 16px;"  @if ($posts->show_on_ticker == 1) checked @endif >
                         </div>
                         <div class="form-group">
                             <label for="document">File input</label>
