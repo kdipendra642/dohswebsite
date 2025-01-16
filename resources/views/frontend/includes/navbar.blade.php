@@ -9,9 +9,9 @@
               <h4 class="h4">{{$siteSettings->titleTwo}}</h4>
               <h1 class="h1">{{$siteSettings->titleThree}}</h1>
               @else
-              <h1 class=h1>{{$siteSettings->titleOne_nep}}</h1>
+              <h6 class=h6>{{$siteSettings->titleOne_nep}}</h6>
               <h4 class="h4">{{$siteSettings->titleTwo_nep}}</h4>
-              <h6 class="h6">{{$siteSettings->titleThree_nep}}</h6>
+              <h1 class="h1">{{$siteSettings->titleThree_nep}}</h1>
               @endif
           <div class="clear-fix"></div>
       </div>

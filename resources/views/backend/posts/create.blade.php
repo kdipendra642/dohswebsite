@@ -68,7 +68,15 @@
                             <label for="description">Description</label>
                             <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{ old('description') }}</textarea>
                         </div>
-
+                        <div class="form-group">
+                                <label for="invalidCheck">
+                                    Show As Ticker
+                                </label>
+                                <br>
+                                <input type="hidden" name="show_on_ticker" value="0">
+                                <input class="form-check-input" type="checkbox" value="1" name="show_on_ticker" id="invalidCheck" style="margin: auto;">
+                                <!-- {{-- <input class="form-check-input" type="checkbox" value="1" name="showOnHomePage" id="invalidCheck" style="margin: auto;"> --}} -->
+                        </div>
                         <div class="form-group">
                             <label for="document">File input</label>
                             <input type="file" id="document" name="document">

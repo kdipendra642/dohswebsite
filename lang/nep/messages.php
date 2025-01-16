@@ -60,4 +60,10 @@ return [
     'position' => 'पद',
     'division' => 'विभाजन',
     'section' => 'विभाग',
+    'view_more' => 'थप हेर्नुहोस्',
+    'sn' => 'क्र. सं.',
+    'published_at' => 'प्रकाशित मिति',
+    'details' => 'विवरण',
+    'submit' => 'पेश गर्नुहोस्',
+    'video_gallery' => 'भिडियो ग्यालरी',
 ];

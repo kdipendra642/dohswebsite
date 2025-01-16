@@ -61,4 +61,10 @@ return [
     'position' => 'Position',
     'division' => 'Division',
     'section' => 'Section',
+    'view_more' => 'View More',
+    'sn' => 'S.N.',
+    'published_at' => 'Publish Date',
+    'details' => 'Details',
+    'submit' => 'Submit',
+    'video_gallery' => 'Video Gallery',
 ];
