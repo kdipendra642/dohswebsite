@@ -65,6 +65,12 @@ class GalleryService
      */
     public function updateGallerys(string|int $galleryId, array $data): object
     {
+        if (! isset($data['add_to_slider'])) {
+            $data = array_merge($data, [
+                'add_to_slider' => false,
+            ]);
+        }
+
         $gallery = $this->galleryRepository->update(
             data: $data,
             id: $galleryId
@@ -77,6 +83,7 @@ class GalleryService
 
         if (isset($data['supportingImages'])) {
             foreach ($data['supportingImages'] as $supportingImages) {
+                $gallery->clearMediaCollection('supporting_images');
                 $gallery->addMedia($supportingImages)->toMediaCollection('supporting_images');
             }
         }

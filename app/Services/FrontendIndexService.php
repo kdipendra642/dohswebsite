@@ -71,7 +71,19 @@ class FrontendIndexService
     {
         // $tickers = $this->tickerRepository->fetchAll();
 
-        $sliders = $this->sliderRepository->fetchAll();
+        $sliders = $this->galleryRepository->fetchAll(
+            with: [
+                'thumbnail',
+                'supportingImages',
+            ],
+            filterable: [
+                ['add_to_slider', '=', 1],
+            ],
+            order: [
+                'created_at' => 'desc',
+            ],
+            limit: 10
+        );
 
         $staffs = $this->staffRepository->fetchAll(
             filterable: [
@@ -193,7 +205,7 @@ class FrontendIndexService
             order: [
                 'created_at' => 'desc',
             ],
-            limit: 6
+            limit: 8
         );
 
         return [
