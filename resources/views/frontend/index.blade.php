@@ -48,7 +48,9 @@
                                                     style="object-fit: cover; height: 400px;">
                                             @endif
                                         </a>
-                                        <p class="mt-2">{!! Illuminate\Support\Str::limit($galleries->title, 125) !!}</p>
+                                        <p class="mt-2">
+                                        {{  Illuminate\Support\Str::limit(session('locale') === 'en' ? $galleries->title : ($galleries->title_nep ?? $galleries->title), 125) }}
+                                        </p>
                                     </div>
                                 @endforeach
                             </div>
@@ -357,7 +359,7 @@
                     </a>
                     <div class="caption mt-2 text-center">
                         <p>
-                            {!! Illuminate\Support\Str::limit($gallery->title, 60) !!}
+                        {{  Illuminate\Support\Str::limit(session('locale') === 'en' ? $gallery->title : ($gallery->title_nep ?? $gallery->title), 75) }}
                         </p>                    
                     </div> <!-- Centered caption -->
                 </div>

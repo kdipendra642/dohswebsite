@@ -8,7 +8,7 @@
                     <i class="fa fa-close"></i>
                 </button>
             </div>
-            <div class="modal-body" style="margin: auto; width: 100%;">
+            <div class="modal-body" style="margin: auto; width: 100%; overflow:scroll;">
                     @if ($popUps->getMedia('pop-ups')->isNotEmpty())
                         @if (
                             $popUps->getMedia('pop-ups')[0]->mime_type == 'image/png'

@@ -24,6 +24,8 @@ class PostRequest extends BaseRequest
                 Rule::unique('posts', 'title')
                     ->ignore($this->post),
             ],
+            'title_nep' => 'sometimes|nullable|string|min:1|max:255',
+            'description_nep' => 'sometimes|nullable|string|min:1|max:5000',
             'description' => 'sometimes|nullable|string|max:10000',
             'sub_category' => [
                 'required',
@@ -32,6 +34,7 @@ class PostRequest extends BaseRequest
                 // 'in:laws-regulation,information-news,tender-notice,other'
             ],
             'document' => 'sometimes|nullable|file|max:5120|mimes:jpg,png,jpeg,pdf',
+            'document_nep' => 'sometimes|nullable|file|max:5120|mimes:jpg,png,jpeg,pdf',
             'show_on_ticker' => 'sometimes|nullable|boolean',
         ];
     }

@@ -41,6 +41,10 @@ class PostService
         if (isset($data['document'])) {
             $posts->addMedia($data['document'])->toMediaCollection('posts');
         }
+
+        if (isset($data['document_nep'])) {
+            $posts->addMedia($data['document_nep'])->toMediaCollection('posts_nep');
+        }
     }
 
     /**
@@ -78,6 +82,11 @@ class PostService
             $slider->addMedia($data['document'])->toMediaCollection('posts');
         }
 
+        if (isset($data['document_nep'])) {
+            $slider->clearMediaCollection('posts_nep');
+            $slider->addMedia($data['document_nep'])->toMediaCollection('posts_nep');
+        }
+
         return $slider;
     }
 
@@ -95,6 +104,7 @@ class PostService
 
         if ($posts->image) {
             $posts->clearMediaCollection('posts');
+            $posts->clearMediaCollection('posts_nep');
         }
 
         $this->postRepository->delete(

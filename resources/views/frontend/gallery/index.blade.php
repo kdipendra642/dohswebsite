@@ -27,7 +27,7 @@
                             @endif
                             </a>
                             <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->title}}">
-                                <p>{{$gallery->title}}</p>
+                                <p>{{  Illuminate\Support\Str::limit(session('lang') === 'en' ? $gallery->title : ($gallery->title_nep ?? $gallery->title), 75) }}</p>
                             </a>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                             @endif
                             </a>
                             <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->title}}">
-                                <p>{{$gallery->title}}</p>
+                                <p>{{  Illuminate\Support\Str::limit(session('lang') === 'en' ? $gallery->title : ($gallery->title_nep ?? $gallery->title), 75) }}</p>
                             </a>
                         </div>
                     </div>
