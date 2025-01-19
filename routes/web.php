@@ -86,6 +86,7 @@ Route::get('/single/tickers/{slug}', [IndexController::class, 'tickers'])->name(
 
 Route::get('/index/categories', [IndexController::class, 'category'])->name('category.index');
 
+Route::get('/posts/all', [IndexController::class, 'indexPosts'])->name('posts.all');
 Route::get('/posts/category/{categoryId}', [IndexController::class, 'categorywisePost'])->name('category.post');
 Route::get('/posts/single/{slug}', [IndexController::class, 'singlePost'])->name('posts.single');
 Route::get('/posts/subcatewise/{subcategory}', [IndexController::class, 'subcatewisePost'])->name('subcategory.post');

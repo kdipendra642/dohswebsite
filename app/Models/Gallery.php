@@ -19,6 +19,9 @@ class Gallery extends Model implements HasMedia
         'title',
         'slug',
         'add_to_slider',
+        'title_nep',
+        'description',
+        'description_nep',
     ];
 
     protected $casts = [

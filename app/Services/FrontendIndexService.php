@@ -294,6 +294,19 @@ class FrontendIndexService
         ];
     }
 
+    public function getAllPosts(array $filterable): object
+    {
+        return $this->postRepository->fetchAll(
+            with: [
+                'category',
+            ],
+            filterable: $filterable,
+            order: [
+                'created_at' => 'desc',
+            ]
+        );
+    }
+
     /**
      * Get Category wise posts
      */
