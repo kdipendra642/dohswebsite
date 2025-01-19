@@ -95,11 +95,11 @@ class IndexController extends BaseController
     {
         $filterable = [];
 
-        if ($request->title) {
-           $filterable = array_merge($filterable, [
-                ['title', '=', $request->title]
-           ]);
-        }
+        // if ($request->title) {
+        //    $filterable = array_merge($filterable, [
+        //         ['title', '=', $request->title]
+        //    ]);
+        // }
 
         $posts = $this->frontendIndexService->getAllPosts(filterable: $filterable);
 
