@@ -47,9 +47,9 @@
                                     <td>{{$gallery->title}}</td>
                                     <td>{{$gallery->slug}}</td>
                                     <td>
-                                        @if (isset($gallery->supportingImages[0]))
+                                        @if ($gallery->getMedia('thumbnail')->isNotEmpty())
                                             <img
-                                            src="{{$gallery->supportingImages[0]->getUrl()}}"
+                                            src="{{$gallery->getMedia('thumbnail')[0]->getUrl()}}"
                                             alt="{{$gallery->title}}"
                                             style="width: 50%; height: 50%;"
                                             >

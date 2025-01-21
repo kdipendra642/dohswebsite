@@ -27,10 +27,12 @@
                                 <p>Your Device Cannot read PDF. <a rel="external" href="#">Click to View</a></p>
                             </object>
                         </div>
-                           
                         @endif
 
                     @endif
+
+                    <iframe src="{{ $popUps->youtube_link}}" width="100%" height="450">
+                    </iframe>
             </div>
 
         </div>
