@@ -44,34 +44,46 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="invalidCheck">
+                                Mark As Slider
+                            </label>
+                            <br>
+                            <input type="hidden" name="add_to_slider" value="0">
+                            <input class="form-check-input w-20 h-20" type="checkbox" value="1" name="add_to_slider" id="invalidCheck"  style="margin: auto;width: 16px;height: 16px;"  @if ($gallery->add_to_slider == 1) checked @endif >
+                        </div>
+
+
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
-                                <label for="invalidCheck">
-                                    Mark As Slider
-                                </label>
-                                <br>
-                                <input type="hidden" name="add_to_slider" value="0">
-                                <input class="form-check-input w-20 h-20" type="checkbox" value="1" name="add_to_slider" id="invalidCheck"  style="margin: auto;width: 16px;height: 16px;"  @if ($gallery->add_to_slider == 1) checked @endif >
+                                <label for="thumbnail">File input</label>
+                                <input type="file" id="thumbnail" name="thumbnail">
+
+                                <div>
+                                    <label>Old File</label>
+                                    <br>
+                                    @if ($gallery->getMedia('thumbnail')->isNotEmpty())
+                                    <img src="{{$gallery->getMedia('thumbnail')[0]->getUrl()}}" alt="{{$gallery->title}}" style="width: 100%;">
+                                    @endif
+                                </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="supporting_images">Images ( Recommended Sizes: 1200x675, 1600x900, or 1920x1080)</label>
                                 <br>
-                                <input type="file" id="supporting_images" name="supportingImages[]">
-                                <ul class="mt-3">
+                                <input type="file" id="supporting_images" name="supportingImages[]" multiple>
+                                <div class="row mt-3">
                                     @foreach ($gallery->supportingImages as  $supportingImgs)
-                                        <li>
-                                            <figure>
-                                                <img src="{{$supportingImgs->getUrl()}}" alt="{{$gallery->title}}" style="width: 50%; height: 50%;">
-                                                {{-- <figcaption>
-                                                    <h3>{{$supportingImgs}}</h3>
-                                                    <span>lorem ipsume </span>
-                                                    <a class="fancybox" rel="group" href="img/gallery/4.jpg">Take a look</a>
-                                                </figcaption> --}}
-                                            </figure>
-                                            <a href="{{ route('delete.image', $supportingImgs->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
-                                        </li>
+                                    <div class="col-md-6">
+                                        <figure>
+                                            <img src="{{$supportingImgs->getUrl()}}" alt="{{$gallery->title}}" class="img-thumbnail">
+                                            <caption>
+                                                <a href="{{ route('delete.image', $supportingImgs->id) }}" class="btn btn-danger w-100"><i class="fa fa-trash-o"></i></a>
+                                            </caption>
+                                        </figure>
+                                    </div>
                                     @endforeach
-                                </ul>
+                                </div>
+                               
                             </div>
                         </div>
 

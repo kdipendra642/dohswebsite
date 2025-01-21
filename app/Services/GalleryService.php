@@ -83,7 +83,6 @@ class GalleryService
 
         if (isset($data['supportingImages'])) {
             foreach ($data['supportingImages'] as $supportingImages) {
-                $gallery->clearMediaCollection('supporting_images');
                 $gallery->addMedia($supportingImages)->toMediaCollection('supporting_images');
             }
         }

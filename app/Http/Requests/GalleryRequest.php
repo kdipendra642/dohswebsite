@@ -13,7 +13,7 @@ class GalleryRequest extends BaseRequest
     {
         return [
             'title' => 'required|string|min:1|max:255',
-            // 'thumbnail' => 'sometimes|nullable|file|max:1024|mimes:jpg,png,jpeg',
+            'thumbnail' => 'sometimes|nullable|file|max:1024|mimes:jpg,png,jpeg',
             'add_to_slider' => 'sometimes|nullable|boolean',
             'supportingImages' => 'sometimes|nullable|array|min:1',
             'supportingImages.*' => 'sometimes|nullable|file|max:1024|mimes:jpg,png,jpeg',

@@ -47,6 +47,10 @@
                             <input class="form-check-input w-20 h-20" type="checkbox" value="1" name="status" id="invalidCheck"  style="margin: auto;width: 16px;height: 16px;" @if ($popups->status == 1) checked @endif>
                         </div>
                         <div class="form-group">
+                            <label for="url">Youtube Video Url</label>
+                            <input type="url" name="youtube_link" class="form-control" id="url" placeholder="Enter url" value="{{ $popups->youtube_link }}">
+                        </div>
+                        <div class="form-group">
                             <label for="image">File input</label>
                             <input type="file" id="image" name="image">
 

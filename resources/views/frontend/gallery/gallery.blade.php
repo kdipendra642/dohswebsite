@@ -20,20 +20,23 @@ $title = session('locale') === 'en'
     </div>
     
     <div class="row gallery">
-        <div class="col-md-12">
-            <div class="text-center">
-                @foreach ($galleryPageData->supportingImages as $supportingImage)
-                    <img src="{{ $supportingImage->getUrl() }}" alt="{{ $supportingImage->name }}" class="img-fluid img-thumbnail" width="60%">
-                @endforeach
+        @foreach ($galleryPageData->supportingImages as $supportingImages)
+            <div class="col-md-4 mb-4">
+                <a href="{{ $supportingImages->getUrl() }}" 
+                   data-lightbox="gallery" 
+                   data-title="{{ $supportingImages->name }}">
+                    <img src="{{ $supportingImages->getUrl() }}" 
+                         alt="{{ $supportingImages->name }}" 
+                         class="img-fluid img-thumbnail">
+                </a>
             </div>
-            
-            <div>
-                <h5 style="text-align: left;">
+        @endforeach
+        <div class="text-center">
+            <h5 style="text-align: left;">
                     {{ $title }}
                 </h5>
                 <hr>
-                {{ $description }}
-            </div>
+                {!! $description !!}
         </div>
     </div>
 </div>

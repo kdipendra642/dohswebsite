@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row">
                 <!-- Slider Column -->
-                <div class="col-lg-8 col-sm-12 slider-margin p-0">
+                <div class="col-lg-8 col-sm-12">
                     <div class="wow fadeInUp image-slider" data-wow-delay="0.2s">
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
@@ -36,20 +36,19 @@
                                     <span class="d-none">{{ $i++; }}</span>
                                     <div class="carousel-item {{$i == 1 ? 'active' : ''}}">
                                         <a href="{{ route('gallery', $galleries->slug) }}" class="d-block">
-                                            @if (isset($galleries->supportingImages[0]))
+                                            @if ($galleries->getMedia('thumbnail')->isNotEmpty())
                                                 <img src="{{$galleries->supportingImages[0]->getUrl()}}" 
-                                                    class="img-fluid w-100" 
+                                                    src="{{$galleries->getMedia('thumbnail')->first()->getUrl()}}"
                                                     alt="{{$galleries->title}}"
-                                                    style="object-fit: cover; height: 400px;">
+                                                    class="img-fluid w-100 h-300 object-fit-cover">
                                             @else
                                                 <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" 
                                                     alt="{{$galleries->title}}"  
-                                                    class="img-fluid w-100"
-                                                    style="object-fit: cover; height: 400px;">
+                                                    class="img-fluid w-100 h-300 object-fit-cover">
                                             @endif
                                         </a>
                                         <p class="mt-2">
-                                        {{  Illuminate\Support\Str::limit(session('locale') === 'en' ? $galleries->title : ($galleries->title_nep ?? $galleries->title), 125) }}
+                                            {{  Illuminate\Support\Str::limit(session('locale') === 'en' ? $galleries->title : ($galleries->title_nep ?? $galleries->title), 125) }}
                                         </p>
                                     </div>
                                 @endforeach
@@ -66,28 +65,28 @@
                     </div>
                 </div>
 
-                <!-- Tabs Column -->
-                <div class="col-lg-4 col-sm-12 p-0">
+                <!-- News Column -->
+                <div class="col-lg-4 col-sm-12">
                     <div class="wow fadeInUp">
-                        <nav>
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link tabbg active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" style="width: 100% !important">@lang('messages.information_news')</a>
+                        <div class="bg-light border">
+                            <div class="text-center bg-danger text-white p-2">
+                                <h5 class="">@lang('messages.information_news')</h5>
                             </div>
-                        </nav>
-                        <div class="tab-content" id="nav-tabContent" style="overflow: hidden;">
-                            <div class="tab-pane fade show active border-tab" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                <ul>
-                                    @foreach ($getHomePageData['informationRelatedNews'] as $informationRelatedNews)
-                                        <li>
-                                            <a href="{{ route('posts.single', $informationRelatedNews->slug) }}" title="{{$informationRelatedNews->title}}">{{$informationRelatedNews->title}}</a>
-                                        </li>
-                                    @endforeach
-                                    <span class="float-right more">
-                                        <a href="{{ route('subcategory.post', App\Enums\PostSubCategoryTypeEnum::INFORMATION_NEWS->value) }}">विभागका सुचनाहरु >></a>
-                                    </span>
-                                    <span class="clearfix"></span>
-                                </ul>
+                            <ul style="list-style: disc;">
+                                @foreach ($getHomePageData['informationRelatedNews'] as $informationRelatedNews)
+                                    <li class="mb-2" style="margin-left: 1rem;">
+                                        <a href="{{ route('posts.single', $informationRelatedNews->slug) }}" title="{{$informationRelatedNews->title}}" class="text-decoration-none text-dark">
+                                            {{ session('locale') === 'en' ? $informationRelatedNews->title : ($informationRelatedNews->title_nep ?? $informationRelatedNews->title) }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                            <div class="text-center mb-2">
+                                <a href="{{ route('subcategory.post', App\Enums\PostSubCategoryTypeEnum::INFORMATION_NEWS->value) }}" class="text-decoration-none btn text-white" style="background-color: #f77015;">
+                                    विभागका सुचनाहरु >>
+                                </a>
                             </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -178,55 +177,51 @@
                     </div>
 
                 </div>
-            <!--endtab-->
-            <!-- official -->
-                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                <!--endtab-->
+                <!-- official -->
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                     <div class="wow fadeInRight" data-wow-delay="0.2s">
                         @foreach ($getHomePageData['staffs'] as $staffs)
-                        <div class="profile-ebox photo-placeholder mb-4 shadow-sm p-3 bg-white rounded"> <!-- Added padding, shadow, and rounded corners -->
-                            <div class="single-profile text-center"> <!-- Centered content -->
+                            <div class="profile-ebox mb-4 shadow-sm p-3 bg-white rounded text-center">
                                 <!-- Staff Image -->
-                                <div class="mb-3"> <!-- Added margin-bottom -->
+                                <div class="mb-3">
                                     @if ($staffs->getMedia('staffs')->isNotEmpty())
                                         <img src="{{$staffs->getMedia('staffs')[0]->getUrl()}}"
                                             alt="{{$staffs->name}}"
-                                            class="img-fluid img-thumbnail rounded"
-                                            style="width: 50%; height:50%; object-fit: cover;"
+                                            class="img-fluid w-50 h-auto"
                                             title="{{$staffs->name}}">
                                     @else
                                         <img src="{{ asset('assets/frontend/uploads/img/user.jpg') }}"
                                             alt="{{$staffs->name}}"
-                                            class="img-fluid img-thumbnail rounded"
-                                            style="width: 50%; height:50%; object-fit: cover;"
+                                            class="img-fluid w-50 h-auto"
                                             title="{{$staffs->name}}">
                                     @endif
                                 </div>
 
                                 <!-- Staff Details -->
-                                <p class="h4 mt-1 mb-2 font-weight-bold"> {{$staffs->name}} </p> <!-- Added font-weight-bold -->
-                                <p class="text-muted mb-2">{{$staffs->position}}</p> <!-- Added text-muted for subtle text -->
+                                <p class="h5 mb-2 font-weight-bold">{{$staffs->name}}</p>
+                                <p class="text-muted mb-2">{{$staffs->position}}</p>
 
                                 <!-- Telephone -->
                                 @if($staffs->telephone)
-                                <p class="h6 mb-2">
-                                    <i class="fa fa-phone text-primary"></i> <!-- Added text-primary for icon color -->
-                                    {{$staffs->telephone}}
-                                </p>
+                                    <p class="h6 mb-2">
+                                        <i class="fa fa-phone text-primary"></i>
+                                        {{$staffs->telephone}}
+                                    </p>
                                 @endif
 
                                 <!-- Email -->
                                 @if($staffs->email)
-                                <p class="h6 mb-0">
-                                    <i class="fa fa-envelope text-primary"></i> <!-- Added text-primary for icon color -->
-                                    {{$staffs->email}}
-                                </p>
+                                    <p class="h6 mb-0">
+                                        <i class="fa fa-envelope text-primary"></i>
+                                        {{$staffs->email}}
+                                    </p>
                                 @endif
                             </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>
-                    <!-- end official -->
+                <!-- end official -->
             </div>
         </div>
     </section>
@@ -302,98 +297,53 @@
         </div>
     </section>
 
-    <style>
-       .gallery-carousel .gallery-img {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gallery-carousel img {
-            width: 100%;
-            height: auto;
-        }
-
-        .caption {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            right: 10px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 5px;
-            /* text-align: center; */
-            border-radius: 5px;
-            /* width: 80%; */
-        }
-
-        .square-img {
-            width: 100%;
-            height: auto;
-            max-width: 300px;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-        }
-    </style>
-    
     <section id="gallery" class="wow fadeInUp">
-    <div class="container bg-light p-3"> <!-- Added padding and light background -->
-        <h4 class="text-center pt-3 mb-3 imp-link">@lang('messages.gallery')</h4> <!-- Adjusted margin -->
-        <hr class="mb-4"> <!-- Adjusted margin -->
+        <div class="container bg-light p-3">
+            <h4 class="text-center pt-3 mb-3 imp-link">@lang('messages.gallery')</h4>
+            <hr class="mb-4">
 
-        <!-- Owl Carousel -->
-        <div class="owl-carousel gallery-carousel">
-            @foreach ($getHomePageData['galleries'] as $gallery)
-                <div class="gallery-img">
-                    <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->title}}">
-                        @if (isset($gallery->supportingImages[0]))
-                            <img src="{{$gallery->supportingImages[0]->getUrl()}}" 
-                                 class="img-fluid img-thumbnail" 
-                                 alt="{{$gallery->title}}"
-                                 style="height: 200px; width: 100%; object-fit: cover;"> <!-- Fixed height and responsive width -->
-                        @else
-                            <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" 
-                                 alt="{{$gallery->title}}"
-                                 class="img-fluid img-thumbnail"
-                                 style="height: 200px; width: 100%; object-fit: cover;"> <!-- Fixed height and responsive width -->
-                        @endif
-                    </a>
-                    <div class="caption mt-2 text-center">
-                        <p>
-                        {{  Illuminate\Support\Str::limit(session('locale') === 'en' ? $gallery->title : ($gallery->title_nep ?? $gallery->title), 75) }}
-                        </p>                    
-                    </div> <!-- Centered caption -->
-                </div>
-            @endforeach
-        </div>
+            <!-- Owl Carousel -->
+            <div class="owl-carousel gallery-carousel">
+                @foreach ($getHomePageData['galleries'] as $gallery)
+                    <div class="gallery-img">
+                        <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->title}}">
+                            @if ($gallery->getMedia('thumbnail')->isNotEmpty())
+                                <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" 
+                                    class="img-fluid img-thumbnail w-100 h-200 object-fit-cover" 
+                                    alt="{{$gallery->title}}">
+                            @else
+                                <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" 
+                                    alt="{{$gallery->title}}"
+                                    class="img-fluid img-thumbnail w-100 h-200 object-fit-cover">
+                            @endif
+                        </a>
+                        <div class="caption mt-2 text-center bg-dark bg-opacity-50 text-white p-2 rounded">
+                            <p class="mb-0">
+                            {{  Illuminate\Support\Str::limit(session('locale') === 'en' ? $gallery->title : ($gallery->title_nep ?? $gallery->title), 40) }}
+                            </p>                    
+                        </div>
+                    </div>
+                @endforeach
+            </div>
 
-        <!-- View More Button -->
-        <div class="text-center mt-4"> <!-- Adjusted margin -->
-            <a href="{{ route('gallery.index') }}" class="btn btn-warning text-white">@lang('messages.view_more') >> </a>
+            <!-- View More Button -->
+            <div class="text-center mt-4">
+                <a href="{{ route('gallery.index') }}" class="btn btn-warning text-white">@lang('messages.view_more') >> </a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <script type="text/javascript">
         $(document).ready(function(){
             $('.gallery-carousel').owlCarousel({
-                items: 1, // Show one item at a time
-                loop: false, // Disable looping
-                nav: true, // Show next/prev buttons
-                dots: true, // Show dots for navigation
-                autoplay: true, // Enable autoplay
-                autoplayTimeout: 3000, // Time between transitions
-                autoplayHoverPause: true // Pause on mouse hover
+                items: 1,
+                loop: false,
+                nav: true,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true
             });
-
-            // $('.video-gallery').owlCarousel({
-            //     items: 1, // Show one item at a time
-            //     loop: false, // Disable looping
-            //     nav: true, // Show next/prev buttons
-            //     dots: true, // Show dots for navigation
-            //     autoplay: true, // Enable autoplay
-            //     autoplayTimeout: 3000, // Time between transitions
-            //     autoplayHoverPause: true // Pause on mouse hover
-            // });
         });
     </script>
 @endsection
