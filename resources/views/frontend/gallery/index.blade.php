@@ -20,14 +20,14 @@
                     <div class="col-3" style="padding-right:1px;">
                         <div class="gal" style="margin-bottom:1rem;">
                             <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->slug}}">
-                            @if (isset($gallery->supportingImages[0]))
-                            <img src="{{$gallery->supportingImages[0]->getUrl()}}" class="img-fluid" alt="{{$gallery->slug}}">
+                            @if ($gallery->getMedia('thumbnail')->isNotEmpty())
+                            <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" class="img-fluid" alt="{{$gallery->slug}}">
                             @else
                             <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" class="img-fluid" alt="{{$gallery->slug}}">
                             @endif
                             </a>
                             <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->title}}">
-                                <p>{{$gallery->title}}</p>
+                                <p>{{  Illuminate\Support\Str::limit(session('lang') === 'en' ? $gallery->title : ($gallery->title_nep ?? $gallery->title), 40) }}</p>
                             </a>
                         </div>
                     </div>
@@ -41,14 +41,14 @@
                     <div class="col-3" style="padding-right:1px;">
                         <div class="gal" style="margin-bottom:1rem;">
                             <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->slug}}">
-                            @if (isset($gallery->supportingImages[0]))
-                            <img src="{{$gallery->supportingImages[0]->getUrl()}}" class="img-fluid" alt="{{$gallery->slug}}">
+                            @if ($gallery->getMedia('thumbnail')->isNotEmpty())
+                            <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" class="img-fluid" alt="{{$gallery->title}}">
                             @else
                             <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" class="img-fluid" alt="{{$gallery->slug}}">
                             @endif
                             </a>
                             <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->title}}">
-                                <p>{{$gallery->title}}</p>
+                                <p>{{  Illuminate\Support\Str::limit(session('lang') === 'en' ? $gallery->title : ($gallery->title_nep ?? $gallery->title), 40) }}</p>
                             </a>
                         </div>
                     </div>

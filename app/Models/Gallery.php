@@ -18,6 +18,14 @@ class Gallery extends Model implements HasMedia
     protected $fillable = [
         'title',
         'slug',
+        'add_to_slider',
+        'title_nep',
+        'description',
+        'description_nep',
+    ];
+
+    protected $casts = [
+        'add_to_slider' => 'boolean'
     ];
 
     public function getSlugOptions(): SlugOptions

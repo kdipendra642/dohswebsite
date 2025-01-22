@@ -55,24 +55,39 @@
                                 <option value="other"  @if ($posts->sub_category == 'other') selected @endif >अन्य</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="title">Slider Title</label>
-                            <input type="title" name="title" class="form-control" id="title" placeholder="Enter title" value="{{ $posts->title }}">
+
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="title">Post Title (English)</label>
+                                <input type="text" name="title" class="form-control" id="title" placeholder="Enter title (English)" value="{{ $posts->title }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="title_nep">Post Title (नेपाली)</label>
+                                <input type="text" name="title_nep" class="form-control" id="title_nep" placeholder="Enter title in (नेपाली)" value="{{ $posts->title_nep }}">
+                            </div>
                         </div>
+
                         <div class="form-group">
                             <label for="description">Description</label>
                             <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{ $posts->description }}</textarea>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="1" id="checkbox" name="show_on_ticker" @if ($posts->show_on_ticker == 1) checked @endif>
-                            <label class="form-check-label" for="checkbox">
-                                Status
+
+                        <div class="form-group">
+                            <label for="description_nep">Description (नेपाली)</label>
+                            <textarea class="form-control" name="description_nep" id="description_nep" cols="30" rows="10">{{ $posts->description_nep }}</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="invalidCheck">
+                                Show As Ticker
                             </label>
+                            <br>
+                            <input type="hidden" name="show_on_ticker" value="0">
+                            <input class="form-check-input w-20 h-20" type="checkbox" value="1" name="show_on_ticker" id="invalidCheck"  style="margin: auto;width: 16px;height: 16px;"  @if ($posts->show_on_ticker == 1) checked @endif >
                         </div>
                         <div class="form-group">
                             <label for="document">File input</label>
                             <input type="file" id="document" name="document">
-
                             <div>
                                 <label>Old File</label>
                                 <br>
@@ -101,8 +116,43 @@
                                         </ul>
                                     </div>
                                 @endif
-
                             </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="document_nep">File input (नेपाली)</label>
+                            <input type="file" id="document_nep" name="document_nep">
+                
+                            <div>
+                                <!-- for nepali version -->
+                                @if ($posts->getMedia('posts_nep')->isNotEmpty())
+                                    <div class="card-body">
+                                        <ul class="grid cs-style-3">
+                                            <li>
+                                            @if (
+                                                        $posts->getMedia('posts_nep')[0]->mime_type == 'image/png'
+                                                        || $posts->getMedia('posts_nep')[0]->mime_type == 'image/jpeg'
+                                                        || $posts->getMedia('posts_nep')[0]->mime_type == 'image/jpg'
+                                                    )
+                                                <figure>
+                                                    <img src="{{$posts->getMedia('posts_nep')[0]->getUrl()}}" alt="{{$posts->title}}" style="width: 25%; height: 25%;">
+                                                    <figcaption>
+                                                        <h3>{{$posts->getMedia('posts_nep')[0]->name}}</h3>
+                                                        <!-- <a class="fancybox" rel="group" href="img/gallery/3.jpg">Take a look</a> -->
+                                                    </figcaption>
+                                                    <a href="{{ route('delete.image', $posts->getMedia('posts_nep')[0]->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
+                                                </figure>
+                                                @else
+                                                <a href="{{$posts->getMedia('posts_nep')[0]->getUrl()}}">{{$posts->getMedia('posts_nep')[0]->name}}</a>  
+                                                <a href="{{ route('delete.image', $posts->getMedia('posts_nep')[0]->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i> </a>
+                                                @endif
+                                            </li>
+                                        </ul>
+                                    </div>
+                                @endif
+                                 <!-- end for nepali version -->
+                            </div>
+
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-sm">Submit</button>

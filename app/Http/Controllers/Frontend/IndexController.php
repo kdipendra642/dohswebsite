@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Base\BaseController;
 use App\Services\FrontendIndexService;
+use Illuminate\Http\Request;
 
 class IndexController extends BaseController
 {
@@ -81,6 +82,26 @@ class IndexController extends BaseController
         $posts = $this->frontendIndexService->getCategorywisePosts(
             categoryId: $categoryId
         );
+
+        return view('frontend.posts.index', ([
+            'posts' => $posts,
+        ]));
+    }
+
+    /**
+     * Get Sub Category wise post
+     */
+    public function indexPosts(Request $request)
+    {
+        $filterable = [];
+
+        // if ($request->title) {
+        //    $filterable = array_merge($filterable, [
+        //         ['title', '=', $request->title]
+        //    ]);
+        // }
+
+        $posts = $this->frontendIndexService->getAllPosts(filterable: $filterable);
 
         return view('frontend.posts.index', ([
             'posts' => $posts,

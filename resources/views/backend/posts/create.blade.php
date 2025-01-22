@@ -54,9 +54,15 @@
                                 <option value="other">अन्य</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="title">Post Title</label>
-                            <input type="text" name="title" class="form-control" id="title" placeholder="Enter title" value="{{ old('title') }}">
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="title">Post Title (English)</label>
+                                <input type="text" name="title" class="form-control" id="title" placeholder="Enter title (English)" value="{{ old('title') }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="title_nep">Post Title (नेपाली)</label>
+                                <input type="text" name="title_nep" class="form-control" id="title_nep" placeholder="Enter title in (नेपाली)" value="{{ old('title_nep') }}">
+                            </div>
                         </div>
 
                         <!-- <div class="form-group">
@@ -65,21 +71,32 @@
                         </div> -->
                         
                         <div class="form-group">
-                            <label for="description">Description</label>
+                            <label for="description">Description (English)</label>
                             <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{ old('description') }}</textarea>
                         </div>
+
                         <div class="form-group">
-                                <label for="invalidCheck">
-                                    Show As Ticker
-                                </label>
-                                <br>
-                                <input type="hidden" name="show_on_ticker" value="0">
-                                <input class="form-check-input" type="checkbox" value="1" name="show_on_ticker" id="invalidCheck" style="margin: auto;">
-                                <!-- {{-- <input class="form-check-input" type="checkbox" value="1" name="showOnHomePage" id="invalidCheck" style="margin: auto;"> --}} -->
+                            <label for="description_nep">Description (नेपाली)</label>
+                            <textarea class="form-control" name="description_nep" id="description_nep" cols="30" rows="10">{{ old('description') }}</textarea>
                         </div>
+
+                        <div class="form-group">
+                            <label for="invalidCheck">
+                                Show As Ticker
+                            </label>
+                            <br>
+                            <input type="hidden" name="show_on_ticker" value="0">
+                            <input class="form-check-input w-20 h-20" type="checkbox" value="1" name="show_on_ticker" id="invalidCheck"  style="margin: auto;width: 16px;height: 16px;" >
+                        </div>
+
                         <div class="form-group">
                             <label for="document">File input</label>
                             <input type="file" id="document" name="document">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="document_nep">File input(नेपाली)</label>
+                            <input type="file" id="document_nep" name="document_nep">
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-sm">Submit</button>

@@ -1,15 +1,26 @@
 @extends('frontend.layout.master')
 @section('mainContent')
 
+@php
+
+$title = session('locale') === 'en' 
+        ? $posts->title 
+        : ($posts->title_nep ?? $posts->title);
+
+    $description = session('locale') === 'en' 
+        ? $posts->description 
+        : ($posts->description_nep ?? $posts->description);
+@endphp
+
 <section id="clients" class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
     <div class="container content nopad">
         <div class="row">
             <div class="col-lg-9 col-sm-9 col-xs-12 page-detail">
                 <div class="breadcump">
-                    <a href="{{route('index') }}"><i class="fa fa-home fa-lg"></i> </a>  / {{$posts->title}}
+                    <a href="{{route('index') }}"><i class="fa fa-home fa-lg"></i> </a>  / {{ $title }}
                 </div>
                 <div class="page">
-                    <h2 class="notice_title">{{$posts->title}}</h2>
+                    <h2 class="notice_title">{{ $title }}</h2>
                     <div class="subheader-social">
 
                         <h3 class="text-left">
@@ -34,7 +45,7 @@
 
                     @endif
                     <p>
-                        {!! $posts->description !!}
+                        {!! $description !!}
                     </p>
                     @if ($posts->getMedia('posts')->isNotEmpty())
                         @if ($posts->getMedia('posts')[0]->mime_type == 'application/pdf')

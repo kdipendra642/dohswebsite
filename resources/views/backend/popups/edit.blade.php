@@ -38,11 +38,17 @@
                             <label for="title">Title</label>
                             <input type="title" name="title" class="form-control" id="title" placeholder="Enter title" value="{{ $popups->title }}">
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="1" id="checkbox" name="status" @if ($popups->status == 1) checked @endif>
-                            <label class="form-check-label" for="checkbox">
+                        <div class="form-group">
+                            <label for="invalidCheck">
                                 Status
                             </label>
+                            <br>
+                            <input type="hidden" name="status" value="0">
+                            <input class="form-check-input w-20 h-20" type="checkbox" value="1" name="status" id="invalidCheck"  style="margin: auto;width: 16px;height: 16px;" @if ($popups->status == 1) checked @endif>
+                        </div>
+                        <div class="form-group">
+                            <label for="url">Youtube Video Url</label>
+                            <input type="url" name="youtube_link" class="form-control" id="url" placeholder="Enter url" value="{{ $popups->youtube_link }}">
                         </div>
                         <div class="form-group">
                             <label for="image">File input</label>

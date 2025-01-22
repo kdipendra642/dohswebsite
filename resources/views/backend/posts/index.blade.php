@@ -30,6 +30,35 @@
                 </header>
 
                 <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Filter Data</label>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <select class="form-control" id="category-filter">
+                                    <option value="">All Categories</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-2">
+                            <div class="form-group">
+                                <select class="form-control" id="subcategory-filter">
+                                    <option value="">Sub Categories</option>
+                                    <option value="laws-regulation">कानून / नियमावली</option>
+                                    <option value="information-news">सूचना</option>
+                                    <option value="tender-notice">बोलपत्र सम्बन्धी सूचना</option>
+                                    <option value="press-release">प्रेस विज्ञप्ति</option>
+                                    <option value="publication">प्रकाशन</option>
+                                    <option value="other">अन्य</option>
+                                </select>
+                            </div>
+                        </div> -->
+                    </div>
+              
                     <div class="table-responsive">
                         <table class="table table-bordered" id="posts-table">
                             <thead>
@@ -83,44 +112,58 @@
   @include('backend.datatable.lowerscript')
 
     <script>
-    jQuery(document).ready(function($) {
-        $('#posts-table').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: {
-                url: "{{ route('posts.data') }}",
-                type: "GET",
-                error: function(xhr, error, thrown) {
-                    console.error('Error:', xhr.status, thrown);
-                }
-            },
-            columns: [
-                { data: 'id', name: 'id' },
-                { data: 'title', name: 'title' },
-                { data: 'category', name: 'category.title' },
-                { data: 'sub_category', name: 'sub_category' },
-                { data: 'description', name: 'description' },
-                {
-                    data: 'document_url',
-                    name: 'document_url',
-                    orderable: false,
-                    searchable: false,
-                    render: function(data, type, row) {
-                        if (data) {
-                            if (data.type == 'application/pdf') {
-                                return ' <a href="'+ data.media +'" target="_blank">'+ data.media +'</a>'
-                            } else {
-                                return '<img src="' + data.media + '" alt="' + row.title + '" style="width: 50%; height: 50%;">';
-                            }
-                        }
-                        return '';
+        jQuery(document).ready(function($) {
+            var table = $('#posts-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('posts.data') }}",
+                    type: "GET",
+                    data: function(d) {
+                        d.category_id = $('#category-filter').val();
+                        // d.sub_category = $('#subcategory-filter').val();
+                    },
+                    error: function(xhr, error, thrown) {
+                        console.error('Error:', xhr.status, thrown);
                     }
                 },
-                { data: 'slug', name: 'slug' },
-                { data: 'created_at', name: 'created_at' },
-                { data: 'action', name: 'action', orderable: false, searchable: false }
-            ]
+                columns: [
+                    { data: 'id', name: 'id' },
+                    { data: 'title', name: 'title' },
+                    { data: 'category', name: 'category.title' },
+                    { data: 'sub_category', name: 'sub_category' },
+                    { data: 'description', name: 'description' },
+                    {
+                        data: 'document_url',
+                        name: 'document_url',
+                        orderable: false,
+                        searchable: false,
+                        render: function(data, type, row) {
+                            if (data) {
+                                if (data.type == 'application/pdf') {
+                                    return ' <a href="'+ data.media +'" target="_blank">'+ data.media +'</a>';
+                                } else {
+                                    return '<img src="' + data.media + '" alt="' + row.title + '" style="width: 50%; height: 50%;">';
+                                }
+                            }
+                            return '';
+                        }
+                    },
+                    { data: 'slug', name: 'slug' },
+                    { data: 'created_at', name: 'created_at' },
+                    { data: 'action', name: 'action', orderable: false, searchable: false }
+                ]
+            });
+
+            // Reload the DataTable when the category filter changes
+            $('#category-filter').on('change', function() {
+                table.ajax.reload(); // Reload the DataTable
+            });
+            // $('#subcategory-filter').on('change', function() {
+            //     table.ajax.reload(); // Reload the DataTable
+            // });
+
+            
         });
-    });
     </script>
 @endsection

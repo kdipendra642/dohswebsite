@@ -36,14 +36,18 @@
                             <label for="title">Post Title</label>
                             <input type="text" name="title" class="form-control" id="title" placeholder="Enter title" value="{{ old('title') }}">
                         </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="1" id="checkbox" name="status">
-                            <label class="form-check-label" for="checkbox">
+                        <div class="form-group">
+                            <label for="invalidCheck">
                                 Status
                             </label>
+                            <br>
+                            <input type="hidden" name="status" value="0">
+                            <input class="form-check-input w-20 h-20" type="checkbox" value="1" name="status" id="invalidCheck"  style="margin: auto;width: 16px;height: 16px;" >
                         </div>
-
+                        <div class="form-group">
+                            <label for="url">Youtube Video Url</label>
+                            <input type="url" name="youtube_link" class="form-control" id="url" placeholder="Enter url" value="{{ old('youtube_link') }}">
+                        </div>
                         <div class="form-group">
                             <label for="image">File input</label>
                             <input type="file" id="image" name="image">

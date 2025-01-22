@@ -20,6 +20,8 @@ class Post extends Model implements HasMedia
         'description',
         'sub_category',
         'show_on_ticker',
+        'title_nep',
+        'description_nep',
     ];
 
     protected $casts = [
@@ -43,6 +45,13 @@ class Post extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('posts')
+            ->useDisk('media')
+            ->singleFile();
+    }
+
+    public function registerMediaCollectionsNep(): void
+    {
+        $this->addMediaCollection('posts_nep')
             ->useDisk('media')
             ->singleFile();
     }

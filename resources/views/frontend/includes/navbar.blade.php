@@ -25,10 +25,11 @@
               </div>
           </div>
           <div class="col-md-7 col-xl-8 float-right">
-            <form action="#" style="display: inline;">
+            <form action="{{ route('posts.all') }}" style="display: inline;">
               @csrf
+              @method('GET')
               <div class="input-group">
-                <input type="text" name="subcategory" value="" placeholder="खोजी" class="form-control form-control-sm">
+                <input type="text" name="title" value="{{ old('title')}}" placeholder="खोजी" class="form-control form-control-sm">
                   <div class="input-group-append">
                     <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-search"></i></button>
                   </div>

@@ -22,8 +22,9 @@
                 <header class="card-header">
                     Menu
                 </header>
-        <a href="javascript:;"  class="btn btn-default text-center text-danger bg-warning" id="pulsate-regular">Please be careful while changing this section as it might affect the site.</a>
-
+                    <a href="javascript:;"  class="btn btn-default text-center text-danger bg-warning" id="pulsate-regular">Please be careful while changing this section as it might affect the site.</a>
+                    <br>
+                    <a href="{{ route('category.index') }}" target="_blank" class="btn btn-info text-center text-white bg-info">Click here for guidance</a>
 
                 <div class="card-body">
                     {!! Menu::render() !!}
