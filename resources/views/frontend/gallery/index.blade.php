@@ -17,41 +17,57 @@
             <div class="tab-pane fade show active" id="latest-gallery" role="tabpanel" aria-labelledby="latest-gallery-tab">
                 <div class="row gallery">
                     @foreach ($galleries as $gallery)
-                    <div class="col-3" style="padding-right:1px;">
-                        <div class="gal" style="margin-bottom:1rem;">
-                            <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->slug}}">
-                            @if ($gallery->getMedia('thumbnail')->isNotEmpty())
-                            <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" class="img-fluid" alt="{{$gallery->slug}}">
-                            @else
-                            <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" class="img-fluid" alt="{{$gallery->slug}}">
-                            @endif
-                            </a>
-                            <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->title}}">
-                                <p>{{  Illuminate\Support\Str::limit(session('lang') === 'en' ? $gallery->title : ($gallery->title_nep ?? $gallery->title), 40) }}</p>
-                            </a>
+                        <div class="col-3 mb-4">
+                            <div class="card h-100 shadow-sm">
+                                <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->slug}}" class="d-block text-decoration-none">
+                                    <!-- Image Container -->
+                                    <div class="ratio ratio-16x9"> <!-- Use Bootstrap's ratio class for responsive aspect ratio -->
+                                        @if ($gallery->getMedia('thumbnail')->isNotEmpty())
+                                            <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" 
+                                                alt="{{$gallery->slug}}" 
+                                                class="img-fluid" style="object-fit: cover;"> <!-- Use object-fit to cover the area -->
+                                        @else
+                                            <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" 
+                                                alt="{{$gallery->slug}}" 
+                                                class="img-fluid" style="object-fit: cover;">
+                                        @endif
+                                    </div>
+                                    <!-- Title -->
+                                    <div class="p-3 flex-grow-1">
+                                        <p class="mb-0 text-dark">{{ Illuminate\Support\Str::limit(session('lang') === 'en' ? $gallery->title : ($gallery->title_nep ?? $gallery->title), 30) }}</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
                     @endforeach
-
                 </div>
+
             </div>
             <div class="tab-pane fade" id="archive-gallery" role="tabpanel" aria-labelledby="archive-gallery-tab">
                 <div class="row gallery">
                     @foreach ($archieves as $gallery)
-                    <div class="col-3" style="padding-right:1px;">
-                        <div class="gal" style="margin-bottom:1rem;">
-                            <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->slug}}">
-                            @if ($gallery->getMedia('thumbnail')->isNotEmpty())
-                            <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" class="img-fluid" alt="{{$gallery->title}}">
-                            @else
-                            <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" class="img-fluid" alt="{{$gallery->slug}}">
-                            @endif
-                            </a>
-                            <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->title}}">
-                                <p>{{  Illuminate\Support\Str::limit(session('lang') === 'en' ? $gallery->title : ($gallery->title_nep ?? $gallery->title), 40) }}</p>
-                            </a>
+                        <div class="col-3 mb-4">
+                            <div class="card h-100 shadow-sm">
+                                <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->slug}}" class="d-block text-decoration-none">
+                                    <!-- Image Container -->
+                                    <div class="ratio ratio-16x9"> <!-- Use Bootstrap's ratio class for responsive aspect ratio -->
+                                        @if ($gallery->getMedia('thumbnail')->isNotEmpty())
+                                            <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" 
+                                                alt="{{$gallery->slug}}" 
+                                                class="img-fluid" style="object-fit: cover;"> <!-- Use object-fit to cover the area -->
+                                        @else
+                                            <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" 
+                                                alt="{{$gallery->slug}}" 
+                                                class="img-fluid" style="object-fit: cover;">
+                                        @endif
+                                    </div>
+                                    <!-- Title -->
+                                    <div class="p-3 flex-grow-1">
+                                        <p class="mb-0 text-dark">{{ Illuminate\Support\Str::limit(session('lang') === 'en' ? $gallery->title : ($gallery->title_nep ?? $gallery->title), 30) }}</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
