@@ -31,7 +31,9 @@
                         @foreach ($staffs as $staff)
                         <tr>
                             <td>{{$i++;}}</td>
-                            <td>{{$staff->position}}</td>
+                            <td>
+                            {{ Illuminate\Support\Str::limit(session('locale') === 'en' ? $staff->position : ($staff->position_nep ?? $staff->position), 50) }}
+                            </td>
                             <td>
                                 @if ($staff->getMedia('staffs')->isNotEmpty())
                                     <img
@@ -42,8 +44,12 @@
                                 @endif
                             </td>
                             <td>{{$staff->name}}</td>
-                            <td>{{$staff->section}}</td>
-                            <td>{{$staff->division}}</td>
+                            <td>
+                                {{ Illuminate\Support\Str::limit(session('locale') === 'en' ? $staff->section : ($staff->section_nep ?? $staff->section), 50) }}  
+                            </td>
+                            <td>
+                                {{ Illuminate\Support\Str::limit(session('locale') === 'en' ? $staff->division : ($staff->division_nep ?? $staff->division), 50) }}  
+                            </td>
                             <td>{{$staff->telephone}}</td>
                             <td>{{$staff->email}}</td>
                             <td>

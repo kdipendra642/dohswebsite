@@ -24,6 +24,9 @@ class GalleryService
             with: [
                 'thumbnail',
                 'supportingImages',
+            ],
+            order: [
+                'created_at' => 'desc'
             ]
         );
     }

@@ -11,7 +11,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}"><i class="fa fa-home"></i> Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="#">Useful Tools</a></li>
+                    <li class="breadcrumb-item active"><a href="#">Smart Health Initiaves</a></li>
                 </ol>
             </nav>
             <!--breadcrumbs end -->
@@ -23,9 +23,9 @@
         <div class="col-lg-12">
             <section class="card">
                 <header class="card-header">
-                    Useful Tools
+                    Smart Health Initiaves
                     <div class="pull-right hidden-phone">
-                        <a href="{{ route('usefultools.create') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add Useful Tools</a>
+                        <a href="{{ route('usefultools.create') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add Smart Health Initiaves</a>
                     </div>
                 </header>
 
