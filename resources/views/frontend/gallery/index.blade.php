@@ -20,7 +20,6 @@
                         <div class="col-3 mb-4">
                             <div class="card h-100 shadow-sm">
                                 <a href="{{ route('gallery', $gallery->slug) }}" title="{{$gallery->slug}}" class="d-block text-decoration-none">
-                                    <!-- Image Container -->
                                     <div class="ratio ratio-16x9"> <!-- Use Bootstrap's ratio class for responsive aspect ratio -->
                                         @if ($gallery->getMedia('thumbnail')->isNotEmpty())
                                             <img src="{{$gallery->getMedia('thumbnail')->first()->getUrl()}}" 
