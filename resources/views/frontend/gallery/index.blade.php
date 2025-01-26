@@ -32,7 +32,6 @@
                                                 class="img-fluid" style="object-fit: cover;">
                                         @endif
                                     </div>
-                                    <!-- Title -->
                                     <div class="p-3 flex-grow-1">
                                         <p class="mb-0 text-dark">{{ Illuminate\Support\Str::limit(session('lang') === 'en' ? $gallery->title : ($gallery->title_nep ?? $gallery->title), 30) }}</p>
                                     </div>
