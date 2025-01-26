@@ -65,136 +65,46 @@
                                 <input class="form-check-input" type="checkbox" value="1" name="showOnHomePage" id="invalidCheck" style="margin: auto;">
                                 <!-- {{-- <input class="form-check-input" type="checkbox" value="1" name="showOnHomePage" id="invalidCheck" style="margin: auto;"> --}} -->
                         </div>
-                        <div class="form-group">
-                            <label for="position">Staff position</label>
-                            <select name="position" id="position" class="form-control">
-                                <option value="" selected disabled>Please Select</option>
-                                <option value="Director General">Director General</option>
-                                <option value="Computer Operator">Computer Operator</option>
-                                <option value="Assistant Fourth">Assistant Fourth</option>
-                                <option value="Joint Secretary">Joint Secretary</option>
-                                <option value="Environment Inspector">Environment Inspector</option>
-                                <option value="Section officer">Section officer</option>
-                                <option value="Computer Officer">Computer Officer</option>
-                                <option value="Senior Divisional Chemical Engineer">Senior Divisional Chemical Engineer</option>
-                                <option value="Senior Divisional Mechanical Engineer">Senior Divisional Mechanical Engineer</option>
-                                <option value="Mechanical Engineer">Mechanical Engineer</option>
-                                <option value="Under Secretary (Account)">Under Secretary (Account)</option>
-                                <option value="Legal Officer">Legal Officer</option>
-                                <option value="Account Officer">Account Officer</option>
-                                <option value="Joint Secretary (Spokesperson)">Joint Secretary (Spokesperson)</option>
-                                <option value="Library Officer">Library Officer</option>
-                                <option value="Under Secretary">Under Secretary</option>
-                                <option value="Civil Engineer">Civil Engineer</option>
-                                <option value="Computer Operater">Computer Operater</option>
-                                <option value="Computer Engineer">Computer Engineer</option>
-                                <option value="Typist Kharidar">Typist Kharidar</option>
-                                <option value="Computer Technician">Computer Technician</option>
-                                <option value="Accountant">Accountant</option>
-                                <option value="Under Secretary (Information Officer)">Under Secretary (Information Officer)</option>
-                                <option value="Honorable Minister">Honorable Minister</option>
-                                <option value="Section Officer">Section Officer</option>
-                                <option value="Nayab Subba">Nayab Subba</option>
-                                <option value="Assistant Manager">Assistant Manager</option>
-                                <option value="Secretary">Secretary</option>
-                            </select>
+
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="position">Staff position (English)</label>
+                                <input type="text" name="position" class="form-control" id="position" placeholder="Enter position" value="{{ old('position') }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="position_nep">Staff position (नेपाली)</label>
+                                <input type="text" name="position_nep" class="form-control" id="position_nep" placeholder="Enter position in Nepali" value="{{ old('position_nep') }}">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="division">Staff division</label>
-                            <select name="division" id="division" class="form-control">
-                                <option value="" selected>Please Select</option>
-                                <option value="Registration Section">Registration Section</option>
-                                <option value="Commerce Secretariat">Commerce Secretariat</option>
-                                <option value="Multilateral Trade Section">Multilateral Trade Section</option>
-                                <option value="Account Section">Account Section</option>
-                                <option value="Industrial Infrastructure Section">Industrial Infrastructure Section</option>
-                                <option value="Industry Secretariat">Industry Secretariat</option>
-                                <option value="Industrial Standards and Technology Section">Industrial Standards and Technology Section</option>
-                                <option value="Bilateral Trade And Transport (China) Section">Bilateral Trade And Transport (China) Section</option>
-                                <option value="Cottage, Samall And Medium Industry Promotion Section">Cottage, Samall And Medium Industry Promotion Section</option>
-                                <option value="Supply Chain And Consumer Interest Protection Division">Supply Chain And Consumer Interest Protection Division</option>
-                                <option value="Monitoring And Evaluation Section">Monitoring And Evaluation Section</option>
-                                <option value="Supply Policy And Regulation Section">Supply Policy And Regulation Section</option>
-                                <option value="Industrial Policy And Facilitation Section">Industrial Policy And Facilitation Section</option>
-                                <option value="Regional And Other Bilateral Trade And Transit Section">Regional And Other Bilateral Trade And Transit Section</option>
-                                <option value="Bilateral Trade And Transport (India) Section">Bilateral Trade And Transport (India) Section</option>
-                                <option value="Export Promotion And Trade Facilitation Section">Export Promotion And Trade Facilitation Section</option>
-                                <option value="Industrial Standards And Technology Section">Industrial Standards And Technology Section</option>
-                                <option value="Consumer Interest Protection And Coordination Section">Consumer Interest Protection And Coordination Section</option>
-                                <option value="Multilateral Trade And Trade Cooperation Division">Multilateral Trade And Trade Cooperation Division</option>
-                                <option value="Secretariat Of Ministry">Secretariat Of Ministry</option>
-                                <option value="Administration Section">Administration Section</option>
-                                <option value="Industrial and Investment Promotion Division">Industrial and Investment Promotion Division</option>
-                                <option value="Secretariat of Ministry">Secretariat of Ministry</option>
-                                <option value="प्रशासन तथा संस्थान महाशाखा">प्रशासन तथा संस्थान महाशाखा</option>
-                                <option value="Foreign Investment And Intellectual Property Section">Foreign Investment And Intellectual Property Section</option>
-                                <option value="औद्योगिक तथा लगानी प्रवर्द्बन महाशाखा">औद्योगिक तथा लगानी प्रवर्द्बन महाशाखा</option>
-                                <option value="Secretariat of Minister">Secretariat of Minister</option>
-                                <option value="Law And Decision Enforcement Section">Law And Decision Enforcement Section</option>
-                                <option value="Supply Policy and Regulation Section">Supply Policy and Regulation Section</option>
-                                <option value="Trade Policy And Trade Cooperation Division">Trade Policy And Trade Cooperation Division</option>
-                                <option value="Information Technology Section">Information Technology Section</option>
-                                <option value="Administration And Corporation Division">Administration And Corporation Division</option>
-                                <option value="Industrial Infrastructure And Environment Division">Industrial Infrastructure And Environment Division</option>
-                                <option value="Planning And Budget Management Section">Planning And Budget Management Section</option>
-                                <option value="Bilateral And Regional Trade Division">Bilateral And Regional Trade Division</option>
-                                <option value="Market Research And Regulation Section">Market Research And Regulation Section</option>
-                                <option value="Administration & Corporation Division">Administration & Corporation Division</option>
-                                <option value="Government Industry And Corporation Section">Government Industry And Corporation Section</option>
-                                <option value="Environment Section">Environment Section</option>
-                                <option value="Planning, Monitoring And Evaluation Division">Planning, Monitoring And Evaluation Division</option>
-                                <option value="Store Section">Store Section</option>
-                                <option value="Industrial Infrastructure and Environment Division">Industrial Infrastructure and Environment Division</option>
-                            </select>
+
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="division">Staff division (English)</label>
+                                <input type="text" name="division" class="form-control" id="division" placeholder="Enter division" value="{{ old('division') }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="division_nep">Staff division (नेपाली)</label>
+                                <input type="text" name="division_nep" class="form-control" id="division_nep" placeholder="Enter position in Nepali" value="{{ old('division_nep') }}">
+                            </div>
                         </div>
+
                         <div class="form-group">
                             <label for="section">Staff section</label>
-                            <select name="section" id="section" class="form-control">
-                                <option value="" selected>Please Select</option>
-                                <option value="Registration Section">Registration Section</option>
-                                <option value="Commerce Secretariat">Commerce Secretariat</option>
-                                <option value="Multilateral Trade Section">Multilateral Trade Section</option>
-                                <option value="Account Section">Account Section</option>
-                                <option value="Industrial Infrastructure Section">Industrial Infrastructure Section</option>
-                                <option value="Industry Secretariat">Industry Secretariat</option>
-                                <option value="Industrial Standards and Technology Section">Industrial Standards and Technology Section</option>
-                                <option value="Bilateral Trade And Transport (China) Section">Bilateral Trade And Transport (China) Section</option>
-                                <option value="Cottage, Samall And Medium Industry Promotion Section">Cottage, Samall And Medium Industry Promotion Section</option>
-                                <option value="Supply Chain And Consumer Interest Protection Division">Supply Chain And Consumer Interest Protection Division</option>
-                                <option value="Monitoring And Evaluation Section">Monitoring And Evaluation Section</option>
-                                <option value="Supply Policy And Regulation Section">Supply Policy And Regulation Section</option>
-                                <option value="Industrial Policy And Facilitation Section">Industrial Policy And Facilitation Section</option>
-                                <option value="Regional And Other Bilateral Trade And Transit Section">Regional And Other Bilateral Trade And Transit Section</option>
-                                <option value="Bilateral Trade And Transport (India) Section">Bilateral Trade And Transport (India) Section</option>
-                                <option value="Export Promotion And Trade Facilitation Section">Export Promotion And Trade Facilitation Section</option>
-                                <option value="Industrial Standards And Technology Section">Industrial Standards And Technology Section</option>
-                                <option value="Consumer Interest Protection And Coordination Section">Consumer Interest Protection And Coordination Section</option>
-                                <option value="Multilateral Trade And Trade Cooperation Division">Multilateral Trade And Trade Cooperation Division</option>
-                                <option value="Secretariat Of Ministry">Secretariat Of Ministry</option>
-                                <option value="Administration Section">Administration Section</option>
-                                <option value="Industrial and Investment Promotion Division">Industrial and Investment Promotion Division</option>
-                                <option value="Secretariat of Ministry">Secretariat of Ministry</option>
-                                <option value="प्रशासन तथा संस्थान महाशाखा">प्रशासन तथा संस्थान महाशाखा</option>
-                                <option value="Foreign Investment And Intellectual Property Section">Foreign Investment And Intellectual Property Section</option>
-                                <option value="औद्योगिक तथा लगानी प्रवर्द्बन महाशाखा">औद्योगिक तथा लगानी प्रवर्द्बन महाशाखा</option>
-                                <option value="Secretariat of Minister">Secretariat of Minister</option>
-                                <option value="Law And Decision Enforcement Section">Law And Decision Enforcement Section</option>
-                                <option value="Supply Policy and Regulation Section">Supply Policy and Regulation Section</option>
-                                <option value="Trade Policy And Trade Cooperation Division">Trade Policy And Trade Cooperation Division</option>
-                                <option value="Information Technology Section">Information Technology Section</option>
-                                <option value="Administration And Corporation Division">Administration And Corporation Division</option>
-                                <option value="Industrial Infrastructure And Environment Division">Industrial Infrastructure And Environment Division</option>
-                                <option value="Planning And Budget Management Section">Planning And Budget Management Section</option>
-                                <option value="Bilateral And Regional Trade Division">Bilateral And Regional Trade Division</option>
-                                <option value="Market Research And Regulation Section">Market Research And Regulation Section</option>
-                                <option value="Administration & Corporation Division">Administration & Corporation Division</option>
-                                <option value="Government Industry And Corporation Section">Government Industry And Corporation Section</option>
-                                <option value="Environment Section">Environment Section</option>
-                                <option value="Planning, Monitoring And Evaluation Division">Planning, Monitoring And Evaluation Division</option>
-                                <option value="Store Section">Store Section</option>
-                                <option value="Industrial Infrastructure and Environment Division">Industrial Infrastructure and Environment Division</option>
-                            </select>
+                            <input type="text" name="section" class="form-control" id="section" placeholder="Enter section" value="{{ old('section') }}">
                         </div>
+
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="section">Staff section (English)</label>
+                                <input type="text" name="section" class="form-control" id="section" placeholder="Enter section" value="{{ old('section') }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="section_nep">Staff section (नेपाली)</label>
+                                <input type="text" name="section_nep" class="form-control" id="section_nep" placeholder="Enter position in Nepali" value="{{ old('section_nep') }}">
+                            </div>
+                        </div>
+
+
                         <div class="form-group">
                             <label for="description">Description</label>
                             <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{ old('description') }}</textarea>

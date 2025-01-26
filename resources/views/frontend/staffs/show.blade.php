@@ -34,7 +34,9 @@
 
                     @endif
                     <h1>{{$staff->name}}</h1>
-                    <p>{{$staff->position}}</p>
+                    <p>
+                        {{ Illuminate\Support\Str::limit(session('locale') === 'en' ? $staff->position : ($staff->position_nep ?? $staff->position), 50) }}
+                    </p>
                     <p>
                         {!! $staff->description !!}
                     </p>
