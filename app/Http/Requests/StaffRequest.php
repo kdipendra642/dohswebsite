@@ -22,6 +22,9 @@ class StaffRequest extends BaseRequest
             'showOnHomePage' => 'sometimes|nullable|boolean',
             'image' => 'sometimes|nullable|file|max:1024|mimes:jpg,png,jpeg',
             'priority' => 'sometimes|nullable|integer|between:1,100',
+            'position_nep' => 'sometimes|nullable|string|min:1|max:255',
+            'division_nep' => 'sometimes|nullable|string|min:1|max:255',
+            'section_nep' => 'sometimes|nullable|string|min:1|max:255',
         ];
     }
 }

@@ -22,6 +22,7 @@ class UsefulToolRequest extends BaseRequest
                 Rule::unique('useful_tools')->ignore($this->usefultool),
             ],
             'url' => 'sometimes|nullable|url|min:1|max:255',
+            'description' => 'sometimes|nullable|min:1|max:255',
             'icons' => 'sometimes|nullable|file|max:2056|mimes:png,jpg',
         ];
     }

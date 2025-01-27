@@ -13,6 +13,7 @@ class UsefulTool extends Model implements HasMedia
     protected $fillable = [
         'title',
         'url',
+        'description',
     ];
 
     public function registerMediaCollections(): void

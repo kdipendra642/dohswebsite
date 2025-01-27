@@ -11,8 +11,8 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}"><i class="fa fa-home"></i> Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('usefultools.index') }}">Useful Tools</a></li>
-                    <li class="breadcrumb-item active"><a href="#">Add Useful Tools </a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('usefultools.index') }}">Smart Health Initiaves</a></li>
+                    <li class="breadcrumb-item active"><a href="#">Add Smart Health Initiaves </a></li>
                 </ol>
             </nav>
             <!--breadcrumbs end -->
@@ -24,7 +24,7 @@
         <div class="col-lg-12">
             <section class="card">
                 <header class="card-header">
-                    Useful Tools
+                    Smart Health Initiaves
                     <div class="pull-right hidden-phone">
                         <a href="{{ route('staffs.index') }}" class="btn btn-success btn-sm"><i class="fa fa-arrow-left"></i> Go Back</a>
                     </div>
@@ -42,10 +42,13 @@
                             <input type="url" name="url" class="form-control" id="url" placeholder="Enter url" value="{{ old('url') }}">
                         </div>
                         <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" name="description">{{ old('description') }}</textarea>
+                        </div>
+                        <div class="form-group">
                             <label for="icons">Select icon</label>
                             <input type="file" id="icons" name="icons">
                         </div>
-
                         <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                     </form>
                 </div>
