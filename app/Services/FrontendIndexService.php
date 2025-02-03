@@ -261,9 +261,13 @@ class FrontendIndexService
     /**
      * Get All Categories
      */
-    public function getAllCAtegory(): object
+    public function getAllCAtegory(): array
     {
-        return $this->categoryRepository->fetchAll();
+        $categories = $this->categoryRepository->fetchAll();
+
+        return [
+            'categories' => $categories
+        ];
     }
 
     /**
