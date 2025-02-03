@@ -11,9 +11,9 @@
 			<label for="email" class="mr-sm-2">Select the menu you want to edit: </label>
 			{!! Menu::select('menu', $menulist, ['class' => 'form-control']) !!}
 			<button type="submit" class="btn btn-primary ml-2">Submit</button>
-			<div class="ml-4 mb-2 mr-sm-2">
+			<!-- <div class="ml-4 mb-2 mr-sm-2">
 				or <a href="{{ $currentUrl }}?action=edit&menu=0">Create New Menu</a>
-			</div>
+			</div> -->
 		</form>
 	</div>
 

@@ -5,12 +5,10 @@
 
     <div class="section-header">
         <div class="breadcump"><a href="{{ route('index') }}"><i class="fa fa-home fa-lg"></i> </a>  / Categories</div>
-        <h2 class="notice_title">
-            Categories
-        </h2>
+        <h6 class="notice_title">
+            Navigations
+        </h6>
     </div>
-
-
     <div class="row content detail-body">
         <div class="col-lg-9 col-sm-9 col-xs-12">
             <table class="table table-striped table-hover">
@@ -22,22 +20,45 @@
                 </thead>
                 <tbody>
                     @php
-                        $i = 0;
+                        $i = 1;
                     @endphp
-                    @foreach ($categories as $category)
+                    @foreach ($allData['categories'] as $category)
                     <tr>
-                        <td>1.</td>
+                        <td>{{$i++}}</td>
                         <td>{{$category->title}}</td>
                         <td>{{$category->slug}}</td>
                         <td>
                             <a href="{{ route('category.post', $category->id)}}"><i class="fa fa-eye"></i></a>
                         </td>
                     </tr>
-                    @endforeach         
+                    @endforeach  
+                    <tr>
+                        <td>#</td>
+                        <td>Photo Gallery</td>
+                        <td>-</td>
+                        <td>
+                            <a href="{{ route('gallery.index')}}"><i class="fa fa-eye"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#</td>
+                        <td>Contact Us</td>
+                        <td>-</td>
+                        <td>
+                            <a href="{{ route('contact')}}"><i class="fa fa-eye"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#</td>
+                        <td>Staffs</td>
+                        <td>-</td>
+                        <td>
+                            <a href="{{ route('index.staffs')}}"><i class="fa fa-eye"></i></a>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-
     </div>
 </div>
 

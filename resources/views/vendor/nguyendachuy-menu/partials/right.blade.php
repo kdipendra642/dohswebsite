@@ -7,13 +7,13 @@
                         <label for="email" class="mr-sm-2">Name: </label>
                         <input name="menu-name" id="menu-name" type="text" 
                         class="form-control menu-name regular-text menu-item-textbox" 
-                        title="Enter menu name" value="@if(isset($indmenu)){{$indmenu->name}}@endif">
+                        title="Enter menu name" value="@if(isset($indmenu)){{$indmenu->name}}@endif" disabled>
                         @if(request()->has('action'))
                             <button type="button" onclick="createNewMenu()" name="save_menu" 
                                 class="btn btn-primary menu-save ml-2">Create Menu</button>
                         @elseif(request()->has('menu'))
                             <button type="button" onclick="actualizarMenu(false)" name="save_menu"
-                                class="btn btn-primary menu-save ml-2">Save Menu</button>
+                                class="btn btn-primary menu-save ml-2 d-none">Save Menu</button>
                         @else
                             <button type="button" onclick="createNewMenu()" name="save_menu" 
                                 class="btn btn-primary menu-save ml-2">Create Menu</button>

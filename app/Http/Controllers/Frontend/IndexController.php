@@ -54,10 +54,10 @@ class IndexController extends BaseController
      */
     public function category()
     {
-        $categories = $this->frontendIndexService->getAllCAtegory();
+        $allData = $this->frontendIndexService->getAllCAtegory();
 
         return view('frontend.categories.index', ([
-            'categories' => $categories,
+            'allData' => $allData,
         ]));
     }
 
