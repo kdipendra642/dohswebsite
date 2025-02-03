@@ -28,11 +28,13 @@
                             </object>
                         </div>
                         @endif
-
                     @endif
 
-                    <iframe src="{{ $popUps->youtube_link}}" width="100%" height="450">
-                    </iframe>
+                    @if ($popUps->youtube_link)
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe src="{{ $popUps->youtube_link }}" class="embed-responsive-item" allowfullscreen></iframe>
+                        </div>
+                    @endif
             </div>
 
         </div>

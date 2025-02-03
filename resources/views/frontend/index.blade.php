@@ -107,32 +107,33 @@
                 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 remove-mar-pad">
                     <nav>
                         <div class="nav nav-tabs" id="news-tab" role="tablist">
-                            <a class="nav-item nav-link active tabbg" id="nav-suchana-tab"  data-toggle="tab" href="#nav-suchhana" role="tab" aria-controls="nav-suchana" aria-selected="true"> <i class="fa fa-balance-scale fa-lg"></i> <span class="d-none d-md-inline-block">@lang('messages.laws_regulations')</span></a>
+                            <a class="nav-item nav-link active tabbg" id="nav-trainnig-tab" data-toggle="tab" href="#nav-trainnig" role="tab" aria-controls="nav-traninnig" aria-selected="false"><i class="fa fa-book fa-lg"></i> <span class="d-none d-md-inline-block">@lang('messages.publication')</span></a>
                             <a class="nav-item nav-link tabbg" id="nav-namunakanun-tab"  data-toggle="tab" href="#nav-namunakanun" role="tab" aria-controls="nav-namunakanun" aria-selected="true"><i class="fa fa-list-ul fa-lg"></i> <span class="d-none d-md-inline-block">@lang('messages.press_release')</span></a>
-                            <a class="nav-item nav-link tabbg" id="nav-trainnig-tab" data-toggle="tab" href="#nav-trainnig" role="tab" aria-controls="nav-traninnig" aria-selected="false"><i class="fa fa-book fa-lg"></i> <span class="d-none d-md-inline-block">@lang('messages.publication')</span></a>
+                            <a class="nav-item nav-link tabbg" id="nav-suchana-tab"  data-toggle="tab" href="#nav-suchhana" role="tab" aria-controls="nav-suchana" aria-selected="true"> <i class="fa fa-balance-scale fa-lg"></i> <span class="d-none d-md-inline-block">@lang('messages.laws_regulations')</span></a>
+                        
                             <!-- <a class="nav-item nav-link tabbg" id="nav-publication-tab" data-toggle="tab" href="#nav-publication" role="tab" aria-controls="nav-publication" aria-selected="false"><i class="fa fa-book fa-lg"></i> <span class="d-none d-md-inline-block">प्रकाशन</span></a> -->
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tab1">
-
-                        <div class="tab-pane fade show active border-tab" id="nav-suchhana" role="tabpanel" aria-labelledby="nav-suchana-tab">
+                        <div class="tab-pane fade show active border-tab" id="nav-trainnig" role="tabpanel" aria-labelledby="nav-trainnig-tab">
                             <ul>
-                                @foreach ($getHomePageData['lawRelatedNews'] as $lawRelatedNews)
+                            @foreach ($getHomePageData['publicationRelatedNews'] as $publicationRelatedNews)
                                 <li>
-                                    <span class="fa fa-thumb-tack"></span>
-                                    <a href="{{ route('posts.single', $lawRelatedNews->slug) }}" title="{{$lawRelatedNews->title}}" target="_blank">
-                                        {{ Illuminate\Support\Str::limit(session('locale') === 'en' ? $lawRelatedNews->title : ($lawRelatedNews->title_nep ?? $lawRelatedNews->title), 50) }}
+                                    <!-- <span class="fa fa-thumb-tack"></span> -->
+                                    <a href="{{ route('posts.single', $publicationRelatedNews->slug) }}" title="{{$publicationRelatedNews->title}}" target="_blank">
+                                        {{$publicationRelatedNews->title}}
                                     </a>
                                     <i>
                                         <small>
-                                       @lang('messages.published_at') {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($lawRelatedNews->created_at->format('Y-m-d'))
+                                        प्रकाशित मिति {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($publicationRelatedNews->created_at->format('Y-m-d'))
                                         ->toNepaliDate(format: 'D, j F Y')}}
                                         </small>
                                     </i>
                                 </li>
                                 @endforeach
-                                <span class="float-right more"><a href="{{ route('subcategory.post', App\Enums\PostSubCategoryTypeEnum::LAWS_REGULATION->value) }}" class="btn btn-sm btn-danger">@lang('messages.additional_materials') >></a></span>
-                                <span class="clearfix"></span>
+
+                            <span class="float-right more"><a href="{{ route('subcategory.post', App\Enums\PostSubCategoryTypeEnum::PUBLICATION->value) }}" class="btn btn-sm btn-danger">@lang('messages.additional_materials') >></a></span>
+                            <span class="clearfix"></span>
                             </ul>
                         </div>
 
@@ -140,7 +141,7 @@
                             <ul>
                                 @foreach ($getHomePageData['pressReleaseRelatedNews'] as $pressRelease)
                                 <li>
-                                    <span class="fa fa-thumb-tack"></span>
+                                    <!-- <span class="fa fa-thumb-tack"></span> -->
                                     <a href="{{ route('posts.single', $pressRelease->slug) }}" title="{{$pressRelease->title}}" target="_blank">
                                         {{ Illuminate\Support\Str::limit(session('locale') === 'en' ? $pressRelease->title : ($pressRelease->title_nep ?? $pressRelease->title), 50) }}
                                     </a>
@@ -158,25 +159,24 @@
                             </ul>
                         </div>
 
-                        <div class="tab-pane fade border-tab" id="nav-trainnig" role="tabpanel" aria-labelledby="nav-trainnig-tab">
+                        <div class="tab-pane fade border-tab" id="nav-suchhana" role="tabpanel" aria-labelledby="nav-suchana-tab">
                             <ul>
-                            @foreach ($getHomePageData['publicationRelatedNews'] as $publicationRelatedNews)
+                                @foreach ($getHomePageData['lawRelatedNews'] as $lawRelatedNews)
                                 <li>
-                                    <span class="fa fa-thumb-tack"></span>
-                                    <a href="{{ route('posts.single', $publicationRelatedNews->slug) }}" title="{{$publicationRelatedNews->title}}" target="_blank">
-                                        {{$publicationRelatedNews->title}}
+                                    <!-- <span class="fa fa-thumb-tack"></span> -->
+                                    <a href="{{ route('posts.single', $lawRelatedNews->slug) }}" title="{{$lawRelatedNews->title}}" target="_blank">
+                                        {{ Illuminate\Support\Str::limit(session('locale') === 'en' ? $lawRelatedNews->title : ($lawRelatedNews->title_nep ?? $lawRelatedNews->title), 50) }}
                                     </a>
                                     <i>
                                         <small>
-                                        प्रकाशित मिति {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($publicationRelatedNews->created_at->format('Y-m-d'))
+                                       @lang('messages.published_at') {{ Anuzpandey\LaravelNepaliDate\LaravelNepaliDate::from($lawRelatedNews->created_at->format('Y-m-d'))
                                         ->toNepaliDate(format: 'D, j F Y')}}
                                         </small>
                                     </i>
                                 </li>
                                 @endforeach
-
-                            <span class="float-right more"><a href="{{ route('subcategory.post', App\Enums\PostSubCategoryTypeEnum::PUBLICATION->value) }}" class="btn btn-sm btn-danger">@lang('messages.additional_materials') >></a></span>
-                            <span class="clearfix"></span>
+                                <span class="float-right more"><a href="{{ route('subcategory.post', App\Enums\PostSubCategoryTypeEnum::LAWS_REGULATION->value) }}" class="btn btn-sm btn-danger">@lang('messages.additional_materials') >></a></span>
+                                <span class="clearfix"></span>
                             </ul>
                         </div>
 
@@ -249,11 +249,11 @@
                                 @if ($usefulTools->getMedia('icons')->isNotEmpty())
                                     <img src="{{$usefulTools->getMedia('icons')->first()->getUrl()}}" 
                                          alt="{{$usefulTools->title}}" 
-                                         class="img-fluid object-fit-contain">
+                                         class="img-fluid object-fit-contain" height="50px">
                                 @else
                                     <img src="{{ asset('assets/frontend/uploads/img/logo.png')}}" 
                                          alt="{{$usefulTools->title}}" 
-                                         class="img-fluid object-fit-contain">
+                                         class="img-fluid object-fit-contain" height="50px">
                                 @endif
                             </div>
 
@@ -262,7 +262,7 @@
 
                             <!-- Description -->
                             <p class="wow fadeInUp text-muted small mb-0">
-                                {{ Illuminate\Support\Str::limit($usefulTools->description, 80) }}
+                                {{ Illuminate\Support\Str::limit($usefulTools->description, 26) }}
                             </p>
                         </a>
                     </div>
