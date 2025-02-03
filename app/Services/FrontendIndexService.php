@@ -108,11 +108,12 @@ class FrontendIndexService
                 'supportingImages',
             ],
             filterable: [
-                ['created_at', 'like', Carbon::now()->format('Y-m')],
+                // ['created_at', 'like', Carbon::now()->format('Y-m')],
             ],
             order: [
                 'created_at' => 'desc',
-            ]
+            ],
+            limit: 5
         );
 
         $lawRelatedNews = $this->postRepository->fetchAll(
@@ -122,7 +123,7 @@ class FrontendIndexService
             order: [
                 'created_at' => 'desc',
             ],
-            limit: 5
+            limit: 7
         );
 
         $tickerRelatedNews = $this->postRepository->fetchAll(
@@ -161,7 +162,7 @@ class FrontendIndexService
             order: [
                 'created_at' => 'desc',
             ],
-            limit: 5
+            limit: 7
         );
 
         $pressReleaseRelatedNews = $this->postRepository->fetchAll(
@@ -171,7 +172,7 @@ class FrontendIndexService
             order: [
                 'created_at' => 'desc',
             ],
-            limit: 5
+            limit: 7
         );
 
         $otherNews = $this->postRepository->fetchAll(
