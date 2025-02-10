@@ -10,17 +10,21 @@
         </div>
         <div class="row" style="margin-bottom:50px;">
             <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="mb-3">
+                    <!-- Search Input -->
+                    <input type="text" id="searchInput" placeholder="Search..." class="form-control">
+                </div>
                 <table class="table table-responsive table-striped" id="contact">
                     <thead class="thead-light">
                     <tr>
-                        <th style="width:5%">क्र.सं.</th>
-                        <th>पद</th>
-                        <th>प्रोफाइल</th>
-                        <th width=15%>पदाधिकारीको नाम</th>
-                        <th>शाखा</th>
-                        <th>डिभिजन</th>
-                        <th>मोबाईल नम्बर</th>
-                        <th>ईमेल</th>
+                        <th style="width:5%">@lang('messages.sn')</th>
+                        <th>@lang('messages.position')</th>
+                        <th>@lang('messages.profile')</th>
+                        <th width=15%>@lang('messages.name')</th>
+                        <th>@lang('messages.section')</th>
+                        <th>@lang('messages.section')</th>
+                        <th>@lang('messages.contact_number')</th>
+                        <th>@lang('messages.email')</th>
                         <th>#</th>
                     </tr>
                     </thead>
@@ -39,7 +43,7 @@
                                     <img
                                     src="{{$staff->getMedia('staffs')[0]->getUrl()}}"
                                     alt="{{$staff->name}}"
-                                    style="width: 150px;"
+                                    style="width: 100px; height: auto;"
                                     >
                                 @endif
                             </td>
@@ -63,15 +67,25 @@
         </div>
     </div>
   </section>
-{{--
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-    <script>
-        $(document).ready( function () {
-            $('#contact').DataTable({
-                "pageLength": 25,
-                responsive: true
+
+
+  <script>
+    $(document).ready(function () {
+        $('#searchInput').on('keyup', function () {
+            const searchText = $(this).val().toLowerCase();
+
+            $('.table tbody tr').each(function () {
+                const rowText = $(this).text().toLowerCase();
+
+                if (rowText.includes(searchText)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
             });
-        } );
-    </script> --}}
+        });
+    });
+</script>
+
 
 @endsection
