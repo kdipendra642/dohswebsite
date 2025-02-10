@@ -94,7 +94,6 @@ class IndexController extends BaseController
     public function indexPosts(Request $request)
     {
         $filterable = [];
-
         // if ($request->title) {
         //    $filterable = array_merge($filterable, [
         //         ['title', '=', $request->title]

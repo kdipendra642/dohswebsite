@@ -90,6 +90,11 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="publised_at">Publised Date</label>
+                            <input type="date" name="publised_at" class="form-control" id="publised_at" placeholder="Select Date" value="{{ old('publised_at') }}">
+                        </div>
+
+                        <div class="form-group">
                             <label for="document">File input</label>
                             <input type="file" id="document" name="document">
                         </div>

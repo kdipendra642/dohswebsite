@@ -85,6 +85,11 @@
                             <input type="hidden" name="show_on_ticker" value="0">
                             <input class="form-check-input w-20 h-20" type="checkbox" value="1" name="show_on_ticker" id="invalidCheck"  style="margin: auto;width: 16px;height: 16px;"  @if ($posts->show_on_ticker == 1) checked @endif >
                         </div>
+
+                        <div class="form-group">
+                            <label for="publised_at">Publised Date</label>
+                            <input type="date" name="publised_at" class="form-control" id="publised_at" placeholder="Select Date" value="{{ $posts->publised_at }}">
+                        </div>
                         <div class="form-group">
                             <label for="document">File input</label>
                             <input type="file" id="document" name="document">

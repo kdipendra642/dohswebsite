@@ -39,7 +39,7 @@
                                     <div class="carousel-item {{$i == 1 ? 'active' : ''}}">
                                         <a href="{{ route('gallery', $galleries->slug) }}" class="d-block">
                                             <!-- Image Container -->
-                                            <div class="img-container" style="height: 300px; overflow: hidden;">
+                                            <div class="img-container" style="height: 470px; overflow: hidden;">
                                                 @if ($galleries->getMedia('thumbnail')->isNotEmpty())
                                                     <img src="{{$galleries->getMedia('thumbnail')->first()->getUrl()}}"
                                                         alt="{{$galleries->title}}"
