@@ -206,7 +206,7 @@ class FrontendIndexService
             order: [
                 'created_at' => 'desc',
             ],
-            limit: 8
+            limit: 4
         );
 
         return [
@@ -299,9 +299,9 @@ class FrontendIndexService
         ];
     }
 
-    public function getAllPosts(array $filterable): object
+    public function getAllPosts(array $filterable): array
     {
-        return $this->postRepository->fetchAll(
+        $posts = $this->postRepository->fetchAll(
             with: [
                 'category',
             ],
@@ -310,14 +310,22 @@ class FrontendIndexService
                 'created_at' => 'desc',
             ]
         );
+
+        return [
+            'posts' => $posts
+        ];
     }
 
     /**
      * Get Category wise posts
      */
-    public function getCategorywisePosts(string|int $categoryId): object
+    public function getCategorywisePosts(string|int $categoryId): array
     {
-        return $this->postRepository->fetchAll(
+        $category = $this->categoryRepository->fetch(
+            id: $categoryId
+        );
+
+        $posts = $this->postRepository->fetchAll(
             with: [
                 'category',
             ],
@@ -328,6 +336,11 @@ class FrontendIndexService
                 'created_at' => 'desc',
             ]
         );
+
+        return [
+            'category' => $category,
+            'posts' => $posts,
+        ];
     }
 
     /**

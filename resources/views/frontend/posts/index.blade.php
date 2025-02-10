@@ -5,7 +5,9 @@
     <div class="section-header">
         <div class="breadcump"><a href="{{ route('index') }}"><i class="fa fa-home fa-lg"></i> </a>  / @lang('messages.posts')</div>
         <h2 class="notice_title">
-            @lang('messages.posts')
+            @if (isset($posts['category']))
+            {{ session('locale') === 'en' ? $posts['category']->title : ($posts['category']->title_nep ?? $posts['category']->title) }}                
+            @endif
         </h2>
     </div>
 </div>
@@ -50,7 +52,7 @@
                         @php
                             $i = 1;
                         @endphp
-                        @foreach ($posts as $post)    
+                        @foreach ($posts['posts'] as $post)    
                         <tr>
                             <td>{{$i++}}</td>
                             <td>
@@ -63,7 +65,7 @@
                                 <span class="badge badge-danger">{{$post->category->title}}</span>
                             </td>
                             <td class="post-date">
-                                {{$post->created_at->format('Y-m-d')}}
+                                {{$post->publised_at}}
                             </td>
                             <td align="center">
                                 <div class="btn-group">
