@@ -22,6 +22,7 @@ class Post extends Model implements HasMedia
         'show_on_ticker',
         'title_nep',
         'description_nep',
+        'publised_at',
     ];
 
     protected $casts = [
