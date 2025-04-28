@@ -44,6 +44,11 @@
                                     <p>Your Device Cannot read PDF. <a href="{{$tickers->getMedia('tickers')[0]->getUrl()}}">Click to View</a></p>
                                 </object>
                             </div>
+                            <div class="attach">
+                                <a href="{{$tickers->getMedia('tickers')[0]->getUrl()}}" target="_blank" data-toggle="tooltip" data-placement="bottom" title="{{ $title }}">
+                                    <i class="fa fa-file-pdf-o fa-5x"></i>
+                                </a>
+                            </div>
                         @endif
 
                     @endif
@@ -54,88 +59,7 @@
             <div class="col-lg-3 col-sm-3 col-xs-12">
           <div class="section-header aside-detail margintop">
     <h2><i class="fa fa-rss"></i> More Notices</h2>
-    {{-- <ul>
-                                    <li>
-                    <a href="detail/271.html">
-                                                    व्यावसायिक सामाजिक जिम्मेवारी (CSR) सम्बन्धी विवरण पेश गर्ने सम्बन्धी सूचना।
-                                            </a>
-                    <small><i class="fa fa-clock-o"> ८ Hours ago</i>
-                        &nbsp; &nbsp;<i class="fa fa-building"></i> News &amp; Notice
-                    </small>
-                </li>
-                            <li>
-                    <a href="detail/270.html">
-                                                    Monthly Report of Foreign Direct Investment Approval of Mangsir, 2081
-                                            </a>
-                    <small><i class="fa fa-clock-o"> २ Weeks ago</i>
-                        &nbsp; &nbsp;<i class="fa fa-building"></i> News &amp; Notice
-                    </small>
-                </li>
-                            <li>
-                    <a href="detail/269.html">
-                                                    औद्योगिक व्यवसाय ऐन, २०७६
-                                            </a>
-                    <small><i class="fa fa-clock-o"> १ Months ago</i>
-                        &nbsp; &nbsp;<i class="fa fa-building"></i> Act
-                    </small>
-                </li>
-                            <li>
-                    <a href="detail/268.html">
-                                                    Monthly Report of Foreign Direct Investment Approval of Kartik, 2081
-                                            </a>
-                    <small><i class="fa fa-clock-o"> २ Months ago</i>
-                        &nbsp; &nbsp;<i class="fa fa-building"></i> News &amp; Notice
-                    </small>
-                </li>
-                            <li>
-                    <a href="detail/266.html">
-                                                    स्वत प्रकाशन आ.व २०८१_८२_प्रथम त्रैमासिक
-                                            </a>
-                    <small><i class="fa fa-clock-o"> २ Months ago</i>
-                        &nbsp; &nbsp;<i class="fa fa-building"></i> Right to Information
-                    </small>
-                </li>
-                            <li>
-                    <a href="detail/265.html">
-                                                    Monthly FDI Approval Report of 2081, Ashwin
-                                            </a>
-                    <small><i class="fa fa-clock-o"> ३ Months ago</i>
-                        &nbsp; &nbsp;<i class="fa fa-building"></i> News &amp; Notice
-                    </small>
-                </li>
-                            <li>
-                    <a href="detail/264.html">
-                                                    उत्पादन करारको सम्झौता अभिलेखीकरणका लागि दिनुपर्ने निवेदनको ढाँचा
-                                            </a>
-                    <small><i class="fa fa-clock-o"> ३ Months ago</i>
-                        &nbsp; &nbsp;<i class="fa fa-building"></i> News &amp; Notice
-                    </small>
-                </li>
-                            <li>
-                    <a href="detail/263.html">
-                                                    सूचना सम्बन्धमा ।
-                                            </a>
-                    <small><i class="fa fa-clock-o"> ३ Months ago</i>
-                        &nbsp; &nbsp;<i class="fa fa-building"></i> News &amp; Notice
-                    </small>
-                </li>
-                            <li>
-                    <a href="detail/262.html">
-                                                    Foreign Investment in Nepal 2024 ,Till July 15( A complete guide for investors)
-                                            </a>
-                    <small><i class="fa fa-clock-o"> ३ Months ago</i>
-                        &nbsp; &nbsp;<i class="fa fa-building"></i> News &amp; Notice
-                    </small>
-                </li>
-                            <li>
-                    <a href="detail/261.html">
-                                                    Monthly FDI Approval Report of 2081, Bhadra
-                                            </a>
-                    <small><i class="fa fa-clock-o"> ४ Months ago</i>
-                        &nbsp; &nbsp;<i class="fa fa-building"></i> News &amp; Notice
-                    </small>
-                </li>
-    </ul> --}}
+
 </div>
          </div>
 

@@ -26,8 +26,9 @@ class Post extends Model implements HasMedia
     ];
 
     protected $casts = [
-        'show_on_ticker' => 'boolean'
+        'show_on_ticker' => 'boolean',
     ];
+
     /**
      * Get BelongsTo relation with Category
      */

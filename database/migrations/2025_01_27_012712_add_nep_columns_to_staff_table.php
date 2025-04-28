@@ -25,9 +25,9 @@ return new class extends Migration
     {
         Schema::table('staff', function (Blueprint $table) {
             $table->dropColumn([
-              'position_nep',
-              'division_nep',
-              'section_nep',
+                'position_nep',
+                'division_nep',
+                'section_nep',
             ]);
         });
     }

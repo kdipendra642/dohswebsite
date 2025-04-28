@@ -266,7 +266,7 @@ class FrontendIndexService
         $categories = $this->categoryRepository->fetchAll();
 
         return [
-            'categories' => $categories
+            'categories' => $categories,
         ];
     }
 
@@ -312,7 +312,7 @@ class FrontendIndexService
         );
 
         return [
-            'posts' => $posts
+            'posts' => $posts,
         ];
     }
 
@@ -361,7 +361,7 @@ class FrontendIndexService
         );
 
         return [
-            'posts' => $posts
+            'posts' => $posts,
         ];
     }
 

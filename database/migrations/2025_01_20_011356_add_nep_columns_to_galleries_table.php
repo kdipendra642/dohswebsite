@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('title_nep')->nullable();
             $table->text('description')->nullable();
             $table->text('description_nep')->nullable();
-            
+
         });
     }
 
