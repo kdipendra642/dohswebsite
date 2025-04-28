@@ -25,7 +25,7 @@ class Gallery extends Model implements HasMedia
     ];
 
     protected $casts = [
-        'add_to_slider' => 'boolean'
+        'add_to_slider' => 'boolean',
     ];
 
     public function getSlugOptions(): SlugOptions

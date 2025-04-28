@@ -15,7 +15,7 @@ class PopUpRequest extends BaseRequest
             'title' => 'required|string|min:1|max:255',
             'status' => 'sometimes|nullable|boolean',
             'image' => 'sometimes|nullable|file|max:2056|mimes:png,jpg,jpeg,pdf',
-            'youtube_link' => 'sometimes|nullable|url|max:255'
+            'youtube_link' => 'sometimes|nullable|url|max:255',
         ];
     }
 }

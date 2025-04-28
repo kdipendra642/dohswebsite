@@ -35,8 +35,13 @@
                             <div class="d-none d-md-block">
                                 <object data="{{$popups->getMedia('pop-ups')[0]->getUrl()}}#view=FitH&amp;toolbar=1" type="application/pdf" width="100%" height="800">
                                     <param name="initZoom" value="fitToPage">
-                                    <p>Your Device Cannot read PDF. <a rel="external" href="#">Click to View</a></p>
+                                    <p>Your Device Cannot read PDF. <a rel="external" href="{{$popups->getMedia('pop-ups')[0]->getUrl()}}">Click to View</a></p>
                                 </object>
+                            </div>
+                            <div class="attach">
+                                <a href="{{$popups->getMedia('pop-ups')[0]->getUrl()}}" target="_blank" data-toggle="tooltip" data-placement="bottom" title="{{ $title }}">
+                                    <i class="fa fa-file-pdf-o fa-5x"></i>
+                                </a>
                             </div>
                         @endif
                     @endif

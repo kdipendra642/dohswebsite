@@ -26,7 +26,7 @@ class GalleryService
                 'supportingImages',
             ],
             order: [
-                'created_at' => 'desc'
+                'created_at' => 'desc',
             ]
         );
     }

@@ -36,7 +36,7 @@ class PostRequest extends BaseRequest
             'document' => 'sometimes|nullable|file|max:5120|mimes:jpg,png,jpeg,pdf',
             'document_nep' => 'sometimes|nullable|file|max:5120|mimes:jpg,png,jpeg,pdf',
             'show_on_ticker' => 'sometimes|nullable|boolean',
-            'publised_at' => 'sometimes|nullable|date|date_format:Y-m-d'
+            'publised_at' => 'sometimes|nullable|date|date_format:Y-m-d',
         ];
     }
 }

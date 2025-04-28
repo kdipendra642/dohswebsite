@@ -3,12 +3,12 @@
 
 @php
 
-$title = session('locale') === 'en' 
-        ? $posts->title 
+$title = session('locale') === 'en'
+        ? $posts->title
         : ($posts->title_nep ?? $posts->title);
 
-    $description = session('locale') === 'en' 
-        ? $posts->description 
+    $description = session('locale') === 'en'
+        ? $posts->description
         : ($posts->description_nep ?? $posts->description);
 @endphp
 
@@ -52,18 +52,16 @@ $title = session('locale') === 'en'
                             <div class="d-none d-md-block">
                                 <object data="{{$posts->getMedia('posts')[0]->getUrl()}}#view=FitH&amp;toolbar=1" type="application/pdf" width="100%" height="800">
                                     <param name="initZoom" value="fitToPage">
-                                    <p>Your Device Cannot read PDF. <a rel="external" href="#">Click to View</a></p>
+                                    <p>Your Device Cannot read PDF. <a rel="external" href="{{$posts->getMedia('posts')[0]->getUrl()}}">Click to View</a></p>
                                 </object>
-
-                                {{-- <object class="pdf"
-                                data=
-                                "{{$posts->getMedia('posts')[0]->getUrl()}}"
-                                width="800"
-                                height="500"
-                                > --}}
-                        </object>
                             </div>
-
+                            <h3 class="file-download">Download Attached File :</h3>
+                            <hr>
+                            <div class="attach">
+                                <a href="{{$posts->getMedia('posts')[0]->getUrl()}}" target="_blank" data-toggle="tooltip" data-placement="bottom" title="{{ $title }}">
+                                    <i class="fa fa-file-pdf-o fa-5x"></i>
+                                </a>
+                            </div>
 
                         @endif
 
