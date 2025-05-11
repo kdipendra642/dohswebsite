@@ -66,6 +66,14 @@
                                     <textarea name="message" class="form-control" placeholder="Your message here..." rows="5"></textarea>
                                 </div>
                             </div>
+                             <div class="col-lg-12">
+                                <div class="form-group">
+                                    <div class="captch">
+                                        <span>{{!! captcha_img() !!}}</span>
+                                       <input type="text" name="captcha" class="form-control @error('captcha') is-invalid @enderror" placeholder="Please Insert Captch">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-lg-12">
                                 <button class="btn btn-primary" type="submit">@lang('messages.submit_your_feedback')</button>
                             </div>
@@ -73,12 +81,9 @@
 
                     </form>
                 </div>
-            </div>
-            
+            </div>            
         </div>
     </div>
 </section>
-
-
 
 @endsection

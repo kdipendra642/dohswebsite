@@ -20,7 +20,7 @@ class StaffRequest extends BaseRequest
             'section' => 'sometimes|nullable|string|min:1|max:255',
             'description' => 'sometimes|nullable|string|min:1|max:255',
             'showOnHomePage' => 'sometimes|nullable|boolean',
-            'image' => 'sometimes|nullable|file|max:1024|mimes:jpg,png,jpeg',
+            'image' => 'sometimes|nullable|file|max:50000|mimes:jpg,png,jpeg',
             'priority' => 'sometimes|nullable|integer|between:1,100',
             'position_nep' => 'sometimes|nullable|string|min:1|max:255',
             'division_nep' => 'sometimes|nullable|string|min:1|max:255',

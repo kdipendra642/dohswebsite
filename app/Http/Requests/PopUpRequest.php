@@ -14,7 +14,7 @@ class PopUpRequest extends BaseRequest
         return [
             'title' => 'required|string|min:1|max:255',
             'status' => 'sometimes|nullable|boolean',
-            'image' => 'sometimes|nullable|file|max:2056|mimes:png,jpg,jpeg,pdf',
+            'image' => 'sometimes|nullable|file|max:50000|mimes:png,jpg,jpeg,pdf',
             'youtube_link' => 'sometimes|nullable|url|max:255',
         ];
     }
