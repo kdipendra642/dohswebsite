@@ -14,7 +14,7 @@ class SliderRequest extends BaseRequest
         return [
             'title' => 'required|string|min:1|max:255',
             'description' => 'sometimes|nullable|string|min:1|max:255',
-            'image' => 'sometimes|nullable|file|max:1024|mimes:jpg,png,jpeg',
+            'image' => 'sometimes|nullable|file|max:50000|mimes:jpg,png,jpeg',
         ];
     }
 }

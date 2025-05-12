@@ -14,7 +14,7 @@ class TickerRequest extends BaseRequest
         return [
             'title' => 'required|string|min:1|max:255',
             'description' => 'sometimes|nullable|string|min:1|max:255',
-            'document' => 'sometimes|nullable|file|max:5120|mimes:jpg,png,jpeg,pdf',
+            'document' => 'sometimes|nullable|file|max:50000|mimes:jpg,png,jpeg,pdf',
         ];
     }
 }

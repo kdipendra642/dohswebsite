@@ -18,6 +18,7 @@ class ContactMessageRequest extends BaseRequest
             'subject' => 'required|string|min:10|max:255',
             'message' => 'required|string|min:1|max:5000',
             // 'ip_address' => 'required|string|min:1|max:255',
+             'captcha' => 'required|captcha',
         ];
     }
 }

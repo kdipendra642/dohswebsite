@@ -16,7 +16,7 @@ class PopUp extends Model implements HasMedia
     protected $fillable = [
         'title',
         'status',
-        'youtube_link'
+        'youtube_link',
     ];
 
     protected $casts = [

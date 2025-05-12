@@ -23,7 +23,7 @@ return new class extends Migration
     {
         Schema::table('pop_ups', function (Blueprint $table) {
             $table->dropColumn([
-                'youtube_link'
+                'youtube_link',
             ]);
         });
     }

@@ -266,7 +266,7 @@ class FrontendIndexService
         $categories = $this->categoryRepository->fetchAll();
 
         return [
-            'categories' => $categories
+            'categories' => $categories,
         ];
     }
 
@@ -312,7 +312,7 @@ class FrontendIndexService
         );
 
         return [
-            'posts' => $posts
+            'posts' => $posts,
         ];
     }
 
@@ -346,9 +346,9 @@ class FrontendIndexService
     /**
      * Get Sub Category wise post
      */
-    public function getSubCategorywisePosts(string $subcategory): object
+    public function getSubCategorywisePosts(string $subcategory): array
     {
-        return $this->postRepository->fetchAll(
+        $posts = $this->postRepository->fetchAll(
             with: [
                 'category',
             ],
@@ -359,6 +359,10 @@ class FrontendIndexService
                 'created_at' => 'desc',
             ]
         );
+
+        return [
+            'posts' => $posts,
+        ];
     }
 
     /**

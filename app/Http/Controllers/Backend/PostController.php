@@ -55,14 +55,14 @@ class PostController extends BaseController
             if ($request->input('category_id')) {
                 $categoryId = $request->input('category_id');
                 $filterable = array_merge($filterable, [
-                    [ 'category_id', '=', $categoryId]
+                    ['category_id', '=', $categoryId],
                 ]);
             }
 
-            if($request->input('sub_category')) {
+            if ($request->input('sub_category')) {
                 $subcategory = $request->input('sub_category');
                 $filterable = array_merge($filterable, [
-                    [ 'sub_category', '=', $subcategory]
+                    ['sub_category', '=', $subcategory],
                 ]);
             }
 
