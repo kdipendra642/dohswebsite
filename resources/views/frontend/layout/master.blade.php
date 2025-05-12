@@ -24,7 +24,7 @@
     @endif
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="csrf-token" name="{{ csrf_token() }}">
-   
+
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/appb22f.css')}}?id=746abb56b4186f9c8bec">
     <link rel="icon" href="{{ asset('assets/frontend/uploads/img/logo.png')}}">
@@ -35,6 +35,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    @stack('styles')
 </head>
 <body>
 
@@ -93,6 +94,7 @@
         });
     </script>
     <!-- Lightbox2 JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    @stack('script')
     </body>
   </html>

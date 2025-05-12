@@ -1,6 +1,10 @@
 @extends('frontend.layout.master')
 @section('mainContent')
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('pdf-js/main.css')}}">
+@endpush
+
 @php
 
 $title = session('locale') === 'en'
@@ -49,19 +53,8 @@ $title = session('locale') === 'en'
                     </p>
                     @if ($posts->getMedia('posts')->isNotEmpty())
                         @if ($posts->getMedia('posts')[0]->mime_type == 'application/pdf')
-                            <div class="d-none d-md-block">
-                                <object data="{{$posts->getMedia('posts')[0]->getUrl()}}#view=FitH&amp;toolbar=1" type="application/pdf" width="100%" height="800">
-                                    <param name="initZoom" value="fitToPage">
-                                    <p>Your Device Cannot read PDF. <a rel="external" href="{{$posts->getMedia('posts')[0]->getUrl()}}">Click to View</a></p>
-                                </object>
-                            </div>
-                            <h3 class="file-download">Download Attached File :</h3>
-                            <hr>
-                            <div class="attach">
-                                <a href="{{$posts->getMedia('posts')[0]->getUrl()}}" target="_blank" data-toggle="tooltip" data-placement="bottom" title="{{ $title }}">
-                                    <i class="fa fa-file-pdf-o fa-5x"></i>
-                                </a>
-                            </div>
+
+                            <div data-pdf="{{$posts->getMedia('posts')[0]->getUrl()}}"></div>
 
                         @endif
 
@@ -78,5 +71,15 @@ $title = session('locale') === 'en'
     </div>
 </section>
 
+@push('script')
+    <script src="{{ asset('pdf-js/pdf.js') }}"></script>
+    <script src="{{ asset('pdf-js/pdf-viewer.js') }}"></script>
+    <script>
+        const pdfWorker = "{{ asset('pdf-js/pdf-worker.js') }}"
+        const cmaps = "{{ asset('pdf-js/cmaps') }}"
+
+        setTimeout( PDFMiniViewers.initialize.bind( null, pdfWorker, cmaps ), 10 );
+    </script>
+@endpush
 
 @endsection
