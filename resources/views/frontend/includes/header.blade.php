@@ -114,7 +114,7 @@
 
             @if($public_menu)
                 @foreach($public_menu as $menu)
-                <li>
+                <li class="@if($menu['child']) drop-down @endif">
                     <a href="{{ $menu['link'] }}" target="{{ $menu['target'] }}">
                     {{ $menu['label'] }}
                     @if($menu['child'])
@@ -124,7 +124,7 @@
                     @if($menu['child'])
                     <ul>
                         @foreach($menu['child'] as $child)
-                        <li>
+                        <li class="@if($child['child']) drop-down @endif">
                             <a href="{{ $child['link'] }}" target="{{ $child['target'] }}">
                                 {{ $child['label'] }}
                                 @if($child['child'])
@@ -134,7 +134,7 @@
                             @if($child['child'])
                             <ul>
                                 @foreach($child['child'] as $shubchild)
-                                <li>
+                                <li class="@if($shubchild['child']) drop-down @endif">
                                     <a href="{{ $shubchild['link'] }}" target="{{ $shubchild['target'] }}">{{ $shubchild['label'] }}</a>
                                     @if($shubchild['child'])
                                     <ul>
@@ -163,7 +163,7 @@
 
             @if($public_menu_nep)
                 @foreach($public_menu_nep as $menu)
-                <li>
+                <li class="@if($menu['child']) drop-down @endif">
                     <a href="{{ $menu['link'] }}" target="{{ $menu['target'] }}">
                     {{ $menu['label'] }}
                     @if($menu['child'])
@@ -173,7 +173,7 @@
                     @if($menu['child'])
                     <ul>
                         @foreach($menu['child'] as $child)
-                        <li>
+                        <li class="@if($child['child']) drop-down @endif">
                             <a href="{{ $child['link'] }}" target="{{ $child['target'] }}">
                                 {{ $child['label'] }}
                                 @if($child['child'])
@@ -183,7 +183,7 @@
                             @if($child['child'])
                             <ul>
                                 @foreach($child['child'] as $shubchild)
-                                <li>
+                                <li class="@if($shubchild['child']) drop-down @endif">
                                     <a href="{{ $shubchild['link'] }}" target="{{ $shubchild['target'] }}">{{ $shubchild['label'] }}</a>
                                     @if($shubchild['child'])
                                     <ul>
