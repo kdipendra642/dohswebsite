@@ -33,8 +33,8 @@ class PostRequest extends BaseRequest
                 Rule::in(PostSubCategoryTypeEnum::getAllValues()),
                 // 'in:laws-regulation,information-news,tender-notice,other'
             ],
-            'document' => 'sometimes|nullable|file|max:50000|mimes:jpg,png,jpeg,pdf',
-            'document_nep' => 'sometimes|nullable|file|max:50000|mimes:jpg,png,jpeg,pdf',
+            'document' => 'sometimes|nullable|file|max:500000|mimes:jpg,png,jpeg,pdf',
+            'document_nep' => 'sometimes|nullable|file|max:500000|mimes:jpg,png,jpeg,pdf',
             'show_on_ticker' => 'sometimes|nullable|boolean',
             'publised_at' => 'sometimes|nullable|date|date_format:Y-m-d',
         ];

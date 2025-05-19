@@ -53,7 +53,7 @@ $title = session('locale') === 'en'
                     </p>
                     @if ($posts->getMedia('posts')->isNotEmpty())
                         @if ($posts->getMedia('posts')[0]->mime_type == 'application/pdf')
-
+                            <p><a rel="external" href="{{$posts->getMedia('posts')[0]->getUrl()}}" target="_blank">Click to View</a></p>
                             <div data-pdf="{{$posts->getMedia('posts')[0]->getUrl()}}"></div>
                         @else
                             <a href="{{$posts->getMedia('posts')[0]->getUrl()}}">{{$posts->getMedia('posts')[0]->getUrl()}}</a>
