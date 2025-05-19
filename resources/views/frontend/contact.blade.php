@@ -34,8 +34,8 @@
                     <hr>
                 </h2>
 
-              
-               
+
+
                 <div class="page">
                     <form action="{{ route('messages.store') }}" method="POST">
                         @csrf
@@ -69,7 +69,7 @@
                              <div class="col-lg-12">
                                 <div class="form-group">
                                     <div class="captch">
-                                        <span>{{!! captcha_img() !!}}</span>
+                                        <span>{!! captcha_img() !!}</span>
                                        <input type="text" name="captcha" class="form-control @error('captcha') is-invalid @enderror" placeholder="Please Insert Captch">
                                     </div>
                                 </div>
@@ -81,7 +81,7 @@
 
                     </form>
                 </div>
-            </div>            
+            </div>
         </div>
     </div>
 </section>

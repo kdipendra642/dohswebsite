@@ -1,74 +1,27 @@
 @if(!empty(request()->get('menu')))
 <div id="accordion-left">
     @php
-        // $blogs = \App\Blog::get(['id', 'title'])->map(function($blog){
-        //     return [
-        //         'url' => $blog->getLink(),
-        //         'icon' => '',
-        //         'label' => $blog->title,
-        //     ];
-        // });
-        $pages = [
-            [
-                'url' => '/page1',
-                'icon' => '',
-                'label' => 'Page 1',
-            ],
-            [
-                'url' => '/page2',
-                'icon' => '',
-                'label' => 'Page 2',
-            ],
-            [
-                'url' => '/page3',
-                'icon' => '',
-                'label' => 'Page 2',
-            ],
-            [
-                'url' => '/page4',
-                'icon' => '',
-                'label' => 'Page 4',
-            ],
-            [
-                'url' => '/page5',
-                'icon' => '',
-                'label' => 'Page 5',
-            ]
-        ];
+        $postList = App\Models\Post::all();
+        $posts = [];
+        foreach ($postList as $key => $post) {
+            $posts[$key]['url'] = url('posts/single/'.$post->slug);
+            $posts[$key]['icon'] = '';
+            $posts[$key]['label'] = $post->title;
+        }
     @endphp
     @include('nguyendachuy-menu::accordions.default', [
-        'name' => 'Pages', 
-        'urls' => $pages, 
+        'name' => 'Posts',
+        'urls' => $posts,
         'show' => true
     ])
     @php
-    $categories = [
-            [
-                'url' => '/category1',
-                'icon' => '',
-                'label' => 'Category 1',
-            ],
-            [
-                'url' => '/category2',
-                'icon' => '',
-                'label' => 'Category 2',
-            ],
-            [
-                'url' => '/category3',
-                'icon' => '',
-                'label' => 'Category 2',
-            ],
-            [
-                'url' => '/category4',
-                'icon' => '',
-                'label' => 'Category 4',
-            ],
-            [
-                'url' => '/category5',
-                'icon' => '',
-                'label' => 'Category 5',
-            ]
-        ];
+    $categoryList = App\Models\Category::all();
+    $categories = [];
+    foreach ($categoryList as $key => $category) {
+        $categories[$key]['url'] = '#';
+        $categories[$key]['icon'] = '';
+        $categories[$key]['label'] = $category->title;
+    }
     @endphp
     @include('nguyendachuy-menu::accordions.default', ['name' => 'Categories', 'urls' => $categories])
 

@@ -55,7 +55,8 @@ $title = session('locale') === 'en'
                         @if ($posts->getMedia('posts')[0]->mime_type == 'application/pdf')
 
                             <div data-pdf="{{$posts->getMedia('posts')[0]->getUrl()}}"></div>
-
+                        @else
+                            <a href="{{$posts->getMedia('posts')[0]->getUrl()}}">{{$posts->getMedia('posts')[0]->getUrl()}}</a>
                         @endif
 
                     @endif
